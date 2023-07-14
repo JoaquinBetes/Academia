@@ -28,44 +28,46 @@
         /// </summary>
         private void InitializeComponent()
         {
-            BtnAgregarUsuarios = new Button();
-            DgvUsuarios = new DataGridView();
-            Usuario = new DataGridViewTextBoxColumn();
+            BtnAgregarPersona = new Button();
+            DgvPersonas = new DataGridView();
+            DNI = new DataGridViewTextBoxColumn();
             Nombre = new DataGridViewTextBoxColumn();
             Apellido = new DataGridViewTextBoxColumn();
+            Telefono = new DataGridViewTextBoxColumn();
+            Direccion = new DataGridViewTextBoxColumn();
             Email = new DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)DgvUsuarios).BeginInit();
+            FechaNacimiento = new DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)DgvPersonas).BeginInit();
             SuspendLayout();
             // 
-            // BtnAgregarUsuarios
+            // BtnAgregarPersona
             // 
-            BtnAgregarUsuarios.BackColor = Color.Black;
-            BtnAgregarUsuarios.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            BtnAgregarUsuarios.Location = new Point(12, 21);
-            BtnAgregarUsuarios.Name = "BtnAgregarUsuarios";
-            BtnAgregarUsuarios.Size = new Size(234, 45);
-            BtnAgregarUsuarios.TabIndex = 0;
-            BtnAgregarUsuarios.Text = "Agregar Usuario";
-            BtnAgregarUsuarios.UseVisualStyleBackColor = false;
-            BtnAgregarUsuarios.Click += BtnAgregarUsuarios_Click;
+            BtnAgregarPersona.BackColor = Color.Black;
+            BtnAgregarPersona.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            BtnAgregarPersona.Location = new Point(12, 21);
+            BtnAgregarPersona.Name = "BtnAgregarPersona";
+            BtnAgregarPersona.Size = new Size(234, 45);
+            BtnAgregarPersona.TabIndex = 0;
+            BtnAgregarPersona.Text = "Agregar Persona";
+            BtnAgregarPersona.UseVisualStyleBackColor = false;
+            BtnAgregarPersona.Click += BtnAgregarUsuarios_Click;
             // 
-            // DgvUsuarios
+            // DgvPersonas
             // 
-            DgvUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            DgvUsuarios.BackgroundColor = Color.Black;
-            DgvUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DgvUsuarios.Columns.AddRange(new DataGridViewColumn[] { Usuario, Nombre, Apellido, Email });
-            DgvUsuarios.GridColor = Color.Black;
-            DgvUsuarios.Location = new Point(12, 89);
-            DgvUsuarios.Name = "DgvUsuarios";
-            DgvUsuarios.RowTemplate.Height = 31;
-            DgvUsuarios.Size = new Size(776, 349);
-            DgvUsuarios.TabIndex = 1;
+            DgvPersonas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DgvPersonas.BackgroundColor = Color.Black;
+            DgvPersonas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DgvPersonas.Columns.AddRange(new DataGridViewColumn[] { DNI, Nombre, Apellido, Telefono, Direccion, Email, FechaNacimiento });
+            DgvPersonas.GridColor = Color.Black;
+            DgvPersonas.Location = new Point(12, 89);
+            DgvPersonas.Name = "DgvPersonas";
+            DgvPersonas.RowTemplate.Height = 31;
+            DgvPersonas.Size = new Size(993, 349);
+            DgvPersonas.TabIndex = 1;
             // 
-            // Usuario
+            // DNI
             // 
-            Usuario.HeaderText = "Usuario";
-            Usuario.Name = "Usuario";
+            DNI.Name = "DNI";
             // 
             // Nombre
             // 
@@ -77,33 +79,48 @@
             Apellido.HeaderText = "Apellido";
             Apellido.Name = "Apellido";
             // 
+            // Telefono
+            // 
+            Telefono.Name = "Telefono";
+            // 
+            // Direccion
+            // 
+            Direccion.Name = "Direccion";
+            // 
             // Email
             // 
             Email.HeaderText = "Email";
             Email.Name = "Email";
             // 
-            // FrmUsuarios
+            // FechaNacimiento
+            // 
+            FechaNacimiento.Name = "FechaNacimiento";
+            // 
+            // FrmPersonas
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
-            ClientSize = new Size(800, 450);
-            Controls.Add(DgvUsuarios);
-            Controls.Add(BtnAgregarUsuarios);
+            ClientSize = new Size(1017, 450);
+            Controls.Add(DgvPersonas);
+            Controls.Add(BtnAgregarPersona);
             ForeColor = SystemColors.ButtonFace;
-            Name = "FrmUsuarios";
-            Text = "Usuarios";
-            ((System.ComponentModel.ISupportInitialize)DgvUsuarios).EndInit();
+            Name = "FrmPersonas";
+            Text = "Persona";
+            ((System.ComponentModel.ISupportInitialize)DgvPersonas).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Button BtnAgregarUsuarios;
-        private DataGridView DgvUsuarios;
-        private DataGridViewTextBoxColumn Usuario;
+        private Button BtnAgregarPersona;
+        private DataGridView DgvPersonas;
+        private DataGridViewTextBoxColumn DNI;
         private DataGridViewTextBoxColumn Nombre;
         private DataGridViewTextBoxColumn Apellido;
+        private DataGridViewTextBoxColumn Telefono;
+        private DataGridViewTextBoxColumn Direccion;
         private DataGridViewTextBoxColumn Email;
+        private DataGridViewTextBoxColumn FechaNacimiento;
     }
 }
