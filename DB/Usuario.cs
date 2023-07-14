@@ -22,4 +22,5 @@ namespace DB
         [ForeignKey(nameof(PersonaId))]
         public virtual Persona Persona { get; set; }
     }
+
 }

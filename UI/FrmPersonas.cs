@@ -22,10 +22,14 @@ namespace UI
         {
             base.OnLoad(e);
             var personas = await Persona.getDatosAsync();
-            foreach (Persona persona in personas)
+            if (personas != null)
             {
-                DgvPersonas.Rows.Add(persona.DNI, persona.Nombre, persona.Apellido, persona.Telefono, persona.Direccion, persona.Email, persona.FechaNacimiento);
+                foreach (Persona persona in personas)
+                {
+                    DgvPersonas.Rows.Add(persona.DNI, persona.Nombre, persona.Apellido, persona.Telefono, persona.Direccion, persona.Email, persona.FechaNacimiento);
+                }
             }
+
 
         }
     }

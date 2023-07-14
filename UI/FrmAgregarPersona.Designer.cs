@@ -32,16 +32,16 @@
             TxtApellido = new TextBox();
             TxtDireccion = new TextBox();
             TxtEmail = new TextBox();
-            Direccion = new Label();
-            Nombre = new Label();
-            Apellido = new Label();
-            Email = new Label();
-            FechaNacimiento = new Label();
+            LblDireccion = new Label();
+            LblNombre = new Label();
+            LblApellido = new Label();
+            LblEmail = new Label();
+            LblFechaNacimiento = new Label();
             BtnAgregar = new Button();
             BtnCancelar = new Button();
             DtpFechaNacimiento = new DateTimePicker();
-            DNI = new Label();
-            Telefono = new Label();
+            LblDNI = new Label();
+            LblTelefono = new Label();
             TxtDNI = new TextBox();
             TxtTelefono = new TextBox();
             SuspendLayout();
@@ -50,7 +50,7 @@
             // 
             TxtNombre.BackColor = SystemColors.ActiveCaptionText;
             TxtNombre.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            TxtNombre.ForeColor = Color.Black;
+            TxtNombre.ForeColor = Color.WhiteSmoke;
             TxtNombre.Location = new Point(145, 29);
             TxtNombre.Name = "TxtNombre";
             TxtNombre.Size = new Size(575, 32);
@@ -60,7 +60,7 @@
             // 
             TxtApellido.BackColor = SystemColors.ActiveCaptionText;
             TxtApellido.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            TxtApellido.ForeColor = Color.Black;
+            TxtApellido.ForeColor = Color.WhiteSmoke;
             TxtApellido.Location = new Point(145, 84);
             TxtApellido.Name = "TxtApellido";
             TxtApellido.Size = new Size(575, 32);
@@ -70,7 +70,7 @@
             // 
             TxtDireccion.BackColor = SystemColors.ActiveCaptionText;
             TxtDireccion.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            TxtDireccion.ForeColor = Color.Black;
+            TxtDireccion.ForeColor = Color.WhiteSmoke;
             TxtDireccion.Location = new Point(145, 139);
             TxtDireccion.Name = "TxtDireccion";
             TxtDireccion.Size = new Size(575, 32);
@@ -80,73 +80,73 @@
             // 
             TxtEmail.BackColor = SystemColors.ActiveCaptionText;
             TxtEmail.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            TxtEmail.ForeColor = Color.Black;
+            TxtEmail.ForeColor = Color.WhiteSmoke;
             TxtEmail.Location = new Point(145, 197);
             TxtEmail.Name = "TxtEmail";
             TxtEmail.Size = new Size(575, 32);
             TxtEmail.TabIndex = 3;
             // 
-            // Direccion
+            // LblDireccion
             // 
-            Direccion.AutoSize = true;
-            Direccion.BackColor = Color.Black;
-            Direccion.Font = new Font("Segoe UI", 14F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
-            Direccion.ForeColor = SystemColors.ControlLight;
-            Direccion.Location = new Point(32, 142);
-            Direccion.Name = "Direccion";
-            Direccion.Size = new Size(96, 25);
-            Direccion.TabIndex = 5;
-            Direccion.Text = "Dirección";
-            Direccion.Click += label1_Click;
+            LblDireccion.AutoSize = true;
+            LblDireccion.BackColor = Color.Black;
+            LblDireccion.Font = new Font("Segoe UI", 14F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
+            LblDireccion.ForeColor = SystemColors.ControlLight;
+            LblDireccion.Location = new Point(32, 142);
+            LblDireccion.Name = "LblDireccion";
+            LblDireccion.Size = new Size(96, 25);
+            LblDireccion.TabIndex = 5;
+            LblDireccion.Text = "Dirección";
+            LblDireccion.Click += label1_Click;
             // 
-            // Nombre
+            // LblNombre
             // 
-            Nombre.AutoSize = true;
-            Nombre.BackColor = Color.Black;
-            Nombre.Font = new Font("Segoe UI", 14F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
-            Nombre.ForeColor = SystemColors.ControlLight;
-            Nombre.Location = new Point(32, 32);
-            Nombre.Name = "Nombre";
-            Nombre.Size = new Size(86, 25);
-            Nombre.TabIndex = 6;
-            Nombre.Text = "Nombre";
+            LblNombre.AutoSize = true;
+            LblNombre.BackColor = Color.Black;
+            LblNombre.Font = new Font("Segoe UI", 14F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
+            LblNombre.ForeColor = SystemColors.ControlLight;
+            LblNombre.Location = new Point(32, 32);
+            LblNombre.Name = "LblNombre";
+            LblNombre.Size = new Size(86, 25);
+            LblNombre.TabIndex = 6;
+            LblNombre.Text = "Nombre";
             // 
-            // Apellido
+            // LblApellido
             // 
-            Apellido.AutoSize = true;
-            Apellido.BackColor = Color.Black;
-            Apellido.Font = new Font("Segoe UI", 14F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
-            Apellido.ForeColor = SystemColors.ControlLight;
-            Apellido.Location = new Point(32, 84);
-            Apellido.Name = "Apellido";
-            Apellido.Size = new Size(86, 25);
-            Apellido.TabIndex = 7;
-            Apellido.Text = "Apellido";
+            LblApellido.AutoSize = true;
+            LblApellido.BackColor = Color.Black;
+            LblApellido.Font = new Font("Segoe UI", 14F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
+            LblApellido.ForeColor = SystemColors.ControlLight;
+            LblApellido.Location = new Point(32, 84);
+            LblApellido.Name = "LblApellido";
+            LblApellido.Size = new Size(86, 25);
+            LblApellido.TabIndex = 7;
+            LblApellido.Text = "Apellido";
             // 
-            // Email
+            // LblEmail
             // 
-            Email.AutoSize = true;
-            Email.BackColor = Color.Black;
-            Email.Font = new Font("Segoe UI", 14F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
-            Email.ForeColor = SystemColors.ControlLight;
-            Email.Location = new Point(32, 200);
-            Email.Name = "Email";
-            Email.Size = new Size(59, 25);
-            Email.TabIndex = 8;
-            Email.Text = "Email";
+            LblEmail.AutoSize = true;
+            LblEmail.BackColor = Color.Black;
+            LblEmail.Font = new Font("Segoe UI", 14F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
+            LblEmail.ForeColor = SystemColors.ControlLight;
+            LblEmail.Location = new Point(32, 200);
+            LblEmail.Name = "LblEmail";
+            LblEmail.Size = new Size(59, 25);
+            LblEmail.TabIndex = 8;
+            LblEmail.Text = "Email";
             // 
-            // FechaNacimiento
+            // LblFechaNacimiento
             // 
-            FechaNacimiento.AutoSize = true;
-            FechaNacimiento.BackColor = Color.Black;
-            FechaNacimiento.Font = new Font("Segoe UI", 14F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
-            FechaNacimiento.ForeColor = SystemColors.ControlLight;
-            FechaNacimiento.Location = new Point(32, 263);
-            FechaNacimiento.Name = "FechaNacimiento";
-            FechaNacimiento.Size = new Size(196, 25);
-            FechaNacimiento.TabIndex = 9;
-            FechaNacimiento.Text = "Fecha de Nacimiento";
-            FechaNacimiento.Click += Clave_Click;
+            LblFechaNacimiento.AutoSize = true;
+            LblFechaNacimiento.BackColor = Color.Black;
+            LblFechaNacimiento.Font = new Font("Segoe UI", 14F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
+            LblFechaNacimiento.ForeColor = SystemColors.ControlLight;
+            LblFechaNacimiento.Location = new Point(32, 263);
+            LblFechaNacimiento.Name = "LblFechaNacimiento";
+            LblFechaNacimiento.Size = new Size(196, 25);
+            LblFechaNacimiento.TabIndex = 9;
+            LblFechaNacimiento.Text = "Fecha de Nacimiento";
+            LblFechaNacimiento.Click += Clave_Click;
             // 
             // BtnAgregar
             // 
@@ -159,6 +159,7 @@
             BtnAgregar.TabIndex = 10;
             BtnAgregar.Text = "Agregar";
             BtnAgregar.UseVisualStyleBackColor = false;
+            BtnAgregar.Click += BtnAgregar_Click;
             // 
             // BtnCancelar
             // 
@@ -185,33 +186,33 @@
             DtpFechaNacimiento.Size = new Size(481, 32);
             DtpFechaNacimiento.TabIndex = 12;
             // 
-            // DNI
+            // LblDNI
             // 
-            DNI.AutoSize = true;
-            DNI.Font = new Font("Segoe UI", 14F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
-            DNI.ForeColor = SystemColors.ControlLight;
-            DNI.Location = new Point(37, 319);
-            DNI.Name = "DNI";
-            DNI.Size = new Size(47, 25);
-            DNI.TabIndex = 13;
-            DNI.Text = "DNI";
-            DNI.Click += label1_Click_1;
+            LblDNI.AutoSize = true;
+            LblDNI.Font = new Font("Segoe UI", 14F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
+            LblDNI.ForeColor = SystemColors.ControlLight;
+            LblDNI.Location = new Point(37, 319);
+            LblDNI.Name = "LblDNI";
+            LblDNI.Size = new Size(47, 25);
+            LblDNI.TabIndex = 13;
+            LblDNI.Text = "DNI";
+            LblDNI.Click += label1_Click_1;
             // 
-            // Telefono
+            // LblTelefono
             // 
-            Telefono.AutoSize = true;
-            Telefono.Font = new Font("Segoe UI", 14F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
-            Telefono.ForeColor = SystemColors.ControlLight;
-            Telefono.Location = new Point(32, 378);
-            Telefono.Name = "Telefono";
-            Telefono.Size = new Size(89, 25);
-            Telefono.TabIndex = 14;
-            Telefono.Text = "Teléfono";
+            LblTelefono.AutoSize = true;
+            LblTelefono.Font = new Font("Segoe UI", 14F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
+            LblTelefono.ForeColor = SystemColors.ControlLight;
+            LblTelefono.Location = new Point(32, 378);
+            LblTelefono.Name = "LblTelefono";
+            LblTelefono.Size = new Size(89, 25);
+            LblTelefono.TabIndex = 14;
+            LblTelefono.Text = "Teléfono";
             // 
             // TxtDNI
             // 
             TxtDNI.BackColor = Color.Black;
-            TxtDNI.ForeColor = SystemColors.ControlLight;
+            TxtDNI.ForeColor = Color.WhiteSmoke;
             TxtDNI.Location = new Point(145, 319);
             TxtDNI.MaxLength = 15;
             TxtDNI.Name = "TxtDNI";
@@ -221,7 +222,7 @@
             // TxtTelefono
             // 
             TxtTelefono.BackColor = Color.Black;
-            TxtTelefono.ForeColor = SystemColors.ControlLight;
+            TxtTelefono.ForeColor = Color.WhiteSmoke;
             TxtTelefono.Location = new Point(145, 378);
             TxtTelefono.Name = "TxtTelefono";
             TxtTelefono.Size = new Size(575, 29);
@@ -235,16 +236,16 @@
             ClientSize = new Size(800, 551);
             Controls.Add(TxtTelefono);
             Controls.Add(TxtDNI);
-            Controls.Add(Telefono);
-            Controls.Add(DNI);
+            Controls.Add(LblTelefono);
+            Controls.Add(LblDNI);
             Controls.Add(DtpFechaNacimiento);
             Controls.Add(BtnCancelar);
             Controls.Add(BtnAgregar);
-            Controls.Add(FechaNacimiento);
-            Controls.Add(Email);
-            Controls.Add(Apellido);
-            Controls.Add(Nombre);
-            Controls.Add(Direccion);
+            Controls.Add(LblFechaNacimiento);
+            Controls.Add(LblEmail);
+            Controls.Add(LblApellido);
+            Controls.Add(LblNombre);
+            Controls.Add(LblDireccion);
             Controls.Add(TxtEmail);
             Controls.Add(TxtDireccion);
             Controls.Add(TxtApellido);
@@ -261,16 +262,16 @@
         private TextBox TxtApellido;
         private TextBox TxtDireccion;
         private TextBox TxtEmail;
-        private Label Direccion;
-        private Label Nombre;
-        private Label Apellido;
-        private Label Email;
-        private Label FechaNacimiento;
+        private Label LblDireccion;
+        private Label LblNombre;
+        private Label LblApellido;
+        private Label LblEmail;
+        private Label LblFechaNacimiento;
         private Button BtnAgregar;
         private Button BtnCancelar;
         private DateTimePicker DtpFechaNacimiento;
-        private Label DNI;
-        private Label Telefono;
+        private Label LblDNI;
+        private Label LblTelefono;
         private TextBox TxtDNI;
         private TextBox TxtTelefono;
     }
