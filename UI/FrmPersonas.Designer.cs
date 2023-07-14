@@ -59,6 +59,7 @@
             DgvPersonas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DgvPersonas.Columns.AddRange(new DataGridViewColumn[] { DNI, Nombre, Apellido, Telefono, Direccion, Email, FechaNacimiento });
             DgvPersonas.GridColor = Color.Black;
+            DgvPersonas.ForeColor = Color.Black;
             DgvPersonas.Location = new Point(12, 89);
             DgvPersonas.Name = "DgvPersonas";
             DgvPersonas.RowTemplate.Height = 31;
