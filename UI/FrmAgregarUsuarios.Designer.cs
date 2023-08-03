@@ -32,7 +32,7 @@
             TxtClave = new TextBox();
             NombreUsuario = new Label();
             Clave = new Label();
-            BtnAgregar = new Button();
+            BtnAgregarUsuario = new Button();
             BtnCancelar = new Button();
             TipoUsuario = new Label();
             TxtTipoUsuario = new TextBox();
@@ -86,17 +86,18 @@
             Clave.TabIndex = 9;
             Clave.Text = "Clave";
             // 
-            // BtnAgregar
+            // BtnAgregarUsuario
             // 
-            BtnAgregar.BackColor = Color.Black;
-            BtnAgregar.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            BtnAgregar.ForeColor = Color.WhiteSmoke;
-            BtnAgregar.Location = new Point(145, 228);
-            BtnAgregar.Name = "BtnAgregar";
-            BtnAgregar.Size = new Size(184, 57);
-            BtnAgregar.TabIndex = 10;
-            BtnAgregar.Text = "Agregar";
-            BtnAgregar.UseVisualStyleBackColor = false;
+            BtnAgregarUsuario.BackColor = Color.Black;
+            BtnAgregarUsuario.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            BtnAgregarUsuario.ForeColor = Color.WhiteSmoke;
+            BtnAgregarUsuario.Location = new Point(145, 228);
+            BtnAgregarUsuario.Name = "BtnAgregarUsuario";
+            BtnAgregarUsuario.Size = new Size(184, 57);
+            BtnAgregarUsuario.TabIndex = 10;
+            BtnAgregarUsuario.Text = "Agregar";
+            BtnAgregarUsuario.UseVisualStyleBackColor = false;
+            BtnAgregarUsuario.Click += BtnAgregarUsuario_Click;
             // 
             // BtnCancelar
             // 
@@ -140,7 +141,7 @@
             BackColor = Color.Black;
             ClientSize = new Size(800, 329);
             Controls.Add(BtnCancelar);
-            Controls.Add(BtnAgregar);
+            Controls.Add(BtnAgregarUsuario);
             Controls.Add(Clave);
             Controls.Add(TipoUsuario);
             Controls.Add(NombreUsuario);
@@ -159,7 +160,7 @@
         private TextBox TxtClave;
         private Label NombreUsuario;
         private Label Clave;
-        private Button BtnAgregar;
+        private Button BtnAgregarUsuario;
         private Button BtnCancelar;
         private Label TipoUsuario;
         private TextBox TxtTipoUsuario;

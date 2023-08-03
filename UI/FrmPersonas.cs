@@ -18,13 +18,14 @@ namespace UI
                 modalForm.ShowDialog();
             }
         }
-        protected override async void OnLoad(EventArgs e)
+        protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            var personas = await Persona.getDatosAsync();
+            List<Entities.Persona> personas = Persona.getDatos();
+            Console.WriteLine(personas);
             if (personas != null)
             {
-                foreach (Persona persona in personas)
+                foreach (Entities.Persona persona in personas)
                 {
                     DgvPersonas.Rows.Add(persona.DNI, persona.Nombre, persona.Apellido, persona.Telefono, persona.Direccion, persona.Email, persona.FechaNacimiento);
                 }

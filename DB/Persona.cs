@@ -1,33 +1,104 @@
-﻿using Azure;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Data.SqlClient;
 
 namespace DB
 {
     public class Persona
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int PersonaId { get; set; }
-        public int DNI { get; set; }
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
-        public string Telefono { get; set; }
-        public string Direccion { get; set; }
-        public string Email { get; set; }
-        public DateTime FechaNacimiento { get; set; }
-        public int IDPlan { get; set; }
-
-
-        public static async Task<List<Persona>?> getDatosAsync()
+        public static List<Entities.Persona> getDatos()
         {
+            List<Entities.Persona> personas = new List<Entities.Persona>();
+            string connectionString = "Server=.\\SQLEXPRESS;Database=Academia;Trusted_Connection=True;Encrypt=false";
+            try
+            {
+                // Crear la SqlConnection
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string sqlQuery = "SELECT * FROM Personas;";
+                    SqlCommand command = new SqlCommand(sqlQuery, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read()) // TODO VALIDACIONES del tipo si devuelve null, Nan o algo por es estilo poner "-" o "0"
+                    {
+                        string? nombre = reader["Nombre"].ToString();
+                        string? apellido = reader["Apellido"].ToString();
+                        int edad = Convert.ToInt32(reader["DNI"]);
+                        string? telefono = reader["Telefono"].ToString();
+                        string? direccion = reader["Direccion"].ToString();
+                        string? email = reader["Email"].ToString();
+                        DateTime fechaNacimiento = Convert.ToDateTime(reader["FechaNacimiento"]);
+                        Entities.Persona persona = new Entities.Persona(nombre, apellido, edad, telefono, direccion, email, fechaNacimiento);
+                        personas.Add(persona);
+                    }
+                    reader.Close();
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar errores si ocurre alguno al intentar conectarse a la base de datos.
+                Console.WriteLine("Error al conectar a la base de datos: " + ex.Message);
+            }
+            return personas;
+        }
+
+        public static void CreatePersona(int dni, string nombre, string apellido, string telefono, string direccion, string email, DateTime fechaNacimiento)
+        {
+            string connectionString = "Server=.\\SQLEXPRESS;Database=Academia;Trusted_Connection=True;Encrypt=false";
+            try
+            {
+                // Crear la SqlConnection
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    // Comando SQL para el INSERT
+                    string sqlInsert = "INSERT INTO Personas (DNI, Nombre, Apellido, Telefono, Direccion, Email, FechaNacimiento, IDPlan) " +
+                                       "VALUES (@DNI, @Nombre, @Apellido, @Telefono, @Direccion, @Email, @FechaNacimiento, 222)";
+
+                    // Crear el SqlCommand con el comando y la conexión
+                    using (SqlCommand command = new SqlCommand(sqlInsert, connection))
+                    {
+                        // Agregar parámetros al comando
+                        command.Parameters.AddWithValue("@DNI", dni);
+                        command.Parameters.AddWithValue("@Nombre", nombre);
+                        command.Parameters.AddWithValue("@Apellido", apellido);
+                        command.Parameters.AddWithValue("@Telefono", telefono);
+                        command.Parameters.AddWithValue("@Direccion", direccion);
+                        command.Parameters.AddWithValue("@Email", email);
+                        command.Parameters.AddWithValue("@FechaNacimiento", fechaNacimiento);
+
+                        connection.Open();
+
+                        // Ejecutar el INSERT
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        // Verificar si se insertaron filas correctamente
+                        if (rowsAffected > 0)
+                        {
+                            Console.WriteLine("Inserción exitosa");
+                        }
+                        else
+                        {
+                            Console.WriteLine("No se pudo insertar el registro");
+                        }
+                        connection.Close();
+                    }
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar errores si ocurre alguno al intentar conectarse a la base de datos.
+                Console.WriteLine("Error al conectar a la base de datos: " + ex.Message);
+            }
+        }
+
+
+
+        // Esto es del CodeFirstAPI, ignorarlo, lo dejo por si despues sirve para capa servicios
+        /*public static async Task<List<Persona>?> getDatosAsync()
+        {
+
             // Realizar la solicitud HTTP a la API
             using (HttpClient httpClient = new HttpClient())
             {
@@ -67,7 +138,7 @@ namespace DB
                 nuevaPersona.Telefono = telefono;
                 nuevaPersona.FechaNacimiento = fechaNacimiento;
                 nuevaPersona.IDPlan = idPlan;
-                
+
                 // Serializar la persona en formato JSON
                 string jsonPersona = JsonConvert.SerializeObject(nuevaPersona);
 
@@ -87,6 +158,6 @@ namespace DB
                     Console.WriteLine("Error al insertar la persona: " + response.StatusCode);
                 }
             }
-        }
+        }*/
     }
 }
