@@ -10,6 +10,17 @@
         public string Email { get; set; }
         public DateTime FechaNacimiento { get; set; }
 
+        public Persona()
+        {
+            Nombre = "-";
+            Apellido = "-";
+            DNI = 0;
+            Telefono = "-";
+            Direccion = "-";
+            Email = "-";
+            FechaNacimiento = DateTime.MinValue;
+        }
+
         public Persona(string nombre, string apellido, int dni, string telefono, string direccion, string email, DateTime fechaNacimiento)
         {
             Nombre = nombre;

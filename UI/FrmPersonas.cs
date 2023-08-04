@@ -10,17 +10,8 @@ namespace UI
             InitializeComponent();
         }
 
-        private void BtnAgregarUsuarios_Click(object sender, EventArgs e)
+        protected void load()
         {
-            using (var modalForm = new FrmAgregarPersona())
-            {
-                // Mostrar el formulario modal como un diálogo
-                modalForm.ShowDialog();
-            }
-        }
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
             List<Entities.Persona> personas = Persona.getDatos();
             Console.WriteLine(personas);
             if (personas != null)
@@ -30,8 +21,22 @@ namespace UI
                     DgvPersonas.Rows.Add(persona.DNI, persona.Nombre, persona.Apellido, persona.Telefono, persona.Direccion, persona.Email, persona.FechaNacimiento);
                 }
             }
+        }
 
+        private void BtnAgregarPersona_Click(object sender, EventArgs e)
+        {
+            using (var modalForm = new FrmAgregarPersona())
+            {
+                // Mostrar el formulario modal como un diálogo
+                modalForm.ShowDialog();
+                load();
+            }
+        }
 
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            load();
         }
     }
 }

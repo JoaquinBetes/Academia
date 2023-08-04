@@ -37,6 +37,7 @@
             Direccion = new DataGridViewTextBoxColumn();
             Email = new DataGridViewTextBoxColumn();
             FechaNacimiento = new DataGridViewTextBoxColumn();
+            BtnAgregarUsuario = new Button();
             ((System.ComponentModel.ISupportInitialize)DgvPersonas).BeginInit();
             SuspendLayout();
             // 
@@ -50,16 +51,16 @@
             BtnAgregarPersona.TabIndex = 0;
             BtnAgregarPersona.Text = "Agregar Persona";
             BtnAgregarPersona.UseVisualStyleBackColor = false;
-            BtnAgregarPersona.Click += BtnAgregarUsuarios_Click;
+            BtnAgregarPersona.Click += BtnAgregarPersona_Click;
             // 
             // DgvPersonas
             // 
             DgvPersonas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DgvPersonas.BackgroundColor = Color.Black;
+            DgvPersonas.ForeColor = Color.Black;
             DgvPersonas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DgvPersonas.Columns.AddRange(new DataGridViewColumn[] { DNI, Nombre, Apellido, Telefono, Direccion, Email, FechaNacimiento });
             DgvPersonas.GridColor = Color.Black;
-            DgvPersonas.ForeColor = Color.Black;
             DgvPersonas.Location = new Point(12, 89);
             DgvPersonas.Name = "DgvPersonas";
             DgvPersonas.RowTemplate.Height = 31;
@@ -97,12 +98,24 @@
             // 
             FechaNacimiento.Name = "FechaNacimiento";
             // 
+            // BtnAgregarUsuario
+            // 
+            BtnAgregarUsuario.BackColor = Color.Black;
+            BtnAgregarUsuario.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            BtnAgregarUsuario.Location = new Point(771, 21);
+            BtnAgregarUsuario.Name = "BtnAgregarUsuario";
+            BtnAgregarUsuario.Size = new Size(234, 45);
+            BtnAgregarUsuario.TabIndex = 3;
+            BtnAgregarUsuario.Text = "Agregar Usuario";
+            BtnAgregarUsuario.UseVisualStyleBackColor = false;
+            // 
             // FrmPersonas
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
             ClientSize = new Size(1017, 450);
+            Controls.Add(BtnAgregarUsuario);
             Controls.Add(DgvPersonas);
             Controls.Add(BtnAgregarPersona);
             ForeColor = SystemColors.ButtonFace;
@@ -123,5 +136,6 @@
         private DataGridViewTextBoxColumn Direccion;
         private DataGridViewTextBoxColumn Email;
         private DataGridViewTextBoxColumn FechaNacimiento;
+        private Button BtnAgregarUsuario;
     }
 }

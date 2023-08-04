@@ -1,4 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace DB
 {
@@ -93,6 +95,51 @@ namespace DB
             }
         }
 
+        public static Entities.Persona getPersona(int dni)
+        {
+            Entities.Persona persona = new Entities.Persona();
+            string connectionString = "Server=.\\SQLEXPRESS;Database=Academia;Trusted_Connection=True;Encrypt=false";
+            try
+            {
+                // Crear la SqlConnection
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    // Comando SQL para el INSERT
+                    string sqlQuery = "SELECT * FROM Personas WHERE DNI = @DNI";
+
+                    // Crear el SqlCommand con el comando y la conexión
+                    SqlCommand command = new SqlCommand(sqlQuery, connection);
+
+                    // Agregar parámetros al comando
+                    command.Parameters.AddWithValue("@DNI", dni);
+
+                    connection.Open();
+
+                    SqlDataReader reader = command.ExecuteReader();
+                        
+                    if (reader.HasRows)
+                    {
+                        // Si se encontró la persona, aquí puedes mostrar los datos en algún control o realizar alguna acción
+                        reader.Read();
+                        persona.Nombre = reader["Nombre"].ToString();
+                        persona.Apellido = reader["Apellido"].ToString();
+                        persona.DNI = Convert.ToInt32(reader["DNI"]);
+                        persona.Telefono = reader["Telefono"].ToString();
+                        persona.Direccion = reader["Direccion"].ToString();
+                        persona.Email = reader["Email"].ToString();
+                        persona.FechaNacimiento = Convert.ToDateTime(reader["FechaNacimiento"]);
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar errores si ocurre alguno al intentar conectarse a la base de datos.
+                Console.WriteLine("Error al conectar a la base de datos: " + ex.Message);
+            }
+            return persona;
+        }
+    
 
 
         // Esto es del CodeFirstAPI, ignorarlo, lo dejo por si despues sirve para capa servicios

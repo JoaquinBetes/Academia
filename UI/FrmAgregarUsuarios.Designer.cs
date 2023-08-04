@@ -42,7 +42,7 @@
             // 
             TxtNombreUsuario.BackColor = SystemColors.ActiveCaptionText;
             TxtNombreUsuario.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            TxtNombreUsuario.ForeColor = Color.Black;
+            TxtNombreUsuario.ForeColor = Color.WhiteSmoke;
             TxtNombreUsuario.Location = new Point(145, 29);
             TxtNombreUsuario.Name = "TxtNombreUsuario";
             TxtNombreUsuario.Size = new Size(575, 32);
@@ -52,7 +52,7 @@
             // 
             TxtClave.BackColor = SystemColors.ActiveCaptionText;
             TxtClave.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
-            TxtClave.ForeColor = Color.Black;
+            TxtClave.ForeColor = Color.WhiteSmoke;
             TxtClave.Location = new Point(145, 142);
             TxtClave.MaxLength = 20;
             TxtClave.Name = "TxtClave";
@@ -128,7 +128,7 @@
             // 
             TxtTipoUsuario.BackColor = SystemColors.ActiveCaptionText;
             TxtTipoUsuario.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            TxtTipoUsuario.ForeColor = Color.Black;
+            TxtTipoUsuario.ForeColor = Color.WhiteSmoke;
             TxtTipoUsuario.Location = new Point(145, 84);
             TxtTipoUsuario.Name = "TxtTipoUsuario";
             TxtTipoUsuario.Size = new Size(575, 32);
