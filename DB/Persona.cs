@@ -6,10 +6,10 @@ namespace DB
 {
     public class Persona
     {
+        public static string connectionString = "Server=.\\SQLEXPRESS;Database=Academia;Trusted_Connection=True;Encrypt=false";
         public static List<Entities.Persona> getDatos()
         {
             List<Entities.Persona> personas = new List<Entities.Persona>();
-            string connectionString = "Server=.\\SQLEXPRESS;Database=Academia;Trusted_Connection=True;Encrypt=false";
             try
             {
                 // Crear la SqlConnection
@@ -23,14 +23,15 @@ namespace DB
 
                     while (reader.Read()) // TODO VALIDACIONES del tipo si devuelve null, Nan o algo por es estilo poner "-" o "0"
                     {
+                        int personaID = Convert.ToInt32(reader["PersonasId"]);
                         string? nombre = reader["Nombre"].ToString();
                         string? apellido = reader["Apellido"].ToString();
-                        int edad = Convert.ToInt32(reader["DNI"]);
+                        int DNI = Convert.ToInt32(reader["DNI"]);
                         string? telefono = reader["Telefono"].ToString();
                         string? direccion = reader["Direccion"].ToString();
                         string? email = reader["Email"].ToString();
                         DateTime fechaNacimiento = Convert.ToDateTime(reader["FechaNacimiento"]);
-                        Entities.Persona persona = new Entities.Persona(nombre, apellido, edad, telefono, direccion, email, fechaNacimiento);
+                        Entities.Persona persona = new Entities.Persona(personaID, nombre, apellido, DNI, telefono, direccion, email, fechaNacimiento);
                         personas.Add(persona);
                     }
                     reader.Close();
@@ -47,7 +48,6 @@ namespace DB
 
         public static void CreatePersona(int dni, string nombre, string apellido, string telefono, string direccion, string email, DateTime fechaNacimiento)
         {
-            string connectionString = "Server=.\\SQLEXPRESS;Database=Academia;Trusted_Connection=True;Encrypt=false";
             try
             {
                 // Crear la SqlConnection
@@ -98,7 +98,6 @@ namespace DB
         public static Entities.Persona getPersona(int dni)
         {
             Entities.Persona persona = new Entities.Persona();
-            string connectionString = "Server=.\\SQLEXPRESS;Database=Academia;Trusted_Connection=True;Encrypt=false";
             try
             {
                 // Crear la SqlConnection
@@ -121,6 +120,7 @@ namespace DB
                     {
                         // Si se encontró la persona, aquí puedes mostrar los datos en algún control o realizar alguna acción
                         reader.Read();
+                        persona.PersonaId = Convert.ToInt32(reader["PersonasId"]); ;
                         persona.Nombre = reader["Nombre"].ToString();
                         persona.Apellido = reader["Apellido"].ToString();
                         persona.DNI = Convert.ToInt32(reader["DNI"]);
