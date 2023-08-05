@@ -108,6 +108,7 @@
             BtnAgregarUsuario.TabIndex = 3;
             BtnAgregarUsuario.Text = "Agregar Usuario";
             BtnAgregarUsuario.UseVisualStyleBackColor = false;
+            BtnAgregarUsuario.Click += BtnAgregarUsuario_Click;
             // 
             // FrmPersonas
             // 

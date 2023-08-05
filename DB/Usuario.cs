@@ -11,9 +11,9 @@ namespace DB
 {
     public class Usuario
     {
-        public static void CreateUsuario(string nombreUsuario, int legajo, string clave, string tipo, bool habilitado)
+        public static string connectionString = "Server=.\\SQLEXPRESS;Database=Academia;Trusted_Connection=True;Encrypt=false";
+        public static void CreateUsuario(string nombreUsuario, string clave, string tipo, bool habilitado , int dni, int personaId)
         {
-            string connectionString = "Server=.\\SQLEXPRESS;Database=Academia;Trusted_Connection=True;Encrypt=false";
             try
             {
                 // Crear la SqlConnection
@@ -21,17 +21,18 @@ namespace DB
                 {
                     // Comando SQL para el INSERT
                     string sqlInsert = "INSERT INTO Usuarios (NombreUsuario, Legajo, Clave, TipoUsuario, Habilitado, PersonaId) " +
-                                           "VALUES (@NombreUsuario, @Legajo, @Clave, @TipoUsuario, @Habilitado, 1)";
+                                           "VALUES (@NombreUsuario, @Legajo, @Clave, @TipoUsuario, @Habilitado, @PersonaId)";
 
                     // Crear el SqlCommand con el comando y la conexión
                     using (SqlCommand command = new SqlCommand(sqlInsert, connection))
                     {
                         // Agregar parámetros al comando
                         command.Parameters.AddWithValue("@NombreUsuario", nombreUsuario);
-                        command.Parameters.AddWithValue("@Legajo", legajo);
+                        command.Parameters.AddWithValue("@Legajo", 22);
                         command.Parameters.AddWithValue("@Clave", clave);
                         command.Parameters.AddWithValue("@TipoUsuario", tipo);
                         command.Parameters.AddWithValue("@Habilitado", habilitado);
+                        command.Parameters.AddWithValue("@PersonaId", personaId);
 
                         connection.Open();
 

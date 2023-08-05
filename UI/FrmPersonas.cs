@@ -13,9 +13,9 @@ namespace UI
         protected void load()
         {
             List<Entities.Persona> personas = Persona.getDatos();
-            Console.WriteLine(personas);
             if (personas != null)
             {
+                DgvPersonas.Rows.Clear();
                 foreach (Entities.Persona persona in personas)
                 {
                     DgvPersonas.Rows.Add(persona.DNI, persona.Nombre, persona.Apellido, persona.Telefono, persona.Direccion, persona.Email, persona.FechaNacimiento);
@@ -37,6 +37,14 @@ namespace UI
         {
             base.OnLoad(e);
             load();
+        }
+
+        private void BtnAgregarUsuario_Click(object sender, EventArgs e)
+        {
+            using (var modalForm = new FrmIngresoDni())
+            {
+                modalForm.ShowDialog();
+            }
         }
     }
 }
