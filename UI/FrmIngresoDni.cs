@@ -14,9 +14,10 @@ namespace UI
     public partial class FrmIngresoDni : Form
     {
         private Entities.Persona persona = new Entities.Persona();
-        public FrmIngresoDni()
+        private string accion;
+        public FrmIngresoDni(string accion)
         {
-
+            this.accion = accion;
             InitializeComponent();
         }
 
@@ -46,11 +47,23 @@ namespace UI
             persona = DB.Persona.getPersona(int.Parse(TxtPersonaDni.Text));
             if (persona.DNI != 0)
             {
-                using (var modalForm = new FrmAgregarUsuarios(persona.PersonaId))
+                if (accion == "Agregar")
                 {
-                    modalForm.ShowDialog();
-                    this.Close();
+                    using (var modalForm = new FrmAgregarUsuarios(persona.PersonaId))
+                    {
+                        modalForm.ShowDialog();
+                        this.Close();
+                    }
                 }
+                else if (accion == "Buscar") 
+                {
+                    using (var modalForm = new FrmVerPersona(persona))
+                    {
+                        modalForm.ShowDialog();
+                        this.Close();
+                    }
+                }
+
             }
             else
             {

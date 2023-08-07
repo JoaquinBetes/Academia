@@ -38,6 +38,8 @@
             Email = new DataGridViewTextBoxColumn();
             FechaNacimiento = new DataGridViewTextBoxColumn();
             BtnAgregarUsuario = new Button();
+            BtnBuscarPersona = new Button();
+            BtnBuscarUsuario = new Button();
             ((System.ComponentModel.ISupportInitialize)DgvPersonas).BeginInit();
             SuspendLayout();
             // 
@@ -110,12 +112,37 @@
             BtnAgregarUsuario.UseVisualStyleBackColor = false;
             BtnAgregarUsuario.Click += BtnAgregarUsuario_Click;
             // 
+            // BtnBuscarPersona
+            // 
+            BtnBuscarPersona.BackColor = Color.Black;
+            BtnBuscarPersona.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            BtnBuscarPersona.Location = new Point(252, 21);
+            BtnBuscarPersona.Name = "BtnBuscarPersona";
+            BtnBuscarPersona.Size = new Size(234, 45);
+            BtnBuscarPersona.TabIndex = 4;
+            BtnBuscarPersona.Text = "Buscar Persona";
+            BtnBuscarPersona.UseVisualStyleBackColor = false;
+            BtnBuscarPersona.Click += BtnBuscarPersona_Click;
+            // 
+            // BtnBuscarUsuario
+            // 
+            BtnBuscarUsuario.BackColor = Color.Black;
+            BtnBuscarUsuario.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            BtnBuscarUsuario.Location = new Point(531, 21);
+            BtnBuscarUsuario.Name = "BtnBuscarUsuario";
+            BtnBuscarUsuario.Size = new Size(234, 45);
+            BtnBuscarUsuario.TabIndex = 5;
+            BtnBuscarUsuario.Text = "Buscar Usuario";
+            BtnBuscarUsuario.UseVisualStyleBackColor = false;
+            // 
             // FrmPersonas
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
             ClientSize = new Size(1017, 450);
+            Controls.Add(BtnBuscarUsuario);
+            Controls.Add(BtnBuscarPersona);
             Controls.Add(BtnAgregarUsuario);
             Controls.Add(DgvPersonas);
             Controls.Add(BtnAgregarPersona);
@@ -138,5 +165,7 @@
         private DataGridViewTextBoxColumn Email;
         private DataGridViewTextBoxColumn FechaNacimiento;
         private Button BtnAgregarUsuario;
+        private Button BtnBuscarPersona;
+        private Button BtnBuscarUsuario;
     }
 }
