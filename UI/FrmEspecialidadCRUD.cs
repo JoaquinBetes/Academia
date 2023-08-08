@@ -20,18 +20,62 @@ namespace UI
 
         private void frmEspecialidadCRUD_Load(object sender, EventArgs e)
         {
+
             load();
+
         }
         private void load()
         {
             List<Entities.Especialidad> personas = Especialidad.Get();
-            button2.Text
+            dataGridView1.DataSource = personas;
 
         }
 
-        private void dgvEspecialidades_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
+
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            FrmEspecialidadCU frm = new FrmEspecialidadCU();
+            frm.ShowDialog();
+            load();
+        }
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            int? id = GetId();
+            if (id != null)
+            {
+                FrmEspecialidadCU frmNew = new FrmEspecialidadCU(id);
+                frmNew.ShowDialog();
+                load();
+            }
+        }
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            int? id = GetId();
+            if (id != null)
+            {
+                Especialidad.Delete((int)id);
+                load();
+            }
+        }
+        #region Helper
+        private int? GetId()
+        {
+            try
+            {
+                return int.Parse(dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[0].Value.ToString());
+            }
+            catch
+            {
+                return null;//si no hay ninguna seleccionada da null
+            }
+        }
+        #endregion
+
+
+
     }
 }
