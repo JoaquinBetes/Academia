@@ -52,6 +52,7 @@ namespace UI
             using (var modalForm = new FrmIngresoDni("Buscar"))
             {
                 modalForm.ShowDialog();
+                load();
             }
         }
     }

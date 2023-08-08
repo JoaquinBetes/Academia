@@ -19,8 +19,28 @@ namespace UI
             InitializeComponent();
         }
 
-        private void BtnAgregar_Click(object sender, EventArgs e)
+        private void BtnEditarPersona_Click(object sender, EventArgs e)
         {
+            if (
+                persona.Apellido == TxtApellidoData.Text &&
+                persona.Nombre == TxtNombreData.Text &&
+                persona.DNI.ToString() == TxtDNIData.Text &&
+                persona.Email == TxtEmailData.Text &&
+                persona.Direccion == TxtDireccionData.Text &&
+                persona.Telefono == TxtTelefonoData.Text &&
+                persona.FechaNacimiento.Date == DtpFechaNacimiento.Value.Date
+                )
+            {
+                this.Close();
+            }
+            else
+            {
+                using (var modalForm = new FrmAvisoEditarPersona(int.Parse(TxtDNIData.Text), TxtNombreData.Text, TxtApellidoData.Text, TxtTelefonoData.Text, TxtDireccionData.Text, TxtEmailData.Text, DtpFechaNacimiento.Value))
+                {
+                    modalForm.ShowDialog();
+                    this.Close();
+                }
+            }
 
         }
     }

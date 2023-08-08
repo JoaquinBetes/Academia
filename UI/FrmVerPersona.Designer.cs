@@ -31,7 +31,7 @@
             LblTelefono = new Label();
             LblDNI = new Label();
             BtnCancelar = new Button();
-            BtnAgregar = new Button();
+            BtnEditarPersona = new Button();
             LblFechaNacimiento = new Label();
             LblEmail = new Label();
             LblApellido = new Label();
@@ -80,18 +80,18 @@
             BtnCancelar.Text = "Cancelar";
             BtnCancelar.UseVisualStyleBackColor = false;
             // 
-            // BtnAgregar
+            // BtnEditarPersona
             // 
-            BtnAgregar.BackColor = Color.Black;
-            BtnAgregar.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            BtnAgregar.ForeColor = Color.WhiteSmoke;
-            BtnAgregar.Location = new Point(181, 491);
-            BtnAgregar.Name = "BtnAgregar";
-            BtnAgregar.Size = new Size(184, 57);
-            BtnAgregar.TabIndex = 26;
-            BtnAgregar.Text = "Aceptar";
-            BtnAgregar.UseVisualStyleBackColor = false;
-            BtnAgregar.Click += BtnAgregar_Click;
+            BtnEditarPersona.BackColor = Color.Black;
+            BtnEditarPersona.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            BtnEditarPersona.ForeColor = Color.WhiteSmoke;
+            BtnEditarPersona.Location = new Point(181, 491);
+            BtnEditarPersona.Name = "BtnEditarPersona";
+            BtnEditarPersona.Size = new Size(184, 57);
+            BtnEditarPersona.TabIndex = 26;
+            BtnEditarPersona.Text = "Aceptar";
+            BtnEditarPersona.UseVisualStyleBackColor = false;
+            BtnEditarPersona.Click += BtnEditarPersona_Click;
             // 
             // LblFechaNacimiento
             // 
@@ -255,7 +255,7 @@
             Controls.Add(LblTelefono);
             Controls.Add(LblDNI);
             Controls.Add(BtnCancelar);
-            Controls.Add(BtnAgregar);
+            Controls.Add(BtnEditarPersona);
             Controls.Add(LblFechaNacimiento);
             Controls.Add(LblEmail);
             Controls.Add(LblApellido);
@@ -272,7 +272,7 @@
         private Label LblTelefono;
         private Label LblDNI;
         private Button BtnCancelar;
-        private Button BtnAgregar;
+        private Button BtnEditarPersona;
         private Label LblFechaNacimiento;
         private Label LblEmail;
         private Label LblApellido;
