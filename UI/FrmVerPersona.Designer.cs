@@ -71,6 +71,11 @@
             // BtnCancelar
             // 
             BtnCancelar.BackColor = Color.Black;
+            BtnCancelar.Cursor = Cursors.Hand;
+            BtnCancelar.FlatAppearance.BorderColor = Color.WhiteSmoke;
+            BtnCancelar.FlatAppearance.BorderSize = 2;
+            BtnCancelar.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 44, 44);
+            BtnCancelar.FlatStyle = FlatStyle.Flat;
             BtnCancelar.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
             BtnCancelar.ForeColor = Color.WhiteSmoke;
             BtnCancelar.Location = new Point(572, 491);
@@ -79,10 +84,16 @@
             BtnCancelar.TabIndex = 27;
             BtnCancelar.Text = "Cancelar";
             BtnCancelar.UseVisualStyleBackColor = false;
+            BtnCancelar.Click += BtnCancelar_Click;
             // 
             // BtnEditarPersona
             // 
             BtnEditarPersona.BackColor = Color.Black;
+            BtnEditarPersona.Cursor = Cursors.Hand;
+            BtnEditarPersona.FlatAppearance.BorderColor = Color.WhiteSmoke;
+            BtnEditarPersona.FlatAppearance.BorderSize = 2;
+            BtnEditarPersona.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 44, 44);
+            BtnEditarPersona.FlatStyle = FlatStyle.Flat;
             BtnEditarPersona.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
             BtnEditarPersona.ForeColor = Color.WhiteSmoke;
             BtnEditarPersona.Location = new Point(181, 491);
@@ -162,7 +173,6 @@
             TxtDireccionData.Name = "TxtDireccionData";
             TxtDireccionData.Size = new Size(575, 32);
             TxtDireccionData.TabIndex = 33;
-            TxtDireccionData.Text = persona.Direccion.ToString();
             TxtDireccionData.TextAlign = HorizontalAlignment.Center;
             // 
             // TxtApellidoData
@@ -174,7 +184,6 @@
             TxtApellidoData.Name = "TxtApellidoData";
             TxtApellidoData.Size = new Size(575, 32);
             TxtApellidoData.TabIndex = 32;
-            TxtApellidoData.Text = persona.Apellido.ToString();
             TxtApellidoData.TextAlign = HorizontalAlignment.Center;
             // 
             // TxtNombreData
@@ -186,7 +195,6 @@
             TxtNombreData.Name = "TxtNombreData";
             TxtNombreData.Size = new Size(575, 32);
             TxtNombreData.TabIndex = 31;
-            TxtNombreData.Text = persona.Nombre;
             TxtNombreData.TextAlign = HorizontalAlignment.Center;
             // 
             // TxtEmailData
@@ -198,7 +206,6 @@
             TxtEmailData.Name = "TxtEmailData";
             TxtEmailData.Size = new Size(575, 32);
             TxtEmailData.TabIndex = 35;
-            TxtEmailData.Text = persona.Email;
             TxtEmailData.TextAlign = HorizontalAlignment.Center;
             // 
             // TxtTelefonoData
@@ -210,7 +217,6 @@
             TxtTelefonoData.Name = "TxtTelefonoData";
             TxtTelefonoData.Size = new Size(575, 32);
             TxtTelefonoData.TabIndex = 38;
-            TxtTelefonoData.Text = persona.Telefono;
             TxtTelefonoData.TextAlign = HorizontalAlignment.Center;
             // 
             // TxtDNIData
@@ -222,7 +228,6 @@
             TxtDNIData.Name = "TxtDNIData";
             TxtDNIData.Size = new Size(575, 32);
             TxtDNIData.TabIndex = 37;
-            TxtDNIData.Text = persona.DNI.ToString();
             TxtDNIData.TextAlign = HorizontalAlignment.Center;
             // 
             // DtpFechaNacimiento
@@ -237,10 +242,20 @@
             DtpFechaNacimiento.Name = "DtpFechaNacimiento";
             DtpFechaNacimiento.Size = new Size(481, 32);
             DtpFechaNacimiento.TabIndex = 39;
-            DtpFechaNacimiento.Text = persona.FechaNacimiento.ToString();
             // 
             // FrmVerPersona
             // 
+
+            //
+            TxtDireccionData.Text = persona.Direccion.ToString();
+            TxtApellidoData.Text = persona.Apellido.ToString();
+            TxtNombreData.Text = persona.Nombre;
+            TxtEmailData.Text = persona.Email;
+            TxtTelefonoData.Text = persona.Telefono;
+            TxtDNIData.Text = persona.DNI.ToString();
+            DtpFechaNacimiento.Value = persona.FechaNacimiento;
+            //
+
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;

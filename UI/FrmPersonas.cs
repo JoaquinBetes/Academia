@@ -55,5 +55,13 @@ namespace UI
                 load();
             }
         }
+
+        private void BtnBuscarUsuario_Click(object sender, EventArgs e) {
+            using (var modalForm = new FrmIngresoLegajo())
+            {
+                modalForm.ShowDialog();
+
+            }
+        }
     }
 }

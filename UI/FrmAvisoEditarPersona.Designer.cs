@@ -36,6 +36,11 @@
             // BtnCancelar
             // 
             BtnCancelar.BackColor = Color.Black;
+            BtnCancelar.Cursor = Cursors.Hand;
+            BtnCancelar.FlatAppearance.BorderColor = Color.WhiteSmoke;
+            BtnCancelar.FlatAppearance.BorderSize = 2;
+            BtnCancelar.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 44, 44);
+            BtnCancelar.FlatStyle = FlatStyle.Flat;
             BtnCancelar.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
             BtnCancelar.ForeColor = Color.WhiteSmoke;
             BtnCancelar.Location = new Point(505, 120);
@@ -49,6 +54,11 @@
             // BtnAceptarEditarPersona
             // 
             BtnAceptarEditarPersona.BackColor = Color.Black;
+            BtnAceptarEditarPersona.Cursor = Cursors.Hand;
+            BtnAceptarEditarPersona.FlatAppearance.BorderColor = Color.WhiteSmoke;
+            BtnAceptarEditarPersona.FlatAppearance.BorderSize = 2;
+            BtnAceptarEditarPersona.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 44, 44);
+            BtnAceptarEditarPersona.FlatStyle = FlatStyle.Flat;
             BtnAceptarEditarPersona.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
             BtnAceptarEditarPersona.ForeColor = Color.WhiteSmoke;
             BtnAceptarEditarPersona.Location = new Point(134, 120);

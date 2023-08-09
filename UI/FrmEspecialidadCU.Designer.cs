@@ -37,43 +37,58 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(73, 109);
+            label1.Font = new Font("Segoe UI", 15F, FontStyle.Underline, GraphicsUnit.Point);
+            label1.ForeColor = Color.WhiteSmoke;
+            label1.Location = new Point(43, 108);
             label1.Name = "label1";
-            label1.Size = new Size(81, 20);
+            label1.Size = new Size(118, 28);
             label1.TabIndex = 0;
-            label1.Text = "Decripción";
+            label1.Text = "Descripción:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(73, 57);
+            label2.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.ForeColor = Color.WhiteSmoke;
+            label2.Location = new Point(43, 54);
             label2.Name = "label2";
-            label2.Size = new Size(246, 20);
+            label2.Size = new Size(354, 30);
             label2.TabIndex = 1;
             label2.Text = "Ingrese los datos de la Especialidad";
             // 
             // txtDescripcion
             // 
-            txtDescripcion.Location = new Point(179, 109);
+            txtDescripcion.BackColor = SystemColors.ActiveCaptionText;
+            txtDescripcion.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            txtDescripcion.ForeColor = Color.WhiteSmoke;
+            txtDescripcion.Location = new Point(180, 111);
             txtDescripcion.Name = "txtDescripcion";
-            txtDescripcion.Size = new Size(125, 27);
+            txtDescripcion.Size = new Size(217, 32);
             txtDescripcion.TabIndex = 2;
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(251, 196);
+            btnGuardar.BackColor = Color.Black;
+            btnGuardar.FlatAppearance.BorderColor = Color.WhiteSmoke;
+            btnGuardar.FlatAppearance.BorderSize = 2;
+            btnGuardar.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 44, 44);
+            btnGuardar.FlatStyle = FlatStyle.Flat;
+            btnGuardar.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            btnGuardar.ForeColor = Color.WhiteSmoke;
+            btnGuardar.Location = new Point(257, 213);
             btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(94, 29);
+            btnGuardar.Size = new Size(140, 40);
             btnGuardar.TabIndex = 3;
             btnGuardar.Text = "Guardar";
-            btnGuardar.UseVisualStyleBackColor = true;
+            btnGuardar.UseVisualStyleBackColor = false;
             btnGuardar.Click += btnGuardar_Click;
             // 
             // FrmEspecialidadCU
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(394, 287);
+            BackColor = Color.Black;
+            ClientSize = new Size(443, 301);
             Controls.Add(btnGuardar);
             Controls.Add(txtDescripcion);
             Controls.Add(label2);

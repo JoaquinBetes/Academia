@@ -89,6 +89,11 @@
             // BtnAgregarUsuario
             // 
             BtnAgregarUsuario.BackColor = Color.Black;
+            BtnAgregarUsuario.Cursor = Cursors.Hand;
+            BtnAgregarUsuario.FlatAppearance.BorderColor = Color.WhiteSmoke;
+            BtnAgregarUsuario.FlatAppearance.BorderSize = 2;
+            BtnAgregarUsuario.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 44, 44);
+            BtnAgregarUsuario.FlatStyle = FlatStyle.Flat;
             BtnAgregarUsuario.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
             BtnAgregarUsuario.ForeColor = Color.WhiteSmoke;
             BtnAgregarUsuario.Location = new Point(145, 228);
@@ -102,6 +107,11 @@
             // BtnCancelar
             // 
             BtnCancelar.BackColor = Color.Black;
+            BtnCancelar.Cursor = Cursors.Hand;
+            BtnCancelar.FlatAppearance.BorderColor = Color.WhiteSmoke;
+            BtnCancelar.FlatAppearance.BorderSize = 2;
+            BtnCancelar.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 44, 44);
+            BtnCancelar.FlatStyle = FlatStyle.Flat;
             BtnCancelar.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
             BtnCancelar.ForeColor = Color.WhiteSmoke;
             BtnCancelar.Location = new Point(536, 228);

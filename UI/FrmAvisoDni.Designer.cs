@@ -47,6 +47,10 @@
             // BtnVolver
             // 
             BtnVolver.BackColor = Color.Black;
+            BtnVolver.Cursor = Cursors.Hand;
+            BtnVolver.FlatAppearance.BorderSize = 2;
+            BtnVolver.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 44, 44);
+            BtnVolver.FlatStyle = FlatStyle.Flat;
             BtnVolver.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
             BtnVolver.ForeColor = Color.WhiteSmoke;
             BtnVolver.Location = new Point(599, 121);

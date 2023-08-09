@@ -38,69 +38,100 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.BackgroundColor = Color.Black;
+            dataGridView1.BorderStyle = BorderStyle.Fixed3D;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(83, 79);
+            dataGridView1.GridColor = Color.WhiteSmoke;
+            dataGridView1.Location = new Point(51, 113);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(600, 318);
+            dataGridView1.Size = new Size(887, 359);
             dataGridView1.TabIndex = 0;
             // 
             // btnNuevo
             // 
+            btnNuevo.BackColor = Color.Black;
+            btnNuevo.Cursor = Cursors.Hand;
             btnNuevo.DialogResult = DialogResult.OK;
-            btnNuevo.Location = new Point(83, 34);
+            btnNuevo.FlatAppearance.BorderColor = Color.WhiteSmoke;
+            btnNuevo.FlatAppearance.BorderSize = 2;
+            btnNuevo.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 44, 44);
+            btnNuevo.FlatStyle = FlatStyle.Flat;
+            btnNuevo.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            btnNuevo.ForeColor = Color.WhiteSmoke;
+            btnNuevo.Location = new Point(51, 51);
             btnNuevo.Name = "btnNuevo";
-            btnNuevo.Size = new Size(94, 29);
+            btnNuevo.Size = new Size(140, 40);
             btnNuevo.TabIndex = 1;
             btnNuevo.Text = "Nuevo";
-            btnNuevo.UseVisualStyleBackColor = true;
+            btnNuevo.UseVisualStyleBackColor = false;
             btnNuevo.Click += btnNuevo_Click;
             // 
             // btnEditar
             // 
-            btnEditar.Location = new Point(503, 34);
+            btnEditar.BackColor = Color.Black;
+            btnEditar.Cursor = Cursors.Hand;
+            btnEditar.FlatAppearance.BorderColor = Color.WhiteSmoke;
+            btnEditar.FlatAppearance.BorderSize = 2;
+            btnEditar.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 44, 44);
+            btnEditar.FlatStyle = FlatStyle.Flat;
+            btnEditar.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            btnEditar.ForeColor = Color.WhiteSmoke;
+            btnEditar.Location = new Point(642, 51);
             btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(94, 29);
+            btnEditar.Size = new Size(140, 40);
             btnEditar.TabIndex = 2;
             btnEditar.Text = "Editar";
-            btnEditar.UseVisualStyleBackColor = true;
+            btnEditar.UseVisualStyleBackColor = false;
             btnEditar.Click += btnEditar_Click;
             // 
             // btnEliminar
             // 
-            btnEliminar.Location = new Point(603, 34);
+            btnEliminar.BackColor = Color.Black;
+            btnEliminar.Cursor = Cursors.Hand;
+            btnEliminar.FlatAppearance.BorderColor = Color.WhiteSmoke;
+            btnEliminar.FlatAppearance.BorderSize = 2;
+            btnEliminar.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 44, 44);
+            btnEliminar.FlatStyle = FlatStyle.Flat;
+            btnEliminar.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            btnEliminar.ForeColor = Color.WhiteSmoke;
+            btnEliminar.Location = new Point(798, 51);
             btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(94, 29);
+            btnEliminar.Size = new Size(140, 40);
             btnEliminar.TabIndex = 3;
             btnEliminar.Text = "Eliminar";
-            btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.UseVisualStyleBackColor = false;
             btnEliminar.Click += btnEliminar_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(201, 38);
+            label1.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ForeColor = Color.WhiteSmoke;
+            label1.Location = new Point(196, 61);
             label1.Name = "label1";
-            label1.Size = new Size(286, 20);
+            label1.Size = new Size(440, 30);
             label1.TabIndex = 4;
-            label1.Text = "Sleccine un registro para editar o eliminar";
+            label1.Text = "Seleccione un registro para editar o eliminar";
             label1.Click += label1_Click;
             // 
             // frmEspecialidadCRUD
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            BackColor = Color.Black;
+            ClientSize = new Size(1009, 520);
             Controls.Add(label1);
             Controls.Add(btnEliminar);
             Controls.Add(btnEditar);
             Controls.Add(btnNuevo);
             Controls.Add(dataGridView1);
             Name = "frmEspecialidadCRUD";
-            Text = "frmEspecialidadCRUD";
+            Text = "Especialidades";
             Load += frmEspecialidadCRUD_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);

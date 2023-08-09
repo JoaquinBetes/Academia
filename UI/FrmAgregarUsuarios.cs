@@ -39,7 +39,7 @@ namespace UI
         }
         public FrmAgregarUsuarios(int personaID)
         {
-            this.personaId=personaID;
+            this.personaId = personaID;
             this.existePersona = true;
             InitializeComponent();
         }
@@ -62,7 +62,8 @@ namespace UI
                 persona = DB.Persona.getPersona(this.dni);
                 DB.Usuario.CreateUsuario(TxtNombreUsuario.Text, TxtClave.Text, TxtTipoUsuario.Text, true, this.dni, persona.PersonaId);
             }
-            else {
+            else
+            {
                 DB.Usuario.CreateUsuario(TxtNombreUsuario.Text, TxtClave.Text, TxtTipoUsuario.Text, true, this.dni, this.personaId);
             }
 

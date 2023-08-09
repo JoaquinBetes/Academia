@@ -14,7 +14,7 @@ namespace UI
     public partial class FrmEspecialidadCU : Form
     {
         private int? id;
-        public FrmEspecialidadCU(int? id=null)
+        public FrmEspecialidadCU(int? id = null)
         {
             InitializeComponent();
             this.id = id;
@@ -23,27 +23,27 @@ namespace UI
                 Get();
             }
         }
-       
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
 
             try
             {
-                if(id==null)
+                if (id == null)
                     Especialidad.Add(txtDescripcion.Text);
                 else
-                    Especialidad.Update((int)id,txtDescripcion.Text);
+                    Especialidad.Update((int)id, txtDescripcion.Text);
                 this.Close();
             }
             catch
             {
                 MessageBox.Show("Error al guardar");
             }
-           
+
         }
-        private void Get() 
+        private void Get()
         {
-            Entities.Especialidad esp =Especialidad.Get((int)id);
+            Entities.Especialidad esp = Especialidad.Get((int)id);
             txtDescripcion.Text = esp.Descripcion;
         }
 
