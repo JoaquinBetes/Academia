@@ -10,18 +10,10 @@ namespace Business
             return DB.Persona.getDatos();
         }
 
-        public static void CreatePersona(int dni, string nombre, string apellido, string telefono, string direccion, string email, DateTime fechaNacimiento)
+        public static bool DniExists(int dni)
         {
-            DB.Persona persona_datos = new DB.Persona();
-            Entities.Persona persona_entidad = new Entities.Persona();
-            persona_entidad.DNI = dni;
-            persona_entidad.Nombre = nombre;
-            persona_entidad.Apellido = apellido;
-            persona_entidad.Telefono = telefono;
-            persona_entidad.Direccion = direccion;
-            persona_entidad.Email = email;
-            persona_entidad.FechaNacimiento = fechaNacimiento;
-            return persona_datos.CreatePersona();
+            return DB.Persona.DniExists(dni);
         }
+
     }
 }
