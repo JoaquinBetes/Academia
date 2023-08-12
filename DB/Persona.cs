@@ -1,4 +1,5 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using Entities;
+using Microsoft.Data.SqlClient;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -86,6 +87,59 @@ namespace DB
                         connection.Close();
                     }
                     
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar errores si ocurre alguno al intentar conectarse a la base de datos.
+                Console.WriteLine("Error al conectar a la base de datos: " + ex.Message);
+            }
+        }
+        public static void UpdatePersona(int dni, string nombre, string apellido, string telefono, string direccion, string email, DateTime fechaNacimiento, int id) 
+        {
+            try
+            {
+                // Crear la SqlConnection
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    // Comando SQL para el INSERT
+                    string updateQuery = @"
+                        UPDATE Personas
+                        SET DNI = @dni,
+                            Nombre = @nombre,
+                            Apellido = @apellido,
+                            Telefono = @telefono,
+                            Direccion = @direccion,
+                            Email = @email,
+                            FechaNacimiento = @fechaNacimiento
+                        WHERE PersonasId = @id";
+
+                    // Crear el SqlCommand con el comando y la conexión
+                    SqlCommand command = new SqlCommand(updateQuery, connection);
+
+                    // Agregar parámetros al comando
+                    command.Parameters.AddWithValue("@dni", dni);
+                    command.Parameters.AddWithValue("@nombre", nombre);
+                    command.Parameters.AddWithValue("@apellido", apellido);
+                    command.Parameters.AddWithValue("@telefono", telefono);
+                    command.Parameters.AddWithValue("@direccion", direccion);
+                    command.Parameters.AddWithValue("@email", email);
+                    command.Parameters.AddWithValue("@fechaNacimiento", fechaNacimiento);
+                    command.Parameters.AddWithValue("@id", id);
+
+                    connection.Open();
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error al actualizar la base de datos: " + ex.Message);
+                    }
+                    finally
+                    {
+                        connection.Close();
+                    }
                 }
             }
             catch (Exception ex)

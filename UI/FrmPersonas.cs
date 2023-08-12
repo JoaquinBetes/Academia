@@ -41,9 +41,26 @@ namespace UI
 
         private void BtnAgregarUsuario_Click(object sender, EventArgs e)
         {
-            using (var modalForm = new FrmIngresoDni())
+            using (var modalForm = new FrmIngresoDni("Agregar"))
             {
                 modalForm.ShowDialog();
+            }
+        }
+
+        private void BtnBuscarPersona_Click(object sender, EventArgs e)
+        {
+            using (var modalForm = new FrmIngresoDni("Buscar"))
+            {
+                modalForm.ShowDialog();
+                load();
+            }
+        }
+
+        private void BtnBuscarUsuario_Click(object sender, EventArgs e) {
+            using (var modalForm = new FrmIngresoLegajo())
+            {
+                modalForm.ShowDialog();
+
             }
         }
     }
