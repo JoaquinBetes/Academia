@@ -8,6 +8,7 @@ namespace Entities
 {
     public class Usuario
     {
+        public int UsuarioId { get; set; }
         public string NombreUsuario { get; set; }
         public int Legajo { get; set; }
         public string Clave { get; set; }

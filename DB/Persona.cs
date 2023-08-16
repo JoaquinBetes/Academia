@@ -194,37 +194,6 @@ namespace DB
             return persona;
         }
     
-        public static bool DniExists(int dni)
-        {
-            try
-            {
-                // Crear la SqlConnection
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    // Comando SQL para el buscar DNI
-                    string sqlQuery = "SELECT COUNT(*) FROM Personas WHERE DNI = @DNI";
-
-                    connection.Open();
-
-                    // Crear el SqlCommand con el comando y la conexión
-                    SqlCommand command = new SqlCommand(sqlQuery, connection);
-
-                    command.Parameters.AddWithValue("@DNI", dni);
-
-                    int count = (int)command.ExecuteScalar();
-
-                    connection.Close();
-
-                    return count > 0;
-                }
-            }
-            catch (Exception ex)
-            {
-                // Manejar errores si ocurre alguno al intentar conectarse a la base de datos.
-                Console.WriteLine("Error al conectar a la base de datos: " + ex.Message);
-                return false;
-            }
-        }
 
         // Esto es del CodeFirstAPI, ignorarlo, lo dejo por si despues sirve para capa servicios
         /*public static async Task<List<Persona>?> getDatosAsync()

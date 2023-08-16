@@ -44,30 +44,29 @@ namespace UI
 
         private void BtnBuscarDni_Click(object sender, EventArgs e)
         {
-            persona = DB.Persona.getPersona(int.Parse(TxtPersonaDni.Text));
-            if (persona.DNI != 0)
+            if (string.IsNullOrEmpty(TxtPersonaDni.Text) || !int.TryParse(TxtPersonaDni.Text, out _) || TxtPersonaDni.Text.Length != 8)
             {
-                if (accion == "Agregar")
-                {
-                    using (var modalForm = new FrmAgregarUsuarios(persona.PersonaId))
-                    {
-                        modalForm.ShowDialog();
-                        this.Close();
-                    }
-                }
-                else if (accion == "Buscar") 
-                {
-                    using (var modalForm = new FrmVerPersona(persona))
-                    {
-                        modalForm.ShowDialog();
-                        this.Close();
-                    }
-                }
-
+                MessageBox.Show("El DNI debe ser un número válido de 8 digitos.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            else
+
+            if (!Business.Persona.DniExists(int.Parse(TxtPersonaDni.Text)))
             {
-                using (var modalForm = new FrmAvisoDni())
+                MessageBox.Show("No existe una persona con el DNI ingresado.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (accion == "Agregar")
+            {
+                using (var modalForm = new FrmAgregarUsuarios(persona.PersonaId))
+                {
+                    modalForm.ShowDialog();
+                    this.Close();
+                }
+                }
+            else if (accion == "Buscar") 
+            {
+                using (var modalForm = new FrmVerPersona(persona))
                 {
                     modalForm.ShowDialog();
                     this.Close();

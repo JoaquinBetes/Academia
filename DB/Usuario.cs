@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Data.SqlClient;
+using Entities;
+using System.Net;
 
 namespace DB
 {
@@ -58,6 +60,45 @@ namespace DB
                 // Manejar errores si ocurre alguno al intentar conectarse a la base de datos.
                 Console.WriteLine("Error al conectar a la base de datos: " + ex.Message);
             }
+        }
+
+        public static Entities.Usuario GetUsuario(string nombreUsuario) 
+        {
+            Entities.Usuario usuario = new Entities.Usuario();
+            try
+            {
+                // Crear la SqlConnection
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    // Comando SQL para el INSERT
+                    string sqlQuery = "SELECT * FROM Usuarios WHERE NombreUsuario = @nombreUsuario";
+
+                    SqlCommand command = new SqlCommand(sqlQuery, connection);
+
+                    command.Parameters.AddWithValue("@nombreUsuario", nombreUsuario);
+
+                    connection.Open();
+
+                    SqlDataReader reader = command.ExecuteReader();
+                    
+                    if (reader.Read()) 
+                    {
+                        usuario.UsuarioId = Convert.ToInt32(reader["UsuarioId"]);
+                        usuario.NombreUsuario = reader["NombreUsuario"].ToString();
+                        usuario.Legajo = Convert.ToInt32(reader["Legajo"]);
+                        usuario.Clave = reader["Clave"].ToString();
+                        usuario.TipoUsuario = reader["TipoUsuario"].ToString();
+                        usuario.Habilitado = (bool)reader["Habilitado"];
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar errores si ocurre alguno al intentar conectarse a la base de datos.
+                Console.WriteLine("Error al conectar a la base de datos: " + ex.Message);
+            }
+            return usuario;
         }
     }
 

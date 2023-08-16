@@ -12,7 +12,9 @@ namespace Business
 
         public static bool DniExists(int dni)
         {
-            return DB.Persona.DniExists(dni);
+            Entities.Persona persona = DB.Persona.getPersona(dni);
+            
+            return persona !=null;
         }
 
     }
