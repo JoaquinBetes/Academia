@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class FrmAvisoEditarPersona
+    partial class FrmAvisoEditar
     {
         /// <summary>
         /// Required designer variable.

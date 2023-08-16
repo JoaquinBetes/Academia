@@ -97,7 +97,6 @@
             LblDireccion.Size = new Size(96, 25);
             LblDireccion.TabIndex = 5;
             LblDireccion.Text = "Dirección";
-            LblDireccion.Click += label1_Click;
             // 
             // LblNombre
             // 
@@ -146,7 +145,6 @@
             LblFechaNacimiento.Size = new Size(196, 25);
             LblFechaNacimiento.TabIndex = 9;
             LblFechaNacimiento.Text = "Fecha de Nacimiento";
-            LblFechaNacimiento.Click += Clave_Click;
             // 
             // BtnAgregar
             // 
@@ -206,7 +204,6 @@
             LblDNI.Size = new Size(47, 25);
             LblDNI.TabIndex = 13;
             LblDNI.Text = "DNI";
-            LblDNI.Click += label1_Click_1;
             // 
             // LblTelefono
             // 

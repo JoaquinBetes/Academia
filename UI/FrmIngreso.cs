@@ -70,7 +70,7 @@ namespace UI
                 {
                     if (accion == "Agregar")
                     {
-                        using (var modalForm = new FrmAgregarUsuarios(persona.PersonaId))
+                        using (var modalForm = new FrmUsuario(persona.PersonaId))
                         {
                             modalForm.ShowDialog();
                             this.Close();
@@ -78,7 +78,7 @@ namespace UI
                     }
                     else if (accion == "Buscar")
                     {
-                        using (var modalForm = new FrmVerPersona(persona))
+                        using (var modalForm = new FrmPersona(persona))
                         {
                             modalForm.ShowDialog();
                             this.Close();
@@ -98,7 +98,7 @@ namespace UI
             else if (tipo == "Usuario") 
             {
                 usuario = DB.Usuario.getUsuario(int.Parse(TxtPersonaDni.Text));
-                using (var modalForm = new FrmAgregarUsuarios(usuario))
+                using (var modalForm = new FrmUsuario(usuario))
                 {
                     modalForm.ShowDialog();
                     this.Close();

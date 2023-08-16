@@ -9,6 +9,7 @@ namespace DB
     public class Persona
     {
         public static string connectionString = "Server=.\\SQLEXPRESS;Database=Academia;Trusted_Connection=True;Encrypt=false";
+        #region Geters
         public static List<Entities.Persona> getDatos()
         {
             List<Entities.Persona> personas = new List<Entities.Persona>();
@@ -47,7 +48,52 @@ namespace DB
             }
             return personas;
         }
+        public static Entities.Persona getPersona(int dni)
+        {
+            Entities.Persona persona = new Entities.Persona();
+            try
+            {
+                // Crear la SqlConnection
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    // Comando SQL para el INSERT
+                    string sqlQuery = "SELECT * FROM Personas WHERE DNI = @DNI";
 
+                    // Crear el SqlCommand con el comando y la conexión
+                    SqlCommand command = new SqlCommand(sqlQuery, connection);
+
+                    // Agregar parámetros al comando
+                    command.Parameters.AddWithValue("@DNI", dni);
+
+                    connection.Open();
+
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                        // Si se encontró la persona, aquí puedes mostrar los datos en algún control o realizar alguna acción
+                        reader.Read();
+                        persona.PersonaId = Convert.ToInt32(reader["PersonasId"]); ;
+                        persona.Nombre = reader["Nombre"].ToString();
+                        persona.Apellido = reader["Apellido"].ToString();
+                        persona.DNI = Convert.ToInt32(reader["DNI"]);
+                        persona.Telefono = reader["Telefono"].ToString();
+                        persona.Direccion = reader["Direccion"].ToString();
+                        persona.Email = reader["Email"].ToString();
+                        persona.FechaNacimiento = Convert.ToDateTime(reader["FechaNacimiento"]);
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar errores si ocurre alguno al intentar conectarse a la base de datos.
+                Console.WriteLine("Error al conectar a la base de datos: " + ex.Message);
+            }
+            return persona;
+        }
+        #endregion
+        #region Create
         public static void CreatePersona(int dni, string nombre, string apellido, string telefono, string direccion, string email, DateTime fechaNacimiento)
         {
             try
@@ -96,7 +142,9 @@ namespace DB
                 Console.WriteLine("Error al conectar a la base de datos: " + ex.Message);
             }
         }
-        public static void UpdatePersona(int dni, string nombre, string apellido, string telefono, string direccion, string email, DateTime fechaNacimiento, int id) 
+        #endregion
+        #region Update
+        public static void UpdatePersona(int dni, string nombre, string apellido, string telefono, string direccion, string email, DateTime fechaNacimiento, int id)
         {
             try
             {
@@ -149,8 +197,10 @@ namespace DB
                 Console.WriteLine("Error al conectar a la base de datos: " + ex.Message);
             }
         }
-
-        public static void deletePersona(int id) {
+        #endregion
+        #region Delete
+        public static void deletePersona(int id)
+        {
             try
             {
                 // Crear la SqlConnection
@@ -184,117 +234,6 @@ namespace DB
                 Console.WriteLine("Error al conectar a la base de datos: " + ex.Message);
             }
         }
-    
-        public static Entities.Persona getPersona(int dni)
-        {
-            Entities.Persona persona = new Entities.Persona();
-            try
-            {
-                // Crear la SqlConnection
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    // Comando SQL para el INSERT
-                    string sqlQuery = "SELECT * FROM Personas WHERE DNI = @DNI";
-
-                    // Crear el SqlCommand con el comando y la conexión
-                    SqlCommand command = new SqlCommand(sqlQuery, connection);
-
-                    // Agregar parámetros al comando
-                    command.Parameters.AddWithValue("@DNI", dni);
-
-                    connection.Open();
-
-                    SqlDataReader reader = command.ExecuteReader();
-                        
-                    if (reader.HasRows)
-                    {
-                        // Si se encontró la persona, aquí puedes mostrar los datos en algún control o realizar alguna acción
-                        reader.Read();
-                        persona.PersonaId = Convert.ToInt32(reader["PersonasId"]); ;
-                        persona.Nombre = reader["Nombre"].ToString();
-                        persona.Apellido = reader["Apellido"].ToString();
-                        persona.DNI = Convert.ToInt32(reader["DNI"]);
-                        persona.Telefono = reader["Telefono"].ToString();
-                        persona.Direccion = reader["Direccion"].ToString();
-                        persona.Email = reader["Email"].ToString();
-                        persona.FechaNacimiento = Convert.ToDateTime(reader["FechaNacimiento"]);
-                    }
-                    connection.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                // Manejar errores si ocurre alguno al intentar conectarse a la base de datos.
-                Console.WriteLine("Error al conectar a la base de datos: " + ex.Message);
-            }
-            return persona;
-        }
-    
-
-
-        // Esto es del CodeFirstAPI, ignorarlo, lo dejo por si despues sirve para capa servicios
-        /*public static async Task<List<Persona>?> getDatosAsync()
-        {
-
-            // Realizar la solicitud HTTP a la API
-            using (HttpClient httpClient = new HttpClient())
-            {
-                try
-                {
-                    HttpResponseMessage response = await httpClient.GetAsync("http://localhost:5000/api/Persona");
-                    response.EnsureSuccessStatusCode();
-
-                    string responseBody = await response.Content.ReadAsStringAsync();
-
-                    List<Persona>? personas = JsonConvert.DeserializeObject<List<Persona>>(responseBody);
-                    return personas;
-                }
-                catch (HttpRequestException ex)
-                {
-                    Console.WriteLine($"Error al realizar la solicitud HTTP: {ex.Message}");
-                    return null;
-                }
-            }
-        }
-
-        public static void CreatePersona(int dni, string nombre, string apellido, string telefono, string direccion, string email, DateTime fechaNacimiento, int idPlan) {
-            // Crear una instancia de HttpClient
-            using (HttpClient httpClient = new HttpClient())
-            {
-                // URL del endpoint del controlador Persona
-                string url = "http://localhost:5000/api/Persona";
-
-                // Crear una nueva instancia de Persona con los datos
-                Persona nuevaPersona = new Persona();
-                nuevaPersona.PersonaId = 0;
-                nuevaPersona.DNI = dni;
-                nuevaPersona.Nombre = nombre;
-                nuevaPersona.Apellido = apellido;
-                nuevaPersona.Direccion = direccion;
-                nuevaPersona.Email = email;
-                nuevaPersona.Telefono = telefono;
-                nuevaPersona.FechaNacimiento = fechaNacimiento;
-                nuevaPersona.IDPlan = idPlan;
-
-                // Serializar la persona en formato JSON
-                string jsonPersona = JsonConvert.SerializeObject(nuevaPersona);
-
-                // Configurar el encabezado y el contenido de la solicitud
-                StringContent content = new StringContent(jsonPersona, Encoding.UTF8, "application/json");
-
-                // Realizar la solicitud HTTP POST
-                HttpResponseMessage response = httpClient.PostAsync(url, content).Result;
-
-                // Verificar el estado de la respuesta
-                if (response.IsSuccessStatusCode)
-                {
-                    Console.WriteLine("La persona se ha insertado correctamente.");
-                }
-                else
-                {
-                    Console.WriteLine("Error al insertar la persona: " + response.StatusCode);
-                }
-            }
-        }*/
+        #endregion
     }
 }

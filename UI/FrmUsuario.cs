@@ -12,7 +12,7 @@ using Entities;
 
 namespace UI
 {
-    public partial class FrmAgregarUsuarios : Form
+    public partial class FrmUsuario : Form
     {
         private Entities.Persona persona = new Entities.Persona();
         private Entities.Usuario usuario = new Entities.Usuario();
@@ -26,7 +26,7 @@ namespace UI
         private int personaId;
         private bool existePersona = false;
 
-        public FrmAgregarUsuarios(int dni, string nombre, string apellido, string telefono, string direccion, string email, DateTime fechaNacimiento)
+        public FrmUsuario(int dni, string nombre, string apellido, string telefono, string direccion, string email, DateTime fechaNacimiento)
         {
             this.dni = dni;
             this.nombre = nombre;
@@ -35,7 +35,25 @@ namespace UI
             this.direccion = direccion;
             this.email = email;
             this.fechaNacimiento = fechaNacimiento;
-            #region boton
+            #region Boton Agregar
+            BtnAgregarUsuario = new Button();
+            BtnAgregarUsuario.BackColor = Color.Black;
+            BtnAgregarUsuario.Cursor = Cursors.Hand;
+            BtnAgregarUsuario.FlatAppearance.BorderColor = Color.WhiteSmoke;
+            BtnAgregarUsuario.FlatAppearance.BorderSize = 2;
+            BtnAgregarUsuario.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 44, 44);
+            BtnAgregarUsuario.FlatStyle = FlatStyle.Flat;
+            BtnAgregarUsuario.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            BtnAgregarUsuario.ForeColor = Color.WhiteSmoke;
+            BtnAgregarUsuario.Location = new Point(145, 228);
+            BtnAgregarUsuario.Name = "BtnAgregarUsuario";
+            BtnAgregarUsuario.Size = new Size(184, 57);
+            BtnAgregarUsuario.TabIndex = 10;
+            BtnAgregarUsuario.Text = "Agregar";
+            BtnAgregarUsuario.UseVisualStyleBackColor = false;
+            BtnAgregarUsuario.Click += BtnAgregarUsuario_Click;
+            #endregion
+            #region Boton Cancelar
             BtnCancelar = new Button();
             BtnCancelar.BackColor = Color.Black;
             BtnCancelar.Cursor = Cursors.Hand;
@@ -87,11 +105,29 @@ namespace UI
             #endregion
             InitializeComponent();
         }
-        public FrmAgregarUsuarios( int personaID )
+        public FrmUsuario( int personaID )
         {
             this.personaId = personaID;
             this.existePersona = true;
-            #region boton
+            #region Boton Agregar
+            BtnAgregarUsuario = new Button();
+            BtnAgregarUsuario.BackColor = Color.Black;
+            BtnAgregarUsuario.Cursor = Cursors.Hand;
+            BtnAgregarUsuario.FlatAppearance.BorderColor = Color.WhiteSmoke;
+            BtnAgregarUsuario.FlatAppearance.BorderSize = 2;
+            BtnAgregarUsuario.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 44, 44);
+            BtnAgregarUsuario.FlatStyle = FlatStyle.Flat;
+            BtnAgregarUsuario.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            BtnAgregarUsuario.ForeColor = Color.WhiteSmoke;
+            BtnAgregarUsuario.Location = new Point(145, 228);
+            BtnAgregarUsuario.Name = "BtnAgregarUsuario";
+            BtnAgregarUsuario.Size = new Size(184, 57);
+            BtnAgregarUsuario.TabIndex = 10;
+            BtnAgregarUsuario.Text = "Agregar";
+            BtnAgregarUsuario.UseVisualStyleBackColor = false;
+            BtnAgregarUsuario.Click += BtnAgregarUsuario_Click;
+            #endregion
+            #region Boton Cancelar
             BtnCancelar = new Button();
             BtnCancelar.BackColor = Color.Black;
             BtnCancelar.Cursor = Cursors.Hand;
@@ -143,10 +179,28 @@ namespace UI
             #endregion
             InitializeComponent();
         }
-        public FrmAgregarUsuarios( Entities.Usuario usuario )
+        public FrmUsuario( Entities.Usuario usuario )
         { 
             this.usuario = usuario;
-            #region boton
+            #region Boton Editar
+            BtnAgregarUsuario = new Button();
+            BtnAgregarUsuario.BackColor = Color.Black;
+            BtnAgregarUsuario.Cursor = Cursors.Hand;
+            BtnAgregarUsuario.FlatAppearance.BorderColor = Color.WhiteSmoke;
+            BtnAgregarUsuario.FlatAppearance.BorderSize = 2;
+            BtnAgregarUsuario.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 44, 44);
+            BtnAgregarUsuario.FlatStyle = FlatStyle.Flat;
+            BtnAgregarUsuario.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            BtnAgregarUsuario.ForeColor = Color.WhiteSmoke;
+            BtnAgregarUsuario.Location = new Point(145, 228);
+            BtnAgregarUsuario.Name = "BtnAgregarUsuario";
+            BtnAgregarUsuario.Size = new Size(184, 57);
+            BtnAgregarUsuario.TabIndex = 10;
+            BtnAgregarUsuario.Text = "Aceptar";
+            BtnAgregarUsuario.UseVisualStyleBackColor = false;
+            BtnAgregarUsuario.Click += BtnEditarUsuario_Click;
+            #endregion
+            #region boton Eliminar
             BtnCancelar = new Button();
             BtnCancelar.BackColor = Color.Black;
             BtnCancelar.Cursor = Cursors.Hand;
@@ -162,7 +216,7 @@ namespace UI
             BtnCancelar.TabIndex = 11;
             BtnCancelar.Text = "Eliminar";
             BtnCancelar.UseVisualStyleBackColor = false;
-            BtnCancelar.Click += BtnCancelarUsuario_Click;
+            BtnCancelar.Click += BtnEliminarUsuario_Click;
             #endregion
             #region info
             TxtNombreUsuario = new TextBox();
@@ -202,11 +256,43 @@ namespace UI
             InitializeComponent();
         }
 
+        private void BtnEditarUsuario_Click(object sender, EventArgs e)
+        {
+            if (
+                usuario.NombreUsuario == TxtNombreUsuario.Text &&
+                usuario.TipoUsuario == TxtTipoUsuario.Text &&
+                usuario.Clave == TxtClave.Text 
+                )
+            {
+                this.Close();
+            }
+            else
+            {
+                usuario.NombreUsuario = TxtNombreUsuario.Text;
+                usuario.TipoUsuario = TxtTipoUsuario.Text;
+                usuario.Clave = TxtClave.Text;
+                using (var modalForm = new FrmAvisoEditar(usuario, "Editar", "Usuario"))
+                {
+                    modalForm.ShowDialog();
+                    this.Close();
+                }
+            }
+        }
+
+        private void BtnEliminarUsuario_Click(object sender, EventArgs e) 
+        {
+            using (var modalForm = new FrmAvisoEditar( usuario ,"Eliminar", "Usuario"))
+            {
+                modalForm.ShowDialog();
+                this.Close();
+            }
+        }
+
         private void BtnCancelarUsuario_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-            private void BtnAgregarUsuario_Click(object sender, EventArgs e)
+        private void BtnAgregarUsuario_Click(object sender, EventArgs e)
         {
             if (existePersona == false)
             {

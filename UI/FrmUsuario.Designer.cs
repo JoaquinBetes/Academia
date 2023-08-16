@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class FrmAgregarUsuarios
+    partial class FrmUsuario
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,6 @@
 
             NombreUsuario = new Label();
             Clave = new Label();
-            BtnAgregarUsuario = new Button();
             TipoUsuario = new Label();
             
             SuspendLayout();
@@ -60,24 +59,7 @@
             Clave.Size = new Size(59, 25);
             Clave.TabIndex = 9;
             Clave.Text = "Clave";
-            // 
-            // BtnAgregarUsuario
-            // 
-            BtnAgregarUsuario.BackColor = Color.Black;
-            BtnAgregarUsuario.Cursor = Cursors.Hand;
-            BtnAgregarUsuario.FlatAppearance.BorderColor = Color.WhiteSmoke;
-            BtnAgregarUsuario.FlatAppearance.BorderSize = 2;
-            BtnAgregarUsuario.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 44, 44);
-            BtnAgregarUsuario.FlatStyle = FlatStyle.Flat;
-            BtnAgregarUsuario.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            BtnAgregarUsuario.ForeColor = Color.WhiteSmoke;
-            BtnAgregarUsuario.Location = new Point(145, 228);
-            BtnAgregarUsuario.Name = "BtnAgregarUsuario";
-            BtnAgregarUsuario.Size = new Size(184, 57);
-            BtnAgregarUsuario.TabIndex = 10;
-            BtnAgregarUsuario.Text = "Agregar";
-            BtnAgregarUsuario.UseVisualStyleBackColor = false;
-            BtnAgregarUsuario.Click += BtnAgregarUsuario_Click;
+
             // 
             // TipoUsuario
             // 

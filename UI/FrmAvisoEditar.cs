@@ -10,9 +10,8 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class FrmAvisoEditarPersona : Form
+    public partial class FrmAvisoEditar : Form
     {
-        // Variables para almacenar los datos del usuario
         private int dni = 0;
         private int id;
         private string? nombre;
@@ -22,10 +21,13 @@ namespace UI
         private string? email;
         private DateTime fechaNacimiento = DateTime.MinValue;
         private string? accion;
+        private string? tipo;
+        private Entities.Usuario usuario = new Entities.Usuario();
 
-        public FrmAvisoEditarPersona(int dni, string nombre, string apellido, string telefono, string direccion, string email, DateTime fechaNacimiento, string accion)
+        public FrmAvisoEditar(int dni, string nombre, string apellido, string telefono, string direccion, string email, DateTime fechaNacimiento, string accion, string tipo)
         {
             this.accion = accion;
+            this.tipo = tipo;
             this.dni = dni;
             this.nombre = nombre;
             this.apellido = apellido;
@@ -46,7 +48,7 @@ namespace UI
             LblAviso.TabIndex = 13;
             if (this.accion == "Editar")
             {
-                LblAviso.Text = "Esta a punto de modificar sus datos personales.";
+                LblAviso.Text = "Esta a punto de modificar los datos de la persona correspondiente.";
             }
             else if (this.accion == "Eliminar")
             {
@@ -55,16 +57,44 @@ namespace UI
             #endregion
             InitializeComponent();
         }
+        public FrmAvisoEditar(Entities.Usuario usuario, string accion, string tipo) 
+        {
+            this.accion = accion;
+            this.tipo = tipo;
+            this.usuario = usuario;
+            #region Label Aviso
+            LblAviso = new Label();
+            LblAviso.AutoSize = true;
+            LblAviso.BackColor = Color.Black;
+            LblAviso.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
+            LblAviso.ForeColor = SystemColors.ControlLight;
+            LblAviso.Location = new Point(148, 43);
+            LblAviso.Name = "LblAviso";
+            LblAviso.Size = new Size(505, 30);
+            LblAviso.TabIndex = 13;
+            if (this.accion == "Editar")
+            {
+                LblAviso.Text = "Esta a punto de modificar datos del usuario.";
+            }
+            else if (this.accion == "Eliminar")
+            {
+                LblAviso.Text = "Esta a punto de ELIMINAR un usuario del sistema";
+            }
+            #endregion
+            InitializeComponent();
+        }
 
         private void BtnAceptarEditarPersona_Click(object sender, EventArgs e)
         {
-            if (this.accion == "Editar")
+            if ( this.accion == "Editar" )
             {
-                DB.Persona.UpdatePersona(dni, nombre, apellido, telefono, direccion, email, fechaNacimiento, id);
+                if ( this.tipo == "Persona" ) { DB.Persona.UpdatePersona(dni, nombre, apellido, telefono, direccion, email, fechaNacimiento, id); }
+                else if ( this.tipo == "Usuario" ) { DB.Usuario.UpdateUsuario(usuario); }
             }
-            else if (this.accion == "Eliminar") 
+            else if ( this.accion == "Eliminar" ) 
             {
-                DB.Persona.deletePersona(id);
+                if ( this.tipo == "Persona" ) { DB.Persona.deletePersona(id); }
+                else if ( this.tipo == "Usuario" ) { DB.Usuario.deleteUsuario(usuario.Legajo); }
             }
             
             this.Close();

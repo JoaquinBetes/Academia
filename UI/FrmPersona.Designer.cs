@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class FrmVerPersona
+    partial class FrmPersona
     {
         /// <summary>
         /// Required designer variable.
