@@ -28,38 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            TxtNombreUsuario = new TextBox();
-            TxtClave = new TextBox();
+
             NombreUsuario = new Label();
             Clave = new Label();
             BtnAgregarUsuario = new Button();
-            BtnCancelar = new Button();
             TipoUsuario = new Label();
-            TxtTipoUsuario = new TextBox();
+            
             SuspendLayout();
-            // 
-            // TxtNombreUsuario
-            // 
-            TxtNombreUsuario.BackColor = SystemColors.ActiveCaptionText;
-            TxtNombreUsuario.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            TxtNombreUsuario.ForeColor = Color.WhiteSmoke;
-            TxtNombreUsuario.Location = new Point(145, 29);
-            TxtNombreUsuario.Name = "TxtNombreUsuario";
-            TxtNombreUsuario.Size = new Size(575, 32);
-            TxtNombreUsuario.TabIndex = 0;
-            // 
-            // TxtClave
-            // 
-            TxtClave.BackColor = SystemColors.ActiveCaptionText;
-            TxtClave.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
-            TxtClave.ForeColor = Color.WhiteSmoke;
-            TxtClave.Location = new Point(145, 142);
-            TxtClave.MaxLength = 20;
-            TxtClave.Name = "TxtClave";
-            TxtClave.PasswordChar = '•';
-            TxtClave.Size = new Size(575, 36);
-            TxtClave.TabIndex = 4;
-            TxtClave.UseSystemPasswordChar = true;
+
             // 
             // NombreUsuario
             // 
@@ -72,7 +48,6 @@
             NombreUsuario.Size = new Size(81, 25);
             NombreUsuario.TabIndex = 5;
             NombreUsuario.Text = "Usuario";
-            NombreUsuario.Click += label1_Click;
             // 
             // Clave
             // 
@@ -104,23 +79,6 @@
             BtnAgregarUsuario.UseVisualStyleBackColor = false;
             BtnAgregarUsuario.Click += BtnAgregarUsuario_Click;
             // 
-            // BtnCancelar
-            // 
-            BtnCancelar.BackColor = Color.Black;
-            BtnCancelar.Cursor = Cursors.Hand;
-            BtnCancelar.FlatAppearance.BorderColor = Color.WhiteSmoke;
-            BtnCancelar.FlatAppearance.BorderSize = 2;
-            BtnCancelar.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 44, 44);
-            BtnCancelar.FlatStyle = FlatStyle.Flat;
-            BtnCancelar.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            BtnCancelar.ForeColor = Color.WhiteSmoke;
-            BtnCancelar.Location = new Point(536, 228);
-            BtnCancelar.Name = "BtnCancelar";
-            BtnCancelar.Size = new Size(184, 57);
-            BtnCancelar.TabIndex = 11;
-            BtnCancelar.Text = "Cancelar";
-            BtnCancelar.UseVisualStyleBackColor = false;
-            // 
             // TipoUsuario
             // 
             TipoUsuario.AutoSize = true;
@@ -132,17 +90,6 @@
             TipoUsuario.Size = new Size(52, 25);
             TipoUsuario.TabIndex = 6;
             TipoUsuario.Text = "Tipo";
-            TipoUsuario.Click += Nombre_Click;
-            // 
-            // TxtTipoUsuario
-            // 
-            TxtTipoUsuario.BackColor = SystemColors.ActiveCaptionText;
-            TxtTipoUsuario.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            TxtTipoUsuario.ForeColor = Color.WhiteSmoke;
-            TxtTipoUsuario.Location = new Point(145, 84);
-            TxtTipoUsuario.Name = "TxtTipoUsuario";
-            TxtTipoUsuario.Size = new Size(575, 32);
-            TxtTipoUsuario.TabIndex = 1;
             // 
             // FrmAgregarUsuarios
             // 

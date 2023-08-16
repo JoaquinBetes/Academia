@@ -1,5 +1,6 @@
 ﻿using Entities;
 using Microsoft.Data.SqlClient;
+using System.Net;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -149,6 +150,41 @@ namespace DB
             }
         }
 
+        public static void deletePersona(int id) {
+            try
+            {
+                // Crear la SqlConnection
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string deleteQuery = "DELETE FROM Personas WHERE PersonasId = @Id";
+
+                    connection.Open();
+                    try
+                    {
+                        using (SqlCommand command = new SqlCommand(deleteQuery, connection))
+                        {
+                            command.Parameters.AddWithValue("@Id", id);
+
+                            int rowsAffected = command.ExecuteNonQuery();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error al actualizar la base de datos: " + ex.Message);
+                    }
+                    finally
+                    {
+                        connection.Close();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar errores si ocurre alguno al intentar conectarse a la base de datos.
+                Console.WriteLine("Error al conectar a la base de datos: " + ex.Message);
+            }
+        }
+    
         public static Entities.Persona getPersona(int dni)
         {
             Entities.Persona persona = new Entities.Persona();

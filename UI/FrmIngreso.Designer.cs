@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class FrmIngresoDni
+    partial class FrmIngreso
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.BtnBuscarDni = new Button();
-            this.DniPersona = new Label();
             this.TxtPersonaDni = new TextBox();
             SuspendLayout();
             // 
@@ -48,20 +47,8 @@
             this.BtnBuscarDni.TabIndex = 1;
             this.BtnBuscarDni.Text = "Ingresar";
             this.BtnBuscarDni.UseVisualStyleBackColor = false;
-            this.BtnBuscarDni.Click += this.BtnBuscarDni_Click;
-            // 
-            // DniPersona
-            // 
-            this.DniPersona.AutoSize = true;
-            this.DniPersona.BackColor = Color.Black;
-            this.DniPersona.Font = new Font("Segoe UI", 14F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
-            this.DniPersona.ForeColor = SystemColors.ControlLight;
-            this.DniPersona.Location = new Point(40, 44);
-            this.DniPersona.Name = "DniPersona";
-            this.DniPersona.Size = new Size(123, 25);
-            this.DniPersona.TabIndex = 7;
-            this.DniPersona.Text = "Ingrese DNI:";
-            this.DniPersona.Click += this.NombreUsuario_Click;
+            this.BtnBuscarDni.Click += this.BtnBuscar_Click;
+            
             // 
             // TxtPersonaDni
             // 
@@ -82,7 +69,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
             ClientSize = new Size(624, 201);
-            Controls.Add(this.DniPersona);
+            Controls.Add(this.label);
             Controls.Add(this.TxtPersonaDni);
             Controls.Add(this.BtnBuscarDni);
             ForeColor = SystemColors.ButtonFace;
@@ -95,7 +82,7 @@
         #endregion
 
         private Button BtnBuscarDni;
-        private Label DniPersona;
+        private Label label;
         private TextBox TxtPersonaDni;
     }
 }

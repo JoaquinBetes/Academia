@@ -30,7 +30,7 @@
         {
             LblTelefono = new Label();
             LblDNI = new Label();
-            BtnCancelar = new Button();
+            BtnEliminar = new Button();
             BtnEditarPersona = new Button();
             LblFechaNacimiento = new Label();
             LblEmail = new Label();
@@ -68,23 +68,23 @@
             LblDNI.TabIndex = 29;
             LblDNI.Text = "DNI:";
             // 
-            // BtnCancelar
+            // BtnEliminar
             // 
-            BtnCancelar.BackColor = Color.Black;
-            BtnCancelar.Cursor = Cursors.Hand;
-            BtnCancelar.FlatAppearance.BorderColor = Color.WhiteSmoke;
-            BtnCancelar.FlatAppearance.BorderSize = 2;
-            BtnCancelar.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 44, 44);
-            BtnCancelar.FlatStyle = FlatStyle.Flat;
-            BtnCancelar.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            BtnCancelar.ForeColor = Color.WhiteSmoke;
-            BtnCancelar.Location = new Point(572, 491);
-            BtnCancelar.Name = "BtnCancelar";
-            BtnCancelar.Size = new Size(184, 57);
-            BtnCancelar.TabIndex = 27;
-            BtnCancelar.Text = "Cancelar";
-            BtnCancelar.UseVisualStyleBackColor = false;
-            BtnCancelar.Click += BtnCancelar_Click;
+            BtnEliminar.BackColor = Color.Black;
+            BtnEliminar.Cursor = Cursors.Hand;
+            BtnEliminar.FlatAppearance.BorderColor = Color.Crimson;
+            BtnEliminar.FlatAppearance.BorderSize = 2;
+            BtnEliminar.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 44, 44);
+            BtnEliminar.FlatStyle = FlatStyle.Flat;
+            BtnEliminar.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            BtnEliminar.ForeColor = Color.Crimson;
+            BtnEliminar.Location = new Point(572, 491);
+            BtnEliminar.Name = "BtnEliminar";
+            BtnEliminar.Size = new Size(184, 57);
+            BtnEliminar.TabIndex = 27;
+            BtnEliminar.Text = "Eliminar";
+            BtnEliminar.UseVisualStyleBackColor = false;
+            BtnEliminar.Click += BtnEliminar_Click;
             // 
             // BtnEditarPersona
             // 
@@ -245,7 +245,6 @@
             // 
             // FrmVerPersona
             // 
-
             //
             TxtDireccionData.Text = persona.Direccion.ToString();
             TxtApellidoData.Text = persona.Apellido.ToString();
@@ -255,7 +254,6 @@
             TxtDNIData.Text = persona.DNI.ToString();
             DtpFechaNacimiento.Value = persona.FechaNacimiento;
             //
-
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
@@ -269,7 +267,7 @@
             Controls.Add(TxtNombreData);
             Controls.Add(LblTelefono);
             Controls.Add(LblDNI);
-            Controls.Add(BtnCancelar);
+            Controls.Add(BtnEliminar);
             Controls.Add(BtnEditarPersona);
             Controls.Add(LblFechaNacimiento);
             Controls.Add(LblEmail);
@@ -286,7 +284,7 @@
 
         private Label LblTelefono;
         private Label LblDNI;
-        private Button BtnCancelar;
+        private Button BtnEliminar;
         private Button BtnEditarPersona;
         private Label LblFechaNacimiento;
         private Label LblEmail;

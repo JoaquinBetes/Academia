@@ -30,7 +30,7 @@
         {
             BtnCancelar = new Button();
             BtnAceptarEditarPersona = new Button();
-            LblAviso = new Label();
+            
             SuspendLayout();
             // 
             // BtnCancelar
@@ -68,18 +68,7 @@
             BtnAceptarEditarPersona.Text = "Aceptar";
             BtnAceptarEditarPersona.UseVisualStyleBackColor = false;
             BtnAceptarEditarPersona.Click += BtnAceptarEditarPersona_Click;
-            // 
-            // LblAviso
-            // 
-            LblAviso.AutoSize = true;
-            LblAviso.BackColor = Color.Black;
-            LblAviso.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
-            LblAviso.ForeColor = SystemColors.ControlLight;
-            LblAviso.Location = new Point(148, 43);
-            LblAviso.Name = "LblAviso";
-            LblAviso.Size = new Size(505, 30);
-            LblAviso.TabIndex = 13;
-            LblAviso.Text = "Esta a punto de modificar sus datos personales.";
+            
             // 
             // FrmAvisoEditarPersona
             // 

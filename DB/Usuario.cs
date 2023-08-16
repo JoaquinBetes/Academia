@@ -6,12 +6,54 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Data.SqlClient;
+using Entities;
+using System.Net;
 
 namespace DB
 {
     public class Usuario
     {
         public static string connectionString = "Server=.\\SQLEXPRESS;Database=Academia;Trusted_Connection=True;Encrypt=false";
+        public static Entities.Usuario getUsuario(int legajo) { 
+            Entities.Usuario usuario = new Entities.Usuario();
+            try
+            {
+                // Crear la SqlConnection
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    // Comando SQL para el INSERT
+                    string sqlQuery = "SELECT * FROM Usuarios WHERE Legajo = @legajo";
+
+                    // Crear el SqlCommand con el comando y la conexión
+                    SqlCommand command = new SqlCommand(sqlQuery, connection);
+
+                    // Agregar parámetros al comando
+                    command.Parameters.AddWithValue("@legajo", legajo);
+
+                    connection.Open();
+
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                        // Si se encontró la persona, aquí puedes mostrar los datos en algún control o realizar alguna acción
+                        reader.Read();
+                        usuario.NombreUsuario = reader["NombreUsuario"].ToString();
+                        usuario.Legajo = Convert.ToInt32(reader["Legajo"]);
+                        usuario.Clave = reader["Clave"].ToString();
+                        usuario.TipoUsuario = reader["TipoUsuario"].ToString();
+                        usuario.Habilitado = (Convert.ToInt32(reader["Habilitado"]) != 0);
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar errores si ocurre alguno al intentar conectarse a la base de datos.
+                Console.WriteLine("Error al conectar a la base de datos: " + ex.Message);
+            }
+            return usuario;
+        }
         public static void CreateUsuario(string nombreUsuario, string clave, string tipo, bool habilitado , int dni, int personaId)
         {
             try

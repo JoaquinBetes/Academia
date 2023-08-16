@@ -35,7 +35,7 @@ namespace UI
             }
             else
             {
-                using (var modalForm = new FrmAvisoEditarPersona(int.Parse(TxtDNIData.Text), TxtNombreData.Text, TxtApellidoData.Text, TxtTelefonoData.Text, TxtDireccionData.Text, TxtEmailData.Text, DtpFechaNacimiento.Value))
+                using (var modalForm = new FrmAvisoEditarPersona(int.Parse(TxtDNIData.Text), TxtNombreData.Text, TxtApellidoData.Text, TxtTelefonoData.Text, TxtDireccionData.Text, TxtEmailData.Text, DtpFechaNacimiento.Value, "Editar"))
                 {
                     modalForm.ShowDialog();
                     this.Close();
@@ -44,9 +44,13 @@ namespace UI
 
         }
 
-        private void BtnCancelar_Click(object sender, EventArgs e)
+        private void BtnEliminar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            using (var modalForm = new FrmAvisoEditarPersona(int.Parse(TxtDNIData.Text), TxtNombreData.Text, TxtApellidoData.Text, TxtTelefonoData.Text, TxtDireccionData.Text, TxtEmailData.Text, DtpFechaNacimiento.Value, "Eliminar"))
+            {
+                modalForm.ShowDialog();
+                this.Close();
+            }
         }
     }
 }

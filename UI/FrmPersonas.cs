@@ -41,7 +41,7 @@ namespace UI
 
         private void BtnAgregarUsuario_Click(object sender, EventArgs e)
         {
-            using (var modalForm = new FrmIngresoDni("Agregar"))
+            using (var modalForm = new FrmIngreso("Agregar", "Persona"))
             {
                 modalForm.ShowDialog();
             }
@@ -49,7 +49,7 @@ namespace UI
 
         private void BtnBuscarPersona_Click(object sender, EventArgs e)
         {
-            using (var modalForm = new FrmIngresoDni("Buscar"))
+            using (var modalForm = new FrmIngreso("Buscar", "Persona"))
             {
                 modalForm.ShowDialog();
                 load();
@@ -57,7 +57,7 @@ namespace UI
         }
 
         private void BtnBuscarUsuario_Click(object sender, EventArgs e) {
-            using (var modalForm = new FrmIngresoLegajo())
+            using (var modalForm = new FrmIngreso("Buscar", "Usuario"))
             {
                 modalForm.ShowDialog();
 
