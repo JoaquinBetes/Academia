@@ -91,6 +91,44 @@ namespace DB
             }
             return usuario;
         }
+        public static Entities.Usuario GetUsuario(string nombreUsuario) 
+        {
+            Entities.Usuario usuario = new Entities.Usuario();
+            string sqlQuery = "SELECT * FROM Usuarios WHERE NombreUsuario = @nombreUsuario";
+            try
+            {
+                // Crear la SqlConnection
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    // Comando SQL para el INSERT
+
+                    SqlCommand command = new SqlCommand(sqlQuery, connection);
+
+                    command.Parameters.AddWithValue("@nombreUsuario", nombreUsuario);
+
+                    connection.Open();
+
+                    SqlDataReader reader = command.ExecuteReader();
+                    
+                    if (reader.Read()) 
+                    {
+                        usuario.UsuarioId = Convert.ToInt32(reader["UsuarioId"]);
+                        usuario.NombreUsuario = reader["NombreUsuario"].ToString();
+                        usuario.Legajo = Convert.ToInt32(reader["Legajo"]);
+                        usuario.Clave = reader["Clave"].ToString();
+                        usuario.TipoUsuario = reader["TipoUsuario"].ToString();
+                        usuario.Habilitado = (bool)reader["Habilitado"];
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar errores si ocurre alguno al intentar conectarse a la base de datos.
+                Console.WriteLine("Error al conectar a la base de datos: " + ex.Message);
+            }
+            return usuario;
+        }
         #endregion
         #region Create
         public static void CreateUsuario(string nombreUsuario, string clave, string tipo, bool habilitado, int dni, int personaId)
