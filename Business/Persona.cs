@@ -14,7 +14,7 @@ namespace Business
         {
             Entities.Persona persona = DB.Persona.getPersona(dni);
             
-            return persona !=null;
+            return persona.DNI != 0;
         }
 
     }

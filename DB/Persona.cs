@@ -234,9 +234,8 @@ namespace DB
                 Console.WriteLine("Error al conectar a la base de datos: " + ex.Message);
             }
         }
-<<<<<<< HEAD
         #endregion
-=======
+
     
 
         // Esto es del CodeFirstAPI, ignorarlo, lo dejo por si despues sirve para capa servicios
@@ -303,6 +302,5 @@ namespace DB
                 }
             }
         }*/
->>>>>>> 09d02ca419d344f25f1a41db976e0c6aaf2c1b38
     }
 }

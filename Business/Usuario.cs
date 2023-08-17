@@ -12,7 +12,7 @@ namespace Business
         {
             Entities.Usuario usuario = DB.Usuario.GetUsuario(nombreUsuario);
 
-            return usuario != null;
+            return usuario.NombreUsuario != string.Empty;
         }
     }
 }
