@@ -68,6 +68,11 @@ namespace UI
                 persona = DB.Persona.getPersona(int.Parse(TxtPersonaDni.Text));
                 if (persona.DNI != 0)
                 {
+                    if (string.IsNullOrEmpty(TxtPersonaDni.Text) || !int.TryParse(TxtPersonaDni.Text, out _) || TxtPersonaDni.Text.Length != 8)
+                    {
+                        MessageBox.Show("El DNI debe ser un número válido de 8 digitos.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     if (accion == "Agregar")
                     {
                         using (var modalForm = new FrmUsuario(persona.PersonaId))

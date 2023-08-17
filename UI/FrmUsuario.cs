@@ -294,6 +294,11 @@ namespace UI
         }
         private void BtnAgregarUsuario_Click(object sender, EventArgs e)
         {
+            if (Business.Usuario.NombreUsuarioExists(TxtNombreUsuario.Text))
+            {
+                MessageBox.Show("Nombre de usuario en uso.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (existePersona == false)
             {
                 DB.Persona.CreatePersona(this.dni, this.nombre, this.apellido, this.telefono, this.direccion, this.email, this.fechaNacimiento);
