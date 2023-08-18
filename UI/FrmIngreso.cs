@@ -91,11 +91,7 @@ namespace UI
                 }
                 else
                 {
-                    using (var modalForm = new FrmAvisoDni())
-                    {
-                        modalForm.ShowDialog();
-                        this.Close();
-                    }
+                    MessageBox.Show("El DNI ingresado no coincide con una persona registrada.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else if (tipo == "Usuario") 
