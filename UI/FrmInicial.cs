@@ -23,11 +23,6 @@ namespace UI
             { frmNew.ShowDialog(); }
         }
 
-        private void btnCRUDUsuario_Click(object sender, EventArgs e)
-        {
-            // using (frmEspecialidadCRUD frmNew = new frmEspecialidadCRUD()) 
-            // { frmNew.ShowDialog(); }
-        }
 
         private void btnCRUDEspec_Click(object sender, EventArgs e)
         {
