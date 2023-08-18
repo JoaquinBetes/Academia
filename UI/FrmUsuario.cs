@@ -314,9 +314,11 @@ namespace UI
                 usuario.TipoUsuario = CmbTipoUsuario.Text;
                 usuario.Clave = TxtClave.Text;
 
-                using (var modalForm = new FrmAvisoEditar(usuario, "Editar", "Usuario"))
+                DialogResult result = MessageBox.Show("¿Desea confirmar la edición?", "Confirmar Edición", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
                 {
-                    modalForm.ShowDialog();
+                    Business.Usuario.UpdateUsuario(usuario);
                     this.Close();
                 }
             }
