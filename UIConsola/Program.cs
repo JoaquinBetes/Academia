@@ -12,7 +12,8 @@ public class Program
         usuario.Legajo = 22;
         usuario.Habilitado = true;
         usuario.Clave = "asd";
-        DB.Usuario.UpdateUsuario(usuario);
+        Console.WriteLine(Business.Usuario.LegajoUsuarioExists(12333));
+        
         Console.ReadLine();
     }
 }

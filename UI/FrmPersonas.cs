@@ -56,7 +56,8 @@ namespace UI
             }
         }
 
-        private void BtnBuscarUsuario_Click(object sender, EventArgs e) {
+        private void BtnBuscarUsuario_Click(object sender, EventArgs e)
+        {
             using (var modalForm = new FrmIngreso("Buscar", "Usuario"))
             {
                 modalForm.ShowDialog();

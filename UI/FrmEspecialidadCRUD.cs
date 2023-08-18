@@ -20,19 +20,12 @@ namespace UI
 
         private void frmEspecialidadCRUD_Load(object sender, EventArgs e)
         {
-
             load();
-
         }
         private void load()
         {
-            List<Entities.Especialidad> personas = Especialidad.Get();
+            List<Entities.Especialidad> personas = Business.Especialidad.Get();
             dataGridView1.DataSource = personas;
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
 
         }
 
@@ -40,7 +33,7 @@ namespace UI
         {
             FrmEspecialidadCU frm = new FrmEspecialidadCU();
             frm.ShowDialog();
-            load();
+            
         }
         private void btnEditar_Click(object sender, EventArgs e)
         {
@@ -57,7 +50,7 @@ namespace UI
             int? id = GetId();
             if (id != null)
             {
-                Especialidad.Delete((int)id);
+                Business.Especialidad.Delete((int)id);
                 load();
             }
         }
@@ -66,6 +59,7 @@ namespace UI
         {
             try
             {
+                if (dataGridView1.CurrentRow == null) { return null; }
                 return int.Parse(dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[0].Value.ToString());
             }
             catch

@@ -49,22 +49,22 @@
             // LblTelefono
             // 
             LblTelefono.AutoSize = true;
-            LblTelefono.Font = new Font("Segoe UI", 14F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
+            LblTelefono.Font = new Font("Segoe UI", 13F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
             LblTelefono.ForeColor = SystemColors.ControlLight;
             LblTelefono.Location = new Point(68, 405);
             LblTelefono.Name = "LblTelefono";
-            LblTelefono.Size = new Size(94, 25);
+            LblTelefono.Size = new Size(91, 25);
             LblTelefono.TabIndex = 30;
             LblTelefono.Text = "Teléfono:";
             // 
             // LblDNI
             // 
             LblDNI.AutoSize = true;
-            LblDNI.Font = new Font("Segoe UI", 14F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
+            LblDNI.Font = new Font("Segoe UI", 13F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
             LblDNI.ForeColor = SystemColors.ControlLight;
             LblDNI.Location = new Point(73, 346);
             LblDNI.Name = "LblDNI";
-            LblDNI.Size = new Size(52, 25);
+            LblDNI.Size = new Size(50, 25);
             LblDNI.TabIndex = 29;
             LblDNI.Text = "DNI:";
             // 
@@ -76,7 +76,7 @@
             BtnEliminar.FlatAppearance.BorderSize = 2;
             BtnEliminar.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 44, 44);
             BtnEliminar.FlatStyle = FlatStyle.Flat;
-            BtnEliminar.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            BtnEliminar.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
             BtnEliminar.ForeColor = Color.Crimson;
             BtnEliminar.Location = new Point(572, 491);
             BtnEliminar.Name = "BtnEliminar";
@@ -94,7 +94,7 @@
             BtnEditarPersona.FlatAppearance.BorderSize = 2;
             BtnEditarPersona.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 44, 44);
             BtnEditarPersona.FlatStyle = FlatStyle.Flat;
-            BtnEditarPersona.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            BtnEditarPersona.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
             BtnEditarPersona.ForeColor = Color.WhiteSmoke;
             BtnEditarPersona.Location = new Point(181, 491);
             BtnEditarPersona.Name = "BtnEditarPersona";
@@ -108,11 +108,11 @@
             // 
             LblFechaNacimiento.AutoSize = true;
             LblFechaNacimiento.BackColor = Color.Black;
-            LblFechaNacimiento.Font = new Font("Segoe UI", 14F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
+            LblFechaNacimiento.Font = new Font("Segoe UI", 13F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
             LblFechaNacimiento.ForeColor = SystemColors.ControlLight;
-            LblFechaNacimiento.Location = new Point(68, 290);
+            LblFechaNacimiento.Location = new Point(21, 284);
             LblFechaNacimiento.Name = "LblFechaNacimiento";
-            LblFechaNacimiento.Size = new Size(201, 25);
+            LblFechaNacimiento.Size = new Size(195, 25);
             LblFechaNacimiento.TabIndex = 25;
             LblFechaNacimiento.Text = "Fecha de Nacimiento:";
             // 
@@ -120,11 +120,11 @@
             // 
             LblEmail.AutoSize = true;
             LblEmail.BackColor = Color.Black;
-            LblEmail.Font = new Font("Segoe UI", 14F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
+            LblEmail.Font = new Font("Segoe UI", 13F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
             LblEmail.ForeColor = SystemColors.ControlLight;
             LblEmail.Location = new Point(68, 227);
             LblEmail.Name = "LblEmail";
-            LblEmail.Size = new Size(64, 25);
+            LblEmail.Size = new Size(63, 25);
             LblEmail.TabIndex = 24;
             LblEmail.Text = "Email:";
             // 
@@ -132,11 +132,11 @@
             // 
             LblApellido.AutoSize = true;
             LblApellido.BackColor = Color.Black;
-            LblApellido.Font = new Font("Segoe UI", 14F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
+            LblApellido.Font = new Font("Segoe UI", 13F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
             LblApellido.ForeColor = SystemColors.ControlLight;
             LblApellido.Location = new Point(68, 111);
             LblApellido.Name = "LblApellido";
-            LblApellido.Size = new Size(91, 25);
+            LblApellido.Size = new Size(88, 25);
             LblApellido.TabIndex = 23;
             LblApellido.Text = "Apellido:";
             // 
@@ -144,11 +144,11 @@
             // 
             LblNombre.AutoSize = true;
             LblNombre.BackColor = Color.Black;
-            LblNombre.Font = new Font("Segoe UI", 14F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
+            LblNombre.Font = new Font("Segoe UI", 13F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
             LblNombre.ForeColor = SystemColors.ControlLight;
             LblNombre.Location = new Point(68, 59);
             LblNombre.Name = "LblNombre";
-            LblNombre.Size = new Size(91, 25);
+            LblNombre.Size = new Size(86, 25);
             LblNombre.TabIndex = 22;
             LblNombre.Text = "Nombre:";
             // 
@@ -156,11 +156,11 @@
             // 
             LblDireccion.AutoSize = true;
             LblDireccion.BackColor = Color.Black;
-            LblDireccion.Font = new Font("Segoe UI", 14F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
+            LblDireccion.Font = new Font("Segoe UI", 13F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
             LblDireccion.ForeColor = SystemColors.ControlLight;
             LblDireccion.Location = new Point(68, 169);
             LblDireccion.Name = "LblDireccion";
-            LblDireccion.Size = new Size(101, 25);
+            LblDireccion.Size = new Size(97, 25);
             LblDireccion.TabIndex = 21;
             LblDireccion.Text = "Dirección:";
             // 
@@ -243,9 +243,9 @@
             DtpFechaNacimiento.Size = new Size(481, 32);
             DtpFechaNacimiento.TabIndex = 39;
             // 
-            // FrmVerPersona
-            // 
+            // FrmPersona
             //
+                        //
             TxtDireccionData.Text = persona.Direccion.ToString();
             TxtApellidoData.Text = persona.Apellido.ToString();
             TxtNombreData.Text = persona.Nombre;
@@ -274,7 +274,7 @@
             Controls.Add(LblApellido);
             Controls.Add(LblNombre);
             Controls.Add(LblDireccion);
-            Name = "FrmVerPersona";
+            Name = "FrmPersona";
             Text = "Persona";
             ResumeLayout(false);
             PerformLayout();

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DB;
+using Business;
 using Entities;
 
 namespace UI
@@ -43,9 +43,9 @@ namespace UI
             BtnAgregarUsuario.FlatAppearance.BorderSize = 2;
             BtnAgregarUsuario.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 44, 44);
             BtnAgregarUsuario.FlatStyle = FlatStyle.Flat;
-            BtnAgregarUsuario.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            BtnAgregarUsuario.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
             BtnAgregarUsuario.ForeColor = Color.WhiteSmoke;
-            BtnAgregarUsuario.Location = new Point(145, 228);
+            BtnAgregarUsuario.Location = new Point(145, 258);
             BtnAgregarUsuario.Name = "BtnAgregarUsuario";
             BtnAgregarUsuario.Size = new Size(184, 57);
             BtnAgregarUsuario.TabIndex = 10;
@@ -61,9 +61,9 @@ namespace UI
             BtnCancelar.FlatAppearance.BorderSize = 2;
             BtnCancelar.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 44, 44);
             BtnCancelar.FlatStyle = FlatStyle.Flat;
-            BtnCancelar.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            BtnCancelar.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
             BtnCancelar.ForeColor = Color.WhiteSmoke;
-            BtnCancelar.Location = new Point(536, 228);
+            BtnCancelar.Location = new Point(536, 258);
             BtnCancelar.Name = "BtnCancelar";
             BtnCancelar.Size = new Size(184, 57);
             BtnCancelar.TabIndex = 11;
@@ -75,9 +75,10 @@ namespace UI
             TxtNombreUsuario = new TextBox();
             TxtClave = new TextBox();
             TxtTipoUsuario = new TextBox();
+            TxtLegajo = new TextBox();
             // TxtNombreUsuario
             TxtNombreUsuario.BackColor = SystemColors.ActiveCaptionText;
-            TxtNombreUsuario.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            TxtNombreUsuario.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
             TxtNombreUsuario.ForeColor = Color.WhiteSmoke;
             TxtNombreUsuario.Location = new Point(145, 29);
             TxtNombreUsuario.Name = "TxtNombreUsuario";
@@ -96,16 +97,24 @@ namespace UI
             TxtClave.UseSystemPasswordChar = true;
             // TxtTipoUsuario
             TxtTipoUsuario.BackColor = SystemColors.ActiveCaptionText;
-            TxtTipoUsuario.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            TxtTipoUsuario.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
             TxtTipoUsuario.ForeColor = Color.WhiteSmoke;
             TxtTipoUsuario.Location = new Point(145, 84);
             TxtTipoUsuario.Name = "TxtTipoUsuario";
             TxtTipoUsuario.Size = new Size(575, 32);
             TxtTipoUsuario.TabIndex = 1;
+            // TxtLegajo
+            TxtLegajo.BackColor = SystemColors.ActiveCaptionText;
+            TxtLegajo.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            TxtLegajo.ForeColor = Color.WhiteSmoke;
+            TxtLegajo.Location = new Point(145, 197);
+            TxtLegajo.Name = "TxtLegajo";
+            TxtLegajo.Size = new Size(575, 32);
+            TxtLegajo.TabIndex = 11;
             #endregion
             InitializeComponent();
         }
-        public FrmUsuario( int personaID )
+        public FrmUsuario(int personaID)
         {
             this.personaId = personaID;
             this.existePersona = true;
@@ -117,9 +126,9 @@ namespace UI
             BtnAgregarUsuario.FlatAppearance.BorderSize = 2;
             BtnAgregarUsuario.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 44, 44);
             BtnAgregarUsuario.FlatStyle = FlatStyle.Flat;
-            BtnAgregarUsuario.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            BtnAgregarUsuario.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
             BtnAgregarUsuario.ForeColor = Color.WhiteSmoke;
-            BtnAgregarUsuario.Location = new Point(145, 228);
+            BtnAgregarUsuario.Location = new Point(145, 258);
             BtnAgregarUsuario.Name = "BtnAgregarUsuario";
             BtnAgregarUsuario.Size = new Size(184, 57);
             BtnAgregarUsuario.TabIndex = 10;
@@ -135,9 +144,9 @@ namespace UI
             BtnCancelar.FlatAppearance.BorderSize = 2;
             BtnCancelar.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 44, 44);
             BtnCancelar.FlatStyle = FlatStyle.Flat;
-            BtnCancelar.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            BtnCancelar.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
             BtnCancelar.ForeColor = Color.WhiteSmoke;
-            BtnCancelar.Location = new Point(536, 228);
+            BtnCancelar.Location = new Point(536, 258);
             BtnCancelar.Name = "BtnCancelar";
             BtnCancelar.Size = new Size(184, 57);
             BtnCancelar.TabIndex = 11;
@@ -149,9 +158,10 @@ namespace UI
             TxtNombreUsuario = new TextBox();
             TxtClave = new TextBox();
             TxtTipoUsuario = new TextBox();
+            TxtLegajo = new TextBox();
             // TxtNombreUsuario
             TxtNombreUsuario.BackColor = SystemColors.ActiveCaptionText;
-            TxtNombreUsuario.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            TxtNombreUsuario.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
             TxtNombreUsuario.ForeColor = Color.WhiteSmoke;
             TxtNombreUsuario.Location = new Point(145, 29);
             TxtNombreUsuario.Name = "TxtNombreUsuario";
@@ -170,17 +180,25 @@ namespace UI
             TxtClave.UseSystemPasswordChar = true;
             // TxtTipoUsuario
             TxtTipoUsuario.BackColor = SystemColors.ActiveCaptionText;
-            TxtTipoUsuario.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            TxtTipoUsuario.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
             TxtTipoUsuario.ForeColor = Color.WhiteSmoke;
             TxtTipoUsuario.Location = new Point(145, 84);
             TxtTipoUsuario.Name = "TxtTipoUsuario";
             TxtTipoUsuario.Size = new Size(575, 32);
             TxtTipoUsuario.TabIndex = 1;
+            // TxtLegajo
+            TxtLegajo.BackColor = SystemColors.ActiveCaptionText;
+            TxtLegajo.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            TxtLegajo.ForeColor = Color.WhiteSmoke;
+            TxtLegajo.Location = new Point(145, 197);
+            TxtLegajo.Name = "TxtLegajo";
+            TxtLegajo.Size = new Size(575, 32);
+            TxtLegajo.TabIndex = 11;
             #endregion
             InitializeComponent();
         }
-        public FrmUsuario( Entities.Usuario usuario )
-        { 
+        public FrmUsuario(Entities.Usuario usuario)
+        {
             this.usuario = usuario;
             #region Boton Editar
             BtnAgregarUsuario = new Button();
@@ -190,9 +208,9 @@ namespace UI
             BtnAgregarUsuario.FlatAppearance.BorderSize = 2;
             BtnAgregarUsuario.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 44, 44);
             BtnAgregarUsuario.FlatStyle = FlatStyle.Flat;
-            BtnAgregarUsuario.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            BtnAgregarUsuario.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
             BtnAgregarUsuario.ForeColor = Color.WhiteSmoke;
-            BtnAgregarUsuario.Location = new Point(145, 228);
+            BtnAgregarUsuario.Location = new Point(145, 258);
             BtnAgregarUsuario.Name = "BtnAgregarUsuario";
             BtnAgregarUsuario.Size = new Size(184, 57);
             BtnAgregarUsuario.TabIndex = 10;
@@ -208,9 +226,9 @@ namespace UI
             BtnCancelar.FlatAppearance.BorderSize = 2;
             BtnCancelar.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 44, 44);
             BtnCancelar.FlatStyle = FlatStyle.Flat;
-            BtnCancelar.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            BtnCancelar.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
             BtnCancelar.ForeColor = Color.Crimson;
-            BtnCancelar.Location = new Point(536, 228);
+            BtnCancelar.Location = new Point(536, 258);
             BtnCancelar.Name = "BtnCancelar";
             BtnCancelar.Size = new Size(184, 57);
             BtnCancelar.TabIndex = 11;
@@ -222,9 +240,10 @@ namespace UI
             TxtNombreUsuario = new TextBox();
             TxtClave = new TextBox();
             TxtTipoUsuario = new TextBox();
+            TxtLegajo = new TextBox();
             // TxtNombreUsuario
             TxtNombreUsuario.BackColor = SystemColors.ActiveCaptionText;
-            TxtNombreUsuario.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            TxtNombreUsuario.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
             TxtNombreUsuario.ForeColor = Color.WhiteSmoke;
             TxtNombreUsuario.Location = new Point(145, 29);
             TxtNombreUsuario.Name = "TxtNombreUsuario";
@@ -245,13 +264,24 @@ namespace UI
             TxtClave.Text = usuario.Clave;
             // TxtTipoUsuario
             TxtTipoUsuario.BackColor = SystemColors.ActiveCaptionText;
-            TxtTipoUsuario.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            TxtTipoUsuario.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
             TxtTipoUsuario.ForeColor = Color.WhiteSmoke;
             TxtTipoUsuario.Location = new Point(145, 84);
             TxtTipoUsuario.Name = "TxtTipoUsuario";
             TxtTipoUsuario.Size = new Size(575, 32);
             TxtTipoUsuario.TabIndex = 1;
             TxtTipoUsuario.Text = usuario.TipoUsuario;
+            // TxtLegajo
+            TxtLegajo.BackColor = SystemColors.InactiveCaption;
+            TxtLegajo.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            TxtLegajo.ForeColor = Color.WhiteSmoke;
+            TxtLegajo.Location = new Point(145, 197);
+            TxtLegajo.Name = "TxtLegajo";
+            TxtLegajo.Size = new Size(575, 32);
+            TxtLegajo.TabIndex = 11;
+            TxtLegajo.Text = usuario.Legajo.ToString();
+            TxtLegajo.ReadOnly = true;
+            TxtLegajo.Enabled = false;
             #endregion
             InitializeComponent();
         }
@@ -271,21 +301,33 @@ namespace UI
                 usuario.NombreUsuario = TxtNombreUsuario.Text;
                 usuario.TipoUsuario = TxtTipoUsuario.Text;
                 usuario.Clave = TxtClave.Text;
+
                 using (var modalForm = new FrmAvisoEditar(usuario, "Editar", "Usuario"))
                 {
                     modalForm.ShowDialog();
                     this.Close();
                 }
             }
+            
         }
 
-        private void BtnEliminarUsuario_Click(object sender, EventArgs e) 
+        private void BtnEliminarUsuario_Click(object sender, EventArgs e)
         {
-            using (var modalForm = new FrmAvisoEditar( usuario ,"Eliminar", "Usuario"))
+            int id = Business.Usuario.getPersonaId(usuario.Legajo);
+            if (!Business.Usuario.MinimoUsuarios(id))
             {
-                modalForm.ShowDialog();
-                this.Close();
+                using (var modalForm = new FrmAvisoEditar(usuario, "Eliminar", "Usuario"))
+                {
+                    modalForm.ShowDialog();
+                    this.Close();
+                }
             }
+            else 
+            { 
+                MessageBox.Show("No se puede borrar el único usuario de esta persona", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
         }
 
         private void BtnCancelarUsuario_Click(object sender, EventArgs e)
@@ -299,16 +341,24 @@ namespace UI
                 MessageBox.Show("Nombre de usuario en uso.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (existePersona == false)
+            if (!Business.Usuario.LegajoUsuarioExists(int.Parse(TxtLegajo.Text)))
             {
-                DB.Persona.CreatePersona(this.dni, this.nombre, this.apellido, this.telefono, this.direccion, this.email, this.fechaNacimiento);
-                persona = DB.Persona.getPersona(this.dni);
-                DB.Usuario.CreateUsuario(TxtNombreUsuario.Text, TxtClave.Text, TxtTipoUsuario.Text, true, this.dni, persona.PersonaId);
+                if (existePersona == false)
+                {
+                    Business.Persona.CreatePersona(this.dni, this.nombre, this.apellido, this.telefono, this.direccion, this.email, this.fechaNacimiento);
+                    persona = Business.Persona.getPersona(this.dni);
+                    Business.Usuario.CreateUsuario(TxtNombreUsuario.Text, TxtClave.Text, TxtTipoUsuario.Text, true, this.dni, persona.PersonaId, int.Parse(TxtLegajo.Text));
+                }
+                else
+                {
+                    Business.Usuario.CreateUsuario(TxtNombreUsuario.Text, TxtClave.Text, TxtTipoUsuario.Text, true, this.dni, this.personaId, int.Parse(TxtLegajo.Text));
+                }
             }
             else
             {
-                DB.Usuario.CreateUsuario(TxtNombreUsuario.Text, TxtClave.Text, TxtTipoUsuario.Text, true, this.dni, this.personaId);
+                MessageBox.Show("El legajo ya existe", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
 
             this.Close();
         }

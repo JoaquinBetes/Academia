@@ -35,7 +35,7 @@ namespace UI
             this.direccion = direccion;
             this.email = email;
             this.fechaNacimiento = fechaNacimiento;
-            this.id = DB.Persona.getPersona(this.dni).PersonaId;
+            this.id = Business.Persona.getPersona(this.dni).PersonaId;
             #region Label Aviso
             LblAviso = new Label();
             LblAviso.AutoSize = true;
@@ -66,7 +66,7 @@ namespace UI
             LblAviso = new Label();
             LblAviso.AutoSize = true;
             LblAviso.BackColor = Color.Black;
-            LblAviso.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
+            LblAviso.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
             LblAviso.ForeColor = SystemColors.ControlLight;
             LblAviso.Location = new Point(148, 43);
             LblAviso.Name = "LblAviso";
@@ -88,13 +88,13 @@ namespace UI
         {
             if ( this.accion == "Editar" )
             {
-                if ( this.tipo == "Persona" ) { DB.Persona.UpdatePersona(dni, nombre, apellido, telefono, direccion, email, fechaNacimiento, id); }
-                else if ( this.tipo == "Usuario" ) { DB.Usuario.UpdateUsuario(usuario); }
+                if ( this.tipo == "Persona" ) { Business.Persona.UpdatePersona(dni, nombre, apellido, telefono, direccion, email, fechaNacimiento, id); }
+                else if ( this.tipo == "Usuario" ) { Business.Usuario.UpdateUsuario(usuario); }
             }
             else if ( this.accion == "Eliminar" ) 
             {
-                if ( this.tipo == "Persona" ) { DB.Persona.deletePersona(id); }
-                else if ( this.tipo == "Usuario" ) { DB.Usuario.deleteUsuario(usuario.Legajo); }
+                if ( this.tipo == "Persona" ) { Business.Persona.deletePersona(id); }
+                else if ( this.tipo == "Usuario" ) { Business.Usuario.deleteUsuario(usuario.Legajo); }
             }
             
             this.Close();

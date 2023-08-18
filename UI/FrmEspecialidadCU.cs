@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using DB;
+﻿
 
 namespace UI
 {
@@ -23,27 +14,23 @@ namespace UI
                 Get();
             }
         }
-
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-
             try
             {
-                if (id == null)
-                    Especialidad.Add(txtDescripcion.Text);
-                else
-                    Especialidad.Update((int)id, txtDescripcion.Text);
+                if (id == null) Business.Especialidad.Add(txtDescripcion.Text);
+                else Business.Especialidad.Update((int)id, txtDescripcion.Text);
                 this.Close();
+
             }
             catch
             {
                 MessageBox.Show("Error al guardar");
             }
-
         }
         private void Get()
         {
-            Entities.Especialidad esp = Especialidad.Get((int)id);
+            Entities.Especialidad esp = Business.Especialidad.Get((int)id);
             txtDescripcion.Text = esp.Descripcion;
         }
 

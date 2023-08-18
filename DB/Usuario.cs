@@ -11,9 +11,8 @@ using System.Net;
 
 namespace DB
 {
-    public class Usuario
+    public class Usuario:Conector
     {
-        public static string connectionString = "Server=.\\SQLEXPRESS;Database=Academia;Trusted_Connection=True;Encrypt=false";
         #region Geters
         public static int getUsuarioId(int legajo)
         {
@@ -21,7 +20,7 @@ namespace DB
             try
             {
                 // Crear la SqlConnection
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     // Comando SQL para el INSERT
                     string sqlQuery = "SELECT * FROM Usuarios WHERE Legajo = @legajo";
@@ -39,7 +38,43 @@ namespace DB
                     if (reader.HasRows)
                     {
                         reader.Read();
-                        id = Convert.ToInt32(reader["Usuarioid"]);
+                        id = Convert.ToInt32(reader["UsuarioId"]);
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar errores si ocurre alguno al intentar conectarse a la base de datos.
+                Console.WriteLine("Error al conectar a la base de datos: " + ex.Message);
+            }
+            return id;
+        }
+        public static int getPersonaId(int legajo)
+        {
+            int id = 0;
+            try
+            {
+                // Crear la SqlConnection
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    // Comando SQL para el INSERT
+                    string sqlQuery = "SELECT * FROM Usuarios WHERE Legajo = @legajo";
+
+                    // Crear el SqlCommand con el comando y la conexión
+                    SqlCommand command = new SqlCommand(sqlQuery, connection);
+
+                    // Agregar parámetros al comando
+                    command.Parameters.AddWithValue("@legajo", legajo);
+
+                    connection.Open();
+
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        id = Convert.ToInt32(reader["PersonaId"]);
                     }
                     connection.Close();
                 }
@@ -56,7 +91,7 @@ namespace DB
             try
             {
                 // Crear la SqlConnection
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     // Comando SQL para el INSERT
                     string sqlQuery = "SELECT * FROM Usuarios WHERE Legajo = @legajo";
@@ -91,14 +126,14 @@ namespace DB
             }
             return usuario;
         }
-        public static Entities.Usuario GetUsuario(string nombreUsuario) 
+        public static Entities.Usuario getUsuario(string nombreUsuario) 
         {
             Entities.Usuario usuario = new Entities.Usuario();
             string sqlQuery = "SELECT * FROM Usuarios WHERE NombreUsuario = @nombreUsuario";
             try
             {
                 // Crear la SqlConnection
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     // Comando SQL para el INSERT
 
@@ -130,12 +165,12 @@ namespace DB
         }
         #endregion
         #region Create
-        public static void CreateUsuario(string nombreUsuario, string clave, string tipo, bool habilitado, int dni, int personaId)
+        public static void CreateUsuario(string nombreUsuario, string clave, string tipo, bool habilitado, int dni, int personaId, int legajo)
         {
             try
             {
                 // Crear la SqlConnection
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     // Comando SQL para el INSERT
                     string sqlInsert = "INSERT INTO Usuarios (NombreUsuario, Legajo, Clave, TipoUsuario, Habilitado, PersonaId) " +
@@ -146,7 +181,7 @@ namespace DB
                     {
                         // Agregar parámetros al comando
                         command.Parameters.AddWithValue("@NombreUsuario", nombreUsuario);
-                        command.Parameters.AddWithValue("@Legajo", 22);
+                        command.Parameters.AddWithValue("@Legajo", legajo);
                         command.Parameters.AddWithValue("@Clave", clave);
                         command.Parameters.AddWithValue("@TipoUsuario", tipo);
                         command.Parameters.AddWithValue("@Habilitado", habilitado);
@@ -185,7 +220,7 @@ namespace DB
             try
             {
                 // Crear la SqlConnection
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     // Comando SQL para el INSERT
                     string updateQuery = @"
@@ -237,7 +272,7 @@ namespace DB
             try
             {
                 // Crear la SqlConnection
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     string deleteQuery = "DELETE FROM Usuarios WHERE Legajo = @legajo";
 
@@ -268,9 +303,21 @@ namespace DB
             }
         }
         #endregion
-
+        public static int CountUsuarios(int personaId)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                connection.Open();
+                string query = "SELECT COUNT(*) FROM Usuarios WHERE PersonaId = @personaId";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@personaId", personaId);
+                    int count = (int)command.ExecuteScalar();
+                    return count;
+                }
+            }     
+        }
     }
-
 }
 
 #region Geters

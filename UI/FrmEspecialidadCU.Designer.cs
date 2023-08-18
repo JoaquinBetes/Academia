@@ -73,7 +73,7 @@
             btnGuardar.FlatAppearance.BorderSize = 2;
             btnGuardar.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 44, 44);
             btnGuardar.FlatStyle = FlatStyle.Flat;
-            btnGuardar.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            btnGuardar.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
             btnGuardar.ForeColor = Color.WhiteSmoke;
             btnGuardar.Location = new Point(257, 213);
             btnGuardar.Name = "btnGuardar";

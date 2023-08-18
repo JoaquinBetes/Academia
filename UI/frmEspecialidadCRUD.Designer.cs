@@ -61,7 +61,7 @@
             btnNuevo.FlatAppearance.BorderSize = 2;
             btnNuevo.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 44, 44);
             btnNuevo.FlatStyle = FlatStyle.Flat;
-            btnNuevo.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            btnNuevo.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
             btnNuevo.ForeColor = Color.WhiteSmoke;
             btnNuevo.Location = new Point(51, 51);
             btnNuevo.Name = "btnNuevo";
@@ -79,7 +79,7 @@
             btnEditar.FlatAppearance.BorderSize = 2;
             btnEditar.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 44, 44);
             btnEditar.FlatStyle = FlatStyle.Flat;
-            btnEditar.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            btnEditar.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
             btnEditar.ForeColor = Color.WhiteSmoke;
             btnEditar.Location = new Point(642, 51);
             btnEditar.Name = "btnEditar";
@@ -97,7 +97,7 @@
             btnEliminar.FlatAppearance.BorderSize = 2;
             btnEliminar.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 44, 44);
             btnEliminar.FlatStyle = FlatStyle.Flat;
-            btnEliminar.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            btnEliminar.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
             btnEliminar.ForeColor = Color.WhiteSmoke;
             btnEliminar.Location = new Point(798, 51);
             btnEliminar.Name = "btnEliminar";
@@ -110,14 +110,13 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = Color.WhiteSmoke;
-            label1.Location = new Point(196, 61);
+            label1.Location = new Point(210, 59);
             label1.Name = "label1";
-            label1.Size = new Size(440, 30);
+            label1.Size = new Size(296, 25);
             label1.TabIndex = 4;
-            label1.Text = "Seleccione un registro para editar o eliminar";
-            label1.Click += label1_Click;
+            label1.Text = "Seleccione un registro para editar";
             // 
             // frmEspecialidadCRUD
             // 

@@ -10,5 +10,12 @@ namespace Entities
     {
         public int IdEspecialidad { get; set; }
         public string Descripcion { get; set; }
+
+        public Especialidad() 
+        { 
+            IdEspecialidad = 0;
+            Descripcion = string.Empty;
+        }
     }
+    
 }

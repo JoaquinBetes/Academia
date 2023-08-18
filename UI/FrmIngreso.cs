@@ -28,11 +28,10 @@ namespace UI
             label = new Label();
             label.AutoSize = true;
             label.BackColor = Color.Black;
-            label.Font = new Font("Segoe UI", 14F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
+            label.Font = new Font("Segoe UI", 13F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
             label.ForeColor = SystemColors.ControlLight;
             label.Location = new Point(40, 44);
             label.Name = "label";
-            label.Size = new Size(123, 25);
             label.TabIndex = 7;
             if (tipo == "Persona") { label.Text = "Ingrese DNI:"; }
             else if (tipo == "Usuario") { label.Text = "Ingrese legajo:"; }
@@ -65,14 +64,14 @@ namespace UI
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
             if (this.tipo == "Persona") {
-                persona = DB.Persona.getPersona(int.Parse(TxtPersonaDni.Text));
+                if (string.IsNullOrEmpty(TxtPersonaDni.Text) || !int.TryParse(TxtPersonaDni.Text, out _) || TxtPersonaDni.Text.Length != 8)
+                {
+                    MessageBox.Show("El DNI debe ser un número válido de 8 digitos.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                persona = Business.Persona.getPersona(int.Parse(TxtPersonaDni.Text));
                 if (persona.DNI != 0)
                 {
-                    if (string.IsNullOrEmpty(TxtPersonaDni.Text) || !int.TryParse(TxtPersonaDni.Text, out _) || TxtPersonaDni.Text.Length != 8)
-                    {
-                        MessageBox.Show("El DNI debe ser un número válido de 8 digitos.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
                     if (accion == "Agregar")
                     {
                         using (var modalForm = new FrmUsuario(persona.PersonaId))
@@ -89,7 +88,6 @@ namespace UI
                             this.Close();
                         }
                     }
-
                 }
                 else
                 {
@@ -102,12 +100,21 @@ namespace UI
             }
             else if (tipo == "Usuario") 
             {
-                usuario = DB.Usuario.getUsuario(int.Parse(TxtPersonaDni.Text));
-                using (var modalForm = new FrmUsuario(usuario))
+                usuario = Business.Usuario.getUsuario(int.Parse(TxtPersonaDni.Text));
+                if (usuario.Legajo != 0) 
                 {
-                    modalForm.ShowDialog();
-                    this.Close();
+                    using (var modalForm = new FrmUsuario(usuario))
+                    {
+                        modalForm.ShowDialog();
+                        this.Close();
+                    }
                 }
+                else 
+                {
+                    MessageBox.Show("El legajo ingresado no se encuentra registrado", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
             }
 
             }

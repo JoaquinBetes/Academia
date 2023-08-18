@@ -1,22 +1,23 @@
 ﻿using Entities;
 using Microsoft.Data.SqlClient;
 using System.Net;
+using System.Runtime.CompilerServices;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace DB
 {
-    public class Persona
+    public class Persona : Conector
     {
-        public static string connectionString = "Server=.\\SQLEXPRESS;Database=Academia;Trusted_Connection=True;Encrypt=false";
         #region Geters
         public static List<Entities.Persona> getDatos()
         {
+            
             List<Entities.Persona> personas = new List<Entities.Persona>();
             try
             {
                 // Crear la SqlConnection
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     connection.Open();
 
@@ -54,7 +55,7 @@ namespace DB
             try
             {
                 // Crear la SqlConnection
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     // Comando SQL para el INSERT
                     string sqlQuery = "SELECT * FROM Personas WHERE DNI = @DNI";
@@ -99,7 +100,7 @@ namespace DB
             try
             {
                 // Crear la SqlConnection
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     // Comando SQL para el INSERT
                     string sqlInsert = "INSERT INTO Personas (DNI, Nombre, Apellido, Telefono, Direccion, Email, FechaNacimiento, IDPlan) " +
@@ -149,7 +150,7 @@ namespace DB
             try
             {
                 // Crear la SqlConnection
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     // Comando SQL para el INSERT
                     string updateQuery = @"
@@ -204,7 +205,7 @@ namespace DB
             try
             {
                 // Crear la SqlConnection
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     string deleteQuery = "DELETE FROM Personas WHERE PersonasId = @Id";
 
