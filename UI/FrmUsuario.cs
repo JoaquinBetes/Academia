@@ -330,9 +330,11 @@ namespace UI
             int id = Business.Usuario.getPersonaId(usuario.Legajo);
             if (!Business.Usuario.MinimoUsuarios(id))
             {
-                using (var modalForm = new FrmAvisoEditar(usuario, "Eliminar", "Usuario"))
+                DialogResult result = MessageBox.Show("¿Esta seguro?", "Confirmar Eliminacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
                 {
-                    modalForm.ShowDialog();
+                    Business.Usuario.deleteUsuario(usuario.Legajo);
                     this.Close();
                 }
             }
