@@ -12,7 +12,6 @@ namespace DB
         #region Geters
         public static List<Entities.Persona> getDatos()
         {
-            
             List<Entities.Persona> personas = new List<Entities.Persona>();
             try
             {

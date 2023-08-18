@@ -74,7 +74,7 @@ namespace UI
             #region info
             TxtNombreUsuario = new TextBox();
             TxtClave = new TextBox();
-            TxtTipoUsuario = new TextBox();
+            CmbTipoUsuario = new ComboBox();
             TxtLegajo = new TextBox();
             // TxtNombreUsuario
             TxtNombreUsuario.BackColor = SystemColors.ActiveCaptionText;
@@ -95,14 +95,18 @@ namespace UI
             TxtClave.Size = new Size(575, 36);
             TxtClave.TabIndex = 4;
             TxtClave.UseSystemPasswordChar = true;
-            // TxtTipoUsuario
-            TxtTipoUsuario.BackColor = SystemColors.ActiveCaptionText;
-            TxtTipoUsuario.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
-            TxtTipoUsuario.ForeColor = Color.WhiteSmoke;
-            TxtTipoUsuario.Location = new Point(145, 84);
-            TxtTipoUsuario.Name = "TxtTipoUsuario";
-            TxtTipoUsuario.Size = new Size(575, 32);
-            TxtTipoUsuario.TabIndex = 1;
+            // CmbTipoUsuario
+            CmbTipoUsuario.BackColor = SystemColors.ActiveCaptionText;
+            CmbTipoUsuario.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            CmbTipoUsuario.ForeColor = Color.WhiteSmoke;
+            CmbTipoUsuario.Location = new Point(145, 84);
+            CmbTipoUsuario.Name = "CmbTipoUsuario";
+            CmbTipoUsuario.Size = new Size(575, 32);
+            CmbTipoUsuario.TabIndex = 1;
+            CmbTipoUsuario.Items.Add("Alumno");
+            CmbTipoUsuario.Items.Add("Docente");
+            CmbTipoUsuario.Items.Add("Administrador");
+            CmbTipoUsuario.DropDownStyle = ComboBoxStyle.DropDownList;
             // TxtLegajo
             TxtLegajo.BackColor = SystemColors.ActiveCaptionText;
             TxtLegajo.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
@@ -157,7 +161,7 @@ namespace UI
             #region info
             TxtNombreUsuario = new TextBox();
             TxtClave = new TextBox();
-            TxtTipoUsuario = new TextBox();
+            CmbTipoUsuario = new ComboBox();
             TxtLegajo = new TextBox();
             // TxtNombreUsuario
             TxtNombreUsuario.BackColor = SystemColors.ActiveCaptionText;
@@ -178,14 +182,18 @@ namespace UI
             TxtClave.Size = new Size(575, 36);
             TxtClave.TabIndex = 4;
             TxtClave.UseSystemPasswordChar = true;
-            // TxtTipoUsuario
-            TxtTipoUsuario.BackColor = SystemColors.ActiveCaptionText;
-            TxtTipoUsuario.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
-            TxtTipoUsuario.ForeColor = Color.WhiteSmoke;
-            TxtTipoUsuario.Location = new Point(145, 84);
-            TxtTipoUsuario.Name = "TxtTipoUsuario";
-            TxtTipoUsuario.Size = new Size(575, 32);
-            TxtTipoUsuario.TabIndex = 1;
+            // CmbTipoUsuario
+            CmbTipoUsuario.BackColor = SystemColors.ActiveCaptionText;
+            CmbTipoUsuario.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            CmbTipoUsuario.ForeColor = Color.WhiteSmoke;
+            CmbTipoUsuario.Location = new Point(145, 84);
+            CmbTipoUsuario.Name = "CmbTipoUsuario";
+            CmbTipoUsuario.Size = new Size(575, 32);
+            CmbTipoUsuario.TabIndex = 1;
+            CmbTipoUsuario.Items.Add("Alumno");
+            CmbTipoUsuario.Items.Add("Docente");
+            CmbTipoUsuario.Items.Add("Administrador");
+            CmbTipoUsuario.DropDownStyle = ComboBoxStyle.DropDownList;
             // TxtLegajo
             TxtLegajo.BackColor = SystemColors.ActiveCaptionText;
             TxtLegajo.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
@@ -239,7 +247,7 @@ namespace UI
             #region info
             TxtNombreUsuario = new TextBox();
             TxtClave = new TextBox();
-            TxtTipoUsuario = new TextBox();
+            CmbTipoUsuario = new ComboBox();
             TxtLegajo = new TextBox();
             // TxtNombreUsuario
             TxtNombreUsuario.BackColor = SystemColors.ActiveCaptionText;
@@ -262,15 +270,19 @@ namespace UI
             TxtClave.TabIndex = 4;
             TxtClave.UseSystemPasswordChar = true;
             TxtClave.Text = usuario.Clave;
-            // TxtTipoUsuario
-            TxtTipoUsuario.BackColor = SystemColors.ActiveCaptionText;
-            TxtTipoUsuario.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
-            TxtTipoUsuario.ForeColor = Color.WhiteSmoke;
-            TxtTipoUsuario.Location = new Point(145, 84);
-            TxtTipoUsuario.Name = "TxtTipoUsuario";
-            TxtTipoUsuario.Size = new Size(575, 32);
-            TxtTipoUsuario.TabIndex = 1;
-            TxtTipoUsuario.Text = usuario.TipoUsuario;
+            // CmbTipoUsuario
+            CmbTipoUsuario.BackColor = SystemColors.ActiveCaptionText;
+            CmbTipoUsuario.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            CmbTipoUsuario.ForeColor = Color.WhiteSmoke;
+            CmbTipoUsuario.Location = new Point(145, 84);
+            CmbTipoUsuario.Name = "CmbTipoUsuario";
+            CmbTipoUsuario.Size = new Size(575, 32);
+            CmbTipoUsuario.TabIndex = 1;
+            CmbTipoUsuario.Text = usuario.TipoUsuario;
+            CmbTipoUsuario.Items.Add("Alumno");
+            CmbTipoUsuario.Items.Add("Docente");
+            CmbTipoUsuario.Items.Add("Administrador");
+            CmbTipoUsuario.DropDownStyle = ComboBoxStyle.DropDownList;
             // TxtLegajo
             TxtLegajo.BackColor = SystemColors.InactiveCaption;
             TxtLegajo.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
@@ -290,7 +302,7 @@ namespace UI
         {
             if (
                 usuario.NombreUsuario == TxtNombreUsuario.Text &&
-                usuario.TipoUsuario == TxtTipoUsuario.Text &&
+                usuario.TipoUsuario == CmbTipoUsuario.Text &&
                 usuario.Clave == TxtClave.Text 
                 )
             {
@@ -299,7 +311,7 @@ namespace UI
             else
             {
                 usuario.NombreUsuario = TxtNombreUsuario.Text;
-                usuario.TipoUsuario = TxtTipoUsuario.Text;
+                usuario.TipoUsuario = CmbTipoUsuario.Text;
                 usuario.Clave = TxtClave.Text;
 
                 using (var modalForm = new FrmAvisoEditar(usuario, "Editar", "Usuario"))
@@ -347,11 +359,11 @@ namespace UI
                 {
                     Business.Persona.CreatePersona(this.dni, this.nombre, this.apellido, this.telefono, this.direccion, this.email, this.fechaNacimiento);
                     persona = Business.Persona.getPersona(this.dni);
-                    Business.Usuario.CreateUsuario(TxtNombreUsuario.Text, TxtClave.Text, TxtTipoUsuario.Text, true, this.dni, persona.PersonaId, int.Parse(TxtLegajo.Text));
+                    Business.Usuario.CreateUsuario(TxtNombreUsuario.Text, TxtClave.Text, CmbTipoUsuario.Text, true, this.dni, persona.PersonaId, int.Parse(TxtLegajo.Text));
                 }
                 else
                 {
-                    Business.Usuario.CreateUsuario(TxtNombreUsuario.Text, TxtClave.Text, TxtTipoUsuario.Text, true, this.dni, this.personaId, int.Parse(TxtLegajo.Text));
+                    Business.Usuario.CreateUsuario(TxtNombreUsuario.Text, TxtClave.Text, CmbTipoUsuario.Text, true, this.dni, this.personaId, int.Parse(TxtLegajo.Text));
                 }
             }
             else

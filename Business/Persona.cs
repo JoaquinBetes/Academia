@@ -21,7 +21,15 @@ namespace Business
         #endregion
         #region Delete
         public static void deletePersona(int id)
-        { DB.Persona.deletePersona(id); }
+        {
+            List < Entities.Usuario > usuarios = DB.Usuario.getUsuariosPersona(id);
+            foreach (Entities.Usuario usuario in usuarios)
+            {
+                Business.Usuario.deleteUsuario(usuario.Legajo);
+            }
+            DB.Persona.deletePersona(id); 
+        }
+
         #endregion
 
         public static bool DniExists(int dni)

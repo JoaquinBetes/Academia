@@ -14,14 +14,21 @@ namespace Entities
         public string TipoUsuario { get; set; }
         public bool Habilitado { get; set; }
 
-        public Usuario() 
-        { 
+        public Usuario()
+        {
             NombreUsuario = string.Empty;
             Legajo = 0;
             Clave = string.Empty;
             TipoUsuario = string.Empty;
             Habilitado = false;
         }
-
+        public Usuario(string nombreUsuario, int legajo, string clave, string tipoUsuario, bool habilitado)
+        {
+            NombreUsuario = nombreUsuario;
+            Legajo = legajo;
+            Clave = clave;
+            TipoUsuario = tipoUsuario;
+            Habilitado = habilitado;
+        }
     }
 }

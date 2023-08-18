@@ -12,8 +12,9 @@ public class Program
         usuario.Legajo = 22;
         usuario.Habilitado = true;
         usuario.Clave = "asd";
-        Console.WriteLine(Business.Usuario.LegajoUsuarioExists(12333));
-        
+        Business.Persona.deletePersona(1);
+
+
         Console.ReadLine();
     }
 }

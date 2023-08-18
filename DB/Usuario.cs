@@ -163,6 +163,43 @@ namespace DB
             }
             return usuario;
         }
+        public static List<Entities.Usuario> getUsuariosPersona(int personaId)
+        {
+            List<Entities.Usuario> usuarios = new List<Entities.Usuario>();
+            try
+            {
+                // Crear la SqlConnection
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
+
+                    string sqlQuery = "SELECT * FROM Usuarios WHERE PersonaId = @personaId;";
+                    SqlCommand command = new SqlCommand(sqlQuery, connection);
+                    command.Parameters.AddWithValue("@personaId", personaId);
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read()) // TODO VALIDACIONES del tipo si devuelve null, Nan o algo por es estilo poner "-" o "0"
+                    {
+                        int personaID = Convert.ToInt32(reader["PersonaId"]);
+                        string? nombre = reader["NombreUsuario"].ToString();
+                        int legajo = Convert.ToInt32(reader["Legajo"]);
+                        string? clave = reader["Clave"].ToString();
+                        string? tipo = reader["TipoUsuario"].ToString();
+                        bool habilitado = Convert.ToInt32(reader["Habilitado"]) != 0;
+                        Entities.Usuario usuario = new Entities.Usuario(nombre, legajo, clave, tipo, habilitado);
+                        usuarios.Add(usuario);
+                    }
+                    reader.Close();
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar errores si ocurre alguno al intentar conectarse a la base de datos.
+                Console.WriteLine("Error al conectar a la base de datos: " + ex.Message);
+            }
+            return usuarios;
+        }
         #endregion
         #region Create
         public static void CreateUsuario(string nombreUsuario, string clave, string tipo, bool habilitado, int dni, int personaId, int legajo)

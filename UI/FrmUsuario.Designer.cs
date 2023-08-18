@@ -99,7 +99,7 @@ namespace UI
             Controls.Add(TxtClave);
             Controls.Add(TxtLegajo);
             Controls.Add(TxtNombreUsuario);
-            Controls.Add(TxtTipoUsuario);
+            Controls.Add(CmbTipoUsuario);
             Name = "FrmUsuario";
             Text = "Agregar usuario";
             ResumeLayout(false);
@@ -115,7 +115,7 @@ namespace UI
         private Button BtnAgregarUsuario;
         private Button BtnCancelar;
         private Label TipoUsuario;
-        private TextBox TxtTipoUsuario;
+        private ComboBox CmbTipoUsuario;
         private Label Legajo;
         private TextBox TxtLegajo;
     }
