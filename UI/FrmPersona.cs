@@ -47,9 +47,11 @@ namespace UI
 
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
-            using (var modalForm = new FrmAvisoEditar(int.Parse(TxtDNIData.Text), TxtNombreData.Text, TxtApellidoData.Text, TxtTelefonoData.Text, TxtDireccionData.Text, TxtEmailData.Text, DtpFechaNacimiento.Value, "Eliminar", "Persona"))
+            DialogResult result = MessageBox.Show("¿Esta seguro?", "Confirmar Eliminacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
             {
-                modalForm.ShowDialog();
+                Business.Persona.deletePersona(Business.Persona.getPersona(int.Parse(TxtDNIData.Text)).PersonaId);
                 this.Close();
             }
         }
