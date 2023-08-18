@@ -357,6 +357,21 @@ namespace UI
                 MessageBox.Show("Nombre de usuario en uso.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            if (CmbTipoUsuario.SelectedItem == null)
+            {
+                MessageBox.Show("Debe seleccionar una opción.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (string.IsNullOrEmpty(TxtLegajo.Text) || !int.TryParse(TxtLegajo.Text, out _) || TxtLegajo.Text.Length != 5)
+            {
+                MessageBox.Show("El Legajo debe ser un número válido de 5 digitos.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (string.IsNullOrEmpty(TxtClave.Text))
+            {
+                MessageBox.Show("Se requiere el ingreso de una clave.", "Error de validacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (!Business.Usuario.LegajoUsuarioExists(int.Parse(TxtLegajo.Text)))
             {
                 if (existePersona == false)
