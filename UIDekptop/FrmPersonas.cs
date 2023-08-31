@@ -73,5 +73,16 @@ namespace UIDesktop
                 }
             }
         }
+
+        private void btnBuscarPorDni_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtBuscarPorDni.Text) || !int.TryParse(txtBuscarPorDni.Text, out _) || txtBuscarPorDni.Text.Length != 8)
+            {
+                MessageBox.Show("El DNI debe ser un número válido de 8 digitos.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            Entities.Persona persona = Business.Persona.getPersona(txtBuscarPorDni.Text);
+        }
     }
 }

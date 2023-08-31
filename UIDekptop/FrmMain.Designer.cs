@@ -32,15 +32,12 @@
             btnUsuarios = new Button();
             btnPersonas = new Button();
             pnlContainer = new Panel();
-            pictureBox1 = new PictureBox();
             pnlNav.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // pnlNav
             // 
-            pnlNav.BackColor = SystemColors.Desktop;
-            pnlNav.Controls.Add(pictureBox1);
+            pnlNav.BackColor = SystemColors.Highlight;
             pnlNav.Controls.Add(btnUsuarios);
             pnlNav.Controls.Add(btnPersonas);
             pnlNav.Dock = DockStyle.Left;
@@ -77,16 +74,6 @@
             pnlContainer.Size = new Size(993, 606);
             pnlContainer.TabIndex = 1;
             // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = UIDekptop.Properties.Resources.descarga;
-            pictureBox1.Location = new Point(0, 0);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(200, 163);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 2;
-            pictureBox1.TabStop = false;
-            // 
             // FrmMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -95,10 +82,10 @@
             ClientSize = new Size(1193, 606);
             Controls.Add(pnlContainer);
             Controls.Add(pnlNav);
+            IsMdiContainer = true;
             Name = "FrmMain";
             Text = "Academia";
             pnlNav.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -108,6 +95,5 @@
         private Button btnPersonas;
         private Panel pnlContainer;
         private Button btnUsuarios;
-        private PictureBox pictureBox1;
     }
 }
