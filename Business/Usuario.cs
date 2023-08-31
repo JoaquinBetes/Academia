@@ -48,5 +48,13 @@ namespace Business
         {
             return DB.Usuario.CountUsuarios(personaId) <= 1;
         }
+        public static bool CampoVacio(string? campo) 
+        {
+            return campo == "";
+        }
+        public static bool ClaveInvalida(string clave)
+        { 
+            return clave.Length < 8;
+        }
     }
 }

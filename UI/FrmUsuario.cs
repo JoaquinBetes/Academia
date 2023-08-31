@@ -115,6 +115,7 @@ namespace UI
             TxtLegajo.Name = "TxtLegajo";
             TxtLegajo.Size = new Size(575, 32);
             TxtLegajo.TabIndex = 11;
+            TxtLegajo.KeyPress += TxtUsuarioLegajo_KeyPress;
             #endregion
             InitializeComponent();
         }
@@ -202,6 +203,7 @@ namespace UI
             TxtLegajo.Name = "TxtLegajo";
             TxtLegajo.Size = new Size(575, 32);
             TxtLegajo.TabIndex = 11;
+            TxtLegajo.KeyPress += TxtUsuarioLegajo_KeyPress;
             #endregion
             InitializeComponent();
         }
@@ -342,6 +344,16 @@ namespace UI
 
         }
 
+        private void TxtUsuarioLegajo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verificar si el carácter ingresado no es un número y no es la tecla de retroceso (backspace)
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b')
+            {
+                // Cancelar el evento para evitar que se ingrese el carácter no válido
+                e.Handled = true;
+            }
+        }
+
         private void BtnCancelarUsuario_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -353,24 +365,36 @@ namespace UI
                 MessageBox.Show("Nombre de usuario en uso.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (!Business.Usuario.LegajoUsuarioExists(int.Parse(TxtLegajo.Text)))
+            if (Business.Usuario.CampoVacio(TxtLegajo.Text) || Business.Usuario.CampoVacio(CmbTipoUsuario.Text) || Business.Usuario.CampoVacio(TxtClave.Text))
             {
-                if (existePersona == false)
+                MessageBox.Show("Ha dejado campos necesarios sin completar.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else 
+            {
+                if (Business.Usuario.ClaveInvalida(TxtClave.Text)) 
                 {
-                    Business.Persona.CreatePersona(this.dni, this.nombre, this.apellido, this.telefono, this.direccion, this.email, this.fechaNacimiento);
-                    persona = Business.Persona.getPersona(this.dni);
-                    Business.Usuario.CreateUsuario(TxtNombreUsuario.Text, TxtClave.Text, CmbTipoUsuario.Text, true, this.dni, persona.PersonaId, int.Parse(TxtLegajo.Text));
+                    MessageBox.Show("La clave ingresada debe contener al menos 8 digitos.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (!Business.Usuario.LegajoUsuarioExists(int.Parse(TxtLegajo.Text)))
+                {
+                    if (existePersona == false)
+                    {
+                        Business.Persona.CreatePersona(this.dni, this.nombre, this.apellido, this.telefono, this.direccion, this.email, this.fechaNacimiento);
+                        persona = Business.Persona.getPersona(this.dni);
+                        Business.Usuario.CreateUsuario(TxtNombreUsuario.Text, TxtClave.Text, CmbTipoUsuario.Text, true, this.dni, persona.PersonaId, int.Parse(TxtLegajo.Text));
+                    }
+                    else
+                    {
+                        Business.Usuario.CreateUsuario(TxtNombreUsuario.Text, TxtClave.Text, CmbTipoUsuario.Text, true, this.dni, this.personaId, int.Parse(TxtLegajo.Text));
+                    }
                 }
                 else
                 {
-                    Business.Usuario.CreateUsuario(TxtNombreUsuario.Text, TxtClave.Text, CmbTipoUsuario.Text, true, this.dni, this.personaId, int.Parse(TxtLegajo.Text));
+                    MessageBox.Show("El legajo ya existe", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else
-            {
-                MessageBox.Show("El legajo ya existe", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
 
             this.Close();
         }
