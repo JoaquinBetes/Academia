@@ -92,6 +92,43 @@ namespace DB
             }
             return persona;
         }
+        public static int getDni(int personaId)
+        {
+            int dni = 0;
+            try
+            {
+                // Crear la SqlConnection
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    // Comando SQL para el INSERT
+                    string sqlQuery = "SELECT DNI FROM Personas WHERE PersonasId = @personaId";
+
+                    // Crear el SqlCommand con el comando y la conexión
+                    SqlCommand command = new SqlCommand(sqlQuery, connection);
+
+                    // Agregar parámetros al comando
+                    command.Parameters.AddWithValue("@personaId", personaId);
+
+                    connection.Open();
+
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                        // Si se encontró la persona, aquí puedes mostrar los datos en algún control o realizar alguna acción
+                        reader.Read();
+                        dni = Convert.ToInt32(reader["DNI"]); ;
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar errores si ocurre alguno al intentar conectarse a la base de datos.
+                Console.WriteLine("Error al conectar a la base de datos: " + ex.Message);
+            }
+            return dni;
+        }
         #endregion
         #region Create
         public static void CreatePersona(int dni, string nombre, string apellido, string telefono, string direccion, string email, DateTime fechaNacimiento)

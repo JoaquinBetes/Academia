@@ -23,6 +23,7 @@ namespace UIDekptop
         private DateTime fechaNacimiento = DateTime.MinValue;
         private int personaId;
         private bool existePersona = false;
+        private bool edicion = false;
 
         //Constructor para crear el primer usuario de la persona
         public FrmUsuario(int dni, string nombre, string apellido, string telefono, string direccion, string email, DateTime fechaNacimiento)
@@ -56,8 +57,14 @@ namespace UIDekptop
         //Constructor para editar usuario
         public FrmUsuario(Entities.Usuario usuario)
         {
+            this.edicion = true;
             this.usuario = usuario;
             InitializeComponent();
+            txtDni.Text = Business.Persona.getDni(Business.Usuario.getPersonaId(usuario.Legajo)).ToString();
+            TxtNombreUsuario.Text = usuario.NombreUsuario;
+            TxtLegajo.Text = usuario.Legajo.ToString();
+            CmbTipoUsuario.Text = usuario.TipoUsuario;
+            TxtClave.Text = usuario.Clave.ToString();
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -82,11 +89,13 @@ namespace UIDekptop
                     this.personaId = Business.Persona.getPersona(this.dni).PersonaId;
                 }
             }
-
-            if (Business.Usuario.NombreUsuarioExists(TxtNombreUsuario.Text))
+            if (!edicion)
             {
-                MessageBox.Show("Nombre de usuario en uso.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                if (Business.Usuario.NombreUsuarioExists(TxtNombreUsuario.Text))
+                {
+                    MessageBox.Show("Nombre de usuario en uso.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             }
             if (CmbTipoUsuario.SelectedItem == null)
             {
@@ -118,7 +127,18 @@ namespace UIDekptop
             }
             else
             {
-                MessageBox.Show("El legajo ya existe", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (edicion) 
+                { 
+                    if (TxtLegajo.Text == usuario.Legajo.ToString()) 
+                    {
+                        usuario.NombreUsuario = TxtNombreUsuario.Text;
+                        usuario.Clave = TxtClave.Text;
+                        usuario.TipoUsuario = CmbTipoUsuario.Text;
+                        Business.Usuario.UpdateUsuario(usuario);
+                    }
+                    else { MessageBox.Show("El legajo ya existe", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                }
+                else { MessageBox.Show("El legajo ya existe", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error); }
             }
             this.Close();
         }

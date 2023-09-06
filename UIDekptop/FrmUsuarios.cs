@@ -67,7 +67,15 @@ namespace UIDekptop
                 foreach (DataGridViewRow row in DgvUsuarios.SelectedRows)
                 {
                     int legajo = Convert.ToInt32(row.Cells["Legajo"].Value);
-                    Business.Usuario.deleteUsuario(legajo);
+                    int personaId = Business.Usuario.getPersonaId(legajo);
+                    if (!Business.Usuario.MinimoUsuarios(personaId))
+                    {
+                        Business.Usuario.deleteUsuario(legajo);
+                    }
+                    else 
+                    {
+                        MessageBox.Show("No puede borrar el único usuario de esta persona", "Búsqueda", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
             }
             CargarUsuarios();
@@ -85,6 +93,7 @@ namespace UIDekptop
                     modalForm.ShowDialog();
                 }
             }
+            CargarUsuarios();
         }
 
         private void btnAgregarUsuario_Click(object sender, EventArgs e)
@@ -94,6 +103,7 @@ namespace UIDekptop
                 // Mostrar el formulario modal como un diálogo
                 modalForm.ShowDialog();
             }
+            CargarUsuarios();
         }
     }
 }

@@ -58,6 +58,7 @@ namespace UIDesktop
                 // Mostrar el formulario modal como un diálogo
                 modalForm.ShowDialog();
             }
+            CargarPersonas();
         }
 
         private void btnEditarPersona_Click(object sender, EventArgs e)
@@ -72,6 +73,7 @@ namespace UIDesktop
                     modalForm.ShowDialog();
                 }
             }
+            CargarPersonas();
         }
 
         private void btnBuscarPorDni_Click(object sender, EventArgs e)
