@@ -28,72 +28,85 @@
         /// </summary>
         private void InitializeComponent()
         {
-            pnlNav = new Panel();
-            btnUsuarios = new Button();
-            btnPersonas = new Button();
+            menuStrip1 = new MenuStrip();
+            verToolStripMenuItem = new ToolStripMenuItem();
+            personasToolStripMenuItem = new ToolStripMenuItem();
+            usuariosToolStripMenuItem = new ToolStripMenuItem();
+            especialidadesToolStripMenuItem = new ToolStripMenuItem();
             pnlContainer = new Panel();
-            pnlNav.SuspendLayout();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
-            // pnlNav
+            // menuStrip1
             // 
-            pnlNav.BackColor = SystemColors.Highlight;
-            pnlNav.Controls.Add(btnUsuarios);
-            pnlNav.Controls.Add(btnPersonas);
-            pnlNav.Dock = DockStyle.Left;
-            pnlNav.Location = new Point(0, 0);
-            pnlNav.Name = "pnlNav";
-            pnlNav.Size = new Size(200, 606);
-            pnlNav.TabIndex = 0;
+            menuStrip1.Items.AddRange(new ToolStripItem[] { verToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(1041, 24);
+            menuStrip1.TabIndex = 1;
+            menuStrip1.Text = "menuStrip1";
             // 
-            // btnUsuarios
+            // verToolStripMenuItem
             // 
-            btnUsuarios.Location = new Point(0, 224);
-            btnUsuarios.Name = "btnUsuarios";
-            btnUsuarios.Size = new Size(200, 49);
-            btnUsuarios.TabIndex = 1;
-            btnUsuarios.Text = "Usuarios";
-            btnUsuarios.UseVisualStyleBackColor = true;
-            btnUsuarios.Click += btnUsuarios_Click;
+            verToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { personasToolStripMenuItem, usuariosToolStripMenuItem, especialidadesToolStripMenuItem });
+            verToolStripMenuItem.Name = "verToolStripMenuItem";
+            verToolStripMenuItem.Size = new Size(35, 20);
+            verToolStripMenuItem.Text = "Ver";
             // 
-            // btnPersonas
+            // personasToolStripMenuItem
             // 
-            btnPersonas.Location = new Point(0, 169);
-            btnPersonas.Name = "btnPersonas";
-            btnPersonas.Size = new Size(200, 49);
-            btnPersonas.TabIndex = 0;
-            btnPersonas.Text = "Personas";
-            btnPersonas.UseVisualStyleBackColor = true;
-            btnPersonas.Click += btnPersonas_Click;
+            personasToolStripMenuItem.Name = "personasToolStripMenuItem";
+            personasToolStripMenuItem.Size = new Size(180, 22);
+            personasToolStripMenuItem.Text = "Personas";
+            personasToolStripMenuItem.Click += personasToolStripMenuItem_Click;
+            // 
+            // usuariosToolStripMenuItem
+            // 
+            usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
+            usuariosToolStripMenuItem.Size = new Size(180, 22);
+            usuariosToolStripMenuItem.Text = "Usuarios";
+            usuariosToolStripMenuItem.Click += usuariosToolStripMenuItem_Click;
+            // 
+            // especialidadesToolStripMenuItem
+            // 
+            especialidadesToolStripMenuItem.Name = "especialidadesToolStripMenuItem";
+            especialidadesToolStripMenuItem.Size = new Size(180, 22);
+            especialidadesToolStripMenuItem.Text = "Especialidades";
+            especialidadesToolStripMenuItem.Click += especialidadesToolStripMenuItem_Click;
             // 
             // pnlContainer
             // 
-            pnlContainer.Dock = DockStyle.Fill;
-            pnlContainer.Location = new Point(200, 0);
+            pnlContainer.AutoSize = true;
+            pnlContainer.Location = new Point(0, 27);
             pnlContainer.Name = "pnlContainer";
-            pnlContainer.Size = new Size(993, 606);
-            pnlContainer.TabIndex = 1;
+            pnlContainer.Size = new Size(1041, 579);
+            pnlContainer.TabIndex = 2;
             // 
             // FrmMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(1193, 606);
+            ClientSize = new Size(1041, 605);
             Controls.Add(pnlContainer);
-            Controls.Add(pnlNav);
+            Controls.Add(menuStrip1);
             IsMdiContainer = true;
+            MainMenuStrip = menuStrip1;
             Name = "FrmMain";
             Text = "Academia";
-            pnlNav.ResumeLayout(false);
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private Panel pnlNav;
-        private Button btnPersonas;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem verToolStripMenuItem;
+        private ToolStripMenuItem personasToolStripMenuItem;
+        private ToolStripMenuItem usuariosToolStripMenuItem;
+        private ToolStripMenuItem especialidadesToolStripMenuItem;
         private Panel pnlContainer;
-        private Button btnUsuarios;
     }
 }

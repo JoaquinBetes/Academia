@@ -18,6 +18,8 @@ namespace Business
         }
         public static Entities.Usuario getUsuario(string nombreUsuario)
         { return DB.Usuario.getUsuario(nombreUsuario); }
+        public static List<Entities.Usuario> getDatos()
+        { return DB.Usuario.getDatos(); }
         #endregion
         #region Create
         public static void CreateUsuario(string nombreUsuario, string clave, string tipo, bool habilitado, int dni, int personaId, int legajo)

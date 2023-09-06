@@ -35,6 +35,14 @@ namespace UIDekptop
             this.email = email;
             this.fechaNacimiento = fechaNacimiento;
             InitializeComponent();
+            txtDni.Text = dni.ToString();
+        }
+
+        //Constructor para ...
+        public FrmUsuario()
+        {
+            InitializeComponent();
+            txtDni.ReadOnly = false;
         }
 
         //Constructor para ...
@@ -45,7 +53,7 @@ namespace UIDekptop
             InitializeComponent();
         }
 
-        //Constructor para ...
+        //Constructor para editar usuario
         public FrmUsuario(Entities.Usuario usuario)
         {
             this.usuario = usuario;
@@ -54,6 +62,27 @@ namespace UIDekptop
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            //Validaciones solo para agregar usuario a persona ya existente
+            if (txtDni.ReadOnly == false)
+            {
+                if (string.IsNullOrEmpty(txtDni.Text) || !int.TryParse(txtDni.Text, out _) || txtDni.Text.Length != 8)
+                {
+                    MessageBox.Show("El DNI debe ser un número válido de 8 digitos.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (!Business.Persona.DniExists(int.Parse(txtDni.Text)))
+                {
+                    MessageBox.Show("No se encontro una persona con el DNI ingresado.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else 
+                { 
+                    existePersona = true;
+                    this.dni = int.Parse(txtDni.Text);
+                    this.personaId = Business.Persona.getPersona(this.dni).PersonaId;
+                }
+            }
+
             if (Business.Usuario.NombreUsuarioExists(TxtNombreUsuario.Text))
             {
                 MessageBox.Show("Nombre de usuario en uso.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -82,7 +82,20 @@ namespace UIDesktop
                 return;
             }
 
-            Entities.Persona persona = Business.Persona.getPersona(txtBuscarPorDni.Text);
+            Entities.Persona persona = Business.Persona.getPersona(int.Parse(txtBuscarPorDni.Text));
+
+            if (persona != null)
+            {
+                // Limpia el DataGridView antes de mostrar la nueva persona
+                DgvPersonas.Rows.Clear();
+
+                // Agrega una nueva fila con la información de la persona
+                DgvPersonas.Rows.Add(persona.DNI, persona.Nombre, persona.Apellido, persona.Telefono, persona.Direccion, persona.Email, persona.FechaNacimiento);
+            }
+            else
+            {
+                MessageBox.Show("Persona no encontrada.", "Búsqueda", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

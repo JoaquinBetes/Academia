@@ -30,14 +30,19 @@ namespace UIDesktop
             fh.Show();
         }
 
-        private void btnPersonas_Click(object sender, EventArgs e)
+        private void personasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenChild(new FrmPersonas());
         }
 
-        private void btnUsuarios_Click(object sender, EventArgs e)
+        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenChild(new FrmUsuarios());
+        }
+
+        private void especialidadesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChild(new FrmEspecialidades());
         }
     }
 }

@@ -14,6 +14,41 @@ namespace DB
     public class Usuario:Conector
     {
         #region Geters
+        public static List<Entities.Usuario> getDatos()
+        {
+            List<Entities.Usuario> usuarios = new List<Entities.Usuario>();
+            try
+            {
+                // Crear la SqlConnection
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
+
+                    string sqlQuery = "SELECT * FROM Usuarios;";
+                    SqlCommand command = new SqlCommand(sqlQuery, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read()) // TODO VALIDACIONES del tipo si devuelve null, Nan o algo por es estilo poner "-" o "0"
+                    {
+                        int Legajo = Convert.ToInt32(reader["Legajo"]);
+                        string? nombreUsuario = reader["NombreUsuario"].ToString();
+                        string? clave = reader["Clave"].ToString();
+                        string? tipoUsuario = reader["TipoUsuario"].ToString();
+                        bool habilitado = (bool)reader["Habilitado"];
+                        Entities.Usuario usuario = new Entities.Usuario(nombreUsuario, Legajo, clave, tipoUsuario, habilitado);
+                        usuarios.Add(usuario);
+                    }
+                    reader.Close();
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar errores si ocurre alguno al intentar conectarse a la base de datos.
+                Console.WriteLine("Error al conectar a la base de datos: " + ex.Message);
+            }
+            return usuarios;
+        }
         public static int getUsuarioId(int legajo)
         {
             int id = 0;
