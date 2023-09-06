@@ -13,7 +13,7 @@ namespace DB
         static Conector()
         {
             //ConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=Academia;User ID=net;Password=net;Trusted_Connection=false;Encrypt=false";
-            ConnectionString = "Server=.\\SQLEXPRESS;Database=Academia2;Trusted_Connection=True;Encrypt=false";
+            ConnectionString = "Server=.\\SQLEXPRESS;Database=Academia;Trusted_Connection=True;Encrypt=false";
         }
     }
 }
