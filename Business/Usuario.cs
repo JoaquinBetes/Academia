@@ -14,8 +14,7 @@ namespace Business
         public static int getPersonaId(int legajo)
         { return DB.Usuario.getPersonaId(legajo); }
         public static Entities.Usuario getUsuario(int legajo)
-        { return DB.Usuario.getUsuario(legajo); 
-        }
+        { return DB.Usuario.getUsuario(legajo); }
         public static Entities.Usuario getUsuario(string nombreUsuario)
         { return DB.Usuario.getUsuario(nombreUsuario); }
         public static List<Entities.Usuario> getDatos()
@@ -24,7 +23,6 @@ namespace Business
         #region Create
         public static void CreateUsuario(string nombreUsuario, string clave, string tipo, bool habilitado, int dni, int personaId, int legajo)
         { DB.Usuario.CreateUsuario(nombreUsuario, clave, tipo, habilitado, dni, personaId, legajo); }
-
         #endregion
         #region Update
         public static void UpdateUsuario(Entities.Usuario usuario)
