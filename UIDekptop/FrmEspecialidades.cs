@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace UI
+namespace UIDesktop
 {
-    public partial class FrmAvisoDni : Form
+    public partial class FrmEspecialidades : Form
     {
-        public FrmAvisoDni()
+        public FrmEspecialidades()
         {
             InitializeComponent();
-        }
-
-        private void BtnVolver_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }

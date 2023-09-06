@@ -35,9 +35,11 @@ namespace UI
             }
             else
             {
-                using (var modalForm = new FrmAvisoEditar(int.Parse(TxtDNIData.Text), TxtNombreData.Text, TxtApellidoData.Text, TxtTelefonoData.Text, TxtDireccionData.Text, TxtEmailData.Text, DtpFechaNacimiento.Value, "Editar", "Persona"))
+                DialogResult result = MessageBox.Show("¿Desea confirmar la edición?", "Confirmar Edición", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
                 {
-                    modalForm.ShowDialog();
+                    Business.Persona.UpdatePersona(int.Parse(TxtDNIData.Text), TxtNombreData.Text, TxtApellidoData.Text, TxtTelefonoData.Text, TxtDireccionData.Text, TxtEmailData.Text, DtpFechaNacimiento.Value, Business.Persona.getPersona(int.Parse(TxtDNIData.Text)).PersonaId);
                     this.Close();
                 }
             }
@@ -45,9 +47,11 @@ namespace UI
 
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
-            using (var modalForm = new FrmAvisoEditar(int.Parse(TxtDNIData.Text), TxtNombreData.Text, TxtApellidoData.Text, TxtTelefonoData.Text, TxtDireccionData.Text, TxtEmailData.Text, DtpFechaNacimiento.Value, "Eliminar", "Persona"))
+            DialogResult result = MessageBox.Show("¿Esta seguro?", "Confirmar Eliminacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
             {
-                modalForm.ShowDialog();
+                Business.Persona.deletePersona(Business.Persona.getPersona(int.Parse(TxtDNIData.Text)).PersonaId);
                 this.Close();
             }
         }
