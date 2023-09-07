@@ -44,5 +44,10 @@ namespace UIDesktop
         {
             OpenChild(new FrmEspecialidades());
         }
+
+        private void planesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChild(new FrmPlanes());
+        }
     }
 }

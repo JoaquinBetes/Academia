@@ -92,7 +92,7 @@
             Controls.Add(txtDescripcion);
             Controls.Add(label2);
             Name = "FrmEspecialidad";
-            Text = "FrmEspecialidad";
+            Text = "Especialidad";
             ResumeLayout(false);
             PerformLayout();
         }
