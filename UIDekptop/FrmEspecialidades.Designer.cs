@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DgvEspecialidades = new DataGridView();
             ID = new DataGridViewTextBoxColumn();
             Descripcion = new DataGridViewTextBoxColumn();
@@ -43,24 +43,24 @@
             // 
             DgvEspecialidades.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DgvEspecialidades.BackgroundColor = SystemColors.ButtonHighlight;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            DgvEspecialidades.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            DgvEspecialidades.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             DgvEspecialidades.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DgvEspecialidades.Columns.AddRange(new DataGridViewColumn[] { ID, Descripcion });
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Window;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            DgvEspecialidades.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            DgvEspecialidades.DefaultCellStyle = dataGridViewCellStyle2;
             DgvEspecialidades.GridColor = SystemColors.Control;
             DgvEspecialidades.Location = new Point(37, 104);
             DgvEspecialidades.Name = "DgvEspecialidades";
@@ -96,6 +96,7 @@
             btnAgregarEspecialidad.TabIndex = 4;
             btnAgregarEspecialidad.Text = "Agregar especialidad";
             btnAgregarEspecialidad.UseVisualStyleBackColor = false;
+            btnAgregarEspecialidad.Click += btnAgregarEspecialidad_Click;
             // 
             // btnEditarEspecialidad
             // 
@@ -110,6 +111,7 @@
             btnEditarEspecialidad.TabIndex = 5;
             btnEditarEspecialidad.Text = "Editar";
             btnEditarEspecialidad.UseVisualStyleBackColor = false;
+            btnEditarEspecialidad.Click += btnEditarEspecialidad_Click;
             // 
             // btnEliminarEspecialidad
             // 
@@ -124,6 +126,7 @@
             btnEliminarEspecialidad.TabIndex = 6;
             btnEliminarEspecialidad.Text = "Eliminar";
             btnEliminarEspecialidad.UseVisualStyleBackColor = false;
+            btnEliminarEspecialidad.Click += btnEliminarEspecialidad_Click;
             // 
             // FrmEspecialidades
             // 
@@ -139,6 +142,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "FrmEspecialidades";
             Text = "FrmEspecialidades";
+            Load += FrmEspecialidades_Load;
             ((System.ComponentModel.ISupportInitialize)DgvEspecialidades).EndInit();
             ResumeLayout(false);
         }
