@@ -1,4 +1,5 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using Entities;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,6 @@ namespace DB
 {
     public class ModuloUsuario : Conector
     {
-        public int Id { get; set; }
-        //public int IdModulo { get; set; }
-        public int IdUsuario { get; set; }
-
         #region Geters
         public static List<Entities.ModuloUsuario> getModulosUsuario(int idUsuario)
         {
@@ -35,7 +32,7 @@ namespace DB
                     
                     while ( reader.Read() )
                     {
-                        int idModulo = Convert.ToInt32(reader["Alta"]);
+                        int idModulo = Convert.ToInt32(reader["IdModuloUsuario"]);
                         bool alta = Convert.ToInt32(reader["Alta"]) != 0;
                         bool baja = Convert.ToInt32(reader["Baja"]) != 0;
                         bool modificacion = Convert.ToInt32(reader["Modificacion"]) != 0;
@@ -57,7 +54,7 @@ namespace DB
         #endregion
 
         #region Create
-        public static void CreateModulo(int dni, string nombre, string apellido, string telefono, string direccion, string email, DateTime fechaNacimiento)
+        public static void CreateModuloUsuario(int IdModuloUsuario, int IdModulo, int IdUsuario,  bool Alta, bool Baja, bool Modificacion, bool Consulta)
         {
             try
             {
@@ -66,34 +63,24 @@ namespace DB
                 {
                     // Comando SQL para el INSERT
                     string sqlInsert = "INSERT INTO Modulos_Usuarios (IdModuloUsuario, IdModulo, IdUsuario, Alta, Baja, Modificacion, Consulta) " +
-                                       "VALUES (@DNI, @Nombre, @Apellido, @Telefono, @Direccion, @Email, @FechaNacimiento, 222)";
+                                       "VALUES (@IdModuloUsuario, @IdModulo, @IdUsuario, @Alta, @Baja, @Modificacion, @Consulta)";
 
                     // Crear el SqlCommand con el comando y la conexión
                     using (SqlCommand command = new SqlCommand(sqlInsert, connection))
                     {
                         // Agregar parámetros al comando
-                        command.Parameters.AddWithValue("@DNI", dni);
-                        command.Parameters.AddWithValue("@Nombre", nombre);
-                        command.Parameters.AddWithValue("@Apellido", apellido);
-                        command.Parameters.AddWithValue("@Telefono", telefono);
-                        command.Parameters.AddWithValue("@Direccion", direccion);
-                        command.Parameters.AddWithValue("@Email", email);
-                        command.Parameters.AddWithValue("@FechaNacimiento", fechaNacimiento);
+                        command.Parameters.AddWithValue("@IdModuloUsuario", IdModuloUsuario);
+                        command.Parameters.AddWithValue("@IdModulo", IdModulo);
+                        command.Parameters.AddWithValue("@IdUsuario", IdUsuario);
+                        command.Parameters.AddWithValue("@Alta", Alta);
+                        command.Parameters.AddWithValue("@Baja", Baja);
+                        command.Parameters.AddWithValue("@Modificacion", Modificacion);
+                        command.Parameters.AddWithValue("@Consulta", Consulta);
 
                         connection.Open();
 
                         // Ejecutar el INSERT
                         int rowsAffected = command.ExecuteNonQuery();
-
-                        // Verificar si se insertaron filas correctamente
-                        if (rowsAffected > 0)
-                        {
-                            Console.WriteLine("Inserción exitosa");
-                        }
-                        else
-                        {
-                            Console.WriteLine("No se pudo insertar el registro");
-                        }
                         connection.Close();
                     }
 
@@ -108,10 +95,56 @@ namespace DB
 
         #endregion
 
-        #region
+        #region Update
+
+        public static void UpdateModuloUsuario(int moduloUsuarioId, bool alta, bool baja, bool modificacion, bool consulta)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    string updateQuery = @"
+                        UPDATE Modulos_Usuarios 
+                        SET Alta = @alta,
+                            Baja = @baja,
+                            Modificacion = @modificacion,
+                            Consulta = @consulta,
+                        WHERE IdModuloUsuario = @moduloUsuarioId";
+
+                    // Crear el SqlCommand con el comando y la conexión
+                    SqlCommand command = new SqlCommand(updateQuery, connection);
+
+                    // Agregar parámetros al comando
+                    command.Parameters.AddWithValue("@alta", alta);
+                    command.Parameters.AddWithValue("@baja", baja);
+                    command.Parameters.AddWithValue("@modificacion", modificacion);
+                    command.Parameters.AddWithValue("@consulta", consulta);
+                    command.Parameters.AddWithValue("@moduloUsuarioId", moduloUsuarioId);
+
+                    connection.Open();
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error al actualizar la base de datos: " + ex.Message);
+                    }
+                    finally
+                    {
+                        connection.Close();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al conectar a la base de datos: " + ex.Message);
+            }
+        }
+
         #endregion
 
-        #region
+        #region Delete
         #endregion
 
     }
