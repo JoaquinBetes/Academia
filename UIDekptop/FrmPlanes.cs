@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Business;
+using UIDekptop;
 
 namespace UIDesktop
 {
@@ -43,6 +44,36 @@ namespace UIDesktop
                 modalform.ShowDialog();
                 CargarPlanes();
             }
+        }
+
+        private void btnEditarPlan_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in DgvPlanes.SelectedRows)
+            {
+                int id = Convert.ToInt32(row.Cells["ID"].Value);
+                Entities.Plan plan = Business.Plan.getById(id);
+                using (var modalForm = new FrmPlan(plan))
+                {
+                    // Mostrar el formulario modal como un diálogo
+                    modalForm.ShowDialog();
+                }
+            }
+            CargarPlanes();
+        }
+
+        private void btnEliminarPlan_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("¿Esta seguro?", "Confirmar Eliminacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                foreach (DataGridViewRow row in DgvPlanes.SelectedRows)
+                {
+                    int id = Convert.ToInt32(row.Cells["ID"].Value);
+                    Business.Plan.deletePlan(id);
+                }
+            }
+            CargarPlanes();
         }
     }
 }

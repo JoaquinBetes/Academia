@@ -24,6 +24,19 @@ namespace UIDesktop
             cmbEspecialidades.ValueMember = "idEspecialidad";
         }
 
+        public FrmPlan(Entities.Plan plan)
+        {
+            InitializeComponent();
+            //llenar combobox
+            List<Entities.Especialidad> especialidades = Business.Especialidad.Get();
+            cmbEspecialidades.DataSource = especialidades;
+            cmbEspecialidades.DisplayMember = "Descripcion";
+            cmbEspecialidades.ValueMember = "idEspecialidad";
+
+            this.edicion = true;
+            txtDescripcion.Text = plan.Descripcion.ToString();
+        }
+
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtDescripcion.Text))

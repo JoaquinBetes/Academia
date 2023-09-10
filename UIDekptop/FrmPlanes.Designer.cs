@@ -118,6 +118,7 @@
             btnEditarPlan.TabIndex = 5;
             btnEditarPlan.Text = "Editar";
             btnEditarPlan.UseVisualStyleBackColor = false;
+            btnEditarPlan.Click += btnEditarPlan_Click;
             // 
             // btnEliminarPlan
             // 
@@ -132,6 +133,7 @@
             btnEliminarPlan.TabIndex = 6;
             btnEliminarPlan.Text = "Eliminar";
             btnEliminarPlan.UseVisualStyleBackColor = false;
+            btnEliminarPlan.Click += btnEliminarPlan_Click;
             // 
             // FrmPlanes
             // 

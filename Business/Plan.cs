@@ -13,6 +13,9 @@ namespace Business
         { return DB.Plan.getAll(); }
         public static Entities.Plan getOne(string desc, int idEsp) 
         { return DB.Plan.getOne(desc, idEsp); }
+
+        public static Entities.Plan getById(int id)
+        { return DB.Plan.getById(id); }
         #endregion
         #region Create
         public static void createPlan(string descripcion, int idEspecialidad)
@@ -23,6 +26,8 @@ namespace Business
         #region Update
         #endregion
         #region Delete
+        public static void deletePlan(int id)
+        { DB.Plan.deletePlan(id); }
         #endregion
 
         public static bool PlanExists(string desc, int idEsp)

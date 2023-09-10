@@ -1,7 +1,9 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using Entities;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -81,6 +83,40 @@ namespace DB
             }
             return plan;
         }
+
+        public static Entities.Plan getById(int id)
+        {
+            Entities.Plan plan = new Entities.Plan();
+            try
+            {
+                // Crear la SqlConnection
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
+
+                    string sqlQuery = "SELECT * FROM Planes WHERE IDPlan = @id";
+                    SqlCommand command = new SqlCommand(sqlQuery, connection);
+                    command.Parameters.AddWithValue("@id", id);
+
+                    SqlDataReader reader = command.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        plan.IdPlan = id;
+                        plan.Descripcion = reader["Descripcion"].ToString();
+                        plan.IdEspecialidad = Convert.ToInt32(reader["IdEspecialidad"]);
+                    }
+
+                    reader.Close();
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar errores si ocurre alguno al intentar conectarse a la base de datos.
+                Console.WriteLine("Error al conectar a la base de datos: " + ex.Message);
+            }
+            return plan;
+        }
         #endregion
         #region Create
         public static void CreatePlan(string descripcion, int idEspecialidad)
@@ -130,6 +166,41 @@ namespace DB
         #region Update
         #endregion
         #region Delete
+        public static void deletePlan(int id)
+        {
+            try
+            {
+                // Crear la SqlConnection
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    string deleteQuery = "DELETE FROM Planes WHERE IDPlan = @Id";
+
+                    connection.Open();
+                    try
+                    {
+                        using (SqlCommand command = new SqlCommand(deleteQuery, connection))
+                        {
+                            command.Parameters.AddWithValue("@Id", id);
+
+                            int rowsAffected = command.ExecuteNonQuery();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error al actualizar la base de datos: " + ex.Message);
+                    }
+                    finally
+                    {
+                        connection.Close();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar errores si ocurre alguno al intentar conectarse a la base de datos.
+                Console.WriteLine("Error al conectar a la base de datos: " + ex.Message);
+            }
+        }
         #endregion
     }
 }
