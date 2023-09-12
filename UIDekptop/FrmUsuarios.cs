@@ -37,12 +37,12 @@ namespace UIDekptop
 
         private void btnBuscarPorLegajo_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(btnBuscarPorLegajo.Text) || !int.TryParse(btnBuscarPorLegajo.Text, out _) || btnBuscarPorLegajo.Text.Length != 5)
+            if (string.IsNullOrEmpty(TxtBuscarLegajo.Text) || !int.TryParse(TxtBuscarLegajo.Text, out _) || TxtBuscarLegajo.Text.Length != 5)
             {
                 MessageBox.Show("El Legajo debe ser un número válido de 5 digitos.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            Entities.Usuario usuario = Business.Usuario.getUsuario(int.Parse(btnBuscarPorLegajo.Text));
+            Entities.Usuario usuario = Business.Usuario.getUsuario(int.Parse(TxtBuscarLegajo.Text));
 
             if (usuario != null)
             {
