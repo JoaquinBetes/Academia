@@ -13,8 +13,11 @@ namespace Business
         { return DB.Usuario.getUsuarioId(legajo); }
         public static int getPersonaId(int legajo)
         { return DB.Usuario.getPersonaId(legajo); }
-        public static Entities.Usuario getUsuario(int legajo)
-        { return DB.Usuario.getUsuario(legajo); }
+        public static Entities.Usuario? getUsuario(int legajo)
+        {
+            if (DB.Usuario.getUsuario(legajo).Legajo == 0) return null;
+            else return DB.Usuario.getUsuario(legajo); 
+        }
         public static Entities.Usuario getUsuario(string nombreUsuario)
         { return DB.Usuario.getUsuario(nombreUsuario); }
         public static List<Entities.Usuario> getDatos()

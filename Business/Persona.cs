@@ -8,8 +8,11 @@ namespace Business
         #region Geters
         public static List<Entities.Persona> getDatos()
         { return DB.Persona.getDatos(); }
-        public static Entities.Persona getPersona(int dni) 
-        { return DB.Persona.getPersona(dni); }
+        public static Entities.Persona? getPersona(int dni) 
+        { 
+            if (DB.Persona.getPersona(dni).DNI == 0) return null;
+            else return DB.Persona.getPersona(dni);
+        }
         public static int getDni(int personaId)
         { return DB.Persona.getDni(personaId); }
         #endregion
