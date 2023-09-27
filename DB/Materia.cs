@@ -125,7 +125,7 @@ namespace DB
         }
         #endregion
         #region Create
-        public static void CreateMateria(string descripcion, int idEspecialidad)
+        public static void CreateMateria(string descripcion, int hsSemanales, int hsTotales, int idP)
         {
             try
             {
@@ -133,15 +133,17 @@ namespace DB
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     // Comando SQL para el INSERT
-                    string sqlInsert = "INSERT INTO Materias (Descripcion, IdEspecialidad) " +
-                                           "VALUES (@desc, @idEsp)";
+                    string sqlInsert = "INSERT INTO Materias (Descripcion, HsSemanales, HsTotales ,IdPlan) " +
+                                           "VALUES (@desc, @ht, @hs, idP)";
 
                     // Crear el SqlCommand con el comando y la conexión
                     using (SqlCommand command = new SqlCommand(sqlInsert, connection))
                     {
                         // Agregar parámetros al comando
                         command.Parameters.AddWithValue("@desc", descripcion);
-                        command.Parameters.AddWithValue("@idEsp", idEspecialidad);
+                        command.Parameters.AddWithValue("@ht", hsSemanales);    
+                        command.Parameters.AddWithValue("@hs", hsTotales);  
+                        command.Parameters.AddWithValue("@idP", idP);
 
                         connection.Open();
 
@@ -169,7 +171,7 @@ namespace DB
             }
         }
         #endregion
-        #region Update
+        #region Update  //VER
         #endregion
         #region Delete
         public static void deleteMateria(int id)
