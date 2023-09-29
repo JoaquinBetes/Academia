@@ -134,7 +134,7 @@ namespace DB
                 {
                     // Comando SQL para el INSERT
                     string sqlInsert = "INSERT INTO Materias (Descripcion, HsSemanales, HsTotales ,IdPlan) " +
-                                           "VALUES (@desc, @ht, @hs, idP)";
+                                           "VALUES (@desc, @ht, @hs, @idP)";
 
                     // Crear el SqlCommand con el comando y la conexión
                     using (SqlCommand command = new SqlCommand(sqlInsert, connection))
@@ -144,23 +144,16 @@ namespace DB
                         command.Parameters.AddWithValue("@ht", hsSemanales);    
                         command.Parameters.AddWithValue("@hs", hsTotales);  
                         command.Parameters.AddWithValue("@idP", idP);
-
-                        connection.Open();
-
-                        // Ejecutar el INSERT
-                        int rowsAffected = command.ExecuteNonQuery();
-
-                        // Verificar si se insertaron filas correctamente
-                        if (rowsAffected > 0)
+                        try
                         {
-                            Console.WriteLine("Inserción exitosa");
+                            connection.Open();
+                            command.ExecuteNonQuery(); // ya se ejecuto la consulta 
+                            connection.Close();
                         }
-                        else
+                        catch (Exception ex)
                         {
-                            Console.WriteLine("No se pudo insertar el registro");
+                            throw new Exception("Error al agregar el usuario" + ex.Message);
                         }
-
-                        connection.Close();
                     }
                 }
             }

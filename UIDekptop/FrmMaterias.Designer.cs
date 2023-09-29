@@ -30,20 +30,71 @@
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DgvPlanes = new DataGridView();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            btnAgregarMateria = new Button();
+            btnEditarMateria = new Button();
+            btnEliminarMateria = new Button();
+            DgvMaterias = new DataGridView();
             ID = new DataGridViewTextBoxColumn();
             Descripcion = new DataGridViewTextBoxColumn();
-            Especialidad = new DataGridViewTextBoxColumn();
-            btnAgregarPlan = new Button();
-            btnEditarPlan = new Button();
-            btnEliminarPlan = new Button();
-            ((System.ComponentModel.ISupportInitialize)DgvPlanes).BeginInit();
+            HsSemanales = new DataGridViewTextBoxColumn();
+            HsTotales = new DataGridViewTextBoxColumn();
+            Plan = new DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)DgvMaterias).BeginInit();
             SuspendLayout();
             // 
-            // DgvPlanes
+            // btnAgregarMateria
             // 
-            DgvPlanes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            DgvPlanes.BackgroundColor = SystemColors.ButtonHighlight;
+            btnAgregarMateria.BackColor = SystemColors.Desktop;
+            btnAgregarMateria.FlatAppearance.BorderSize = 0;
+            btnAgregarMateria.FlatStyle = FlatStyle.Flat;
+            btnAgregarMateria.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnAgregarMateria.ForeColor = SystemColors.ButtonHighlight;
+            btnAgregarMateria.Location = new Point(741, 629);
+            btnAgregarMateria.Margin = new Padding(3, 4, 3, 4);
+            btnAgregarMateria.Name = "btnAgregarMateria";
+            btnAgregarMateria.Size = new Size(151, 31);
+            btnAgregarMateria.TabIndex = 4;
+            btnAgregarMateria.Text = "Agregar Materia";
+            btnAgregarMateria.UseVisualStyleBackColor = false;
+            btnAgregarMateria.Click += btnAgregarMateria_Click;
+            // 
+            // btnEditarMateria
+            // 
+            btnEditarMateria.BackColor = Color.Green;
+            btnEditarMateria.FlatAppearance.BorderSize = 0;
+            btnEditarMateria.FlatStyle = FlatStyle.Flat;
+            btnEditarMateria.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnEditarMateria.ForeColor = SystemColors.ButtonHighlight;
+            btnEditarMateria.Location = new Point(222, 629);
+            btnEditarMateria.Margin = new Padding(3, 4, 3, 4);
+            btnEditarMateria.Name = "btnEditarMateria";
+            btnEditarMateria.Size = new Size(86, 31);
+            btnEditarMateria.TabIndex = 5;
+            btnEditarMateria.Text = "Editar";
+            btnEditarMateria.UseVisualStyleBackColor = false;
+            btnEditarMateria.Click += btnEditarMateria_Click;
+            // 
+            // btnEliminarMateria
+            // 
+            btnEliminarMateria.BackColor = Color.FromArgb(192, 0, 0);
+            btnEliminarMateria.FlatAppearance.BorderSize = 0;
+            btnEliminarMateria.FlatStyle = FlatStyle.Flat;
+            btnEliminarMateria.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnEliminarMateria.ForeColor = SystemColors.ButtonHighlight;
+            btnEliminarMateria.Location = new Point(333, 629);
+            btnEliminarMateria.Margin = new Padding(3, 4, 3, 4);
+            btnEliminarMateria.Name = "btnEliminarMateria";
+            btnEliminarMateria.Size = new Size(86, 31);
+            btnEliminarMateria.TabIndex = 6;
+            btnEliminarMateria.Text = "Eliminar";
+            btnEliminarMateria.UseVisualStyleBackColor = false;
+            btnEliminarMateria.Click += btnEliminarMateria_Click;
+            // 
+            // DgvMaterias
+            // 
+            DgvMaterias.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DgvMaterias.BackgroundColor = SystemColors.ButtonHighlight;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.Control;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -51,9 +102,9 @@
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            DgvPlanes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            DgvPlanes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DgvPlanes.Columns.AddRange(new DataGridViewColumn[] { ID, Descripcion, Especialidad });
+            DgvMaterias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            DgvMaterias.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DgvMaterias.Columns.AddRange(new DataGridViewColumn[] { ID, Descripcion, HsSemanales, HsTotales, Plan });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -61,107 +112,101 @@
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            DgvPlanes.DefaultCellStyle = dataGridViewCellStyle2;
-            DgvPlanes.GridColor = SystemColors.Control;
-            DgvPlanes.Location = new Point(37, 104);
-            DgvPlanes.Name = "DgvPlanes";
-            DgvPlanes.ReadOnly = true;
-            DgvPlanes.RowTemplate.Height = 25;
-            DgvPlanes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            DgvPlanes.Size = new Size(860, 362);
-            DgvPlanes.TabIndex = 0;
+            DgvMaterias.DefaultCellStyle = dataGridViewCellStyle2;
+            DgvMaterias.GridColor = SystemColors.Control;
+            DgvMaterias.Location = new Point(74, 81);
+            DgvMaterias.Margin = new Padding(3, 4, 3, 4);
+            DgvMaterias.Name = "DgvMaterias";
+            DgvMaterias.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            DgvMaterias.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            DgvMaterias.RowHeadersWidth = 51;
+            DgvMaterias.RowTemplate.Height = 25;
+            DgvMaterias.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            DgvMaterias.Size = new Size(983, 483);
+            DgvMaterias.TabIndex = 0;
             // 
             // ID
             // 
+            ID.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             ID.FillWeight = 20F;
             ID.HeaderText = "ID";
+            ID.MinimumWidth = 6;
             ID.Name = "ID";
             ID.ReadOnly = true;
+            ID.Width = 44;
             // 
             // Descripcion
             // 
+            Descripcion.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             Descripcion.HeaderText = "Descripcion";
+            Descripcion.MinimumWidth = 6;
             Descripcion.Name = "Descripcion";
             Descripcion.ReadOnly = true;
+            Descripcion.Width = 222;
             // 
-            // Especialidad
+            // HsSemanales
             // 
-            Especialidad.HeaderText = "Especialidad";
-            Especialidad.Name = "Especialidad";
-            Especialidad.ReadOnly = true;
+            HsSemanales.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            HsSemanales.HeaderText = "HsSemanales";
+            HsSemanales.MinimumWidth = 6;
+            HsSemanales.Name = "HsSemanales";
+            HsSemanales.ReadOnly = true;
+            HsSemanales.Width = 221;
             // 
-            // btnAgregarPlan
+            // HsTotales
             // 
-            btnAgregarPlan.BackColor = SystemColors.Desktop;
-            btnAgregarPlan.FlatAppearance.BorderSize = 0;
-            btnAgregarPlan.FlatStyle = FlatStyle.Flat;
-            btnAgregarPlan.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnAgregarPlan.ForeColor = SystemColors.ButtonHighlight;
-            btnAgregarPlan.Location = new Point(648, 472);
-            btnAgregarPlan.Name = "btnAgregarPlan";
-            btnAgregarPlan.Size = new Size(132, 23);
-            btnAgregarPlan.TabIndex = 4;
-            btnAgregarPlan.Text = "Agregar Plan";
-            btnAgregarPlan.UseVisualStyleBackColor = false;
-            btnAgregarPlan.Click += btnAgregarPlan_Click;
+            HsTotales.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            HsTotales.HeaderText = "HsTotales";
+            HsTotales.MinimumWidth = 6;
+            HsTotales.Name = "HsTotales";
+            HsTotales.ReadOnly = true;
+            HsTotales.Width = 222;
             // 
-            // btnEditarPlan
+            // Plan
             // 
-            btnEditarPlan.BackColor = Color.Green;
-            btnEditarPlan.FlatAppearance.BorderSize = 0;
-            btnEditarPlan.FlatStyle = FlatStyle.Flat;
-            btnEditarPlan.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnEditarPlan.ForeColor = SystemColors.ButtonHighlight;
-            btnEditarPlan.Location = new Point(194, 472);
-            btnEditarPlan.Name = "btnEditarPlan";
-            btnEditarPlan.Size = new Size(75, 23);
-            btnEditarPlan.TabIndex = 5;
-            btnEditarPlan.Text = "Editar";
-            btnEditarPlan.UseVisualStyleBackColor = false;
-            btnEditarPlan.Click += btnEditarPlan_Click;
+            Plan.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Plan.HeaderText = "Plan";
+            Plan.MinimumWidth = 6;
+            Plan.Name = "Plan";
+            Plan.ReadOnly = true;
+            Plan.Width = 221;
             // 
-            // btnEliminarPlan
+            // FrmMaterias
             // 
-            btnEliminarPlan.BackColor = Color.FromArgb(192, 0, 0);
-            btnEliminarPlan.FlatAppearance.BorderSize = 0;
-            btnEliminarPlan.FlatStyle = FlatStyle.Flat;
-            btnEliminarPlan.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnEliminarPlan.ForeColor = SystemColors.ButtonHighlight;
-            btnEliminarPlan.Location = new Point(291, 472);
-            btnEliminarPlan.Name = "btnEliminarPlan";
-            btnEliminarPlan.Size = new Size(75, 23);
-            btnEliminarPlan.TabIndex = 6;
-            btnEliminarPlan.Text = "Eliminar";
-            btnEliminarPlan.UseVisualStyleBackColor = false;
-            btnEliminarPlan.Click += btnEliminarPlan_Click;
-            // 
-            // FrmPlanes
-            // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonFace;
-            ClientSize = new Size(985, 602);
-            Controls.Add(btnEliminarPlan);
-            Controls.Add(btnEditarPlan);
-            Controls.Add(btnAgregarPlan);
-            Controls.Add(DgvPlanes);
+            ClientSize = new Size(1126, 803);
+            Controls.Add(btnEliminarMateria);
+            Controls.Add(btnEditarMateria);
+            Controls.Add(btnAgregarMateria);
+            Controls.Add(DgvMaterias);
             Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FrmMaterias";
-            Text = "MAterias";
-            Load += FrmPlanes_Load;
-            ((System.ComponentModel.ISupportInitialize)DgvPlanes).EndInit();
+            Text = "Materias";
+            Load += FrmMaterias_Load;
+            ((System.ComponentModel.ISupportInitialize)DgvMaterias).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private DataGridView DgvPlanes;
-        private Button btnAgregarPlan;
-        private Button btnEditarPlan;
-        private Button btnEliminarPlan;
+        private Button btnAgregarMateria;
+        private Button btnEditarMateria;
+        private Button btnEliminarMateria;
+        private DataGridView DgvMaterias;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn Descripcion;
-        private DataGridViewTextBoxColumn Especialidad;
+        private DataGridViewTextBoxColumn HsSemanales;
+        private DataGridViewTextBoxColumn HsTotales;
+        private DataGridViewTextBoxColumn Plan;
     }
 }

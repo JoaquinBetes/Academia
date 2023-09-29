@@ -11,62 +11,74 @@ using System.Windows.Forms;
 
 namespace UIDesktop
 {
-    public partial class FrmMateria  : Form
+    public partial class FrmMateria : Form
     {
         private bool edicion = false;
+
         public FrmMateria()
         {
             InitializeComponent();
-            //llenar combobox
-            List<Entities.Especialidad> especialidades = Business.Especialidad.Get();
-            cmbEspecialidades.DataSource = especialidades;
-            cmbEspecialidades.DisplayMember = "Descripcion";
-            cmbEspecialidades.ValueMember = "idEspecialidad";
+            // Llenar combobox
+            List<Entities.Plan> planes = Business.Plan.getAll();
+            cmbPlanes.DataSource = planes;
+            cmbPlanes.DisplayMember = "Descripcion";
+            cmbPlanes.ValueMember = "IdPlan";
         }
 
-        public FrmMateria(Entities.Plan plan)
+        public FrmMateria(Entities.Materia materia)
         {
             InitializeComponent();
-            //llenar combobox
-            List<Entities.Especialidad> especialidades = Business.Especialidad.Get();
-            cmbEspecialidades.DataSource = especialidades;
-            cmbEspecialidades.DisplayMember = "Descripcion";
-            cmbEspecialidades.ValueMember = "idEspecialidad";
+            // Llenar combobox
+            List<Entities.Plan> planes = Business.Plan.getAll();
+            cmbPlanes.DataSource = planes;
+            cmbPlanes.DisplayMember = "Descripcion";
+            cmbPlanes.ValueMember = "IdPlan";
 
             this.edicion = true;
-            txtDescripcion.Text = plan.Descripcion.ToString();
+            txtDescripcion.Text = materia.Descripcion.ToString();
+            txtHS.Text = materia.HsSemanales.ToString();
+            txtHT.Text = materia.HsTotales.ToString();
         }
 
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtDescripcion.Text))
-            {
-                MessageBox.Show("Se requiere una descripcion.", "Error de validacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            //if (string.IsNullOrEmpty(txtDescripcion.Text))
+            //{
+            //    MessageBox.Show("Se requiere una descripción.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
 
-            if (cmbEspecialidades.SelectedItem == null)
-            {
-                MessageBox.Show("Debe seleccionar una especialidad.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            //if (cmbPlanes.SelectedItem == null)
+            //{
+            //    MessageBox.Show("Debe seleccionar un plan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
 
-            if (!edicion)
-            {
-                if (Business.Plan.PlanExists(txtDescripcion.Text.ToString(), (int)cmbEspecialidades.SelectedValue))
-                {
-                    MessageBox.Show("Ya existe un Plan con esa descripcion y especialidad.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-            }
+            //if (!edicion)
+            //{
+            //    if (Business.Materia.MateriaExists(txtDescripcion.Text.ToString(), (int)cmbPlanes.SelectedValue))
+            //    {
+            //        MessageBox.Show("Ya existe una Materia con esa descripción y plan.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //        return;
+            //    }
+            //}
+            Console.WriteLine("id plan: " + cmbPlanes.SelectedValue);
+            Console.WriteLine("descripcion: " + txtDescripcion.Text);
+            Console.WriteLine("hs semanales: " + txtHS.Text);
+            Console.WriteLine("hs totales: " + txtHT.Text);
 
-            Business.Plan.createPlan(txtDescripcion.Text.ToString(), (int)cmbEspecialidades.SelectedValue);
+            Business.Materia.createMateria(txtDescripcion.Text.ToString(), int.Parse(txtHS.Text), int.Parse(txtHT.Text), (int)cmbPlanes.SelectedValue);
             this.Close();
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -19,61 +19,64 @@ namespace UIDesktop
             InitializeComponent();
         }
 
-        private void CargarPlanes()
+        private void CargarMaterias()
         {
-            List<Entities.Plan> planes = Business.Plan.getAll();
-            if (planes != null)
+            List<Entities.Materia> materias = Business.Materia.getAll();
+            if (materias != null)
             {
-                DgvPlanes.Rows.Clear();
-                foreach (Entities.Plan plan in planes)
+                DgvMaterias.Rows.Clear();
+                foreach (Entities.Materia materia in materias)
                 {
-                    string descripcionEsp = Business.Especialidad.Get(plan.IdEspecialidad).Descripcion;
-                    DgvPlanes.Rows.Add(plan.IdPlan, plan.Descripcion, descripcionEsp);
+                    string descripcionPlan = Business.Plan.getById(materia.IdPlan).Descripcion;
+                    DgvMaterias.Rows.Add(materia.IdMateria, materia.Descripcion, materia.HsSemanales, materia.HsTotales, descripcionPlan);
                 }
             }
         }
-        private void FrmPlanes_Load(object sender, EventArgs e)
+
+        private void FrmMaterias_Load(object sender, EventArgs e)
         {
-            CargarPlanes();
+            CargarMaterias();
         }
 
-        private void btnAgregarPlan_Click(object sender, EventArgs e)
+        private void btnAgregarMateria_Click(object sender, EventArgs e)
         {
-            using (var modalform = new FrmPlan())
+            using (var modalform = new FrmMateria())
             {
                 modalform.ShowDialog();
-                CargarPlanes();
+                CargarMaterias();
             }
         }
 
-        private void btnEditarPlan_Click(object sender, EventArgs e)
+        private void btnEditarMateria_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in DgvPlanes.SelectedRows)
-            {
-                int id = Convert.ToInt32(row.Cells["ID"].Value);
-                Entities.Plan plan = Business.Plan.getById(id);
-                using (var modalForm = new FrmPlan(plan))
-                {
-                    // Mostrar el formulario modal como un diálogo
-                    modalForm.ShowDialog();
-                }
-            }
-            CargarPlanes();
+            //foreach (DataGridViewRow row in DgvMaterias.SelectedRows)
+            //{
+            //    int id = Convert.ToInt32(row.Cells["ID"].Value);
+            //    Entities.Materia materia = Business.Materia.getById(id);
+            //    using (var modalForm = new FrmMateria(materia))
+            //    {
+            //        // Mostrar el formulario modal como un diálogo
+            //        modalForm.ShowDialog();
+            //    }
+            //}
+            //CargarMaterias();
         }
 
-        private void btnEliminarPlan_Click(object sender, EventArgs e)
+        private void btnEliminarMateria_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("¿Esta seguro?", "Confirmar Eliminacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("¿Está seguro?", "Confirmar Eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
-                foreach (DataGridViewRow row in DgvPlanes.SelectedRows)
+                foreach (DataGridViewRow row in DgvMaterias.SelectedRows)
                 {
                     int id = Convert.ToInt32(row.Cells["ID"].Value);
-                    Business.Plan.deletePlan(id);
+                    Business.Materia.deleteMateria(id);
                 }
             }
-            CargarPlanes();
+            CargarMaterias();
         }
+
+
     }
 }
