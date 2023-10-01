@@ -50,6 +50,17 @@ namespace UIDesktop
             OpenChild(new FrmPlanes());
         }
 
+        private void maToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materiasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChild(new FrmMaterias());
+
+        }
+
         private void comisionesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenChild(new FrmComisiones());
