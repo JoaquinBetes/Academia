@@ -19,36 +19,35 @@ namespace UIDesktop
             InitializeComponent();
         }
 
-        private void CargarPlanes()
+        private void CargarComisiones()
         {
-            List<Entities.Plan> planes = Business.Plan.getAll();
-            if (planes != null)
+            List<Entities.Comision> comisiones = Business.Comision.GetAll();
+            if (comisiones != null)
             {
-                DgvPlanes.Rows.Clear();
-                foreach (Entities.Plan plan in planes)
+                DgvComisiones.Rows.Clear();
+                foreach (Entities.Comision comision in comisiones)
                 {
-                    string descripcionEsp = Business.Especialidad.Get(plan.IdEspecialidad).Descripcion;
-                    DgvPlanes.Rows.Add(plan.IdPlan, plan.Descripcion, descripcionEsp);
+                    DgvComisiones.Rows.Add(comision.IdComision, comision.Descripcion, comision.AnioEspecialidad, comision.IDPlan);
                 }
             }
         }
         private void FrmPlanes_Load(object sender, EventArgs e)
         {
-            CargarPlanes();
+            CargarComisiones();
         }
 
-        private void btnAgregarPlan_Click(object sender, EventArgs e)
+        private void btnAgregarComision_Click(object sender, EventArgs e)
         {
             using (var modalform = new FrmPlan())
             {
                 modalform.ShowDialog();
-                CargarPlanes();
+                CargarComisiones();
             }
         }
 
-        private void btnEditarPlan_Click(object sender, EventArgs e)
+        private void btnEditarComision_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in DgvPlanes.SelectedRows)
+            foreach (DataGridViewRow row in DgvComisiones.SelectedRows)
             {
                 int id = Convert.ToInt32(row.Cells["ID"].Value);
                 Entities.Plan plan = Business.Plan.getById(id);
@@ -58,22 +57,22 @@ namespace UIDesktop
                     modalForm.ShowDialog();
                 }
             }
-            CargarPlanes();
+            CargarComisiones();
         }
 
-        private void btnEliminarPlan_Click(object sender, EventArgs e)
+        private void btnEliminarComision_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("¿Esta seguro?", "Confirmar Eliminacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
-                foreach (DataGridViewRow row in DgvPlanes.SelectedRows)
+                foreach (DataGridViewRow row in DgvComisiones.SelectedRows)
                 {
                     int id = Convert.ToInt32(row.Cells["ID"].Value);
-                    Business.Plan.deletePlan(id);
+                    Business.Comision.DeleteComision(id);
                 }
             }
-            CargarPlanes();
+            CargarComisiones();
         }
     }
 }

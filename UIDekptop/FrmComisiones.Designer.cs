@@ -30,20 +30,21 @@
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DgvPlanes = new DataGridView();
+            DgvComisiones = new DataGridView();
+            btnAgregarComision = new Button();
+            btnEditarComision = new Button();
+            btnEliminarComision = new Button();
             ID = new DataGridViewTextBoxColumn();
             Descripcion = new DataGridViewTextBoxColumn();
-            Especialidad = new DataGridViewTextBoxColumn();
-            btnAgregarPlan = new Button();
-            btnEditarPlan = new Button();
-            btnEliminarPlan = new Button();
-            ((System.ComponentModel.ISupportInitialize)DgvPlanes).BeginInit();
+            AnioEspecialidad = new DataGridViewTextBoxColumn();
+            IDPlan = new DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)DgvComisiones).BeginInit();
             SuspendLayout();
             // 
-            // DgvPlanes
+            // DgvComisiones
             // 
-            DgvPlanes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            DgvPlanes.BackgroundColor = SystemColors.ButtonHighlight;
+            DgvComisiones.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DgvComisiones.BackgroundColor = SystemColors.ButtonHighlight;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.Control;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -51,9 +52,9 @@
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            DgvPlanes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            DgvPlanes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DgvPlanes.Columns.AddRange(new DataGridViewColumn[] { ID, Descripcion, Especialidad });
+            DgvComisiones.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            DgvComisiones.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DgvComisiones.Columns.AddRange(new DataGridViewColumn[] { ID, Descripcion, AnioEspecialidad, IDPlan });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -61,15 +62,60 @@
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            DgvPlanes.DefaultCellStyle = dataGridViewCellStyle2;
-            DgvPlanes.GridColor = SystemColors.Control;
-            DgvPlanes.Location = new Point(37, 104);
-            DgvPlanes.Name = "DgvPlanes";
-            DgvPlanes.ReadOnly = true;
-            DgvPlanes.RowTemplate.Height = 25;
-            DgvPlanes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            DgvPlanes.Size = new Size(860, 362);
-            DgvPlanes.TabIndex = 0;
+            DgvComisiones.DefaultCellStyle = dataGridViewCellStyle2;
+            DgvComisiones.GridColor = SystemColors.Control;
+            DgvComisiones.Location = new Point(37, 104);
+            DgvComisiones.Name = "DgvComisiones";
+            DgvComisiones.ReadOnly = true;
+            DgvComisiones.RowTemplate.Height = 25;
+            DgvComisiones.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            DgvComisiones.Size = new Size(860, 362);
+            DgvComisiones.TabIndex = 0;
+            // 
+            // btnAgregarComision
+            // 
+            btnAgregarComision.BackColor = SystemColors.Desktop;
+            btnAgregarComision.FlatAppearance.BorderSize = 0;
+            btnAgregarComision.FlatStyle = FlatStyle.Flat;
+            btnAgregarComision.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnAgregarComision.ForeColor = SystemColors.ButtonHighlight;
+            btnAgregarComision.Location = new Point(648, 472);
+            btnAgregarComision.Name = "btnAgregarComision";
+            btnAgregarComision.Size = new Size(132, 23);
+            btnAgregarComision.TabIndex = 4;
+            btnAgregarComision.Text = "Agregar Comision";
+            btnAgregarComision.UseVisualStyleBackColor = false;
+            btnAgregarComision.Click += btnAgregarComision_Click;
+            // 
+            // btnEditarComision
+            // 
+            btnEditarComision.BackColor = Color.Green;
+            btnEditarComision.FlatAppearance.BorderSize = 0;
+            btnEditarComision.FlatStyle = FlatStyle.Flat;
+            btnEditarComision.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnEditarComision.ForeColor = SystemColors.ButtonHighlight;
+            btnEditarComision.Location = new Point(194, 472);
+            btnEditarComision.Name = "btnEditarComision";
+            btnEditarComision.Size = new Size(75, 23);
+            btnEditarComision.TabIndex = 5;
+            btnEditarComision.Text = "Editar";
+            btnEditarComision.UseVisualStyleBackColor = false;
+            btnEditarComision.Click += btnEditarComision_Click;
+            // 
+            // btnEliminarComision
+            // 
+            btnEliminarComision.BackColor = Color.FromArgb(192, 0, 0);
+            btnEliminarComision.FlatAppearance.BorderSize = 0;
+            btnEliminarComision.FlatStyle = FlatStyle.Flat;
+            btnEliminarComision.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnEliminarComision.ForeColor = SystemColors.ButtonHighlight;
+            btnEliminarComision.Location = new Point(291, 472);
+            btnEliminarComision.Name = "btnEliminarComision";
+            btnEliminarComision.Size = new Size(75, 23);
+            btnEliminarComision.TabIndex = 6;
+            btnEliminarComision.Text = "Eliminar";
+            btnEliminarComision.UseVisualStyleBackColor = false;
+            btnEliminarComision.Click += btnEliminarComision_Click;
             // 
             // ID
             // 
@@ -84,84 +130,46 @@
             Descripcion.Name = "Descripcion";
             Descripcion.ReadOnly = true;
             // 
-            // Especialidad
+            // AnioEspecialidad
             // 
-            Especialidad.HeaderText = "Especialidad";
-            Especialidad.Name = "Especialidad";
-            Especialidad.ReadOnly = true;
+            AnioEspecialidad.HeaderText = "AnioEspecialidad";
+            AnioEspecialidad.Name = "AnioEspecialidad";
+            AnioEspecialidad.ReadOnly = true;
             // 
-            // btnAgregarPlan
+            // IDPlan
             // 
-            btnAgregarPlan.BackColor = SystemColors.Desktop;
-            btnAgregarPlan.FlatAppearance.BorderSize = 0;
-            btnAgregarPlan.FlatStyle = FlatStyle.Flat;
-            btnAgregarPlan.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnAgregarPlan.ForeColor = SystemColors.ButtonHighlight;
-            btnAgregarPlan.Location = new Point(648, 472);
-            btnAgregarPlan.Name = "btnAgregarPlan";
-            btnAgregarPlan.Size = new Size(132, 23);
-            btnAgregarPlan.TabIndex = 4;
-            btnAgregarPlan.Text = "Agregar Plan";
-            btnAgregarPlan.UseVisualStyleBackColor = false;
-            btnAgregarPlan.Click += btnAgregarPlan_Click;
+            IDPlan.HeaderText = "IDPlan";
+            IDPlan.Name = "IDPlan";
+            IDPlan.ReadOnly = true;
             // 
-            // btnEditarPlan
-            // 
-            btnEditarPlan.BackColor = Color.Green;
-            btnEditarPlan.FlatAppearance.BorderSize = 0;
-            btnEditarPlan.FlatStyle = FlatStyle.Flat;
-            btnEditarPlan.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnEditarPlan.ForeColor = SystemColors.ButtonHighlight;
-            btnEditarPlan.Location = new Point(194, 472);
-            btnEditarPlan.Name = "btnEditarPlan";
-            btnEditarPlan.Size = new Size(75, 23);
-            btnEditarPlan.TabIndex = 5;
-            btnEditarPlan.Text = "Editar";
-            btnEditarPlan.UseVisualStyleBackColor = false;
-            btnEditarPlan.Click += btnEditarPlan_Click;
-            // 
-            // btnEliminarPlan
-            // 
-            btnEliminarPlan.BackColor = Color.FromArgb(192, 0, 0);
-            btnEliminarPlan.FlatAppearance.BorderSize = 0;
-            btnEliminarPlan.FlatStyle = FlatStyle.Flat;
-            btnEliminarPlan.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnEliminarPlan.ForeColor = SystemColors.ButtonHighlight;
-            btnEliminarPlan.Location = new Point(291, 472);
-            btnEliminarPlan.Name = "btnEliminarPlan";
-            btnEliminarPlan.Size = new Size(75, 23);
-            btnEliminarPlan.TabIndex = 6;
-            btnEliminarPlan.Text = "Eliminar";
-            btnEliminarPlan.UseVisualStyleBackColor = false;
-            btnEliminarPlan.Click += btnEliminarPlan_Click;
-            // 
-            // FrmPlanes
+            // FrmComisiones
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonFace;
             ClientSize = new Size(985, 602);
-            Controls.Add(btnEliminarPlan);
-            Controls.Add(btnEditarPlan);
-            Controls.Add(btnAgregarPlan);
-            Controls.Add(DgvPlanes);
+            Controls.Add(btnEliminarComision);
+            Controls.Add(btnEditarComision);
+            Controls.Add(btnAgregarComision);
+            Controls.Add(DgvComisiones);
             Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "FrmPlanes";
+            Name = "FrmComisiones";
             Text = "FrmPersonas";
             Load += FrmPlanes_Load;
-            ((System.ComponentModel.ISupportInitialize)DgvPlanes).EndInit();
+            ((System.ComponentModel.ISupportInitialize)DgvComisiones).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private DataGridView DgvPlanes;
-        private Button btnAgregarPlan;
-        private Button btnEditarPlan;
-        private Button btnEliminarPlan;
+        private DataGridView DgvComisiones;
+        private Button btnAgregarComision;
+        private Button btnEditarComision;
+        private Button btnEliminarComision;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn Descripcion;
-        private DataGridViewTextBoxColumn Especialidad;
+        private DataGridViewTextBoxColumn AnioEspecialidad;
+        private DataGridViewTextBoxColumn IDPlan;
     }
 }

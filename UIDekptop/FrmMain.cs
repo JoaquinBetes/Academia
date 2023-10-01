@@ -49,5 +49,10 @@ namespace UIDesktop
         {
             OpenChild(new FrmPlanes());
         }
+
+        private void comisionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChild(new FrmComisiones());
+        }
     }
 }
