@@ -24,6 +24,10 @@ namespace Business
         }
         #endregion
         #region Update
+        public static void updateMateria(Entities.Materia materia)
+        {
+            DB.Materia.UpdateMateria(materia);
+        }       
         #endregion
         #region Delete
         public static void deleteMateria(int id)

@@ -14,6 +14,8 @@ namespace UIDesktop
     public partial class FrmMateria : Form
     {
         private bool edicion = false;
+        private Entities.Materia materia = new Entities.Materia();
+
 
         public FrmMateria()
         {
@@ -35,6 +37,7 @@ namespace UIDesktop
             cmbPlanes.ValueMember = "IdPlan";
 
             this.edicion = true;
+            this.materia = materia;
             txtDescripcion.Text = materia.Descripcion.ToString();
             txtHS.Text = materia.HsSemanales.ToString();
             txtHT.Text = materia.HsTotales.ToString();
@@ -42,32 +45,41 @@ namespace UIDesktop
 
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
-            //if (string.IsNullOrEmpty(txtDescripcion.Text))
-            //{
-            //    MessageBox.Show("Se requiere una descripción.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return;
-            //}
+            if (string.IsNullOrEmpty(txtDescripcion.Text))
+            {
+                MessageBox.Show("Se requiere una descripción.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-            //if (cmbPlanes.SelectedItem == null)
-            //{
-            //    MessageBox.Show("Debe seleccionar un plan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return;
-            //}
+            if (cmbPlanes.SelectedItem == null)
+            {
+                MessageBox.Show("Debe seleccionar un plan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (Business.Materia.MateriaExists(txtDescripcion.Text.ToString(), (int)cmbPlanes.SelectedValue))
+            {
+                MessageBox.Show("Ya existe una Materia con esa descripción y plan.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-            //if (!edicion)
-            //{
-            //    if (Business.Materia.MateriaExists(txtDescripcion.Text.ToString(), (int)cmbPlanes.SelectedValue))
-            //    {
-            //        MessageBox.Show("Ya existe una Materia con esa descripción y plan.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        return;
-            //    }
-            //}
-            Console.WriteLine("id plan: " + cmbPlanes.SelectedValue);
-            Console.WriteLine("descripcion: " + txtDescripcion.Text);
-            Console.WriteLine("hs semanales: " + txtHS.Text);
-            Console.WriteLine("hs totales: " + txtHT.Text);
+            if (!edicion)
+            {
+                Business.Materia.createMateria(txtDescripcion.Text.ToString(), int.Parse(txtHS.Text), int.Parse(txtHT.Text), (int)cmbPlanes.SelectedValue);
+            }
+            else
+            {
+                materia.IdMateria =materia.IdMateria; // Debes implementar un método para obtener el ID de la materia que deseas actualizar.
+                materia.Descripcion = txtDescripcion.Text;
+                materia.HsSemanales = Convert.ToInt32(txtHS.Text);
+                materia.HsTotales = Convert.ToInt32(txtHT.Text);
+                materia.IdPlan = (int)cmbPlanes.SelectedValue; // Debes implementar un método para obtener el ID del plan asociado.
 
-            Business.Materia.createMateria(txtDescripcion.Text.ToString(), int.Parse(txtHS.Text), int.Parse(txtHT.Text), (int)cmbPlanes.SelectedValue);
+                Business.Materia.updateMateria(materia);
+               
+            }
+
+
+           
             this.Close();
         }
 

@@ -87,6 +87,42 @@ namespace DB
             }
             return materia;
         }
+        public static int getMateriaId(int idMateria)
+        {
+            int id = 0;
+            try
+            {
+                // Crear la SqlConnection
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    // Comando SQL para la consulta
+                    string sqlQuery = "SELECT * FROM Materias WHERE IdMateria = @idMateria";
+
+                    // Crear el SqlCommand con el comando y la conexión
+                    SqlCommand command = new SqlCommand(sqlQuery, connection);
+
+                    // Agregar parámetros al comando
+                    command.Parameters.AddWithValue("@idMateria", idMateria);
+
+                    connection.Open();
+
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        id = Convert.ToInt32(reader["MateriaId"]);
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar errores si ocurre alguno al intentar conectarse a la base de datos.
+                Console.WriteLine("Error al conectar a la base de datos: " + ex.Message);
+            }
+            return id;
+        }
 
         public static Entities.Materia getById(int id)
         {
@@ -164,7 +200,50 @@ namespace DB
             }
         }
         #endregion
-        #region Update  //VER
+        #region Update 
+        public static void UpdateMateria(Entities.Materia materia)
+        {
+            
+
+            try
+            {
+                // Crear la SqlConnection
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    // Comando SQL para el UPDATE
+                    string sqlQuery = "UPDATE Materias SET Descripcion = @descripcion, HsSemanales = @hsSemanales, HsTotales = @hsTotales, IdPlan = @idPlan WHERE IdMateria = @id";
+
+                    // Crear el SqlCommand con el comando y la conexión
+                    SqlCommand command = new SqlCommand(sqlQuery, connection);
+
+                    // Agregar parámetros al comando
+                    command.Parameters.AddWithValue("@descripcion", materia.Descripcion);
+                    command.Parameters.AddWithValue("@hsSemanales", materia.HsSemanales);
+                    command.Parameters.AddWithValue("@hsTotales", materia.HsTotales);
+                    command.Parameters.AddWithValue("@idPlan", materia.IdPlan);
+                    command.Parameters.AddWithValue("@id",materia.IdMateria);
+
+                    connection.Open();
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error al actualizar la base de datos: " + ex.Message);
+                    }
+                    finally
+                    {
+                        connection.Close();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar errores si ocurre alguno al intentar conectarse a la base de datos.
+                Console.WriteLine("Error al conectar a la base de datos: " + ex.Message);
+            }
+        }
         #endregion
         #region Delete
         public static void deleteMateria(int id)

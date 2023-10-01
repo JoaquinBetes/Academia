@@ -49,17 +49,17 @@ namespace UIDesktop
 
         private void btnEditarMateria_Click(object sender, EventArgs e)
         {
-            //foreach (DataGridViewRow row in DgvMaterias.SelectedRows)
-            //{
-            //    int id = Convert.ToInt32(row.Cells["ID"].Value);
-            //    Entities.Materia materia = Business.Materia.getById(id);
-            //    using (var modalForm = new FrmMateria(materia))
-            //    {
-            //        // Mostrar el formulario modal como un diálogo
-            //        modalForm.ShowDialog();
-            //    }
-            //}
-            //CargarMaterias();
+            foreach (DataGridViewRow row in DgvMaterias.SelectedRows)
+            {
+                int id = Convert.ToInt32(row.Cells["ID"].Value);
+                Entities.Materia materia = Business.Materia.getById(id);
+                using (var modalForm = new FrmMateria(materia))
+                {
+                    // Mostrar el formulario modal como un diálogo
+                    modalForm.ShowDialog();
+                }
+            }
+            CargarMaterias();
         }
 
         private void btnEliminarMateria_Click(object sender, EventArgs e)
