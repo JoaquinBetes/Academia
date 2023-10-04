@@ -8,9 +8,10 @@ namespace Entities
 {
     public class Modulo
     {
+        public int Id { get; set; }
         public string Descripcion { get; set; }
 
-        public Modulo( string descripcion) 
+        public Modulo(int id, string descripcion) 
         {
             this.Descripcion = descripcion;
         }
