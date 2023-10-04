@@ -15,7 +15,16 @@ namespace UIDesktop
     {
         private bool edicion = false;
         private Entities.Materia materia = new Entities.Materia();
+        public class PlanComboBoxItem
+        {
+            public int IdPlan { get; set; }
+            public string DescripcionPlan { get; set; }
 
+            public override string ToString()
+            {
+                return DescripcionPlan;
+            }
+        }
 
         public FrmMateria()
         {
@@ -23,17 +32,18 @@ namespace UIDesktop
 
             // Llenar combobox
             List<Entities.Plan> planes = Business.Plan.getAll();
-            List<Tuple<string, Entities.Plan>> values = new List<Tuple<string, Entities.Plan>>();
+            List<PlanComboBoxItem> planItems = new List<PlanComboBoxItem>();
 
-            // Llenar la lista "values" con planes y especialidades
-            
             foreach (var plan in planes)
             {
-                values.Add(new Tuple<string, Entities.Plan>(Business.Especialidad.Get(plan.IdEspecialidad).Descripcion, plan));
-            
+                planItems.Add(new PlanComboBoxItem
+                {
+                    IdPlan = plan.IdPlan,
+                    DescripcionPlan = Business.Especialidad.Get(plan.IdEspecialidad).Descripcion
+                });
             }
 
-            cmbPlanes.DataSource = values;
+            cmbPlanes.DataSource = planItems;
             cmbPlanes.DisplayMember = "Item2.Descripcion"; // Muestra la descripción del plan
             cmbPlanes.ValueMember = "Item1"; // El valor seleccionado será el índice
         }
