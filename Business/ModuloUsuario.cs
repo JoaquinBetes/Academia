@@ -15,7 +15,7 @@ namespace Business
         }
         #endregion
         #region Create
-        public static void CreateModulosUsuario( string tipo, int IdUsuario, bool Alta, bool Baja, bool Modificacion, bool Consulta)
+        public static void CreateModulosUsuario( string tipo, int IdUsuario)
         {
             List<Entities.Modulo> modulos = Business.Modulo.getModulos();
             foreach (Entities.Modulo modulo in modulos) 

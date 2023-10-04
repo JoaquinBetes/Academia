@@ -170,7 +170,7 @@ namespace DB
                         }
                         connection.Close();
                     }
-                    
+
                 }
             }
             catch (Exception ex)
@@ -272,3 +272,5 @@ namespace DB
             }
         }
         #endregion
+    }
+}

@@ -114,16 +114,17 @@ namespace UIDekptop
             }
             if (!Business.Usuario.LegajoUsuarioExists(int.Parse(TxtLegajo.Text)))
             {
-                if (existePersona == false)
+                if (existePersona == false) // Se esta crando  persona y usuario por 1° vez.
                 {
                     Business.Persona.CreatePersona(this.dni, this.nombre, this.apellido, this.telefono, this.direccion, this.email, this.fechaNacimiento);
                     persona = Business.Persona.getPersona(this.dni);
                     Business.Usuario.CreateUsuario(TxtNombreUsuario.Text, TxtClave.Text, CmbTipoUsuario.Text, true, this.dni, persona.PersonaId, int.Parse(TxtLegajo.Text));
-                    Business.ModuloUsuario.CreateModuloUsuario(CmbTipoUsuario.Text, Business.Usuario.getUsuarioId(int.Parse(TxtLegajo.Text), );
+                    Business.ModuloUsuario.CreateModulosUsuario(CmbTipoUsuario.Text, Business.Usuario.getUsuarioId(int.Parse(TxtLegajo.Text)));
                 }
-                else
+                else // Se esta creando usuario para persona ya creada.
                 {
                     Business.Usuario.CreateUsuario(TxtNombreUsuario.Text, TxtClave.Text, CmbTipoUsuario.Text, true, this.dni, this.personaId, int.Parse(TxtLegajo.Text));
+                    Business.ModuloUsuario.CreateModulosUsuario(CmbTipoUsuario.Text, Business.Usuario.getUsuarioId(int.Parse(TxtLegajo.Text)));
                 }
             }
             else
