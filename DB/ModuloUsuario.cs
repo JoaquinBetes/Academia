@@ -32,12 +32,12 @@ namespace DB
                     
                     while ( reader.Read() )
                     {
-                        int idModulo = Convert.ToInt32(reader["IdModuloUsuario"]);
+                        int idModuloUsuario = Convert.ToInt32(reader["IdModuloUsuario"]);
                         bool alta = Convert.ToInt32(reader["Alta"]) != 0;
                         bool baja = Convert.ToInt32(reader["Baja"]) != 0;
                         bool modificacion = Convert.ToInt32(reader["Modificacion"]) != 0;
                         bool consulta = Convert.ToInt32(reader["Consulta"]) != 0;
-                        Entities.ModuloUsuario moduloUsuario = new Entities.ModuloUsuario(idModulo, alta, baja, modificacion, consulta);
+                        Entities.ModuloUsuario moduloUsuario = new Entities.ModuloUsuario(idModuloUsuario, alta, baja, modificacion, consulta);
                         modulosUsuario.Add(moduloUsuario);
                     }
                     connection.Close();
@@ -54,7 +54,7 @@ namespace DB
         #endregion
 
         #region Create
-        public static void CreateModuloUsuario(int IdModuloUsuario, int IdModulo, int IdUsuario,  bool Alta, bool Baja, bool Modificacion, bool Consulta)
+        public static void CreateModuloUsuario( int IdModulo, int IdUsuario,  bool Alta, bool Baja, bool Modificacion, bool Consulta)
         {
             try
             {
@@ -62,14 +62,13 @@ namespace DB
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     // Comando SQL para el INSERT
-                    string sqlInsert = "INSERT INTO Modulos_Usuarios (IdModuloUsuario, IdModulo, IdUsuario, Alta, Baja, Modificacion, Consulta) " +
-                                       "VALUES (@IdModuloUsuario, @IdModulo, @IdUsuario, @Alta, @Baja, @Modificacion, @Consulta)";
+                    string sqlInsert = "INSERT INTO Modulos_Usuarios ( IdModulo, IdUsuario, Alta, Baja, Modificacion, Consulta) " +
+                                       "VALUES ( @IdModulo, @IdUsuario, @Alta, @Baja, @Modificacion, @Consulta)";
 
                     // Crear el SqlCommand con el comando y la conexión
                     using (SqlCommand command = new SqlCommand(sqlInsert, connection))
                     {
                         // Agregar parámetros al comando
-                        command.Parameters.AddWithValue("@IdModuloUsuario", IdModuloUsuario);
                         command.Parameters.AddWithValue("@IdModulo", IdModulo);
                         command.Parameters.AddWithValue("@IdUsuario", IdUsuario);
                         command.Parameters.AddWithValue("@Alta", Alta);

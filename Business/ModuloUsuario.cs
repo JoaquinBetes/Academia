@@ -15,14 +15,41 @@ namespace Business
         }
         #endregion
         #region Create
-        public static void CreateModuloUsuario(int IdModuloUsuario, string tipo, int IdUsuario, bool Alta, bool Baja, bool Modificacion, bool Consulta)
+        public static void CreateModulosUsuario( string tipo, int IdUsuario, bool Alta, bool Baja, bool Modificacion, bool Consulta)
         {
-            int idModulo;
-            if (tipo == "Alumno") { idModulo = 1; }
-            else if (tipo == "Docente") { idModulo = 2; }
-            else { idModulo = 3; }
+            List<Entities.Modulo> modulos = Business.Modulo.getModulos();
+            foreach (Entities.Modulo modulo in modulos) 
+            {
 
-            DB.ModuloUsuario.CreateModuloUsuario(IdModuloUsuario, idModulo, IdUsuario, Alta, Baja, Modificacion, Consulta);
+                if (modulo.Descripcion == "Persona" || modulo.Descripcion == "Usuario")
+                {
+                    DB.ModuloUsuario.CreateModuloUsuario(modulo.Id, IdUsuario, false, false, true, true);
+                }
+                else if (modulo.Descripcion == "Inscripcion" && tipo == "Alumno")
+                {
+                    DB.ModuloUsuario.CreateModuloUsuario(modulo.Id, IdUsuario, true, false, false, true);
+                }
+                else if (modulo.Descripcion == "Inscripcion" && tipo == "Docente")
+                {
+                    DB.ModuloUsuario.CreateModuloUsuario(modulo.Id, IdUsuario, true, false, false, true);
+                }
+                else if (tipo == "Administrador")
+                {
+                    if (modulo.Descripcion == "Persona" || modulo.Descripcion == "Usuario" || modulo.Descripcion == "Inscripcion")
+                    {
+                        DB.ModuloUsuario.CreateModuloUsuario(modulo.Id, IdUsuario, true, true, true, true);
+                    }
+                    else 
+                    {
+                        DB.ModuloUsuario.CreateModuloUsuario(modulo.Id, IdUsuario, false, false, true, true);
+                    }
+                }
+                else
+                {
+                    DB.ModuloUsuario.CreateModuloUsuario(modulo.Id, IdUsuario, false, false, false, true);
+                }
+                
+            }       
         }
         #endregion
     }
