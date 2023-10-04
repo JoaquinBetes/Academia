@@ -20,11 +20,22 @@ namespace UIDesktop
         public FrmMateria()
         {
             InitializeComponent();
+
             // Llenar combobox
             List<Entities.Plan> planes = Business.Plan.getAll();
-            cmbPlanes.DataSource = planes;
-            cmbPlanes.DisplayMember = "Descripcion";
-            cmbPlanes.ValueMember = "IdPlan";
+            List<Tuple<string, Entities.Plan>> values = new List<Tuple<string, Entities.Plan>>();
+
+            // Llenar la lista "values" con planes y especialidades
+            
+            foreach (var plan in planes)
+            {
+                values.Add(new Tuple<string, Entities.Plan>(Business.Especialidad.Get(plan.IdEspecialidad).Descripcion, plan));
+            
+            }
+
+            cmbPlanes.DataSource = values;
+            cmbPlanes.DisplayMember = "Item2.Descripcion"; // Muestra la descripción del plan
+            cmbPlanes.ValueMember = "Item1"; // El valor seleccionado será el índice
         }
 
         public FrmMateria(Entities.Materia materia)
@@ -32,7 +43,17 @@ namespace UIDesktop
             InitializeComponent();
             // Llenar combobox
             List<Entities.Plan> planes = Business.Plan.getAll();
-            cmbPlanes.DataSource = planes;
+            List<Tuple<string, Entities.Plan>> values = new List<Tuple<string, Entities.Plan>>();
+
+            // Llenar la lista "values" con planes y especialidades
+
+            foreach (var plan in planes)
+            {
+                values.Add(new Tuple<string, Entities.Plan>(Business.Especialidad.Get(plan.IdEspecialidad).Descripcion, plan));
+
+            }
+
+            cmbPlanes.DataSource = values;
             cmbPlanes.DisplayMember = "Descripcion";
             cmbPlanes.ValueMember = "IdPlan";
 
