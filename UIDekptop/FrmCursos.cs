@@ -12,16 +12,16 @@ using UIDekptop;
 
 namespace UIDesktop
 {
-    public partial class FrmComisiones : Form
+    public partial class FrmCursos : Form
     {
-        public FrmComisiones()
+        public FrmCursos()
         {
             InitializeComponent();
         }
 
-        private void CargarComisiones()
+        private void CargarCursos()
         {
-            List<Entities.Comision> comisiones = Business.Comision.GetAll();
+            List<Entities.Curso> comisiones = Business.Curso.GetAll();
             if (comisiones != null)
             {
                 DgvComisiones.Rows.Clear();

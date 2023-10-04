@@ -1,6 +1,6 @@
 ﻿namespace UIDesktop
 {
-    partial class FrmComisiones
+    partial class FrmCursos
     {
         /// <summary>
         /// Required designer variable.

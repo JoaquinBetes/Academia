@@ -42,6 +42,41 @@ namespace DB
             }
         }
 
+        public static Entities.Comision GetById(int id)
+        {
+            Entities.Comision comision = new Entities.Comision();
+            try
+            {
+                // Crear la SqlConnection
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
+
+                    string sqlQuery = "SELECT * FROM Comisiones WHERE IDComision = @id";
+                    SqlCommand command = new SqlCommand(sqlQuery, connection);
+                    command.Parameters.AddWithValue("@id", id);
+
+                    SqlDataReader reader = command.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        comision.IdComision = id;
+                        comision.Descripcion = reader["Descripcion"].ToString();
+                        comision.AnioEspecialidad = Convert.ToInt32(reader["AnioEspecialidad"]);
+                        comision.IDPlan = Convert.ToInt32(reader["IDPlan"]);
+                    }
+
+                    reader.Close();
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar errores si ocurre alguno al intentar conectarse a la base de datos.
+                Console.WriteLine("Error al conectar a la base de datos: " + ex.Message);
+            }
+            return comision;
+        }
+
         #endregion
         #region Create
         #endregion

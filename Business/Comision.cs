@@ -13,6 +13,9 @@ namespace Business
         public static List<Entities.Comision> GetAll()
         { return DB.Comision.GetAll(); }
 
+        public static Entities.Comision GetById(int id) 
+        { return DB.Comision.GetById(id); }
+
         #endregion
         #region Create
         #endregion

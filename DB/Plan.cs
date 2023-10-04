@@ -2,6 +2,7 @@
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -117,6 +118,7 @@ namespace DB
             }
             return plan;
         }
+
         #endregion
         #region Create
         public static void CreatePlan(string descripcion, int idEspecialidad)
