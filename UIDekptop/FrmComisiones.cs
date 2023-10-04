@@ -31,14 +31,14 @@ namespace UIDesktop
                 }
             }
         }
-        private void FrmPlanes_Load(object sender, EventArgs e)
+        private void FrmComisiones_Load(object sender, EventArgs e)
         {
             CargarComisiones();
         }
 
         private void btnAgregarComision_Click(object sender, EventArgs e)
         {
-            using (var modalform = new FrmPlan())
+            using (var modalform = new FrmComision())
             {
                 modalform.ShowDialog();
                 CargarComisiones();
@@ -50,8 +50,8 @@ namespace UIDesktop
             foreach (DataGridViewRow row in DgvComisiones.SelectedRows)
             {
                 int id = Convert.ToInt32(row.Cells["ID"].Value);
-                Entities.Plan plan = Business.Plan.getById(id);
-                using (var modalForm = new FrmPlan(plan))
+                Entities.Comision comision = Business.Comision.GetById(id);
+                using (var modalForm = new FrmComision(comision))
                 {
                     // Mostrar el formulario modal como un diálogo
                     modalForm.ShowDialog();

@@ -156,7 +156,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "FrmComisiones";
             Text = "FrmPersonas";
-            Load += FrmPlanes_Load;
+            Load += FrmComisiones_Load;
             ((System.ComponentModel.ISupportInitialize)DgvComisiones).EndInit();
             ResumeLayout(false);
         }
