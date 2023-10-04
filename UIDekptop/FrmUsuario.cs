@@ -119,6 +119,7 @@ namespace UIDekptop
                     Business.Persona.CreatePersona(this.dni, this.nombre, this.apellido, this.telefono, this.direccion, this.email, this.fechaNacimiento);
                     persona = Business.Persona.getPersona(this.dni);
                     Business.Usuario.CreateUsuario(TxtNombreUsuario.Text, TxtClave.Text, CmbTipoUsuario.Text, true, this.dni, persona.PersonaId, int.Parse(TxtLegajo.Text));
+                    Business.ModuloUsuario.CreateModuloUsuario(CmbTipoUsuario.Text, Business.Usuario.getUsuarioId(int.Parse(TxtLegajo.Text), );
                 }
                 else
                 {

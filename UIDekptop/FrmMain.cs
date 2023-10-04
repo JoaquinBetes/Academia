@@ -60,5 +60,10 @@ namespace UIDesktop
             OpenChild(new FrmMaterias());
 
         }
+
+        private void comisionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChild(new FrmComisiones());
+        }
     }
 }

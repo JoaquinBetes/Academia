@@ -36,6 +36,8 @@
             planesToolStripMenuItem = new ToolStripMenuItem();
             materiasToolStripMenuItem = new ToolStripMenuItem();
             pnlContainer = new Panel();
+            pnlContainer = new Panel();
+            comisionesToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -53,6 +55,7 @@
             // verToolStripMenuItem
             // 
             verToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { personasToolStripMenuItem, usuariosToolStripMenuItem, especialidadesToolStripMenuItem, planesToolStripMenuItem, materiasToolStripMenuItem });
+            verToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { personasToolStripMenuItem, usuariosToolStripMenuItem, especialidadesToolStripMenuItem, planesToolStripMenuItem, comisionesToolStripMenuItem });
             verToolStripMenuItem.Name = "verToolStripMenuItem";
             verToolStripMenuItem.Size = new Size(44, 24);
             verToolStripMenuItem.Text = "Ver";
@@ -92,6 +95,13 @@
             materiasToolStripMenuItem.Text = "Materias";
             materiasToolStripMenuItem.Click += materiasToolStripMenuItem_Click;
             // 
+            // planesToolStripMenuItem
+            // 
+            planesToolStripMenuItem.Name = "planesToolStripMenuItem";
+            planesToolStripMenuItem.Size = new Size(180, 22);
+            planesToolStripMenuItem.Text = "Planes";
+            planesToolStripMenuItem.Click += planesToolStripMenuItem_Click;
+            // 
             // pnlContainer
             // 
             pnlContainer.AutoSize = true;
@@ -100,6 +110,13 @@
             pnlContainer.Name = "pnlContainer";
             pnlContainer.Size = new Size(1190, 772);
             pnlContainer.TabIndex = 2;
+            // 
+            // comisionesToolStripMenuItem
+            // 
+            comisionesToolStripMenuItem.Name = "comisionesToolStripMenuItem";
+            comisionesToolStripMenuItem.Size = new Size(180, 22);
+            comisionesToolStripMenuItem.Text = "Comisiones";
+            comisionesToolStripMenuItem.Click += comisionesToolStripMenuItem_Click;
             // 
             // FrmMain
             // 
@@ -130,5 +147,6 @@
         private Panel pnlContainer;
         private ToolStripMenuItem planesToolStripMenuItem;
         private ToolStripMenuItem materiasToolStripMenuItem;
+        private ToolStripMenuItem comisionesToolStripMenuItem;
     }
 }
