@@ -39,13 +39,13 @@ namespace UIDesktop
                 planItems.Add(new PlanComboBoxItem
                 {
                     IdPlan = plan.IdPlan,
-                    DescripcionPlan = Business.Especialidad.Get(plan.IdEspecialidad).Descripcion
+                    DescripcionPlan = plan.Descripcion + " " + Business.Especialidad.Get(plan.IdEspecialidad).Descripcion
                 });
             }
 
             cmbPlanes.DataSource = planItems;
-            cmbPlanes.DisplayMember = "Item2.Descripcion"; // Muestra la descripción del plan
-            cmbPlanes.ValueMember = "Item1"; // El valor seleccionado será el índice
+            cmbPlanes.DisplayMember = "DescripcionPlan"; // Muestra la descripción del plan
+            cmbPlanes.ValueMember = "IdPlan"; // El valor seleccionado será el índice
         }
 
         public FrmMateria(Entities.Materia materia)
@@ -53,19 +53,20 @@ namespace UIDesktop
             InitializeComponent();
             // Llenar combobox
             List<Entities.Plan> planes = Business.Plan.getAll();
-            List<Tuple<string, Entities.Plan>> values = new List<Tuple<string, Entities.Plan>>();
-
-            // Llenar la lista "values" con planes y especialidades
+            List<PlanComboBoxItem> planItems = new List<PlanComboBoxItem>();
 
             foreach (var plan in planes)
             {
-                values.Add(new Tuple<string, Entities.Plan>(Business.Especialidad.Get(plan.IdEspecialidad).Descripcion, plan));
-
+                planItems.Add(new PlanComboBoxItem
+                {
+                    IdPlan = plan.IdPlan,
+                    DescripcionPlan = plan.Descripcion + " " + Business.Especialidad.Get(plan.IdEspecialidad).Descripcion
+                });
             }
 
-            cmbPlanes.DataSource = values;
-            cmbPlanes.DisplayMember = "Descripcion";
-            cmbPlanes.ValueMember = "IdPlan";
+            cmbPlanes.DataSource = planItems;
+            cmbPlanes.DisplayMember = "DescripcionPlan"; // Muestra la descripción del plan
+            cmbPlanes.ValueMember = "IdPlan"; // El valor seleccionado será el índice
 
             this.edicion = true;
             this.materia = materia;
