@@ -5,15 +5,11 @@ public class Program
 {
     static void Main(string[] args)
     {
-        DateTime fecha = new DateTime(1990, 5, 15);
-        Entities.Usuario usuario = new Entities.Usuario();
-        usuario.NombreUsuario = "AA";
-        usuario.TipoUsuario = "EEE";
-        usuario.Legajo = 22;
-        usuario.Habilitado = true;
-        usuario.Clave = "asd";
-        Business.Persona.deletePersona(1);
-
+        List<Entities.Modulo> modulos = Business.Modulo.getModulos();
+        foreach (Entities.Modulo modulo in modulos)
+        {
+            System.Console.WriteLine(modulo.Descripcion);
+        }
 
         Console.ReadLine();
     }
