@@ -13,6 +13,7 @@ namespace Entities
 
         public Modulo(int id, string descripcion) 
         {
+            this.Id = id;
             this.Descripcion = descripcion;
         }
         public Modulo() 

@@ -5,10 +5,10 @@ public class Program
 {
     static void Main(string[] args)
     {
-        List<Entities.Modulo> modulos = Business.Modulo.getModulos();
-        foreach (Entities.Modulo modulo in modulos)
+        List<Entities.Usuario> usuarios = Business.Usuario.getDatos();
+        foreach (Entities.Usuario usuario in usuarios)
         {
-            System.Console.WriteLine(modulo.Descripcion);
+            System.Console.WriteLine(usuario.TipoUsuario);
         }
 
         Console.ReadLine();

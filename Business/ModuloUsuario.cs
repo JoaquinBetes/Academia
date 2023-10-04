@@ -20,28 +20,28 @@ namespace Business
             List<Entities.Modulo> modulos = Business.Modulo.getModulos();
             foreach (Entities.Modulo modulo in modulos) 
             {
-                if (modulo.Descripcion == "Persona" || modulo.Descripcion == "Usuario")
+                if (tipo == "Administrador")
                 {
-                    DB.ModuloUsuario.CreateModuloUsuario(modulo.Id, IdUsuario, false, false, true, true);
-                }
-                else if (modulo.Descripcion == "Inscripcion" && tipo == "Alumno")
-                {
-                    DB.ModuloUsuario.CreateModuloUsuario(modulo.Id, IdUsuario, true, false, false, true);
-                }
-                else if (modulo.Descripcion == "Inscripcion" && tipo == "Docente")
-                {
-                    DB.ModuloUsuario.CreateModuloUsuario(modulo.Id, IdUsuario, true, false, false, true);
-                }
-                else if (tipo == "Administrador")
-                {
-                    if (modulo.Descripcion == "Persona" || modulo.Descripcion == "Usuario" || modulo.Descripcion == "Inscripcion" || modulo.Descripcion == "Docente_curso")
+                    if (modulo.Descripcion == "Personas" || modulo.Descripcion == "Usuarios" || modulo.Descripcion == "Alumnos_Inscripciones" || modulo.Descripcion == "Docentes_Cursos")
                     {
                         DB.ModuloUsuario.CreateModuloUsuario(modulo.Id, IdUsuario, true, true, true, true);
                     }
-                    else 
+                    else
                     {
                         DB.ModuloUsuario.CreateModuloUsuario(modulo.Id, IdUsuario, false, false, true, true);
                     }
+                }
+                else if (modulo.Descripcion == "Personas" || modulo.Descripcion == "Usuarios")
+                {
+                    DB.ModuloUsuario.CreateModuloUsuario(modulo.Id, IdUsuario, false, false, true, true);
+                }
+                else if (modulo.Descripcion == "Alumnos_Inscripciones" && tipo == "Alumno")
+                {
+                    DB.ModuloUsuario.CreateModuloUsuario(modulo.Id, IdUsuario, true, false, false, true);
+                }
+                else if (modulo.Descripcion == "Alumnos_Inscripciones" && tipo == "Docente")
+                {
+                    DB.ModuloUsuario.CreateModuloUsuario(modulo.Id, IdUsuario, true, false, false, true);
                 }
                 else
                 {

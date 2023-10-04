@@ -1,0 +1,5 @@
+** PARA VER PERMISOS DE USUARIOS
+SELECT U.TipoUsuario, M.Descripcion, MU.Alta, MU.Baja, MU.Modificacion, MU.Consulta
+  FROM Modulos_Usuarios MU
+  INNER JOIN Modulos M ON MU.IdModulo = M.IdModulo
+  INNER JOIN Usuarios U ON MU.IdUsuarrio = U.UsuarioId
