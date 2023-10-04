@@ -120,7 +120,7 @@ namespace DB
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("Error al agregar el usuario" + ex.Message);
+                    throw new Exception("Error al eliminar la especialidad" + ex.Message);
                 }
             }
         }
