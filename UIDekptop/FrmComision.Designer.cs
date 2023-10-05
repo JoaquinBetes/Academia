@@ -37,7 +37,7 @@
             cmbPlan = new ComboBox();
             label3 = new Label();
             label4 = new Label();
-            comboBox1 = new ComboBox();
+            cmbEspecialidad = new ComboBox();
             SuspendLayout();
             // 
             // BtnCancelar
@@ -128,17 +128,17 @@
             label4.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             label4.Location = new Point(77, 42);
             label4.Name = "label4";
-            label4.Size = new Size(37, 20);
+            label4.Size = new Size(93, 20);
             label4.TabIndex = 43;
-            label4.Text = "Plan";
+            label4.Text = "Especialidad";
             // 
-            // comboBox1
+            // cmbEspecialidad
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(76, 65);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(270, 28);
-            comboBox1.TabIndex = 42;
+            cmbEspecialidad.FormattingEnabled = true;
+            cmbEspecialidad.Location = new Point(76, 65);
+            cmbEspecialidad.Name = "cmbEspecialidad";
+            cmbEspecialidad.Size = new Size(270, 28);
+            cmbEspecialidad.TabIndex = 42;
             // 
             // FrmComision
             // 
@@ -146,7 +146,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(420, 456);
             Controls.Add(label4);
-            Controls.Add(comboBox1);
+            Controls.Add(cmbEspecialidad);
             Controls.Add(label3);
             Controls.Add(cmbPlan);
             Controls.Add(txtAnioEspecialidad);
@@ -174,6 +174,6 @@
         private ComboBox cmbPlan;
         private Label label3;
         private Label label4;
-        private ComboBox comboBox1;
+        private ComboBox cmbEspecialidad;
     }
 }
