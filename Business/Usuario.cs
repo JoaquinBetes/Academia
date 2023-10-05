@@ -18,7 +18,7 @@ namespace Business
             if (DB.Usuario.getUsuario(legajo).Legajo == 0) return null;
             else return DB.Usuario.getUsuario(legajo); 
         }
-        public static Entities.Usuario getUsuario(string nombreUsuario)
+        public static Entities.Usuario? getUsuario(string nombreUsuario)
         { return DB.Usuario.getUsuario(nombreUsuario); }
         public static List<Entities.Usuario> getDatos()
         { return DB.Usuario.getDatos(); }

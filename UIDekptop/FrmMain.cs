@@ -13,11 +13,12 @@ namespace UIDesktop
 {
     public partial class FrmMain : Form
     {
-        public FrmMain()
+        Entities.Usuario usuario;
+        public FrmMain( Entities.Usuario usuario )
         {
+            this.usuario = usuario;
             InitializeComponent();
         }
-
         public void OpenChild(object child)
         {
             if (this.pnlContainer.Controls.Count > 0)

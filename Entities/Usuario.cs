@@ -8,6 +8,7 @@ namespace Entities
 {
     public class Usuario
     {
+        public int Id { get; set; }
         public string NombreUsuario { get; set; }
         public int Legajo { get; set; }
         public string Clave { get; set; }
@@ -16,19 +17,21 @@ namespace Entities
 
         public Usuario()
         {
+            Id = 0;
             NombreUsuario = string.Empty;
             Legajo = 0;
             Clave = string.Empty;
             TipoUsuario = string.Empty;
             Habilitado = false;
         }
-        public Usuario(string nombreUsuario, int legajo, string clave, string tipoUsuario, bool habilitado)
+        public Usuario(int id, string nombreUsuario, int legajo, string clave, string tipoUsuario, bool habilitado)
         {
-            NombreUsuario = nombreUsuario;
-            Legajo = legajo;
-            Clave = clave;
-            TipoUsuario = tipoUsuario;
-            Habilitado = habilitado;
+            this.Id = id;
+            this.NombreUsuario = nombreUsuario;
+            this.Legajo = legajo;
+            this.Clave = clave;
+            this.TipoUsuario = tipoUsuario;
+            this.Habilitado = habilitado;
         }
     }
 }

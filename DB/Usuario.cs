@@ -30,12 +30,13 @@ namespace DB
 
                     while (reader.Read()) // TODO VALIDACIONES del tipo si devuelve null, Nan o algo por es estilo poner "-" o "0"
                     {
+                        int Id = Convert.ToInt32(reader["UsuarioId"]);
                         int Legajo = Convert.ToInt32(reader["Legajo"]);
                         string? nombreUsuario = reader["NombreUsuario"].ToString();
                         string? clave = reader["Clave"].ToString();
                         string? tipoUsuario = reader["TipoUsuario"].ToString();
                         bool habilitado = (bool)reader["Habilitado"];
-                        Entities.Usuario usuario = new Entities.Usuario(nombreUsuario, Legajo, clave, tipoUsuario, habilitado);
+                        Entities.Usuario usuario = new Entities.Usuario(Id, nombreUsuario, Legajo, clave, tipoUsuario, habilitado);
                         usuarios.Add(usuario);
                     }
                     reader.Close();
@@ -145,6 +146,7 @@ namespace DB
                     {
                         // Si se encontró la persona, aquí puedes mostrar los datos en algún control o realizar alguna acción
                         reader.Read();
+                        usuario.Id = Convert.ToInt32(reader["UsuarioId"]);
                         usuario.NombreUsuario = reader["NombreUsuario"].ToString();
                         usuario.Legajo = Convert.ToInt32(reader["Legajo"]);
                         usuario.Clave = reader["Clave"].ToString();
@@ -182,6 +184,7 @@ namespace DB
                     
                     if (reader.Read()) 
                     {
+                        usuario.Id = Convert.ToInt32(reader["UsuarioId"]);
                         usuario.NombreUsuario = reader["NombreUsuario"].ToString();
                         usuario.Legajo = Convert.ToInt32(reader["Legajo"]);
                         usuario.Clave = reader["Clave"].ToString();
@@ -215,13 +218,13 @@ namespace DB
 
                     while (reader.Read()) // TODO VALIDACIONES del tipo si devuelve null, Nan o algo por es estilo poner "-" o "0"
                     {
-                        int personaID = Convert.ToInt32(reader["PersonaId"]);
+                        int Id = Convert.ToInt32(reader["PersonaId"]);
                         string? nombre = reader["NombreUsuario"].ToString();
                         int legajo = Convert.ToInt32(reader["Legajo"]);
                         string? clave = reader["Clave"].ToString();
                         string? tipo = reader["TipoUsuario"].ToString();
                         bool habilitado = Convert.ToInt32(reader["Habilitado"]) != 0;
-                        Entities.Usuario usuario = new Entities.Usuario(nombre, legajo, clave, tipo, habilitado);
+                        Entities.Usuario usuario = new Entities.Usuario(Id, nombre, legajo, clave, tipo, habilitado);
                         usuarios.Add(usuario);
                     }
                     reader.Close();
