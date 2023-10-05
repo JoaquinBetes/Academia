@@ -13,6 +13,7 @@ namespace Business
         { return DB.Curso.getAll(); }
         public static Entities.Curso getOne(int idCurso)
         { return DB.Curso.getOne(idCurso); }
+       
         #endregion
 
         #region Create

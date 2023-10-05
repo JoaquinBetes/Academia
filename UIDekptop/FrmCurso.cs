@@ -93,7 +93,22 @@ namespace UIDesktop
             cmbMaterias.DataSource = materiaItems;
             cmbMaterias.DisplayMember = "DescripcionMateria";
             cmbMaterias.ValueMember = "IdMateria";
+            // Llenar ComboBox
+            List<Entities.Comision> comisiones = Business.Comision.GetAll();
+            List<ComisionComboBoxItem> comisionItems = new List<ComisionComboBoxItem>();
 
+            foreach (var comision in comisiones)
+            {
+                comisionItems.Add(new ComisionComboBoxItem
+                {
+                    IdComision = comision.IdComision,
+                    DescripcionComision = comision.Descripcion
+                });
+            }
+
+            cmbComisiones.DataSource = comisionItems;
+            cmbComisiones.DisplayMember = "DescripcionComision";
+            cmbComisiones.ValueMember = "IdComision";
             this.edicion = true;
             this.curso = curso;
             // Asignar los valores del curso a los controles del formulario
@@ -117,9 +132,10 @@ namespace UIDesktop
             {
                 // Actualizar el curso existente con los nuevos valores ingresados.
                 curso.IdMateria = (int)cmbMaterias.SelectedValue;
-                curso.IdComision = 0; // Aquí debes obtener el valor correcto desde algún control.
+                curso.IdComision = (int)cmbComisiones.SelectedValue; 
                 curso.AnioCalendario = Convert.ToInt32(txtAnioCalendario.Text);
                 curso.Cupo = Convert.ToInt32(txtCupo.Text);
+                curso.IdCurso = curso.IdCurso;
                 Business.Curso.updateCurso(curso);
             }
 

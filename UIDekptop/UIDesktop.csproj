@@ -24,6 +24,9 @@
     <Compile Update="FrmMateria.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FrmMaterias - Copia.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FrmMaterias.cs" />
     <Compile Update="FrmComisiones.cs">
       <SubType>Form</SubType>
