@@ -69,7 +69,7 @@ namespace UIDesktop
 
         private void cursosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChild(new FrmCurso());
+            OpenChild(new FrmCursos());
         }
     }
 }
