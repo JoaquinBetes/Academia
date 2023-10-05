@@ -65,5 +65,10 @@ namespace UIDesktop
         {
             OpenChild(new FrmComisiones());
         }
+
+        private void cursosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChild(new FrmCurso());
+        }
     }
 }

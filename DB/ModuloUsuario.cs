@@ -62,7 +62,7 @@ namespace DB
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     // Comando SQL para el INSERT
-                    string sqlInsert = "INSERT INTO Modulos_Usuarios ( IdModulo, IdUsuario, Alta, Baja, Modificacion, Consulta) " +
+                    string sqlInsert = "INSERT INTO Modulos_Usuarios ( IdModulo, IdUsuarrio, Alta, Baja, Modificacion, Consulta) " +
                                        "VALUES ( @IdModulo, @IdUsuario, @Alta, @Baja, @Modificacion, @Consulta)";
 
                     // Crear el SqlCommand con el comando y la conexión
