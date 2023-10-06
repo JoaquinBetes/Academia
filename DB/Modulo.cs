@@ -10,7 +10,7 @@ namespace DB
 {
     public class Modulo : Conector
     {
-        public static Entities.Modulo getModulo(int idModulo)
+        public static Entities.Modulo? getModulo(int idModulo)
         {
             Entities.Modulo modulo = new Entities.Modulo();
             try
@@ -34,6 +34,7 @@ namespace DB
                         reader.Read();
                         modulo.Descripcion = reader["Descripcion"].ToString();
                     }
+                    else { return null; }
                     connection.Close();
                 }
             }

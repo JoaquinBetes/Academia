@@ -13,9 +13,13 @@ namespace Business
         {
             return DB.ModuloUsuario.getModulosUsuario(idUsuario);
         }
-        #endregion
-        #region Create
-        public static void CreateModulosUsuario( string tipo, int IdUsuario)
+        public static int getModuloId(int idModuloUsuario)
+        {
+            return DB.ModuloUsuario.getModuloId(idModuloUsuario);
+        }
+            #endregion
+            #region Create
+            public static void CreateModulosUsuario( string tipo, int IdUsuario)
         {
             List<Entities.Modulo> modulos = Business.Modulo.getModulos();
             foreach (Entities.Modulo modulo in modulos) 

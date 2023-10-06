@@ -33,7 +33,7 @@ namespace UIDesktop
 
         private void personasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChild(new FrmPersonas());
+            OpenChild(new FrmPersonas(usuario));
         }
 
         private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)

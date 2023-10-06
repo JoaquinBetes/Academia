@@ -48,6 +48,50 @@ namespace DB
             }
             return personas;
         }
+        public static Entities.Persona getPersonaById(int id)
+        {
+            Entities.Persona persona = new Entities.Persona();
+            try
+            {
+                // Crear la SqlConnection
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    // Comando SQL para el INSERT
+                    string sqlQuery = "SELECT * FROM Personas WHERE PersonasId = @id";
+
+                    // Crear el SqlCommand con el comando y la conexión
+                    SqlCommand command = new SqlCommand(sqlQuery, connection);
+
+                    // Agregar parámetros al comando
+                    command.Parameters.AddWithValue("@id", id);
+
+                    connection.Open();
+
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                        // Si se encontró la persona, aquí puedes mostrar los datos en algún control o realizar alguna acción
+                        reader.Read();
+                        persona.PersonaId = Convert.ToInt32(reader["PersonasId"]); ;
+                        persona.Nombre = reader["Nombre"].ToString();
+                        persona.Apellido = reader["Apellido"].ToString();
+                        persona.DNI = Convert.ToInt32(reader["DNI"]);
+                        persona.Telefono = reader["Telefono"].ToString();
+                        persona.Direccion = reader["Direccion"].ToString();
+                        persona.Email = reader["Email"].ToString();
+                        persona.FechaNacimiento = Convert.ToDateTime(reader["FechaNacimiento"]);
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar errores si ocurre alguno al intentar conectarse a la base de datos.
+                Console.WriteLine("Error al conectar a la base de datos: " + ex.Message);
+            }
+            return persona;
+        }
         public static Entities.Persona getPersona(int dni)
         {
             Entities.Persona persona = new Entities.Persona();

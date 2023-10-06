@@ -14,14 +14,16 @@ namespace UIDesktop
 {
     public partial class FrmPersonas : Form
     {
-        public FrmPersonas()
+        Entities.Usuario usuario;
+        public FrmPersonas(Entities.Usuario usuario)
         {
+            this.usuario = usuario;
             InitializeComponent();
         }
 
         private void CargarPersonas()
         {
-            List<Entities.Persona> personas = Business.Persona.getDatos();
+            List<Entities.Persona>? personas = Business.Persona.getDatos(usuario);
             if (personas != null)
             {
                 DgvPersonas.Rows.Clear();

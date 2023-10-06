@@ -20,7 +20,7 @@ namespace DB
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     // Comando SQL para el INSERT
-                    string sqlQuery = "SELECT * FROM Modulos_Usuarios WHERE IdUsuario = @idUsuario";
+                    string sqlQuery = "SELECT * FROM Modulos_Usuarios WHERE IdUsuarrio = @idUsuario";
                     // Crear el SqlCommand con el comando y la conexión
                     SqlCommand command = new SqlCommand(sqlQuery, connection);
                     // Agregar parámetros al comando
@@ -50,11 +50,41 @@ namespace DB
             }
             return modulosUsuario;
         }
-
-        #endregion
+        public static int getModuloId(int idModuloUsuario)
+        {
+            int moduloId=0;
+            try
+            {
+                // Crear la SqlConnection
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    // Comando SQL para el INSERT
+                    string sqlQuery = "SELECT IdModulo FROM Modulos_Usuarios WHERE IdModuloUsuario = @idModuloUsuario";
+                    // Crear el SqlCommand con el comando y la conexión
+                    SqlCommand command = new SqlCommand(sqlQuery, connection);
+                    // Agregar parámetros al comando
+                    command.Parameters.AddWithValue("@idModuloUsuario", idModuloUsuario);
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    // Verificar si hay datos disponibles antes de intentar leerlos
+                    if (reader.Read())
+                    {
+                        moduloId = Convert.ToInt32(reader["IdModulo"]);
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar errores si ocurre alguno al intentar conectarse a la base de datos.
+                Console.WriteLine("Error al conectar a la base de datos: " + ex.Message);
+            }
+            return moduloId;
+        }
+    #endregion
 
         #region Create
-        public static void CreateModuloUsuario( int IdModulo, int IdUsuario,  bool Alta, bool Baja, bool Modificacion, bool Consulta)
+            public static void CreateModuloUsuario( int IdModulo, int IdUsuario,  bool Alta, bool Baja, bool Modificacion, bool Consulta)
         {
             try
             {
