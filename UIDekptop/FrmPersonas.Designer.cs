@@ -38,12 +38,7 @@
             Direccion = new DataGridViewTextBoxColumn();
             Email = new DataGridViewTextBoxColumn();
             FechaNacimiento = new DataGridViewTextBoxColumn();
-            txtBuscarPorDni = new TextBox();
-            label1 = new Label();
-            btnBuscarPorDni = new Button();
-            btnAgregarPersona = new Button();
-            btnEditarPersona = new Button();
-            btnEliminarPersona = new Button();
+
             ((System.ComponentModel.ISupportInitialize)DgvPersonas).BeginInit();
             SuspendLayout();
             // 
@@ -120,95 +115,12 @@
             FechaNacimiento.Name = "FechaNacimiento";
             FechaNacimiento.ReadOnly = true;
             // 
-            // txtBuscarPorDni
-            // 
-            txtBuscarPorDni.BackColor = Color.White;
-            txtBuscarPorDni.Location = new Point(37, 59);
-            txtBuscarPorDni.Name = "txtBuscarPorDni";
-            txtBuscarPorDni.Size = new Size(126, 23);
-            txtBuscarPorDni.TabIndex = 1;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(37, 41);
-            label1.Name = "label1";
-            label1.Size = new Size(86, 15);
-            label1.TabIndex = 2;
-            label1.Text = "Buscar por DNI";
-            // 
-            // btnBuscarPorDni
-            // 
-            btnBuscarPorDni.BackColor = SystemColors.MenuHighlight;
-            btnBuscarPorDni.FlatAppearance.BorderSize = 0;
-            btnBuscarPorDni.FlatStyle = FlatStyle.Flat;
-            btnBuscarPorDni.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnBuscarPorDni.ForeColor = SystemColors.ButtonHighlight;
-            btnBuscarPorDni.Location = new Point(194, 59);
-            btnBuscarPorDni.Name = "btnBuscarPorDni";
-            btnBuscarPorDni.Size = new Size(75, 23);
-            btnBuscarPorDni.TabIndex = 3;
-            btnBuscarPorDni.Text = "Buscar";
-            btnBuscarPorDni.UseVisualStyleBackColor = false;
-            btnBuscarPorDni.Click += btnBuscarPorDni_Click;
-            // 
-            // btnAgregarPersona
-            // 
-            btnAgregarPersona.BackColor = SystemColors.Desktop;
-            btnAgregarPersona.FlatAppearance.BorderSize = 0;
-            btnAgregarPersona.FlatStyle = FlatStyle.Flat;
-            btnAgregarPersona.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnAgregarPersona.ForeColor = SystemColors.ButtonHighlight;
-            btnAgregarPersona.Location = new Point(648, 472);
-            btnAgregarPersona.Name = "btnAgregarPersona";
-            btnAgregarPersona.Size = new Size(132, 23);
-            btnAgregarPersona.TabIndex = 4;
-            btnAgregarPersona.Text = "Agregar persona";
-            btnAgregarPersona.UseVisualStyleBackColor = false;
-            btnAgregarPersona.Click += btnAgregarPersona_Click;
-            // 
-            // btnEditarPersona
-            // 
-            btnEditarPersona.BackColor = Color.Green;
-            btnEditarPersona.FlatAppearance.BorderSize = 0;
-            btnEditarPersona.FlatStyle = FlatStyle.Flat;
-            btnEditarPersona.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnEditarPersona.ForeColor = SystemColors.ButtonHighlight;
-            btnEditarPersona.Location = new Point(194, 472);
-            btnEditarPersona.Name = "btnEditarPersona";
-            btnEditarPersona.Size = new Size(75, 23);
-            btnEditarPersona.TabIndex = 5;
-            btnEditarPersona.Text = "Editar";
-            btnEditarPersona.UseVisualStyleBackColor = false;
-            btnEditarPersona.Click += btnEditarPersona_Click;
-            // 
-            // btnEliminarPersona
-            // 
-            btnEliminarPersona.BackColor = Color.FromArgb(192, 0, 0);
-            btnEliminarPersona.FlatAppearance.BorderSize = 0;
-            btnEliminarPersona.FlatStyle = FlatStyle.Flat;
-            btnEliminarPersona.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnEliminarPersona.ForeColor = SystemColors.ButtonHighlight;
-            btnEliminarPersona.Location = new Point(291, 472);
-            btnEliminarPersona.Name = "btnEliminarPersona";
-            btnEliminarPersona.Size = new Size(75, 23);
-            btnEliminarPersona.TabIndex = 6;
-            btnEliminarPersona.Text = "Eliminar";
-            btnEliminarPersona.UseVisualStyleBackColor = false;
-            btnEliminarPersona.Click += btnEliminarPersona_Click;
-            // 
             // FrmPersonas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonFace;
             ClientSize = new Size(985, 602);
-            Controls.Add(btnEliminarPersona);
-            Controls.Add(btnEditarPersona);
-            Controls.Add(btnAgregarPersona);
-            Controls.Add(btnBuscarPorDni);
-            Controls.Add(label1);
-            Controls.Add(txtBuscarPorDni);
             Controls.Add(DgvPersonas);
             Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             FormBorderStyle = FormBorderStyle.None;
@@ -223,12 +135,6 @@
         #endregion
 
         private DataGridView DgvPersonas;
-        private TextBox txtBuscarPorDni;
-        private Label label1;
-        private Button btnBuscarPorDni;
-        private Button btnAgregarPersona;
-        private Button btnEditarPersona;
-        private Button btnEliminarPersona;
         private DataGridViewTextBoxColumn DNI;
         private DataGridViewTextBoxColumn Nombre;
         private DataGridViewTextBoxColumn Apellido;

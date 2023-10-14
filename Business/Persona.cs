@@ -9,17 +9,7 @@ namespace Business
         public static List<Entities.Persona>? getDatos( Entities.Usuario usuario)
         {
             List<Entities.Persona> personas = new List<Entities.Persona>();
-            Entities.ModuloUsuario? mod = null;
-            List<Entities.ModuloUsuario> modulosUsuarios = Business.ModuloUsuario.getModulosUsuario(usuario.Id);
-            foreach (Entities.ModuloUsuario moduloUsuario in modulosUsuarios)
-            {
-                int modId = Business.ModuloUsuario.getModuloId(moduloUsuario.IdModulo);
-                Entities.Modulo? modulo = Business.Modulo.getModulo(modId);
-                if (modulo != null && modulo.Descripcion.Equals("Personas"))
-                {
-                    mod = moduloUsuario;
-                }
-            }
+            Entities.ModuloUsuario? mod = Business.Validaciones.permisos(usuario, "Personas");
             if (mod != null && mod.Consulta)
             {
                 if (usuario.TipoUsuario.Equals("Alumno") || usuario.TipoUsuario.Equals("Docente"))

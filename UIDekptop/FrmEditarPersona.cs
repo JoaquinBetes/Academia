@@ -15,9 +15,11 @@ namespace UIDekptop
     public partial class FrmEditarPersona : Form
     {
         private Entities.Persona persona;
-        public FrmEditarPersona(Entities.Persona persona)
+        private Entities.Usuario usuario;
+        public FrmEditarPersona(Entities.Usuario usuario, Entities.Persona persona)
         {
             this.persona = persona;
+            this.usuario = usuario;
             InitializeComponent();
 
             TxtNombre.Text = persona.Nombre;
@@ -27,6 +29,7 @@ namespace UIDekptop
             TxtDireccion.Text = persona.Direccion;
             TxtTelefono.Text = persona.Telefono;
             DtpFechaNacimiento.Value = persona.FechaNacimiento;
+            if (usuario.TipoUsuario != "Administrador") { TxtDni.Enabled = false; }
         }
 
         private void BtnGuardarEdicion_Click(object sender, EventArgs e)
@@ -92,7 +95,7 @@ namespace UIDekptop
 
                 if (result == DialogResult.Yes)
                 {
-                    Business.Persona.UpdatePersona(int.Parse(TxtDni.Text), TxtNombre.Text, TxtApellido.Text, TxtTelefono.Text, TxtDireccion.Text, TxtEmail.Text, DtpFechaNacimiento.Value, Business.Persona.getPersona(int.Parse(TxtDni.Text)).PersonaId);
+                    Business.Persona.UpdatePersona(int.Parse(TxtDni.Text), TxtNombre.Text, TxtApellido.Text, TxtTelefono.Text, TxtDireccion.Text, TxtEmail.Text, DtpFechaNacimiento.Value, persona.PersonaId);
                     this.Close();
                 }
             }
