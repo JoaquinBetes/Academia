@@ -36,6 +36,8 @@
             label1 = new Label();
             cmbPlan = new ComboBox();
             label3 = new Label();
+            label4 = new Label();
+            cmbEspecialidad = new ComboBox();
             SuspendLayout();
             // 
             // BtnCancelar
@@ -45,7 +47,7 @@
             BtnCancelar.FlatStyle = FlatStyle.Flat;
             BtnCancelar.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             BtnCancelar.ForeColor = SystemColors.Control;
-            BtnCancelar.Location = new Point(218, 308);
+            BtnCancelar.Location = new Point(217, 379);
             BtnCancelar.Name = "BtnCancelar";
             BtnCancelar.Size = new Size(127, 41);
             BtnCancelar.TabIndex = 37;
@@ -59,7 +61,7 @@
             BtnGuardar.FlatStyle = FlatStyle.Flat;
             BtnGuardar.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             BtnGuardar.ForeColor = SystemColors.Control;
-            BtnGuardar.Location = new Point(73, 308);
+            BtnGuardar.Location = new Point(72, 379);
             BtnGuardar.Name = "BtnGuardar";
             BtnGuardar.Size = new Size(127, 41);
             BtnGuardar.TabIndex = 36;
@@ -69,7 +71,7 @@
             // txtDescripcion
             // 
             txtDescripcion.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            txtDescripcion.Location = new Point(74, 83);
+            txtDescripcion.Location = new Point(74, 228);
             txtDescripcion.Name = "txtDescripcion";
             txtDescripcion.Size = new Size(271, 27);
             txtDescripcion.TabIndex = 35;
@@ -78,7 +80,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(75, 56);
+            label2.Location = new Point(75, 201);
             label2.Name = "label2";
             label2.Size = new Size(87, 20);
             label2.TabIndex = 34;
@@ -87,7 +89,7 @@
             // txtAnioEspecialidad
             // 
             txtAnioEspecialidad.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            txtAnioEspecialidad.Location = new Point(74, 166);
+            txtAnioEspecialidad.Location = new Point(74, 311);
             txtAnioEspecialidad.Name = "txtAnioEspecialidad";
             txtAnioEspecialidad.Size = new Size(271, 27);
             txtAnioEspecialidad.TabIndex = 39;
@@ -96,7 +98,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(75, 139);
+            label1.Location = new Point(75, 284);
             label1.Name = "label1";
             label1.Size = new Size(124, 20);
             label1.TabIndex = 38;
@@ -105,7 +107,7 @@
             // cmbPlan
             // 
             cmbPlan.FormattingEnabled = true;
-            cmbPlan.Location = new Point(75, 250);
+            cmbPlan.Location = new Point(75, 144);
             cmbPlan.Name = "cmbPlan";
             cmbPlan.Size = new Size(270, 28);
             cmbPlan.TabIndex = 40;
@@ -114,17 +116,37 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(76, 227);
+            label3.Location = new Point(76, 121);
             label3.Name = "label3";
             label3.Size = new Size(37, 20);
             label3.TabIndex = 41;
             label3.Text = "Plan";
             // 
-            // Comision
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.Location = new Point(77, 42);
+            label4.Name = "label4";
+            label4.Size = new Size(93, 20);
+            label4.TabIndex = 43;
+            label4.Text = "Especialidad";
+            // 
+            // cmbEspecialidad
+            // 
+            cmbEspecialidad.FormattingEnabled = true;
+            cmbEspecialidad.Location = new Point(76, 65);
+            cmbEspecialidad.Name = "cmbEspecialidad";
+            cmbEspecialidad.Size = new Size(270, 28);
+            cmbEspecialidad.TabIndex = 42;
+            // 
+            // FrmComision
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(420, 396);
+            ClientSize = new Size(420, 456);
+            Controls.Add(label4);
+            Controls.Add(cmbEspecialidad);
             Controls.Add(label3);
             Controls.Add(cmbPlan);
             Controls.Add(txtAnioEspecialidad);
@@ -135,7 +157,7 @@
             Controls.Add(label2);
             Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(3, 4, 3, 4);
-            Name = "Comision";
+            Name = "FrmComision";
             Text = "Comision";
             ResumeLayout(false);
             PerformLayout();
@@ -151,5 +173,7 @@
         private Label label1;
         private ComboBox cmbPlan;
         private Label label3;
+        private Label label4;
+        private ComboBox cmbEspecialidad;
     }
 }
