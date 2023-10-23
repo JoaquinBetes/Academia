@@ -16,8 +16,12 @@ namespace Business
         public static Entities.Comision GetById(int id) 
         { return DB.Comision.GetById(id); }
 
+        public static List<Entities.Comision> getByPlan(int idPlan)
+        { return DB.Comision.getByPlan(idPlan); }
         #endregion
         #region Create
+        public static void CreateComision(string descripcion, int anioEspecialidad, int idPlan)
+        { DB.Comision.CreateComision(descripcion, anioEspecialidad, idPlan); }
         #endregion
         #region Update
         #endregion

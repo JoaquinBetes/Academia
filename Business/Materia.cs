@@ -16,6 +16,9 @@ namespace Business
 
         public static Entities.Materia getById(int id)
         { return DB.Materia.getById(id); }
+
+        public static List<Entities.Materia> getByPlan(int idPlan)
+        { return DB.Materia.getByPlan(idPlan); }
         #endregion
         #region Create
         public static void createMateria(string descripcion, int hsSemanales, int hsTotales, int idP)

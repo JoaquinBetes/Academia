@@ -14,5 +14,12 @@ namespace Entities
         public int IDPlan { get; set; }
 
         public Comision() { }
+
+        public Comision (string descripcion, int anioEspecialidad, int iDPlan)
+        {
+            Descripcion = descripcion;
+            AnioEspecialidad = anioEspecialidad;
+            IDPlan = iDPlan;
+        }
     }
 }

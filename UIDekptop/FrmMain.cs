@@ -14,7 +14,7 @@ namespace UIDesktop
     public partial class FrmMain : Form
     {
         Entities.Usuario usuario;
-        public FrmMain( Entities.Usuario usuario )
+        public FrmMain(Entities.Usuario usuario)
         {
             this.usuario = usuario;
             InitializeComponent();
@@ -70,6 +70,12 @@ namespace UIDesktop
         private void cursosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenChild(new FrmCursos());
+        }
+
+        private void alumnosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmInscripcionAlumnos frm = new FrmInscripcionAlumnos();
+            frm.ShowDialog();
         }
     }
 }

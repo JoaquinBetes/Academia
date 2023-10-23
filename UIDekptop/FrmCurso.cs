@@ -139,7 +139,7 @@ namespace UIDesktop
             {
                 // Actualizar el curso existente con los nuevos valores ingresados.
                 curso.IdMateria = (int)cmbMaterias.SelectedValue;
-                curso.IdComision = (int)cmbComisiones.SelectedValue; 
+                curso.IdComision = (int)cmbComisiones.SelectedValue;
                 curso.AnioCalendario = Convert.ToInt32(txtAnioCalendario.Text);
                 curso.Cupo = Convert.ToInt32(txtCupo.Text);
                 curso.IdCurso = curso.IdCurso;

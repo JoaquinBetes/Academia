@@ -159,6 +159,14 @@ namespace DB
             }
             return materia;
         }
+
+        public static List<Entities.Materia> getByPlan(int idPlan)
+        {
+
+            List<Entities.Materia> materias = DB.Materia.getAll();
+            var materiasPlan = materias.Where(materia => materia.IdPlan == idPlan).ToList();
+            return materiasPlan;
+        }
         #endregion
         #region Create
         public static void CreateMateria(string descripcion, int hsSemanales, int hsTotales, int idP)

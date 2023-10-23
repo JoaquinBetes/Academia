@@ -50,7 +50,7 @@ namespace UIDesktop
             BtnCancelar.FlatStyle = FlatStyle.Flat;
             BtnCancelar.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             BtnCancelar.ForeColor = SystemColors.Control;
-            BtnCancelar.Location = new Point(185, 428);
+            BtnCancelar.Location = new Point(195, 372);
             BtnCancelar.Name = "BtnCancelar";
             BtnCancelar.Size = new Size(127, 41);
             BtnCancelar.TabIndex = 37;
@@ -65,7 +65,7 @@ namespace UIDesktop
             BtnGuardar.FlatStyle = FlatStyle.Flat;
             BtnGuardar.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             BtnGuardar.ForeColor = SystemColors.Control;
-            BtnGuardar.Location = new Point(40, 428);
+            BtnGuardar.Location = new Point(50, 372);
             BtnGuardar.Name = "BtnGuardar";
             BtnGuardar.Size = new Size(127, 41);
             BtnGuardar.TabIndex = 36;
@@ -78,7 +78,7 @@ namespace UIDesktop
             txtAnioCalendario.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             txtAnioCalendario.Location = new Point(53, 90);
             txtAnioCalendario.Name = "txtAnioCalendario";
-            txtAnioCalendario.Size = new Size(271, 32);
+            txtAnioCalendario.Size = new Size(271, 27);
             txtAnioCalendario.TabIndex = 35;
             // 
             // label2
@@ -87,16 +87,16 @@ namespace UIDesktop
             label2.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             label2.Location = new Point(54, 63);
             label2.Name = "label2";
-            label2.Size = new Size(143, 25);
+            label2.Size = new Size(112, 20);
             label2.TabIndex = 34;
             label2.Text = "Año Calendario";
             // 
             // cmbMaterias
             // 
             cmbMaterias.FormattingEnabled = true;
-            cmbMaterias.Location = new Point(52, 163);
+            cmbMaterias.Location = new Point(54, 165);
             cmbMaterias.Name = "cmbMaterias";
-            cmbMaterias.Size = new Size(270, 33);
+            cmbMaterias.Size = new Size(270, 28);
             cmbMaterias.TabIndex = 43;
             // 
             // label3
@@ -105,16 +105,16 @@ namespace UIDesktop
             label3.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             label3.Location = new Point(52, 136);
             label3.Name = "label3";
-            label3.Size = new Size(77, 25);
+            label3.Size = new Size(60, 20);
             label3.TabIndex = 42;
             label3.Text = "Materia";
             // 
             // txtCupo
             // 
             txtCupo.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            txtCupo.Location = new Point(50, 312);
+            txtCupo.Location = new Point(54, 307);
             txtCupo.Name = "txtCupo";
-            txtCupo.Size = new Size(271, 32);
+            txtCupo.Size = new Size(271, 27);
             txtCupo.TabIndex = 45;
             // 
             // label1
@@ -123,7 +123,7 @@ namespace UIDesktop
             label1.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             label1.Location = new Point(53, 284);
             label1.Name = "label1";
-            label1.Size = new Size(57, 25);
+            label1.Size = new Size(44, 20);
             label1.TabIndex = 44;
             label1.Text = "Cupo";
             // 
@@ -133,7 +133,7 @@ namespace UIDesktop
             label4.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             label4.Location = new Point(48, 196);
             label4.Name = "label4";
-            label4.Size = new Size(91, 25);
+            label4.Size = new Size(71, 20);
             label4.TabIndex = 46;
             label4.Text = "Comisión";
             // 
@@ -142,12 +142,12 @@ namespace UIDesktop
             cmbComisiones.FormattingEnabled = true;
             cmbComisiones.Location = new Point(54, 235);
             cmbComisiones.Name = "cmbComisiones";
-            cmbComisiones.Size = new Size(270, 33);
+            cmbComisiones.Size = new Size(270, 28);
             cmbComisiones.TabIndex = 47;
             // 
             // FrmCurso
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(378, 496);
             Controls.Add(cmbComisiones);

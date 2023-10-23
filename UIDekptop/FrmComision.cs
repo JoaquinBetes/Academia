@@ -61,12 +61,23 @@ namespace UIDesktop
                 int idEspecialidad = especialidadSeleccionada.IdEspecialidad;
 
                 // Filtrar los planes basados en la especialidad seleccionada
-                List<Entities.Plan> planes = DB.Plan.getByEspecialidad(idEspecialidad);
+                List<Entities.Plan> planes = Business.Plan.getByEspecialidad(idEspecialidad);
 
                 cmbPlan.DataSource = planes;
                 cmbPlan.DisplayMember = "descripcion";
                 cmbPlan.ValueMember = "IdPlan";
             }
+        }
+
+        private void BtnGuardar_Click(object sender, EventArgs e)
+        {
+            string descripcion = txtDescripcion.Text;
+            int anioEsp = Convert.ToInt32(txtAnioEspecialidad.Text);
+            int idPlan = Convert.ToInt32(cmbPlan.SelectedValue);
+
+
+            Business.Comision.CreateComision(descripcion, anioEsp, idPlan);
+            this.Close();
         }
     }
 }
