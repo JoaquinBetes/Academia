@@ -119,8 +119,15 @@ namespace UIDesktop
 
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
-            if (!ValidarCampos())
+            if (string.IsNullOrEmpty(txtAnioCalendario.Text) || !int.TryParse(txtAnioCalendario.Text, out _) || txtAnioCalendario.Text.Length != 4)
             {
+                MessageBox.Show("El año calendario debe ser un número válido de 4 digitos.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtCupo.Text) || !int.TryParse(txtCupo.Text, out _))
+            {
+                MessageBox.Show("Cupo requerido.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -145,14 +152,6 @@ namespace UIDesktop
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private bool ValidarCampos()
-        {
-            // Agrega aquí las validaciones necesarias para los campos del formulario.
-            // Puedes mostrar mensajes de error utilizando MessageBox si los datos son inválidos.
-            // Retorna true si los datos son válidos, de lo contrario, retorna false.
-            return true; // Cambia esto según tus validaciones.
         }
     }
 }
