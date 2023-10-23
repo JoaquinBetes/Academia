@@ -29,44 +29,21 @@ namespace UIDesktop
         public FrmMateria()
         {
             InitializeComponent();
-
-            // Llenar combobox
-            List<Entities.Plan> planes = Business.Plan.getAll();
-            List<PlanComboBoxItem> planItems = new List<PlanComboBoxItem>();
-
-            foreach (var plan in planes)
-            {
-                planItems.Add(new PlanComboBoxItem
-                {
-                    IdPlan = plan.IdPlan,
-                    DescripcionPlan = plan.Descripcion + " " + Business.Especialidad.Get(plan.IdEspecialidad).Descripcion
-                });
-            }
-
-            cmbPlanes.DataSource = planItems;
-            cmbPlanes.DisplayMember = "DescripcionPlan"; // Muestra la descripción del plan
-            cmbPlanes.ValueMember = "IdPlan"; // El valor seleccionado será el índice
+            // Llenar combobox especialidad
+            List<Entities.Especialidad> especialidades = Business.Especialidad.Get();
+            cmbEspecialidad.DataSource = especialidades;
+            cmbEspecialidad.ValueMember = "IdEspecialidad";
+            cmbEspecialidad.DisplayMember = "descripcion";
         }
 
         public FrmMateria(Entities.Materia materia)
         {
             InitializeComponent();
-            // Llenar combobox
-            List<Entities.Plan> planes = Business.Plan.getAll();
-            List<PlanComboBoxItem> planItems = new List<PlanComboBoxItem>();
-
-            foreach (var plan in planes)
-            {
-                planItems.Add(new PlanComboBoxItem
-                {
-                    IdPlan = plan.IdPlan,
-                    DescripcionPlan = plan.Descripcion + " " + Business.Especialidad.Get(plan.IdEspecialidad).Descripcion
-                });
-            }
-
-            cmbPlanes.DataSource = planItems;
-            cmbPlanes.DisplayMember = "DescripcionPlan"; // Muestra la descripción del plan
-            cmbPlanes.ValueMember = "IdPlan"; // El valor seleccionado será el índice
+            // Llenar combobox especialidad
+            List<Entities.Especialidad> especialidades = Business.Especialidad.Get();
+            cmbEspecialidad.DataSource = especialidades;
+            cmbEspecialidad.ValueMember = "IdEspecialidad";
+            cmbEspecialidad.DisplayMember = "descripcion";
 
             this.edicion = true;
             this.materia = materia;
@@ -100,18 +77,15 @@ namespace UIDesktop
             }
             else
             {
-                materia.IdMateria =materia.IdMateria; // Debes implementar un método para obtener el ID de la materia que deseas actualizar.
+                materia.IdMateria = materia.IdMateria; // Debes implementar un método para obtener el ID de la materia que deseas actualizar.
                 materia.Descripcion = txtDescripcion.Text;
                 materia.HsSemanales = Convert.ToInt32(txtHS.Text);
                 materia.HsTotales = Convert.ToInt32(txtHT.Text);
                 materia.IdPlan = (int)cmbPlanes.SelectedValue; // Debes implementar un método para obtener el ID del plan asociado.
 
                 Business.Materia.updateMateria(materia);
-               
+
             }
-
-
-           
             this.Close();
         }
 
@@ -120,9 +94,21 @@ namespace UIDesktop
             this.Close();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void cmbEspecialidad_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cmbEspecialidad.SelectedIndex != -1) // Asegurarse de que se haya seleccionado una especialidad
+            {
+                Entities.Especialidad especialidadSeleccionada = (Entities.Especialidad)cmbEspecialidad.SelectedItem;
 
+                int idEspecialidad = especialidadSeleccionada.IdEspecialidad;
+
+                // Filtrar los planes basados en la especialidad seleccionada
+                List<Entities.Plan> planes = DB.Plan.getByEspecialidad(idEspecialidad);
+
+                cmbPlanes.DataSource = planes;
+                cmbPlanes.DisplayMember = "descripcion";
+                cmbPlanes.ValueMember = "IdPlan";
+            }
         }
     }
 }

@@ -38,6 +38,8 @@
             label1 = new Label();
             txtHT = new TextBox();
             label4 = new Label();
+            cmbEspecialidad = new ComboBox();
+            label5 = new Label();
             SuspendLayout();
             // 
             // BtnCancelar
@@ -47,7 +49,7 @@
             BtnCancelar.FlatStyle = FlatStyle.Flat;
             BtnCancelar.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             BtnCancelar.ForeColor = SystemColors.Control;
-            BtnCancelar.Location = new Point(185, 428);
+            BtnCancelar.Location = new Point(256, 422);
             BtnCancelar.Name = "BtnCancelar";
             BtnCancelar.Size = new Size(127, 41);
             BtnCancelar.TabIndex = 37;
@@ -62,7 +64,7 @@
             BtnGuardar.FlatStyle = FlatStyle.Flat;
             BtnGuardar.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             BtnGuardar.ForeColor = SystemColors.Control;
-            BtnGuardar.Location = new Point(40, 428);
+            BtnGuardar.Location = new Point(111, 422);
             BtnGuardar.Name = "BtnGuardar";
             BtnGuardar.Size = new Size(127, 41);
             BtnGuardar.TabIndex = 36;
@@ -73,81 +75,101 @@
             // txtDescripcion
             // 
             txtDescripcion.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            txtDescripcion.Location = new Point(50, 67);
+            txtDescripcion.Location = new Point(114, 211);
             txtDescripcion.Name = "txtDescripcion";
-            txtDescripcion.Size = new Size(271, 32);
+            txtDescripcion.Size = new Size(271, 27);
             txtDescripcion.TabIndex = 35;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(51, 40);
+            label2.Location = new Point(112, 188);
             label2.Name = "label2";
-            label2.Size = new Size(111, 25);
+            label2.Size = new Size(87, 20);
             label2.TabIndex = 34;
             label2.Text = "Descripcion";
             // 
             // cmbPlanes
             // 
             cmbPlanes.FormattingEnabled = true;
-            cmbPlanes.Location = new Point(52, 356);
+            cmbPlanes.Location = new Point(114, 144);
             cmbPlanes.Name = "cmbPlanes";
-            cmbPlanes.Size = new Size(270, 33);
+            cmbPlanes.Size = new Size(270, 28);
             cmbPlanes.TabIndex = 43;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(52, 319);
+            label3.Location = new Point(114, 121);
             label3.Name = "label3";
-            label3.Size = new Size(49, 25);
+            label3.Size = new Size(37, 20);
             label3.TabIndex = 42;
             label3.Text = "Plan";
             // 
             // txtHS
             // 
             txtHS.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            txtHS.Location = new Point(51, 164);
+            txtHS.Location = new Point(112, 282);
             txtHS.Name = "txtHS";
-            txtHS.Size = new Size(271, 32);
+            txtHS.Size = new Size(271, 27);
             txtHS.TabIndex = 45;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(52, 137);
+            label1.Location = new Point(114, 259);
             label1.Name = "label1";
-            label1.Size = new Size(123, 25);
+            label1.Size = new Size(97, 20);
             label1.TabIndex = 44;
             label1.Text = "HsSemanales";
-            label1.Click += label1_Click;
             // 
             // txtHT
             // 
             txtHT.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            txtHT.Location = new Point(52, 263);
+            txtHT.Location = new Point(113, 356);
             txtHT.Name = "txtHT";
-            txtHT.Size = new Size(271, 32);
+            txtHT.Size = new Size(271, 27);
             txtHT.TabIndex = 47;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(53, 236);
+            label4.Location = new Point(114, 329);
             label4.Name = "label4";
-            label4.Size = new Size(91, 25);
+            label4.Size = new Size(73, 20);
             label4.TabIndex = 46;
             label4.Text = "HsTotales";
             // 
+            // cmbEspecialidad
+            // 
+            cmbEspecialidad.FormattingEnabled = true;
+            cmbEspecialidad.Location = new Point(114, 74);
+            cmbEspecialidad.Name = "cmbEspecialidad";
+            cmbEspecialidad.Size = new Size(270, 28);
+            cmbEspecialidad.TabIndex = 49;
+            cmbEspecialidad.SelectedIndexChanged += cmbEspecialidad_SelectedIndexChanged;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Location = new Point(114, 51);
+            label5.Name = "label5";
+            label5.Size = new Size(93, 20);
+            label5.TabIndex = 48;
+            label5.Text = "Especialidad";
+            // 
             // FrmMateria
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(378, 496);
+            ClientSize = new Size(482, 571);
+            Controls.Add(cmbEspecialidad);
+            Controls.Add(label5);
             Controls.Add(txtHT);
             Controls.Add(label4);
             Controls.Add(txtHS);
@@ -178,5 +200,7 @@
         private Label label1;
         private TextBox txtHT;
         private Label label4;
+        private ComboBox cmbEspecialidad;
+        private Label label5;
     }
 }

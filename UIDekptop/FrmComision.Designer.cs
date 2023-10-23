@@ -139,6 +139,7 @@
             cmbEspecialidad.Name = "cmbEspecialidad";
             cmbEspecialidad.Size = new Size(270, 28);
             cmbEspecialidad.TabIndex = 42;
+            cmbEspecialidad.SelectedIndexChanged += cmbEspecialidad_SelectedIndexChanged;
             // 
             // FrmComision
             // 

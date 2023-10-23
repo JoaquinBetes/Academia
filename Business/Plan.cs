@@ -13,9 +13,10 @@ namespace Business
         { return DB.Plan.getAll(); }
         public static Entities.Plan getOne(string desc, int idEsp) 
         { return DB.Plan.getOne(desc, idEsp); }
-
         public static Entities.Plan getById(int id)
         { return DB.Plan.getById(id); }
+        public static List<Entities.Plan> getByEspecialidad(int idEspecialidad)
+        { return DB.Plan.getByEspecialidad(idEspecialidad); }
         #endregion
         #region Create
         public static void createPlan(string descripcion, int idEspecialidad)

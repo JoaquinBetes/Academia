@@ -119,6 +119,13 @@ namespace DB
             return plan;
         }
 
+        public static List<Entities.Plan> getByEspecialidad(int idEspecialidad) 
+        { 
+            List<Entities.Plan> planes = DB.Plan.getAll();
+            var planesEspecialidad = planes.Where(plan => plan.IdEspecialidad == idEspecialidad).ToList();
+            return planesEspecialidad;
+        }
+
         #endregion
         #region Create
         public static void CreatePlan(string descripcion, int idEspecialidad)

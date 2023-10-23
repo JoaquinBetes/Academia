@@ -32,31 +32,19 @@ namespace UIDesktop
 
             // Llenar combobox especialidad
             List<Entities.Especialidad> especialidades = Business.Especialidad.Get();
-
-
-            // Llenar combobox Plan
-            List<Entities.Plan> planes = Business.Plan.getAll();
+            cmbEspecialidad.DataSource = especialidades;
+            cmbEspecialidad.ValueMember = "IdEspecialidad";
+            cmbEspecialidad.DisplayMember = "descripcion";
         }
 
         public FrmComision(Entities.Comision comision)
         {
             InitializeComponent();
-            // Llenar combobox
-            List<Entities.Plan> planes = Business.Plan.getAll();
-            List<PlanComboBoxItem> planItems = new List<PlanComboBoxItem>();
-
-            foreach (var plan in planes)
-            {
-                planItems.Add(new PlanComboBoxItem
-                {
-                    IdPlan = plan.IdPlan,
-                    DescripcionPlan = plan.Descripcion + " " + Business.Especialidad.Get(plan.IdEspecialidad).Descripcion
-                });
-            }
-
-            cmbPlan.DataSource = planItems;
-            cmbPlan.DisplayMember = "DescripcionPlan"; // Muestra la descripción del plan
-            cmbPlan.ValueMember = "IdPlan"; // El valor seleccionado será el índice
+            // Llenar combobox especialidad
+            List<Entities.Especialidad> especialidades = Business.Especialidad.Get();
+            cmbEspecialidad.DataSource = especialidades;
+            cmbEspecialidad.ValueMember = "IdEspecialidad";
+            cmbEspecialidad.DisplayMember = "descripcion";
 
             this.edicion = true;
             this.comision = comision;
@@ -64,5 +52,21 @@ namespace UIDesktop
             txtAnioEspecialidad.Text = comision.AnioEspecialidad.ToString();
         }
 
+        private void cmbEspecialidad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbEspecialidad.SelectedIndex != -1) // Asegurarse de que se haya seleccionado una especialidad
+            {
+                Entities.Especialidad especialidadSeleccionada = (Entities.Especialidad)cmbEspecialidad.SelectedItem;
+
+                int idEspecialidad = especialidadSeleccionada.IdEspecialidad;
+
+                // Filtrar los planes basados en la especialidad seleccionada
+                List<Entities.Plan> planes = DB.Plan.getByEspecialidad(idEspecialidad);
+
+                cmbPlan.DataSource = planes;
+                cmbPlan.DisplayMember = "descripcion";
+                cmbPlan.ValueMember = "IdPlan";
+            }
+        }
     }
 }
