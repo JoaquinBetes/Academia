@@ -13,6 +13,15 @@ namespace Business
         public static List<Entities.Alumnos_Inscripciones> GetAll()
         { return DB.Alumnos_Inscripciones.GetAll(); }
 
+        public static bool SuperaCupo(int idCurso)
+        {
+            if (DB.Alumnos_Inscripciones.GetAllByCurso(idCurso).Count >= DB.Curso.getOne(idCurso).Cupo)
+            {
+                return true;
+            }
+            else { return false; }
+        }
+
         #endregion
         #region Create
 

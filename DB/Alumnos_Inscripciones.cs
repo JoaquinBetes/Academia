@@ -48,6 +48,42 @@ namespace DB
             return alumnoInscripciones;
         }
 
+        public static List<Entities.Alumnos_Inscripciones> GetAllByCurso(int idCurso)
+        {
+            List<Entities.Alumnos_Inscripciones> alumnoInscripciones = new List<Entities.Alumnos_Inscripciones>();
+            try
+            {
+                // Crear la SqlConnection
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
+
+                    string sqlQuery = "SELECT * FROM Alumnos_Inscripciones WHERE IdCurso = @idCurso;";
+                    SqlCommand command = new SqlCommand(sqlQuery, connection);
+                    command.Parameters.AddWithValue("@idCurso", idCurso);
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        int idInscripcion = Convert.ToInt32(reader["IdInscripcion"]);
+                        int idAlumno = Convert.ToInt32(reader["IdAlumno"]);
+                        string condicion = reader["Condicion"].ToString();
+                        int nota = Convert.ToInt32(reader["Nota"]);
+                        Entities.Alumnos_Inscripciones AlumnoInscripcion = new Entities.Alumnos_Inscripciones(idInscripcion, idAlumno, idCurso, condicion, nota);
+                        alumnoInscripciones.Add(AlumnoInscripcion);
+                    }
+                    reader.Close();
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar errores si ocurre alguno al intentar conectarse a la base de datos.
+                Console.WriteLine("Error al conectar a la base de datos: " + ex.Message);
+            }
+            return alumnoInscripciones;
+        }
+
         #endregion
         #region Create
 

@@ -87,8 +87,14 @@ namespace UIDesktop
 
             int idMateria = Convert.ToInt32(cmbMaterias.SelectedValue);
             int idComision = Convert.ToInt32(cmbComisiones.SelectedValue);
-
             int idCurso = Business.Curso.GetByMateriaAndComision(idMateria, idComision).IdCurso;
+
+            if (Business.Alumnos_Inscripciones.SuperaCupo(idCurso))
+            {
+                MessageBox.Show("No hay mas cupo en este curso.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             string condicion = "Libre";
             int nota = 0;
             int idAlumno = 7;  // ----------------------------------------------- cambiar por el id del alumno logueado
