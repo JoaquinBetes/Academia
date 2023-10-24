@@ -15,106 +15,76 @@ namespace UIDesktop
     {
         private bool edicion = false;
         private Entities.Curso curso = new Entities.Curso();
-        public class MateriaComboBoxItem
-        {
-            public int IdMateria { get; set; }
-            public string DescripcionMateria { get; set; }
 
-            public override string ToString()
-            {
-                return DescripcionMateria;
-            }
-        }
-        public class ComisionComboBoxItem
-        {
-            public int IdComision { get; set; }
-            public string DescripcionComision { get; set; }
-
-            public override string ToString()
-            {
-                return DescripcionComision;
-            }
-        }
         public FrmCurso()
         {
             InitializeComponent();
 
-            // Llenar ComboBox
-            List<Entities.Materia> materias = Business.Materia.getAll();
-            List<MateriaComboBoxItem> materiaItems = new List<MateriaComboBoxItem>();
-
-            foreach (var materia in materias)
-            {
-                materiaItems.Add(new MateriaComboBoxItem
-                {
-                    IdMateria = materia.IdMateria,
-                    DescripcionMateria = materia.Descripcion
-                });
-            }
-
-            cmbMaterias.DataSource = materiaItems;
-            cmbMaterias.DisplayMember = "DescripcionMateria";
-            cmbMaterias.ValueMember = "IdMateria";
-            // Llenar ComboBox
-            List<Entities.Comision> comisiones = Business.Comision.GetAll();
-            List<ComisionComboBoxItem> comisionItems = new List<ComisionComboBoxItem>();
-
-            foreach (var comision in comisiones)
-            {
-                comisionItems.Add(new ComisionComboBoxItem
-                {
-                    IdComision = comision.IdComision,
-                    DescripcionComision = comision.Descripcion
-                });
-            }
-
-            cmbComisiones.DataSource = comisionItems;
-            cmbComisiones.DisplayMember = "DescripcionComision";
-            cmbComisiones.ValueMember = "IdComision";
+            // Llenar ComboBox Especialidades
+            List<Entities.Especialidad> especialidades = Business.Especialidad.Get();
+            cmbEspecialidades.DataSource = especialidades;
+            cmbEspecialidades.ValueMember = "IdEspecialidad";
+            cmbEspecialidades.DisplayMember = "Descripcion";
         }
 
         public FrmCurso(Entities.Curso curso)
         {
             InitializeComponent();
 
-            // Llenar ComboBox
-            List<Entities.Materia> materias = Business.Materia.getAll();
-            List<MateriaComboBoxItem> materiaItems = new List<MateriaComboBoxItem>();
+            // Llenar ComboBox Especialidades
+            List<Entities.Especialidad> especialidades = Business.Especialidad.Get();
+            cmbEspecialidades.DataSource = especialidades;
+            cmbEspecialidades.ValueMember = "IdEspecialidad";
+            cmbEspecialidades.DisplayMember = "Descripcion";
 
-            foreach (var materia in materias)
-            {
-                materiaItems.Add(new MateriaComboBoxItem
-                {
-                    IdMateria = materia.IdMateria,
-                    DescripcionMateria = materia.Descripcion
-                });
-            }
-
-            cmbMaterias.DataSource = materiaItems;
-            cmbMaterias.DisplayMember = "DescripcionMateria";
-            cmbMaterias.ValueMember = "IdMateria";
-            // Llenar ComboBox
-            List<Entities.Comision> comisiones = Business.Comision.GetAll();
-            List<ComisionComboBoxItem> comisionItems = new List<ComisionComboBoxItem>();
-
-            foreach (var comision in comisiones)
-            {
-                comisionItems.Add(new ComisionComboBoxItem
-                {
-                    IdComision = comision.IdComision,
-                    DescripcionComision = comision.Descripcion
-                });
-            }
-
-            cmbComisiones.DataSource = comisionItems;
-            cmbComisiones.DisplayMember = "DescripcionComision";
-            cmbComisiones.ValueMember = "IdComision";
             this.edicion = true;
             this.curso = curso;
             // Asignar los valores del curso a los controles del formulario
             txtAnioCalendario.Text = curso.AnioCalendario.ToString();
             txtCupo.Text = curso.Cupo.ToString();
             // Aquí también debes asignar la materia seleccionada en el ComboBox.
+        }
+
+        private void cmbEspecialidad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbEspecialidades.SelectedIndex != -1) // Asegurarse de que se haya seleccionado una especialidad
+            {
+                Entities.Especialidad especialidadSeleccionada = (Entities.Especialidad)cmbEspecialidades.SelectedItem;
+
+                int idEspecialidad = especialidadSeleccionada.IdEspecialidad;
+
+                // Filtrar los planes basados en la especialidad seleccionada
+                List<Entities.Plan> planes = Business.Plan.getByEspecialidad(idEspecialidad);
+
+                cmbPlanes.DataSource = planes;
+                cmbPlanes.DisplayMember = "descripcion";
+                cmbPlanes.ValueMember = "IdPlan";
+            }
+        }
+
+        private void cmbPlanes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbPlanes.SelectedIndex != -1) // Asegurarse de que se haya seleccionado una especialidad
+            {
+                Entities.Plan planSeleccionado = (Entities.Plan)cmbPlanes.SelectedItem;
+
+                int idPlan = planSeleccionado.IdPlan;
+
+                // Filtrar las materias y comisiones basados en la especialidad y plan seleccionada
+                //cmbMaterias
+                List<Entities.Materia> materias = Business.Materia.getByPlan(idPlan);
+
+                cmbMaterias.DataSource = materias;
+                cmbMaterias.DisplayMember = "Descripcion";
+                cmbMaterias.ValueMember = "IdMateria";
+
+                //cmbComisiones
+                List<Entities.Comision> comisiones = Business.Comision.getByPlan(idPlan);
+
+                cmbComisiones.DataSource = comisiones;
+                cmbComisiones.DisplayMember = "Descripcion";
+                cmbComisiones.ValueMember = "IdComision";
+            }
         }
 
         private void BtnGuardar_Click(object sender, EventArgs e)

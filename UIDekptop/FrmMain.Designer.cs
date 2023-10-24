@@ -37,6 +37,7 @@
             especialidadesToolStripMenuItem = new ToolStripMenuItem();
             planesToolStripMenuItem = new ToolStripMenuItem();
             comisionesToolStripMenuItem = new ToolStripMenuItem();
+            cargarNotasToolStripMenuItem = new ToolStripMenuItem();
             inscripcionesToolStripMenuItem = new ToolStripMenuItem();
             verInscripcionesToolStripMenuItem = new ToolStripMenuItem();
             alumnosToolStripMenuItem = new ToolStripMenuItem();
@@ -57,7 +58,7 @@
             // 
             // verToolStripMenuItem
             // 
-            verToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { cursosToolStripMenuItem, materiasToolStripMenuItem, personasToolStripMenuItem, usuariosToolStripMenuItem, especialidadesToolStripMenuItem, planesToolStripMenuItem, comisionesToolStripMenuItem });
+            verToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { cursosToolStripMenuItem, materiasToolStripMenuItem, personasToolStripMenuItem, usuariosToolStripMenuItem, especialidadesToolStripMenuItem, planesToolStripMenuItem, comisionesToolStripMenuItem, cargarNotasToolStripMenuItem });
             verToolStripMenuItem.Name = "verToolStripMenuItem";
             verToolStripMenuItem.Size = new Size(35, 20);
             verToolStripMenuItem.Text = "Ver";
@@ -65,51 +66,58 @@
             // cursosToolStripMenuItem
             // 
             cursosToolStripMenuItem.Name = "cursosToolStripMenuItem";
-            cursosToolStripMenuItem.Size = new Size(150, 22);
+            cursosToolStripMenuItem.Size = new Size(180, 22);
             cursosToolStripMenuItem.Text = "Cursos";
             cursosToolStripMenuItem.Click += cursosToolStripMenuItem_Click;
             // 
             // materiasToolStripMenuItem
             // 
             materiasToolStripMenuItem.Name = "materiasToolStripMenuItem";
-            materiasToolStripMenuItem.Size = new Size(150, 22);
+            materiasToolStripMenuItem.Size = new Size(180, 22);
             materiasToolStripMenuItem.Text = "Materias";
             materiasToolStripMenuItem.Click += materiasToolStripMenuItem_Click;
             // 
             // personasToolStripMenuItem
             // 
             personasToolStripMenuItem.Name = "personasToolStripMenuItem";
-            personasToolStripMenuItem.Size = new Size(150, 22);
+            personasToolStripMenuItem.Size = new Size(180, 22);
             personasToolStripMenuItem.Text = "Personas";
             personasToolStripMenuItem.Click += personasToolStripMenuItem_Click;
             // 
             // usuariosToolStripMenuItem
             // 
             usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            usuariosToolStripMenuItem.Size = new Size(150, 22);
+            usuariosToolStripMenuItem.Size = new Size(180, 22);
             usuariosToolStripMenuItem.Text = "Usuarios";
             usuariosToolStripMenuItem.Click += usuariosToolStripMenuItem_Click;
             // 
             // especialidadesToolStripMenuItem
             // 
             especialidadesToolStripMenuItem.Name = "especialidadesToolStripMenuItem";
-            especialidadesToolStripMenuItem.Size = new Size(150, 22);
+            especialidadesToolStripMenuItem.Size = new Size(180, 22);
             especialidadesToolStripMenuItem.Text = "Especialidades";
             especialidadesToolStripMenuItem.Click += especialidadesToolStripMenuItem_Click;
             // 
             // planesToolStripMenuItem
             // 
             planesToolStripMenuItem.Name = "planesToolStripMenuItem";
-            planesToolStripMenuItem.Size = new Size(150, 22);
+            planesToolStripMenuItem.Size = new Size(180, 22);
             planesToolStripMenuItem.Text = "Planes";
             planesToolStripMenuItem.Click += planesToolStripMenuItem_Click;
             // 
             // comisionesToolStripMenuItem
             // 
             comisionesToolStripMenuItem.Name = "comisionesToolStripMenuItem";
-            comisionesToolStripMenuItem.Size = new Size(150, 22);
+            comisionesToolStripMenuItem.Size = new Size(180, 22);
             comisionesToolStripMenuItem.Text = "Comisiones";
             comisionesToolStripMenuItem.Click += comisionesToolStripMenuItem_Click;
+            // 
+            // cargarNotasToolStripMenuItem
+            // 
+            cargarNotasToolStripMenuItem.Name = "cargarNotasToolStripMenuItem";
+            cargarNotasToolStripMenuItem.Size = new Size(180, 22);
+            cargarNotasToolStripMenuItem.Text = "Cargar notas";
+            cargarNotasToolStripMenuItem.Click += cargarNotasToolStripMenuItem_Click;
             // 
             // inscripcionesToolStripMenuItem
             // 
@@ -121,29 +129,30 @@
             // verInscripcionesToolStripMenuItem
             // 
             verInscripcionesToolStripMenuItem.Name = "verInscripcionesToolStripMenuItem";
-            verInscripcionesToolStripMenuItem.Size = new Size(180, 22);
+            verInscripcionesToolStripMenuItem.Size = new Size(162, 22);
             verInscripcionesToolStripMenuItem.Text = "Ver inscripciones";
             verInscripcionesToolStripMenuItem.Click += verInscripcionesToolStripMenuItem_Click;
             // 
             // alumnosToolStripMenuItem
             // 
             alumnosToolStripMenuItem.Name = "alumnosToolStripMenuItem";
-            alumnosToolStripMenuItem.Size = new Size(180, 22);
+            alumnosToolStripMenuItem.Size = new Size(162, 22);
             alumnosToolStripMenuItem.Text = "Alumnos";
             alumnosToolStripMenuItem.Click += alumnosToolStripMenuItem_Click;
             // 
             // docentesToolStripMenuItem
             // 
             docentesToolStripMenuItem.Name = "docentesToolStripMenuItem";
-            docentesToolStripMenuItem.Size = new Size(180, 22);
+            docentesToolStripMenuItem.Size = new Size(162, 22);
             docentesToolStripMenuItem.Text = "Docentes";
+            docentesToolStripMenuItem.Click += docentesToolStripMenuItem_Click;
             // 
             // pnlContainer
             // 
             pnlContainer.AutoSize = true;
             pnlContainer.Location = new Point(0, 27);
             pnlContainer.Name = "pnlContainer";
-            pnlContainer.Size = new Size(1041, 579);
+            pnlContainer.Size = new Size(1041, 535);
             pnlContainer.TabIndex = 2;
             // 
             // FrmMain
@@ -180,5 +189,6 @@
         private ToolStripMenuItem verInscripcionesToolStripMenuItem;
         private ToolStripMenuItem alumnosToolStripMenuItem;
         private ToolStripMenuItem docentesToolStripMenuItem;
+        private ToolStripMenuItem cargarNotasToolStripMenuItem;
     }
 }

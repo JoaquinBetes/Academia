@@ -82,5 +82,15 @@ namespace UIDesktop
         {
             OpenChild(new FrmInscripciones());
         }
+
+        private void docentesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChild(new FrmInscripcionDocentes());
+        }
+
+        private void cargarNotasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChild(new FrmCargarNotas());
+        }
     }
 }
