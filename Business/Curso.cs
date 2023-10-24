@@ -13,7 +13,8 @@ namespace Business
         { return DB.Curso.getAll(); }
         public static Entities.Curso getOne(int idCurso)
         { return DB.Curso.getOne(idCurso); }
-       
+        public static Entities.Curso GetByMateriaAndComision(int idMateria, int idComision)
+        { return DB.Curso.GetByMateriaAndComision(idMateria, idComision); }
         #endregion
 
         #region Create
@@ -21,6 +22,7 @@ namespace Business
         {
             DB.Curso.CreateCurso(idMateria, idComision, anioCalendario, cupo);
         }
+
         #endregion
 
         #region Update

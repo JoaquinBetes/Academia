@@ -61,11 +61,40 @@ namespace UIDesktop
 
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
+            if (cmbEspecialidades.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debes seleccionar una Especialidad.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (cmbPlanes.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debes seleccionar un plan.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (cmbMaterias.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debes seleccionar una materia.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (cmbComisiones.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debes seleccionar una comision.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             int idMateria = Convert.ToInt32(cmbMaterias.SelectedValue);
             int idComision = Convert.ToInt32(cmbComisiones.SelectedValue);
+
+            int idCurso = Business.Curso.GetByMateriaAndComision(idMateria, idComision).IdCurso;
             string condicion = "Libre";
             int nota = 0;
+            int idAlumno = 7;  // ----------------------------------------------- cambiar por el id del alumno logueado
 
+            Business.Alumnos_Inscripciones.CreateInscripcion( idAlumno, idCurso, condicion, nota );
+            this.Close();
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)

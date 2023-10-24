@@ -77,5 +77,10 @@ namespace UIDesktop
             FrmInscripcionAlumnos frm = new FrmInscripcionAlumnos();
             frm.ShowDialog();
         }
+
+        private void verInscripcionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChild(new FrmInscripciones());
+        }
     }
 }

@@ -123,6 +123,7 @@
             verInscripcionesToolStripMenuItem.Name = "verInscripcionesToolStripMenuItem";
             verInscripcionesToolStripMenuItem.Size = new Size(180, 22);
             verInscripcionesToolStripMenuItem.Text = "Ver inscripciones";
+            verInscripcionesToolStripMenuItem.Click += verInscripcionesToolStripMenuItem_Click;
             // 
             // alumnosToolStripMenuItem
             // 

@@ -164,6 +164,46 @@ namespace DB
             return curso;
         }
 
+        public static Entities.Curso GetByMateriaAndComision(int idMateria, int idComision)
+        {
+            Entities.Curso curso = null;
+            try
+            {
+                // Crear la SqlConnection
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
+
+                    string sqlQuery = "SELECT * FROM Cursos WHERE IdMateria = @idMateria AND IdComision = @idComision";
+                    SqlCommand command = new SqlCommand(sqlQuery, connection);
+                    command.Parameters.AddWithValue("@idMateria", idMateria);
+                    command.Parameters.AddWithValue("@idComision", idComision);
+
+                    SqlDataReader reader = command.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        curso = new Entities.Curso
+                        {
+                            IdCurso = Convert.ToInt32(reader["IdCurso"]),
+                            IdMateria = idMateria,
+                            IdComision = idComision,
+                            AnioCalendario = Convert.ToInt32(reader["AnioCalendario"]),
+                            Cupo = Convert.ToInt32(reader["AnioCalendario"])
+                        };
+                    }
+
+                    reader.Close();
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar errores si ocurre alguno al intentar conectarse a la base de datos.
+                Console.WriteLine("Error al conectar a la base de datos: " + ex.Message);
+            }
+            return curso;
+        }
+
         #endregion
 
         #region Create

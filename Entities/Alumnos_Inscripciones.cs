@@ -16,8 +16,9 @@ namespace Entities
 
         public Alumnos_Inscripciones() { }
 
-        public Alumnos_Inscripciones(int idAlumno, int idCurso, string condicion, int nota)
+        public Alumnos_Inscripciones(int idInscripcion, int idAlumno, int idCurso, string condicion, int nota)
         {
+            IdInscripcion = idInscripcion;
             IdAlumno = idAlumno;
             IdCurso = idCurso;
             Condicion = condicion;
