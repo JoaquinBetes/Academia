@@ -16,8 +16,8 @@ namespace Business
         #endregion
         #region Create
 
-        public static void CreateInscripcion(int idAlumno, int idCurso, string condicion, int nota)
-        { DB.Alumnos_Inscripciones.CreateInscripcion(idAlumno, idCurso, condicion, nota); }
+        public static void CreateInscripcion(int idCurso, int idDocente, int cargo)
+        { DB.Docentes_Cursos.CreateInscripcion(idCurso, idDocente, cargo); }
 
         #endregion
         #region Update

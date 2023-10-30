@@ -29,6 +29,11 @@ namespace Business
         }
         public static int getDni(int personaId)
         { return DB.Persona.getDni(personaId); }
+
+        public static Entities.Persona getPersonaById(int id)
+        {
+            return DB.Persona.getPersonaById(id);
+        }
         #endregion
         #region Create
         public static void CreatePersona(int dni, string nombre, string apellido, string telefono, string direccion, string email, DateTime fechaNacimiento)

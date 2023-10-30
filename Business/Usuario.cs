@@ -22,6 +22,8 @@ namespace Business
         { return DB.Usuario.getUsuario(nombreUsuario); }
         public static List<Entities.Usuario> getDatos()
         { return DB.Usuario.getDatos(); }
+        public static List<Entities.Usuario> getUsuariosPersona(int personaId)
+        { return DB.Usuario.getUsuariosPersona(personaId); }
         #endregion
         #region Create
         public static void CreateUsuario(string nombreUsuario, string clave, string tipo, bool habilitado, int dni, int personaId, int legajo)
@@ -58,6 +60,12 @@ namespace Business
         public static bool ClaveInvalida(string clave)
         { 
             return clave.Length < 8;
+        }
+
+        public static bool EsDocente (int idPersona)
+        {
+            Entities.Usuario usuario = getUsuariosPersona(idPersona).FirstOrDefault( u => u.TipoUsuario == "Docente");
+            return usuario != null;
         }
     }
 }
