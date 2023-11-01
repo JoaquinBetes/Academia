@@ -38,6 +38,7 @@ namespace UIDesktop
 
         public FrmMateria(Entities.Materia materia)
         {
+            this.materia = materia;
             InitializeComponent();
             // Llenar combobox especialidad
             List<Entities.Especialidad> especialidades = Business.Especialidad.Get();
@@ -65,26 +66,47 @@ namespace UIDesktop
                 MessageBox.Show("Debe seleccionar un plan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (Business.Materia.MateriaExists(txtDescripcion.Text.ToString(), (int)cmbPlanes.SelectedValue))
-            {
-                MessageBox.Show("Ya existe una Materia con esa descripción y plan.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+
 
             if (!edicion)
             {
+                if (Business.Materia.MateriaExists(txtDescripcion.Text.ToString(), (int)cmbPlanes.SelectedValue))
+                {
+                    MessageBox.Show("Ya existe una Materia con esa descripción y plan.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 Business.Materia.createMateria(txtDescripcion.Text.ToString(), int.Parse(txtHS.Text), int.Parse(txtHT.Text), (int)cmbPlanes.SelectedValue);
             }
             else
             {
-                materia.IdMateria = materia.IdMateria; // Debes implementar un método para obtener el ID de la materia que deseas actualizar.
-                materia.Descripcion = txtDescripcion.Text;
-                materia.HsSemanales = Convert.ToInt32(txtHS.Text);
-                materia.HsTotales = Convert.ToInt32(txtHT.Text);
-                materia.IdPlan = (int)cmbPlanes.SelectedValue; // Debes implementar un método para obtener el ID del plan asociado.
+                if (Business.Materia.MateriaExists(txtDescripcion.Text.ToString(), (int)cmbPlanes.SelectedValue))
+                {
+                    if (materia.Descripcion.Equals(txtDescripcion.Text.ToString()) && materia.IdPlan == (int)cmbPlanes.SelectedValue)
+                    {
+                        materia.IdMateria = materia.IdMateria; // Debes implementar un método para obtener el ID de la materia que deseas actualizar.
+                        materia.Descripcion = txtDescripcion.Text;
+                        materia.HsSemanales = Convert.ToInt32(txtHS.Text);
+                        materia.HsTotales = Convert.ToInt32(txtHT.Text);
+                        materia.IdPlan = (int)cmbPlanes.SelectedValue; // Debes implementar un método para obtener el ID del plan asociado.
 
-                Business.Materia.updateMateria(materia);
+                        Business.Materia.updateMateria(materia);
+                    }
+                    else 
+                    {
+                        MessageBox.Show("Ya existe una Materia con esa descripción y plan.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                else
+                {
+                    materia.IdMateria = materia.IdMateria;
+                    materia.Descripcion = txtDescripcion.Text;
+                    materia.HsSemanales = Convert.ToInt32(txtHS.Text);
+                    materia.HsTotales = Convert.ToInt32(txtHT.Text);
+                    materia.IdPlan = (int)cmbPlanes.SelectedValue; 
 
+                    Business.Materia.updateMateria(materia);
+                }
             }
             this.Close();
         }

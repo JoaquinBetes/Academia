@@ -53,27 +53,43 @@ namespace UIDesktop
                 return;
             }
 
-
-            if (Business.Plan.PlanExists(txtDescripcion.Text.ToString(), (int)cmbEspecialidades.SelectedValue))
-            {
-                MessageBox.Show("Ya existe un Plan con esa descripcion y especialidad.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
             if (!edicion)
             {
+                if (Business.Plan.PlanExists(txtDescripcion.Text.ToString(), (int)cmbEspecialidades.SelectedValue))
+                {
+                    MessageBox.Show("Ya existe un Plan con esa descripcion y especialidad.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 Business.Plan.createPlan(txtDescripcion.Text.ToString(), (int)cmbEspecialidades.SelectedValue);
                 this.Close();
             }
             else {
-                plan.Descripcion = txtDescripcion.Text.ToString();
-                plan.IdEspecialidad= (int)cmbEspecialidades.SelectedValue;
-                Business.Plan.updatePlan(plan);
-                //int idPlan, string descripcion, int idEspecialidad
-                this.Close();
+
+                if (Business.Plan.PlanExists(txtDescripcion.Text.ToString(), (int)cmbEspecialidades.SelectedValue))
+                {
+                    if (plan.Descripcion.Equals(txtDescripcion.Text.ToString()) && plan.IdPlan == (int)cmbEspecialidades.SelectedValue)
+                    {
+                        plan.Descripcion = txtDescripcion.Text;
+                        plan.IdEspecialidad = (int)cmbEspecialidades.SelectedValue;
+                        Business.Plan.updatePlan(plan);
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ya existe una plan con esa descripción y especialidad.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                else
+                {
+                    plan.Descripcion = txtDescripcion.Text;
+                    plan.IdEspecialidad = (int) cmbEspecialidades.SelectedValue;
+
+                    Business.Plan.updatePlan(plan);
+                    this.Close();
+                }
             }
-
-
-
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)

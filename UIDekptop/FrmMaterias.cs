@@ -22,12 +22,12 @@ namespace UIDesktop
             this.usuario = usuario;
             this.mod = Business.Validaciones.permisos(usuario, "Materias");
             InitializeComponent();
-            //if (mod != null)
-            //{
-            //    if (!this.mod.Baja) { btnEliminarMateria.Enabled = false; };
-            //    if (!this.mod.Modificacion) { btnEditarMateria.Enabled = false; };
-            //    if (!this.mod.Alta) { btnAgregarMateria.Enabled = false; };
-            //}
+            if (mod != null)
+            {
+                if (!this.mod.Baja) { btnEliminarMateria.Enabled = false; };
+               if (!this.mod.Modificacion) { btnEditarMateria.Enabled = false; };
+               if (!this.mod.Alta) { btnAgregarMateria.Enabled = false; };
+            }
         }
 
         private void CargarMaterias()
