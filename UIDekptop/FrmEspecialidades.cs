@@ -13,9 +13,24 @@ namespace UIDesktop
 {
     public partial class FrmEspecialidades : Form
     {
-        public FrmEspecialidades()
+        private Entities.ModuloUsuario? mod;
+        Entities.Usuario usuario;
+        public FrmEspecialidades(Entities.Usuario usuario)
         {
+            this.usuario = usuario;
+            this.mod = Business.Validaciones.permisos(usuario, "Especialidades");
             InitializeComponent();
+            if (mod != null)
+            {
+                if (!this.mod.Baja) { btnEliminarEspecialidad.Enabled = false; };
+                if (!this.mod.Modificacion) { btnEditarEspecialidad.Enabled = false; };
+                if (!this.mod.Alta) 
+                { 
+                    btnAgregarEspecialidad.Enabled = false;
+                    btnArbol.Enabled = false;
+                    txtId.Enabled = false;
+                };
+            }
         }
 
         private void CargarEspecialidades()
