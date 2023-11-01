@@ -115,6 +115,7 @@
             txtHS.Name = "txtHS";
             txtHS.Size = new Size(271, 27);
             txtHS.TabIndex = 45;
+            txtHS.KeyPress += txtHS_KeyPress;
             // 
             // label1
             // 
@@ -133,6 +134,7 @@
             txtHT.Name = "txtHT";
             txtHT.Size = new Size(271, 27);
             txtHT.TabIndex = 47;
+            txtHT.KeyPress += txtHT_KeyPress;
             // 
             // label4
             // 

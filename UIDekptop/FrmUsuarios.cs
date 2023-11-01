@@ -12,14 +12,31 @@ namespace UIDekptop
 {
     public partial class FrmUsuarios : Form
     {
-        public FrmUsuarios()
+        private Entities.ModuloUsuario? mod;
+        Entities.Usuario usuario;
+        public FrmUsuarios(Entities.Usuario usuario)
         {
+            this.usuario = usuario;
+            this.mod = Business.Validaciones.permisos(usuario, "Personas");
             InitializeComponent();
+            if (mod != null)
+            {
+                if (!this.mod.Baja) { btnEliminarUsuario.Enabled = false; };
+                if (!this.mod.Modificacion) { btnEditarUsuario.Enabled = false; };
+                if (!this.mod.Alta) { btnAgregarUsuario.Enabled = false; };
+                if (!this.mod.Alta)
+                {
+                    LblBuscarLegajo.Text = string.Empty;
+                    TxtBuscarLegajo.Enabled = false;
+                    btnBuscarPorLegajo.Enabled = false;
+                    btnEditarUsuario.Enabled = false;
+                }
+            }
         }
 
         private void CargarUsuarios()
         {
-            List<Entities.Usuario> usuarios = Business.Usuario.getDatos();
+            List<Entities.Usuario> usuarios = Business.Usuario.getDatos(usuario);
             if (usuarios != null)
             {
                 DgvUsuarios.Rows.Clear();
@@ -72,7 +89,7 @@ namespace UIDekptop
                     {
                         Business.Usuario.deleteUsuario(legajo);
                     }
-                    else 
+                    else
                     {
                         MessageBox.Show("No puede borrar el único usuario de esta persona", "Búsqueda", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }

@@ -38,7 +38,7 @@ namespace UIDesktop
 
         private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChild(new FrmUsuarios());
+            OpenChild(new FrmUsuarios(usuario));
         }
 
         private void especialidadesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -51,15 +51,9 @@ namespace UIDesktop
             OpenChild(new FrmPlanes());
         }
 
-        private void maToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void materiasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChild(new FrmMaterias());
-
+            OpenChild(new FrmMaterias(usuario));
         }
 
         private void comisionesToolStripMenuItem_Click(object sender, EventArgs e)

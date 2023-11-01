@@ -13,9 +13,11 @@ namespace UIDesktop
 {
     public partial class FrmPlan : Form
     {
-        private bool edicion = false;
-        public FrmPlan()
+        Entities.Plan plan;
+        private bool edicion;
+        public FrmPlan(bool edicion)
         {
+            this.edicion = edicion;
             InitializeComponent();
             //llenar combobox
             List<Entities.Especialidad> especialidades = Business.Especialidad.Get();
@@ -26,14 +28,14 @@ namespace UIDesktop
 
         public FrmPlan(Entities.Plan plan)
         {
+            this.plan = plan;
+            this.edicion = true;
             InitializeComponent();
             //llenar combobox
             List<Entities.Especialidad> especialidades = Business.Especialidad.Get();
             cmbEspecialidades.DataSource = especialidades;
             cmbEspecialidades.DisplayMember = "Descripcion";
             cmbEspecialidades.ValueMember = "idEspecialidad";
-
-            this.edicion = true;
             txtDescripcion.Text = plan.Descripcion.ToString();
         }
 
@@ -58,10 +60,36 @@ namespace UIDesktop
                     MessageBox.Show("Ya existe un Plan con esa descripcion y especialidad.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-            }
 
-            Business.Plan.createPlan(txtDescripcion.Text.ToString(), (int)cmbEspecialidades.SelectedValue);
-            this.Close();
+                Business.Plan.createPlan(txtDescripcion.Text.ToString(), (int)cmbEspecialidades.SelectedValue);
+                this.Close();
+            }
+            else {
+
+                if (Business.Plan.PlanExists(txtDescripcion.Text.ToString(), (int)cmbEspecialidades.SelectedValue))
+                {
+                    if (plan.Descripcion.Equals(txtDescripcion.Text.ToString()) && plan.IdPlan == (int)cmbEspecialidades.SelectedValue)
+                    {
+                        plan.Descripcion = txtDescripcion.Text;
+                        plan.IdEspecialidad = (int)cmbEspecialidades.SelectedValue;
+                        Business.Plan.updatePlan(plan);
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ya existe una plan con esa descripción y especialidad.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                else
+                {
+                    plan.Descripcion = txtDescripcion.Text;
+                    plan.IdEspecialidad = (int) cmbEspecialidades.SelectedValue;
+
+                    Business.Plan.updatePlan(plan);
+                    this.Close();
+                }
+            }
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)

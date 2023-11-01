@@ -25,6 +25,10 @@ namespace Business
         }
         #endregion
         #region Update
+        public static void updatePlan(Entities.Plan plan)
+        {
+            DB.Plan.UpdatePlan(plan);
+        }
         #endregion
         #region Delete
         public static void deletePlan(int id)

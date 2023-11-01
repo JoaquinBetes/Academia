@@ -26,14 +26,7 @@ namespace Business
             {
                 if (tipo == "Administrador")
                 {
-                    if (modulo.Descripcion == "Personas" || modulo.Descripcion == "Usuarios" || modulo.Descripcion == "Alumnos_Inscripciones" || modulo.Descripcion == "Docentes_Cursos")
-                    {
-                        DB.ModuloUsuario.CreateModuloUsuario(modulo.Id, IdUsuario, true, true, true, true);
-                    }
-                    else
-                    {
-                        DB.ModuloUsuario.CreateModuloUsuario(modulo.Id, IdUsuario, false, false, true, true);
-                    }
+                    DB.ModuloUsuario.CreateModuloUsuario(modulo.Id, IdUsuario, true, true, true, true);
                 }
                 else if (modulo.Descripcion == "Personas" || modulo.Descripcion == "Usuarios")
                 {

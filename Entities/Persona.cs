@@ -3,6 +3,7 @@
     public class Persona
     {
         public int PersonaId { get; set; }
+        public int IdPlan { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public int DNI { get; set; }
