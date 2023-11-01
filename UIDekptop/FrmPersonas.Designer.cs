@@ -32,14 +32,6 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DgvPersonas = new DataGridView();
-            id = new DataGridViewTextBoxColumn();
-            Nombre = new DataGridViewTextBoxColumn();
-            Apellido = new DataGridViewTextBoxColumn();
-            Telefono = new DataGridViewTextBoxColumn();
-            Direccion = new DataGridViewTextBoxColumn();
-            Email = new DataGridViewTextBoxColumn();
-            FechaNacimiento = new DataGridViewTextBoxColumn();
-            IdPlan = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)DgvPersonas).BeginInit();
             SuspendLayout();
             // 
@@ -54,7 +46,6 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             DgvPersonas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             DgvPersonas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DgvPersonas.Columns.AddRange(new DataGridViewColumn[] { id, Nombre, Apellido, Telefono, Direccion, Email, FechaNacimiento, IdPlan });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -63,7 +54,7 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             DgvPersonas.DefaultCellStyle = dataGridViewCellStyle2;
-            DgvPersonas.Location = new Point(42, 131);
+            DgvPersonas.Location = new Point(79, 129);
             DgvPersonas.Name = "DgvPersonas";
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.Control;
@@ -74,48 +65,8 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             DgvPersonas.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             DgvPersonas.RowTemplate.Height = 25;
-            DgvPersonas.Size = new Size(843, 341);
+            DgvPersonas.Size = new Size(765, 309);
             DgvPersonas.TabIndex = 0;
-            // 
-            // id
-            // 
-            id.HeaderText = "ID";
-            id.Name = "id";
-            // 
-            // Nombre
-            // 
-            Nombre.HeaderText = "Nombre";
-            Nombre.Name = "Nombre";
-            // 
-            // Apellido
-            // 
-            Apellido.HeaderText = "Apellido";
-            Apellido.Name = "Apellido";
-            // 
-            // Telefono
-            // 
-            Telefono.HeaderText = "Telefono";
-            Telefono.Name = "Telefono";
-            // 
-            // Direccion
-            // 
-            Direccion.HeaderText = "Direccion";
-            Direccion.Name = "Direccion";
-            // 
-            // Email
-            // 
-            Email.HeaderText = "Email";
-            Email.Name = "Email";
-            // 
-            // FechaNacimiento
-            // 
-            FechaNacimiento.HeaderText = "Fecha Nacimiento";
-            FechaNacimiento.Name = "FechaNacimiento";
-            // 
-            // IdPlan
-            // 
-            IdPlan.HeaderText = "ID Plan";
-            IdPlan.Name = "IdPlan";
             // 
             // FrmPersonas
             // 
@@ -136,13 +87,5 @@
         #endregion
 
         private DataGridView DgvPersonas;
-        private DataGridViewTextBoxColumn id;
-        private DataGridViewTextBoxColumn Nombre;
-        private DataGridViewTextBoxColumn Apellido;
-        private DataGridViewTextBoxColumn Telefono;
-        private DataGridViewTextBoxColumn Direccion;
-        private DataGridViewTextBoxColumn Email;
-        private DataGridViewTextBoxColumn FechaNacimiento;
-        private DataGridViewTextBoxColumn IdPlan;
     }
 }

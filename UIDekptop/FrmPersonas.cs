@@ -132,15 +132,8 @@ namespace UIDesktop
 
         private void CargarPersonas()
         {
-            List<Entities.Persona>? personas = Business.Persona.getDatos(usuario);
-            if (personas != null)
-            {
-                DgvPersonas.Rows.Clear();
-                foreach (Entities.Persona persona in personas)
-                {
-                    DgvPersonas.Rows.Add(persona.DNI, persona.Nombre, persona.Apellido, persona.Telefono, persona.Direccion, persona.Email, persona.FechaNacimiento);
-                }
-            }
+            List<Entities.Persona> personas = Business.Persona.getDatos(usuario);
+            DgvPersonas.DataSource = personas;
         }
         private void FrmPersonas_Load(object sender, EventArgs e)
         {
