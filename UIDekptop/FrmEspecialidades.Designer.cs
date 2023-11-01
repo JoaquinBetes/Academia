@@ -36,6 +36,8 @@
             btnAgregarEspecialidad = new Button();
             btnEditarEspecialidad = new Button();
             btnEliminarEspecialidad = new Button();
+            txtId = new TextBox();
+            btnArbol = new Button();
             ((System.ComponentModel.ISupportInitialize)DgvEspecialidades).BeginInit();
             SuspendLayout();
             // 
@@ -62,24 +64,28 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             DgvEspecialidades.DefaultCellStyle = dataGridViewCellStyle2;
             DgvEspecialidades.GridColor = SystemColors.Control;
-            DgvEspecialidades.Location = new Point(37, 104);
+            DgvEspecialidades.Location = new Point(47, 59);
+            DgvEspecialidades.Margin = new Padding(3, 4, 3, 4);
             DgvEspecialidades.Name = "DgvEspecialidades";
             DgvEspecialidades.ReadOnly = true;
+            DgvEspecialidades.RowHeadersWidth = 51;
             DgvEspecialidades.RowTemplate.Height = 25;
             DgvEspecialidades.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            DgvEspecialidades.Size = new Size(860, 362);
+            DgvEspecialidades.Size = new Size(983, 483);
             DgvEspecialidades.TabIndex = 0;
             // 
             // ID
             // 
             ID.FillWeight = 20F;
             ID.HeaderText = "ID";
+            ID.MinimumWidth = 6;
             ID.Name = "ID";
             ID.ReadOnly = true;
             // 
             // Descripcion
             // 
             Descripcion.HeaderText = "Descripcion";
+            Descripcion.MinimumWidth = 6;
             Descripcion.Name = "Descripcion";
             Descripcion.ReadOnly = true;
             // 
@@ -90,9 +96,10 @@
             btnAgregarEspecialidad.FlatStyle = FlatStyle.Flat;
             btnAgregarEspecialidad.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnAgregarEspecialidad.ForeColor = SystemColors.ButtonHighlight;
-            btnAgregarEspecialidad.Location = new Point(648, 472);
+            btnAgregarEspecialidad.Location = new Point(746, 549);
+            btnAgregarEspecialidad.Margin = new Padding(3, 4, 3, 4);
             btnAgregarEspecialidad.Name = "btnAgregarEspecialidad";
-            btnAgregarEspecialidad.Size = new Size(132, 23);
+            btnAgregarEspecialidad.Size = new Size(151, 31);
             btnAgregarEspecialidad.TabIndex = 4;
             btnAgregarEspecialidad.Text = "Agregar especialidad";
             btnAgregarEspecialidad.UseVisualStyleBackColor = false;
@@ -105,9 +112,10 @@
             btnEditarEspecialidad.FlatStyle = FlatStyle.Flat;
             btnEditarEspecialidad.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnEditarEspecialidad.ForeColor = SystemColors.ButtonHighlight;
-            btnEditarEspecialidad.Location = new Point(194, 472);
+            btnEditarEspecialidad.Location = new Point(227, 549);
+            btnEditarEspecialidad.Margin = new Padding(3, 4, 3, 4);
             btnEditarEspecialidad.Name = "btnEditarEspecialidad";
-            btnEditarEspecialidad.Size = new Size(75, 23);
+            btnEditarEspecialidad.Size = new Size(86, 31);
             btnEditarEspecialidad.TabIndex = 5;
             btnEditarEspecialidad.Text = "Editar";
             btnEditarEspecialidad.UseVisualStyleBackColor = false;
@@ -120,31 +128,61 @@
             btnEliminarEspecialidad.FlatStyle = FlatStyle.Flat;
             btnEliminarEspecialidad.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnEliminarEspecialidad.ForeColor = SystemColors.ButtonHighlight;
-            btnEliminarEspecialidad.Location = new Point(291, 472);
+            btnEliminarEspecialidad.Location = new Point(338, 549);
+            btnEliminarEspecialidad.Margin = new Padding(3, 4, 3, 4);
             btnEliminarEspecialidad.Name = "btnEliminarEspecialidad";
-            btnEliminarEspecialidad.Size = new Size(75, 23);
+            btnEliminarEspecialidad.Size = new Size(86, 31);
             btnEliminarEspecialidad.TabIndex = 6;
             btnEliminarEspecialidad.Text = "Eliminar";
             btnEliminarEspecialidad.UseVisualStyleBackColor = false;
             btnEliminarEspecialidad.Click += btnEliminarEspecialidad_Click;
             // 
+            // txtId
+            // 
+            txtId.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            txtId.Location = new Point(568, 610);
+            txtId.Margin = new Padding(3, 4, 3, 4);
+            txtId.Name = "txtId";
+            txtId.Size = new Size(309, 32);
+            txtId.TabIndex = 7;
+            // 
+            // btnArbol
+            // 
+            btnArbol.BackColor = SystemColors.Desktop;
+            btnArbol.FlatAppearance.BorderSize = 0;
+            btnArbol.FlatStyle = FlatStyle.Flat;
+            btnArbol.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnArbol.ForeColor = SystemColors.ButtonHighlight;
+            btnArbol.Location = new Point(899, 610);
+            btnArbol.Margin = new Padding(3, 4, 3, 4);
+            btnArbol.Name = "btnArbol";
+            btnArbol.Size = new Size(151, 31);
+            btnArbol.TabIndex = 8;
+            btnArbol.Text = "Arbol";
+            btnArbol.UseVisualStyleBackColor = false;
+            btnArbol.Click += btnArbol_Click;
+            // 
             // FrmEspecialidades
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonFace;
-            ClientSize = new Size(985, 602);
+            ClientSize = new Size(1126, 803);
+            Controls.Add(btnArbol);
+            Controls.Add(txtId);
             Controls.Add(btnEliminarEspecialidad);
             Controls.Add(btnEditarEspecialidad);
             Controls.Add(btnAgregarEspecialidad);
             Controls.Add(DgvEspecialidades);
             Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FrmEspecialidades";
             Text = "FrmEspecialidades";
             Load += FrmEspecialidades_Load;
             ((System.ComponentModel.ISupportInitialize)DgvEspecialidades).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -155,5 +193,7 @@
         private Button btnEliminarEspecialidad;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn Descripcion;
+        private TextBox txtId;
+        private Button btnArbol;
     }
 }
