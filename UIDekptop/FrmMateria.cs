@@ -91,7 +91,7 @@ namespace UIDesktop
 
                         Business.Materia.updateMateria(materia);
                     }
-                    else 
+                    else
                     {
                         MessageBox.Show("Ya existe una Materia con esa descripción y plan.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -103,7 +103,7 @@ namespace UIDesktop
                     materia.Descripcion = txtDescripcion.Text;
                     materia.HsSemanales = Convert.ToInt32(txtHS.Text);
                     materia.HsTotales = Convert.ToInt32(txtHT.Text);
-                    materia.IdPlan = (int)cmbPlanes.SelectedValue; 
+                    materia.IdPlan = (int)cmbPlanes.SelectedValue;
 
                     Business.Materia.updateMateria(materia);
                 }
@@ -130,6 +130,24 @@ namespace UIDesktop
                 cmbPlanes.DataSource = planes;
                 cmbPlanes.DisplayMember = "descripcion";
                 cmbPlanes.ValueMember = "IdPlan";
+            }
+        }
+
+        private void txtHS_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verifica si la tecla presionada es un número o una tecla de control (por ejemplo, retroceso)
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Cancela la entrada del carácter no válido
+            }
+        }
+
+        private void txtHT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verifica si la tecla presionada es un número o una tecla de control (por ejemplo, retroceso)
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Cancela la entrada del carácter no válido
             }
         }
     }
