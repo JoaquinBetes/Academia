@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -85,5 +86,23 @@ namespace UIDesktop
             }
         }
         #endregion
+
+        private void btnArbol_Click(object sender, EventArgs e)
+        {
+
+            string idText = txtId.Text;
+
+            if (string.IsNullOrEmpty(idText))
+            {
+                // El campo está vacío, muestra un mensaje de advertencia
+                MessageBox.Show("Por favor, ingrese un ID de especialidad.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                int idEspecialidad = int.Parse(idText);
+                Informe.Program.InformeArbol(idEspecialidad);
+            }
+        }
+
     }
 }

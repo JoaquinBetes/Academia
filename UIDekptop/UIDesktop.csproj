@@ -12,6 +12,7 @@
     <ProjectReference Include="..\Business\Business.csproj" />
     <ProjectReference Include="..\DB\DB.csproj" />
     <ProjectReference Include="..\Entities\Entities.csproj" />
+    <ProjectReference Include="..\Informe\Informe.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,7 +25,7 @@
     <Compile Update="FrmMateria.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FrmMaterias - Copia.cs">
+    <Compile Update="FrmCursos.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FrmMaterias.cs" />
