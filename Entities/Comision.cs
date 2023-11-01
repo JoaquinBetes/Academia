@@ -15,8 +15,9 @@ namespace Entities
 
         public Comision() { }
 
-        public Comision (string descripcion, int anioEspecialidad, int iDPlan)
+        public Comision (int idComision, string descripcion, int anioEspecialidad, int iDPlan)
         {
+            IdComision = idComision;
             Descripcion = descripcion;
             AnioEspecialidad = anioEspecialidad;
             IDPlan = iDPlan;

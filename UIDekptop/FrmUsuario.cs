@@ -22,11 +22,12 @@ namespace UIDekptop
         private string? email;
         private DateTime fechaNacimiento = DateTime.MinValue;
         private int personaId;
+        private int idPlan;
         private bool existePersona = false;
         private bool edicion = false;
 
         //Constructor para crear el primer usuario de la persona
-        public FrmUsuario(int dni, string nombre, string apellido, string telefono, string direccion, string email, DateTime fechaNacimiento)
+        public FrmUsuario(int dni, string nombre, string apellido, string telefono, string direccion, string email, DateTime fechaNacimiento, int idPlan)
         {
             this.dni = dni;
             this.nombre = nombre;
@@ -35,6 +36,7 @@ namespace UIDekptop
             this.direccion = direccion;
             this.email = email;
             this.fechaNacimiento = fechaNacimiento;
+            this.idPlan = idPlan;
             InitializeComponent();
             txtDni.Text = dni.ToString();
         }
@@ -116,7 +118,7 @@ namespace UIDekptop
             {
                 if (existePersona == false) // Se esta crando  persona y usuario por 1° vez.
                 {
-                    Business.Persona.CreatePersona(this.dni, this.nombre, this.apellido, this.telefono, this.direccion, this.email, this.fechaNacimiento);
+                    Business.Persona.CreatePersona(this.dni, this.nombre, this.apellido, this.telefono, this.direccion, this.email, this.fechaNacimiento, this.idPlan);
                     persona = Business.Persona.getPersona(this.dni);
                     Business.Usuario.CreateUsuario(TxtNombreUsuario.Text, TxtClave.Text, CmbTipoUsuario.Text, true, this.dni, persona.PersonaId, int.Parse(TxtLegajo.Text));
                     Business.ModuloUsuario.CreateModulosUsuario(CmbTipoUsuario.Text, Business.Usuario.getUsuarioId(int.Parse(TxtLegajo.Text)));

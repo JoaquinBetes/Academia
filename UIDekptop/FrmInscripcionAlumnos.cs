@@ -16,7 +16,16 @@ namespace UIDesktop
         public FrmInscripcionAlumnos()
         {
             InitializeComponent();
-            
+            Entities.Persona persona = Business.Persona.getPersonaById(idAlumno);
+            int idPlan = persona.IdPlan;
+            int idEsp = Business.Plan.getById(idPlan).IdEspecialidad;
+            txtEspecialidad.Text = Business.Especialidad.Get(idEsp).Descripcion;
+            txtPlan.Text = Business.Plan.getById(idPlan).Descripcion;
+
+            List<Entities.Materia> materias = Business.Materia.getByPlan(idPlan);
+            cmbMaterias.DataSource = materias;
+            cmbMaterias.ValueMember = "IdMateria";
+            cmbMaterias.DisplayMember = "Descripcion";
         }
 
         private void BtnGuardar_Click(object sender, EventArgs e)
@@ -53,6 +62,22 @@ namespace UIDesktop
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void cmbMaterias_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbMaterias.SelectedIndex != -1) // Asegurarse de que se haya seleccionado una materia
+            {
+                Entities.Materia materiaSeleccionada = (Entities.Materia)cmbMaterias.SelectedItem;
+
+                int idMateria = materiaSeleccionada.IdMateria;
+
+                // Filtrar las comisiones basado en la materia seleccionada
+                List<Entities.Comision> comisiones = Business.Materia.getComisionesPorMateria(idMateria);
+                cmbComisiones.DataSource = comisiones;
+                cmbComisiones.ValueMember = "IdComision";
+                cmbComisiones.DisplayMember = "Descripcion";
+            }
         }
     }
 }

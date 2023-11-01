@@ -44,6 +44,8 @@
             lblEmail = new Label();
             btnAgregar = new Button();
             btnCancelar = new Button();
+            cmbPlanes = new ComboBox();
+            label1 = new Label();
             SuspendLayout();
             // 
             // lblDni
@@ -181,7 +183,7 @@
             btnAgregar.FlatStyle = FlatStyle.Flat;
             btnAgregar.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             btnAgregar.ForeColor = SystemColors.Control;
-            btnAgregar.Location = new Point(110, 502);
+            btnAgregar.Location = new Point(112, 575);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(127, 41);
             btnAgregar.TabIndex = 14;
@@ -196,7 +198,7 @@
             btnCancelar.FlatStyle = FlatStyle.Flat;
             btnCancelar.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             btnCancelar.ForeColor = SystemColors.Control;
-            btnCancelar.Location = new Point(255, 502);
+            btnCancelar.Location = new Point(257, 575);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(127, 41);
             btnCancelar.TabIndex = 15;
@@ -204,11 +206,31 @@
             btnCancelar.UseVisualStyleBackColor = false;
             btnCancelar.Click += btnCancelar_Click;
             // 
+            // cmbPlanes
+            // 
+            cmbPlanes.FormattingEnabled = true;
+            cmbPlanes.Location = new Point(88, 495);
+            cmbPlanes.Name = "cmbPlanes";
+            cmbPlanes.Size = new Size(121, 23);
+            cmbPlanes.TabIndex = 35;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(45, 495);
+            label1.Name = "label1";
+            label1.Size = new Size(37, 20);
+            label1.TabIndex = 34;
+            label1.Text = "Plan";
+            // 
             // FrmAgregarPersona
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(494, 570);
+            ClientSize = new Size(494, 642);
+            Controls.Add(cmbPlanes);
+            Controls.Add(label1);
             Controls.Add(btnCancelar);
             Controls.Add(btnAgregar);
             Controls.Add(TxtEmail);
@@ -249,5 +271,7 @@
         private Label lblEmail;
         private Button btnAgregar;
         private Button btnCancelar;
+        private ComboBox cmbPlanes;
+        private Label label1;
     }
 }

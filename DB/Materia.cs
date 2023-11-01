@@ -167,6 +167,42 @@ namespace DB
             var materiasPlan = materias.Where(materia => materia.IdPlan == idPlan).ToList();
             return materiasPlan;
         }
+
+        public static List<Entities.Comision> getComisionesPorMateria(int idMateria)
+        {
+            List<Entities.Comision> comisiones = new List<Entities.Comision>();
+            try
+            {
+                // Crear la SqlConnection
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
+
+                    string sqlQuery = "SELECT * FROM Comisiones INNER JOIN Cursos ON Comisiones.IdComision = Cursos.IdComision WHERE Cursos.IdMateria = @idMateria;";
+                    SqlCommand command = new SqlCommand(sqlQuery, connection);
+                    command.Parameters.AddWithValue("@idMateria", idMateria);
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        int idComision = Convert.ToInt32(reader["idComision"]);
+                        string? descripcion = reader["Descripcion"].ToString();
+                        int anioEspecialidad = Convert.ToInt32(reader["AnioEspecialidad"]);
+                        int idPlan = Convert.ToInt32(reader["IDPlan"]);
+                        Entities.Comision comision = new Entities.Comision(idComision, descripcion, anioEspecialidad, idPlan);
+                        comisiones.Add(comision);
+                    }
+                    reader.Close();
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar errores si ocurre alguno al intentar conectarse a la base de datos.
+                Console.WriteLine("Error al conectar a la base de datos: " + ex.Message);
+            }
+            return comisiones;
+        }
         #endregion
         #region Create
         public static void CreateMateria(string descripcion, int hsSemanales, int hsTotales, int idP)

@@ -144,9 +144,7 @@ namespace UIDesktop
         }
         private void FrmPersonas_Load(object sender, EventArgs e)
         {
-            List<Entities.Persona>? personas = Business.Persona.getDatos(usuario);
-            DgvPersonas.DataSource = personas;
-            //CargarPersonas();
+            CargarPersonas();
         }
 
         private void btnEliminarPersona_Click(object sender, EventArgs e)

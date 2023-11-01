@@ -74,7 +74,7 @@ namespace DB
                     {
                         // Si se encontró la persona, aquí puedes mostrar los datos en algún control o realizar alguna acción
                         reader.Read();
-                        persona.PersonaId = Convert.ToInt32(reader["PersonasId"]); ;
+                        persona.PersonaId = Convert.ToInt32(reader["PersonasId"]);
                         persona.Nombre = reader["Nombre"].ToString();
                         persona.Apellido = reader["Apellido"].ToString();
                         persona.DNI = Convert.ToInt32(reader["DNI"]);
@@ -82,6 +82,7 @@ namespace DB
                         persona.Direccion = reader["Direccion"].ToString();
                         persona.Email = reader["Email"].ToString();
                         persona.FechaNacimiento = Convert.ToDateTime(reader["FechaNacimiento"]);
+                        persona.IdPlan = Convert.ToInt32(reader["IDPlan"]);
                     }
                     connection.Close();
                 }
@@ -126,6 +127,7 @@ namespace DB
                         persona.Direccion = reader["Direccion"].ToString();
                         persona.Email = reader["Email"].ToString();
                         persona.FechaNacimiento = Convert.ToDateTime(reader["FechaNacimiento"]);
+                        persona.IdPlan = Convert.ToInt32(reader["IDPlan"]);
                     }
                     connection.Close();
                 }
@@ -176,7 +178,7 @@ namespace DB
         }
         #endregion
         #region Create
-        public static void CreatePersona(int dni, string nombre, string apellido, string telefono, string direccion, string email, DateTime fechaNacimiento)
+        public static void CreatePersona(int dni, string nombre, string apellido, string telefono, string direccion, string email, DateTime fechaNacimiento, int idPlan)
         {
             try
             {
@@ -185,7 +187,7 @@ namespace DB
                 {
                     // Comando SQL para el INSERT
                     string sqlInsert = "INSERT INTO Personas (DNI, Nombre, Apellido, Telefono, Direccion, Email, FechaNacimiento, IDPlan) " +
-                                       "VALUES (@DNI, @Nombre, @Apellido, @Telefono, @Direccion, @Email, @FechaNacimiento, 222)";
+                                       "VALUES (@DNI, @Nombre, @Apellido, @Telefono, @Direccion, @Email, @FechaNacimiento, idPlan)";
 
                     // Crear el SqlCommand con el comando y la conexión
                     using (SqlCommand command = new SqlCommand(sqlInsert, connection))
@@ -198,6 +200,7 @@ namespace DB
                         command.Parameters.AddWithValue("@Direccion", direccion);
                         command.Parameters.AddWithValue("@Email", email);
                         command.Parameters.AddWithValue("@FechaNacimiento", fechaNacimiento);
+                        command.Parameters.AddWithValue("@IDPlan", idPlan);
 
                         connection.Open();
 
@@ -226,7 +229,7 @@ namespace DB
         }
         #endregion
         #region Update
-        public static void UpdatePersona(int dni, string nombre, string apellido, string telefono, string direccion, string email, DateTime fechaNacimiento, int id)
+        public static void UpdatePersona(int dni, string nombre, string apellido, string telefono, string direccion, string email, DateTime fechaNacimiento, int idPlan, int id)
         {
             try
             {
@@ -243,6 +246,7 @@ namespace DB
                             Direccion = @direccion,
                             Email = @email,
                             FechaNacimiento = @fechaNacimiento
+                            IDPlan = @idPlan
                         WHERE PersonasId = @id";
 
                     // Crear el SqlCommand con el comando y la conexión
@@ -256,6 +260,7 @@ namespace DB
                     command.Parameters.AddWithValue("@direccion", direccion);
                     command.Parameters.AddWithValue("@email", email);
                     command.Parameters.AddWithValue("@fechaNacimiento", fechaNacimiento);
+                    command.Parameters.AddWithValue("@IDPlan", idPlan);
                     command.Parameters.AddWithValue("@id", id);
 
                     connection.Open();

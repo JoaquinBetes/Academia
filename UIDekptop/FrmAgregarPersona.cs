@@ -17,6 +17,10 @@ namespace UIDesktop
         public FrmAgregarPersona()
         {
             InitializeComponent();
+            List<Entities.Plan> planes = Business.Plan.getAll();
+            cmbPlanes.DataSource = planes;
+            cmbPlanes.ValueMember = "IdPlan";
+            cmbPlanes.DisplayMember = "Descripcion";
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -64,7 +68,7 @@ namespace UIDesktop
                 MessageBox.Show("Ya existe una persona con ese DNI.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            using (var modalForm = new FrmUsuario(int.Parse(TxtDni.Text), TxtNombre.Text, TxtApellido.Text, TxtTelefono.Text, TxtDireccion.Text, TxtEmail.Text, DtpFechaNacimiento.Value))
+            using (var modalForm = new FrmUsuario(int.Parse(TxtDni.Text), TxtNombre.Text, TxtApellido.Text, TxtTelefono.Text, TxtDireccion.Text, TxtEmail.Text, DtpFechaNacimiento.Value, Convert.ToInt32(cmbPlanes.SelectedValue)))
             {
                 // Mostrar el formulario modal como un diálogo
                 modalForm.ShowDialog();

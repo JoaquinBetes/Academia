@@ -44,6 +44,8 @@
             lblApellido = new Label();
             lblNombre = new Label();
             lblDni = new Label();
+            label1 = new Label();
+            cmbPlanes = new ComboBox();
             SuspendLayout();
             // 
             // BtnCancelar
@@ -53,7 +55,7 @@
             BtnCancelar.FlatStyle = FlatStyle.Flat;
             BtnCancelar.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             BtnCancelar.ForeColor = SystemColors.Control;
-            BtnCancelar.Location = new Point(266, 496);
+            BtnCancelar.Location = new Point(266, 557);
             BtnCancelar.Name = "BtnCancelar";
             BtnCancelar.Size = new Size(127, 41);
             BtnCancelar.TabIndex = 31;
@@ -68,7 +70,7 @@
             BtnGuardarEdicion.FlatStyle = FlatStyle.Flat;
             BtnGuardarEdicion.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             BtnGuardarEdicion.ForeColor = SystemColors.Control;
-            BtnGuardarEdicion.Location = new Point(121, 496);
+            BtnGuardarEdicion.Location = new Point(121, 557);
             BtnGuardarEdicion.Name = "BtnGuardarEdicion";
             BtnGuardarEdicion.Size = new Size(127, 41);
             BtnGuardarEdicion.TabIndex = 30;
@@ -204,11 +206,31 @@
             lblDni.TabIndex = 16;
             lblDni.Text = "DNI";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(54, 478);
+            label1.Name = "label1";
+            label1.Size = new Size(37, 20);
+            label1.TabIndex = 32;
+            label1.Text = "Plan";
+            // 
+            // cmbPlanes
+            // 
+            cmbPlanes.FormattingEnabled = true;
+            cmbPlanes.Location = new Point(97, 478);
+            cmbPlanes.Name = "cmbPlanes";
+            cmbPlanes.Size = new Size(121, 23);
+            cmbPlanes.TabIndex = 33;
+            // 
             // FrmEditarPersona
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(510, 570);
+            ClientSize = new Size(510, 621);
+            Controls.Add(cmbPlanes);
+            Controls.Add(label1);
             Controls.Add(BtnCancelar);
             Controls.Add(BtnGuardarEdicion);
             Controls.Add(TxtEmail);
@@ -249,5 +271,7 @@
         private Label lblApellido;
         private Label lblNombre;
         private Label lblDni;
+        private Label label1;
+        private ComboBox cmbPlanes;
     }
 }

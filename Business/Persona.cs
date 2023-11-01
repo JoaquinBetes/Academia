@@ -36,12 +36,12 @@ namespace Business
         }
         #endregion
         #region Create
-        public static void CreatePersona(int dni, string nombre, string apellido, string telefono, string direccion, string email, DateTime fechaNacimiento)
-        { DB.Persona.CreatePersona(dni, nombre, apellido, telefono, direccion, email, fechaNacimiento); }
+        public static void CreatePersona(int dni, string nombre, string apellido, string telefono, string direccion, string email, DateTime fechaNacimiento, int idPlan)
+        { DB.Persona.CreatePersona(dni, nombre, apellido, telefono, direccion, email, fechaNacimiento, idPlan); }
         #endregion
         #region Update
-        public static void UpdatePersona(int dni, string nombre, string apellido, string telefono, string direccion, string email, DateTime fechaNacimiento, int id)
-        { DB.Persona.UpdatePersona(dni, nombre, apellido, telefono, direccion, email, fechaNacimiento, id); }
+        public static void UpdatePersona(int dni, string nombre, string apellido, string telefono, string direccion, string email, DateTime fechaNacimiento, int idPlan, int id)
+        { DB.Persona.UpdatePersona(dni, nombre, apellido, telefono, direccion, email, fechaNacimiento, idPlan, id); }
         #endregion
         #region Delete
         public static void deletePersona(int id)

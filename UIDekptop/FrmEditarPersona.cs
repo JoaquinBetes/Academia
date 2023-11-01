@@ -30,6 +30,11 @@ namespace UIDekptop
             TxtTelefono.Text = persona.Telefono;
             DtpFechaNacimiento.Value = persona.FechaNacimiento;
             if (usuario.TipoUsuario != "Administrador") { TxtDni.Enabled = false; }
+
+            List<Entities.Plan> planes = Business.Plan.getAll();
+            cmbPlanes.DataSource = planes;
+            cmbPlanes.ValueMember = "IdPlan";
+            cmbPlanes.DisplayMember = "Descripcion";
         }
 
         private void BtnGuardarEdicion_Click(object sender, EventArgs e)
@@ -91,11 +96,13 @@ namespace UIDekptop
                     return;
                 }
 
+
+
                 DialogResult result = MessageBox.Show("¿Desea confirmar la edición?", "Confirmar Edición", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
-                    Business.Persona.UpdatePersona(int.Parse(TxtDni.Text), TxtNombre.Text, TxtApellido.Text, TxtTelefono.Text, TxtDireccion.Text, TxtEmail.Text, DtpFechaNacimiento.Value, persona.PersonaId);
+                    Business.Persona.UpdatePersona(int.Parse(TxtDni.Text), TxtNombre.Text, TxtApellido.Text, TxtTelefono.Text, TxtDireccion.Text, TxtEmail.Text, DtpFechaNacimiento.Value, Convert.ToInt32(cmbPlanes.SelectedValue), persona.PersonaId);
                     this.Close();
                 }
             }
