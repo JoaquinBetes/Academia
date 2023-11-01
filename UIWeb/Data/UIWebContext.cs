@@ -17,5 +17,7 @@ namespace UIWeb.Data
         public DbSet<UIWeb.Models.Usuario> Usuarios { get; set; } = default!;
 
         public DbSet<UIWeb.Models.Especialidad> Especialidades { get; set; } = default!;
+
+        public DbSet<UIWeb.Models.Persona> Personas { get; set; } = default!;
     }
 }

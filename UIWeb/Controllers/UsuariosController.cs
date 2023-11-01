@@ -56,10 +56,23 @@ namespace UIWeb.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("UsuarioId,NombreUsuario,Legajo,Clave,TipoUsuario,Habilitado")] Usuario usuario)
+        public async Task<IActionResult> Create([Bind("UsuarioId,NombreUsuario,Legajo,Clave,TipoUsuario,Habilitado,PersonaId")] Usuario usuario, string DNI)
         {
             if (ModelState.IsValid)
             {
+                // Verificar si ya existe una persona con el DNI ingresado
+                var personaExistente = _context.Personas.FirstOrDefault(p => p.DNI == Convert.ToInt32(DNI));
+
+                if (personaExistente == null)
+                {
+                    // Persona con el DNI no existe, muestra un mensaje de error
+                    ModelState.AddModelError("DNI", "No existe una persona con este DNI.");
+                    return View(usuario);
+                }
+
+                // Si existe una persona con ese DNI, asigna su ID al usuario
+                usuario.PersonaId = personaExistente.PersonaId;
+
                 _context.Add(usuario);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -88,7 +101,7 @@ namespace UIWeb.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("UsuarioId,NombreUsuario,Legajo,Clave,TipoUsuario,Habilitado")] Usuario usuario)
+        public async Task<IActionResult> Edit(int id, [Bind("UsuarioId,NombreUsuario,Legajo,Clave,TipoUsuario,Habilitado,PersonaId")] Usuario usuario)
         {
             if (id != usuario.UsuarioId)
             {

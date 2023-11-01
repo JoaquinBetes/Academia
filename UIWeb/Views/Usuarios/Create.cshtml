@@ -13,6 +13,10 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+                <label for="DNI" class="control-label">DNI</label>
+                <input type="text" id="DNI" name="DNI" class="form-control" />
+            </div>
+            <div class="form-group">
                 <label asp-for="NombreUsuario" class="control-label"></label>
                 <input asp-for="NombreUsuario" class="form-control" />
                 <span asp-validation-for="NombreUsuario" class="text-danger"></span>

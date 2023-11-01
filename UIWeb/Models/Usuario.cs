@@ -8,6 +8,8 @@
         public string Clave { get; set; }
         public string TipoUsuario { get; set; }
         public bool Habilitado { get; set; }
+        public int PersonaId { get; set; }
+        public Persona Persona { get; set; }
 
         public Usuario()
         {
@@ -18,7 +20,7 @@
             TipoUsuario = string.Empty;
             Habilitado = false;
         }
-        public Usuario(int id, string nombreUsuario, int legajo, string clave, string tipoUsuario, bool habilitado)
+        public Usuario(int id, string nombreUsuario, int legajo, string clave, string tipoUsuario, bool habilitado, int personaId)
         {
             this.UsuarioId = id;
             this.NombreUsuario = nombreUsuario;
@@ -26,6 +28,7 @@
             this.Clave = clave;
             this.TipoUsuario = tipoUsuario;
             this.Habilitado = habilitado;
+            this.PersonaId = personaId;
         }
     }
 }
