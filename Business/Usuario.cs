@@ -20,8 +20,22 @@ namespace Business
         }
         public static Entities.Usuario? getUsuario(string nombreUsuario)
         { return DB.Usuario.getUsuario(nombreUsuario); }
-        public static List<Entities.Usuario> getDatos()
-        { return DB.Usuario.getDatos(); }
+        public static List<Entities.Usuario>? getDatos(Entities.Usuario usuario)
+        {
+            List<Entities.Usuario> usuarios = new List<Entities.Usuario>();
+            Entities.ModuloUsuario? mod = Business.Validaciones.permisos(usuario, "Usuarios");
+            if (mod != null && mod.Consulta)
+            {
+                if (usuario.TipoUsuario.Equals("Alumno") || usuario.TipoUsuario.Equals("Docente"))
+                {
+                    usuarios.Add(DB.Usuario.getUsuario(usuario.Legajo) );
+                    return usuarios;
+                }
+                else return DB.Usuario.getDatos();
+            }
+
+            return null;
+        }
         public static List<Entities.Usuario> getUsuariosPersona(int personaId)
         { return DB.Usuario.getUsuariosPersona(personaId); }
         #endregion

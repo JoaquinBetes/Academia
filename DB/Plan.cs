@@ -173,6 +173,46 @@ namespace DB
         }
         #endregion
         #region Update
+        public static void UpdatePlan(Entities.Plan plan)
+        {
+
+            try
+            {
+                // Crear la SqlConnection
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    // Comando SQL para el UPDATE
+                    string sqlQuery = "UPDATE Planes SET Descripcion = @descripcion, IdEspecialidad = @idEspecialidad WHERE IDPlan = @id";
+
+                    // Crear el SqlCommand con el comando y la conexión
+                    SqlCommand command = new SqlCommand(sqlQuery, connection);
+
+                    // Agregar parámetros al comando
+                    command.Parameters.AddWithValue("@descripcion", plan.Descripcion);
+                    command.Parameters.AddWithValue("@idEspecialidad", plan.IdEspecialidad);
+                    command.Parameters.AddWithValue("@id", plan.IdPlan);
+
+                    connection.Open();
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error al actualizar la base de datos: " + ex.Message);
+                    }
+                    finally
+                    {
+                        connection.Close();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar errores si ocurre alguno al intentar conectarse a la base de datos.
+                Console.WriteLine("Error al conectar a la base de datos: " + ex.Message);
+            }
+        }
         #endregion
         #region Delete
         public static void deletePlan(int id)

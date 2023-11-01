@@ -37,7 +37,7 @@
             Clave = new DataGridViewTextBoxColumn();
             Tipo = new DataGridViewTextBoxColumn();
             TxtBuscarLegajo = new TextBox();
-            label1 = new Label();
+            LblBuscarLegajo = new Label();
             btnBuscarPorLegajo = new Button();
             ((System.ComponentModel.ISupportInitialize)DgvUsuarios).BeginInit();
             SuspendLayout();
@@ -49,9 +49,10 @@
             btnEliminarUsuario.FlatStyle = FlatStyle.Flat;
             btnEliminarUsuario.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnEliminarUsuario.ForeColor = SystemColors.ButtonHighlight;
-            btnEliminarUsuario.Location = new Point(326, 482);
+            btnEliminarUsuario.Location = new Point(419, 675);
+            btnEliminarUsuario.Margin = new Padding(4, 4, 4, 4);
             btnEliminarUsuario.Name = "btnEliminarUsuario";
-            btnEliminarUsuario.Size = new Size(75, 23);
+            btnEliminarUsuario.Size = new Size(96, 32);
             btnEliminarUsuario.TabIndex = 10;
             btnEliminarUsuario.Text = "Eliminar";
             btnEliminarUsuario.UseVisualStyleBackColor = false;
@@ -64,9 +65,10 @@
             btnEditarUsuario.FlatStyle = FlatStyle.Flat;
             btnEditarUsuario.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnEditarUsuario.ForeColor = SystemColors.ButtonHighlight;
-            btnEditarUsuario.Location = new Point(229, 482);
+            btnEditarUsuario.Location = new Point(294, 675);
+            btnEditarUsuario.Margin = new Padding(4, 4, 4, 4);
             btnEditarUsuario.Name = "btnEditarUsuario";
-            btnEditarUsuario.Size = new Size(75, 23);
+            btnEditarUsuario.Size = new Size(96, 32);
             btnEditarUsuario.TabIndex = 9;
             btnEditarUsuario.Text = "Editar";
             btnEditarUsuario.UseVisualStyleBackColor = false;
@@ -79,9 +81,10 @@
             btnAgregarUsuario.FlatStyle = FlatStyle.Flat;
             btnAgregarUsuario.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnAgregarUsuario.ForeColor = SystemColors.ButtonHighlight;
-            btnAgregarUsuario.Location = new Point(683, 482);
+            btnAgregarUsuario.Location = new Point(878, 675);
+            btnAgregarUsuario.Margin = new Padding(4, 4, 4, 4);
             btnAgregarUsuario.Name = "btnAgregarUsuario";
-            btnAgregarUsuario.Size = new Size(132, 23);
+            btnAgregarUsuario.Size = new Size(170, 32);
             btnAgregarUsuario.TabIndex = 8;
             btnAgregarUsuario.Text = "Agregar usuario";
             btnAgregarUsuario.UseVisualStyleBackColor = false;
@@ -94,12 +97,13 @@
             DgvUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DgvUsuarios.Columns.AddRange(new DataGridViewColumn[] { Legajo, Usuario, Clave, Tipo });
             DgvUsuarios.GridColor = SystemColors.Control;
-            DgvUsuarios.Location = new Point(72, 114);
+            DgvUsuarios.Location = new Point(93, 160);
+            DgvUsuarios.Margin = new Padding(4, 4, 4, 4);
             DgvUsuarios.Name = "DgvUsuarios";
             DgvUsuarios.ReadOnly = true;
             DgvUsuarios.RowTemplate.Height = 25;
             DgvUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            DgvUsuarios.Size = new Size(860, 362);
+            DgvUsuarios.Size = new Size(1106, 507);
             DgvUsuarios.TabIndex = 7;
             // 
             // Legajo
@@ -128,19 +132,21 @@
             // 
             // TxtBuscarLegajo
             // 
-            TxtBuscarLegajo.Location = new Point(72, 64);
+            TxtBuscarLegajo.Location = new Point(93, 90);
+            TxtBuscarLegajo.Margin = new Padding(4, 4, 4, 4);
             TxtBuscarLegajo.Name = "TxtBuscarLegajo";
-            TxtBuscarLegajo.Size = new Size(156, 23);
+            TxtBuscarLegajo.Size = new Size(199, 29);
             TxtBuscarLegajo.TabIndex = 11;
             // 
-            // label1
+            // LblBuscarLegajo
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(72, 46);
-            label1.Name = "label1";
-            label1.Size = new Size(101, 15);
-            label1.TabIndex = 12;
-            label1.Text = "Buscar por Legajo";
+            LblBuscarLegajo.AutoSize = true;
+            LblBuscarLegajo.Location = new Point(93, 64);
+            LblBuscarLegajo.Margin = new Padding(4, 0, 4, 0);
+            LblBuscarLegajo.Name = "LblBuscarLegajo";
+            LblBuscarLegajo.Size = new Size(134, 21);
+            LblBuscarLegajo.TabIndex = 12;
+            LblBuscarLegajo.Text = "Buscar por Legajo";
             // 
             // btnBuscarPorLegajo
             // 
@@ -149,9 +155,10 @@
             btnBuscarPorLegajo.FlatStyle = FlatStyle.Flat;
             btnBuscarPorLegajo.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnBuscarPorLegajo.ForeColor = SystemColors.ButtonHighlight;
-            btnBuscarPorLegajo.Location = new Point(257, 64);
+            btnBuscarPorLegajo.Location = new Point(330, 90);
+            btnBuscarPorLegajo.Margin = new Padding(4, 4, 4, 4);
             btnBuscarPorLegajo.Name = "btnBuscarPorLegajo";
-            btnBuscarPorLegajo.Size = new Size(75, 23);
+            btnBuscarPorLegajo.Size = new Size(96, 32);
             btnBuscarPorLegajo.TabIndex = 13;
             btnBuscarPorLegajo.Text = "Buscar";
             btnBuscarPorLegajo.UseVisualStyleBackColor = false;
@@ -159,17 +166,18 @@
             // 
             // FrmUsuarios
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1005, 618);
+            ClientSize = new Size(1292, 865);
             Controls.Add(btnBuscarPorLegajo);
-            Controls.Add(label1);
+            Controls.Add(LblBuscarLegajo);
             Controls.Add(TxtBuscarLegajo);
             Controls.Add(btnEliminarUsuario);
             Controls.Add(btnEditarUsuario);
             Controls.Add(btnAgregarUsuario);
             Controls.Add(DgvUsuarios);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(4, 4, 4, 4);
             Name = "FrmUsuarios";
             Text = "FrmUsuarios";
             Load += FrmUsuarios_Load;
@@ -189,7 +197,7 @@
         private DataGridViewTextBoxColumn Clave;
         private DataGridViewTextBoxColumn Tipo;
         private TextBox TxtBuscarLegajo;
-        private Label label1;
+        private Label LblBuscarLegajo;
         private Button btnBuscarPorLegajo;
     }
 }

@@ -39,7 +39,7 @@ namespace UIDesktop
 
         private void btnAgregarPlan_Click(object sender, EventArgs e)
         {
-            using (var modalform = new FrmPlan())
+            using (var modalform = new FrmPlan(false))
             {
                 modalform.ShowDialog();
                 CargarPlanes();
