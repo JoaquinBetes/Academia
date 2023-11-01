@@ -10,6 +10,7 @@
         public string Direccion { get; set; }
         public string Email { get; set; }
         public DateTime FechaNacimiento { get; set; }
+        public int IdPlan {  get; set; }
 
         public Persona()
         {
@@ -21,9 +22,10 @@
             Direccion = "-";
             Email = "-";
             FechaNacimiento = DateTime.MinValue;
+            IdPlan = 0;
         }
 
-        public Persona(int personaId, string nombre, string apellido, int dni, string telefono, string direccion, string email, DateTime fechaNacimiento)
+        public Persona(int personaId, string nombre, string apellido, int dni, string telefono, string direccion, string email, DateTime fechaNacimiento, int idPlan)
         {
             PersonaId = personaId;
             Nombre = nombre;
@@ -33,6 +35,7 @@
             Direccion = direccion;
             Email = email;
             FechaNacimiento = fechaNacimiento;
+            IdPlan = idPlan;
         }
     }
 }

@@ -114,20 +114,20 @@ namespace UIDesktop
             label1.Text = "Buscar por DNI";
             #endregion
             #region Controles
-            if (mod != null) 
+            if (mod != null)
             {
                 if (this.mod.Baja) { Controls.Add(btnEliminarPersona); };
                 if (this.mod.Modificacion) { Controls.Add(btnEditarPersona); };
                 if (this.mod.Alta) { Controls.Add(btnAgregarPersona); };
-                if (this.mod.Alta) 
-                { 
+                if (this.mod.Alta)
+                {
                     Controls.Add(btnBuscarPorDni);
                     Controls.Add(label1);
                     Controls.Add(txtBuscarPorDni);
                 }
             }
             #endregion
-            
+
         }
 
         private void CargarPersonas()
@@ -144,7 +144,9 @@ namespace UIDesktop
         }
         private void FrmPersonas_Load(object sender, EventArgs e)
         {
-            CargarPersonas();
+            List<Entities.Persona>? personas = Business.Persona.getDatos(usuario);
+            DgvPersonas.DataSource = personas;
+            //CargarPersonas();
         }
 
         private void btnEliminarPersona_Click(object sender, EventArgs e)

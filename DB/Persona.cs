@@ -33,8 +33,9 @@ namespace DB
                         string? telefono = reader["Telefono"].ToString();
                         string? direccion = reader["Direccion"].ToString();
                         string? email = reader["Email"].ToString();
+                        int idPlan = Convert.ToInt32(reader["IDPlan"]);
                         DateTime fechaNacimiento = Convert.ToDateTime(reader["FechaNacimiento"]);
-                        Entities.Persona persona = new Entities.Persona(personaID, nombre, apellido, DNI, telefono, direccion, email, fechaNacimiento);
+                        Entities.Persona persona = new Entities.Persona(personaID, nombre, apellido, DNI, telefono, direccion, email, fechaNacimiento, idPlan);
                         personas.Add(persona);
                     }
                     reader.Close();
