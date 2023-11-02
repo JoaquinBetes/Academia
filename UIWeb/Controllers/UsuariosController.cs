@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -58,6 +59,12 @@ namespace UIWeb.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("UsuarioId,NombreUsuario,Legajo,Clave,TipoUsuario,Habilitado,PersonaId")] Usuario usuario, string DNI)
         {
+            // Verificar si el DNI es un número válido de 8 dígitos
+            if (!Regex.IsMatch(DNI, @"^\d{8}$"))
+            {
+                ModelState.AddModelError("DNI", "El DNI debe ser un número válido de 8 dígitos.");
+            }
+
             if (ModelState.IsValid)
             {
                 // Verificar si ya existe una persona con el DNI ingresado
@@ -67,16 +74,20 @@ namespace UIWeb.Controllers
                 {
                     // Persona con el DNI no existe, muestra un mensaje de error
                     ModelState.AddModelError("DNI", "No existe una persona con este DNI.");
-                    return View(usuario);
                 }
 
-                // Si existe una persona con ese DNI, asigna su ID al usuario
-                usuario.PersonaId = personaExistente.PersonaId;
+                if (ModelState.ErrorCount == 0)
+                {
+                    // Si no hay errores de validación, puedes proceder a crear el usuario
+                    usuario.PersonaId = personaExistente.PersonaId;
 
-                _context.Add(usuario);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                    _context.Add(usuario);
+                    await _context.SaveChangesAsync();
+                    TempData["SuccessMessage"] = "El usuario se ha creado correctamente.";
+                    return RedirectToAction(nameof(Index));
+                }
             }
+
             return View(usuario);
         }
 
