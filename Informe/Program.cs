@@ -1,13 +1,15 @@
-﻿using QuestPDF.Fluent;
+﻿using Business;
+using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
 using QuestPDF.Previewer;
+using System.Collections.Generic;
 
 namespace Informe
 {
     public class Program
     {
-        
+
         public static void InformeArbol(int idEspecialidad)
         {
             QuestPDF.Settings.License = LicenseType.Community;
@@ -191,12 +193,182 @@ namespace Informe
                  });
 
              }).GeneratePdf(@"../../../../Informes/InformeArbol.pdf");//.ShowInPreviewer();
-           
+
+        }
+
+        public static void InformeUsuarios()
+        {
+            QuestPDF.Settings.License = LicenseType.Community;
+
+            List<Entities.Usuario> usuarios = Business.Usuario.getDatos();
+            List<Entities.Usuario> alumnos = usuarios.Where(x => x.TipoUsuario == "Alumno").ToList();
+            List<Entities.Usuario> docentes = usuarios.Where(x => x.TipoUsuario == "Docente").ToList();
+            List<Entities.Usuario> administradores = usuarios.Where(x => x.TipoUsuario == "Administrador").ToList();
+
+
+            Document.Create(container =>
+            {
+                container.Page(page =>
+                {
+                    page.Header().AlignCenter().Text($"Informe usuarios").Bold().FontSize(20);
+                    page.Content().Column(col1 =>
+                    {
+                        col1.Spacing(10);
+                        col1.Item().Text("Alumnos").Bold().FontSize(15);
+                        col1.Item().Table(table =>
+                        {
+
+                            table.ColumnsDefinition(columns =>
+                            {
+
+                                columns.RelativeColumn();
+                                columns.RelativeColumn();
+                                columns.RelativeColumn();
+                                columns.RelativeColumn();
+                                columns.RelativeColumn();
+                                columns.RelativeColumn();
+                            });
+                            // Encabezados de la tabla
+                            table.Header(header =>
+                            {
+                                header.Cell().Background("#257272").Padding(2).Text("ID").FontColor("#fff");
+                                header.Cell().Background("#257272").Padding(2).Text("Nombre Usuario").FontColor("#fff");    
+                                header.Cell().Background("#257272").Padding(2).Text("Legajo").FontColor("#fff");        
+                                header.Cell().Background("#257272").Padding(2).Text("Clave").FontColor("#fff"); 
+                                header.Cell().Background("#257272").Padding(2).Text("Tipo Usuario").FontColor("#fff");  
+                                header.Cell().Background("#257272").Padding(2).Text("Habilitado").FontColor("#fff");    
+                    
+                            });
+
+                            // Filas de datos
+                            foreach (var usuario in alumnos)
+                            {
+                                var id = usuario.Id.ToString();
+                                var nombreUsuario = usuario.NombreUsuario;
+                                var legajo = usuario.Legajo.ToString();
+                                var clave = usuario.Clave;
+                                var tipoUsuario = usuario.TipoUsuario;  
+                                var habilitado = usuario.Habilitado.ToString();
+
+                                //table.Cell().BorderBottom(0.5f).BorderColor("#D9D9D9").Padding(2).Text(Placeholders.Label()).FontSize(10);
+                                table.Cell().BorderBottom(0.5f).BorderColor("#D9D9D9").Padding(2).Text(id).FontSize(10);
+                                table.Cell().BorderBottom(0.5f).BorderColor("#D9D9D9").Padding(2).Text(nombreUsuario).FontSize(10);
+                                table.Cell().BorderBottom(0.5f).BorderColor("#D9D9D9").Padding(2).Text(legajo).FontSize(10);    
+                                table.Cell().BorderBottom(0.5f).BorderColor("#D9D9D9").Padding(2).Text(clave).FontSize(10); 
+                                table.Cell().BorderBottom(0.5f).BorderColor("#D9D9D9").Padding(2).Text(tipoUsuario).FontSize(10);   
+                                table.Cell().BorderBottom(0.5f).BorderColor("#D9D9D9").Padding(2).Text(habilitado).FontSize(10);    
+
+
+                            }
+                        });
+                        col1.Item().Text("Docentes").Bold().FontSize(15);
+                        col1.Item().Table(table =>
+                        {
+
+                            table.ColumnsDefinition(columns =>
+                            {
+
+                                columns.RelativeColumn();
+                                columns.RelativeColumn();
+                                columns.RelativeColumn();
+                                columns.RelativeColumn();
+                                columns.RelativeColumn();
+                                columns.RelativeColumn();
+                            });
+                            // Encabezados de la tabla
+                            table.Header(header =>
+                            {
+                                header.Cell().Background("#257272").Padding(2).Text("ID").FontColor("#fff");
+                                header.Cell().Background("#257272").Padding(2).Text("Nombre Usuario").FontColor("#fff");
+                                header.Cell().Background("#257272").Padding(2).Text("Legajo").FontColor("#fff");
+                                header.Cell().Background("#257272").Padding(2).Text("Clave").FontColor("#fff");
+                                header.Cell().Background("#257272").Padding(2).Text("Tipo Usuario").FontColor("#fff");
+                                header.Cell().Background("#257272").Padding(2).Text("Habilitado").FontColor("#fff");
+
+                            });
+
+                            // Filas de datos
+                            foreach (var usuario in docentes)
+                            {
+                                var id = usuario.Id.ToString();
+                                var nombreUsuario = usuario.NombreUsuario;
+                                var legajo = usuario.Legajo.ToString();
+                                var clave = usuario.Clave;
+                                var tipoUsuario = usuario.TipoUsuario;
+                                var habilitado = usuario.Habilitado.ToString();
+
+                                //table.Cell().BorderBottom(0.5f).BorderColor("#D9D9D9").Padding(2).Text(Placeholders.Label()).FontSize(10);
+                                table.Cell().BorderBottom(0.5f).BorderColor("#D9D9D9").Padding(2).Text(id).FontSize(10);
+                                table.Cell().BorderBottom(0.5f).BorderColor("#D9D9D9").Padding(2).Text(nombreUsuario).FontSize(10);
+                                table.Cell().BorderBottom(0.5f).BorderColor("#D9D9D9").Padding(2).Text(legajo).FontSize(10);
+                                table.Cell().BorderBottom(0.5f).BorderColor("#D9D9D9").Padding(2).Text(clave).FontSize(10);
+                                table.Cell().BorderBottom(0.5f).BorderColor("#D9D9D9").Padding(2).Text(tipoUsuario).FontSize(10);
+                                table.Cell().BorderBottom(0.5f).BorderColor("#D9D9D9").Padding(2).Text(habilitado).FontSize(10);
+
+
+                            }
+                        });
+                        col1.Item().Text("Administradores").Bold().FontSize(15);
+                        col1.Item().Table(table =>
+                        {
+
+
+                            table.ColumnsDefinition(columns =>
+                            {
+
+                                columns.RelativeColumn();
+                                columns.RelativeColumn();
+                                columns.RelativeColumn();
+                                columns.RelativeColumn();
+                                columns.RelativeColumn();
+                                columns.RelativeColumn();
+                            });
+                            // Encabezados de la tabla
+                            table.Header(header =>
+                            {
+                                header.Cell().Background("#257272").Padding(2).Text("ID").FontColor("#fff");
+                                header.Cell().Background("#257272").Padding(2).Text("Nombre Usuario").FontColor("#fff");
+                                header.Cell().Background("#257272").Padding(2).Text("Legajo").FontColor("#fff");
+                                header.Cell().Background("#257272").Padding(2).Text("Clave").FontColor("#fff");
+                                header.Cell().Background("#257272").Padding(2).Text("Tipo Usuario").FontColor("#fff");
+                                header.Cell().Background("#257272").Padding(2).Text("Habilitado").FontColor("#fff");
+
+                            });
+
+                            // Filas de datos
+                            foreach (var usuario in administradores)
+                            {
+                                var id = usuario.Id.ToString();
+                                var nombreUsuario = usuario.NombreUsuario;
+                                var legajo = usuario.Legajo.ToString();
+                                var clave = usuario.Clave;
+                                var tipoUsuario = usuario.TipoUsuario;
+                                var habilitado = usuario.Habilitado.ToString();
+
+                                //table.Cell().BorderBottom(0.5f).BorderColor("#D9D9D9").Padding(2).Text(Placeholders.Label()).FontSize(10);
+                                table.Cell().BorderBottom(0.5f).BorderColor("#D9D9D9").Padding(2).Text(id).FontSize(10);
+                                table.Cell().BorderBottom(0.5f).BorderColor("#D9D9D9").Padding(2).Text(nombreUsuario).FontSize(10);
+                                table.Cell().BorderBottom(0.5f).BorderColor("#D9D9D9").Padding(2).Text(legajo).FontSize(10);
+                                table.Cell().BorderBottom(0.5f).BorderColor("#D9D9D9").Padding(2).Text(clave).FontSize(10);
+                                table.Cell().BorderBottom(0.5f).BorderColor("#D9D9D9").Padding(2).Text(tipoUsuario).FontSize(10);
+                                table.Cell().BorderBottom(0.5f).BorderColor("#D9D9D9").Padding(2).Text(habilitado).FontSize(10);
+
+
+                            }
+                        });
+                        
+                    });
+                    //page.Footer().AlignCenter().PageNumber("Page {number}");
+                });
+
+            }).GeneratePdf(@"../../../../Informes/InformeUsuarios.pdf");// .ShowInPreviewer();
+
         }
         static void Main(string[] args)
         {
             Console.WriteLine("Hello, World!");
-            InformeArbol(4);
+            
+            InformeUsuarios();
         }
     }
 }

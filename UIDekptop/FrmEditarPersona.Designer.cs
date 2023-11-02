@@ -55,9 +55,10 @@
             BtnCancelar.FlatStyle = FlatStyle.Flat;
             BtnCancelar.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             BtnCancelar.ForeColor = SystemColors.Control;
-            BtnCancelar.Location = new Point(266, 557);
+            BtnCancelar.Location = new Point(342, 694);
+            BtnCancelar.Margin = new Padding(4);
             BtnCancelar.Name = "BtnCancelar";
-            BtnCancelar.Size = new Size(127, 41);
+            BtnCancelar.Size = new Size(163, 57);
             BtnCancelar.TabIndex = 31;
             BtnCancelar.Text = "Cancelar";
             BtnCancelar.UseVisualStyleBackColor = false;
@@ -70,9 +71,10 @@
             BtnGuardarEdicion.FlatStyle = FlatStyle.Flat;
             BtnGuardarEdicion.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             BtnGuardarEdicion.ForeColor = SystemColors.Control;
-            BtnGuardarEdicion.Location = new Point(121, 557);
+            BtnGuardarEdicion.Location = new Point(156, 694);
+            BtnGuardarEdicion.Margin = new Padding(4);
             BtnGuardarEdicion.Name = "BtnGuardarEdicion";
-            BtnGuardarEdicion.Size = new Size(127, 41);
+            BtnGuardarEdicion.Size = new Size(163, 57);
             BtnGuardarEdicion.TabIndex = 30;
             BtnGuardarEdicion.Text = "Guardar";
             BtnGuardarEdicion.UseVisualStyleBackColor = false;
@@ -81,16 +83,18 @@
             // TxtEmail
             // 
             TxtEmail.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            TxtEmail.Location = new Point(54, 368);
+            TxtEmail.Location = new Point(69, 515);
+            TxtEmail.Margin = new Padding(4);
             TxtEmail.Name = "TxtEmail";
-            TxtEmail.Size = new Size(403, 27);
+            TxtEmail.Size = new Size(517, 27);
             TxtEmail.TabIndex = 29;
             // 
             // lblEmail
             // 
             lblEmail.AutoSize = true;
             lblEmail.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            lblEmail.Location = new Point(54, 345);
+            lblEmail.Location = new Point(69, 483);
+            lblEmail.Margin = new Padding(4, 0, 4, 0);
             lblEmail.Name = "lblEmail";
             lblEmail.Size = new Size(46, 20);
             lblEmail.TabIndex = 28;
@@ -100,57 +104,66 @@
             // 
             DtpFechaNacimiento.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             DtpFechaNacimiento.Format = DateTimePickerFormat.Custom;
-            DtpFechaNacimiento.Location = new Point(54, 433);
+            DtpFechaNacimiento.Location = new Point(69, 606);
+            DtpFechaNacimiento.Margin = new Padding(4);
             DtpFechaNacimiento.Name = "DtpFechaNacimiento";
             DtpFechaNacimiento.ShowUpDown = true;
-            DtpFechaNacimiento.Size = new Size(215, 27);
+            DtpFechaNacimiento.Size = new Size(275, 27);
             DtpFechaNacimiento.TabIndex = 27;
             // 
             // TxtTelefono
             // 
             TxtTelefono.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            TxtTelefono.Location = new Point(54, 302);
+            TxtTelefono.Location = new Point(69, 423);
+            TxtTelefono.Margin = new Padding(4);
             TxtTelefono.Name = "TxtTelefono";
-            TxtTelefono.Size = new Size(403, 27);
+            TxtTelefono.Size = new Size(517, 27);
             TxtTelefono.TabIndex = 26;
+            TxtTelefono.KeyPress += TxtTelefono_KeyPress;
             // 
             // TxtDireccion
             // 
             TxtDireccion.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            TxtDireccion.Location = new Point(54, 240);
+            TxtDireccion.Location = new Point(69, 336);
+            TxtDireccion.Margin = new Padding(4);
             TxtDireccion.Name = "TxtDireccion";
-            TxtDireccion.Size = new Size(403, 27);
+            TxtDireccion.Size = new Size(517, 27);
             TxtDireccion.TabIndex = 25;
             // 
             // TxtApellido
             // 
             TxtApellido.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            TxtApellido.Location = new Point(54, 176);
+            TxtApellido.Location = new Point(69, 246);
+            TxtApellido.Margin = new Padding(4);
             TxtApellido.Name = "TxtApellido";
-            TxtApellido.Size = new Size(403, 27);
+            TxtApellido.Size = new Size(517, 27);
             TxtApellido.TabIndex = 24;
             // 
             // TxtNombre
             // 
             TxtNombre.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            TxtNombre.Location = new Point(54, 117);
+            TxtNombre.Location = new Point(69, 164);
+            TxtNombre.Margin = new Padding(4);
             TxtNombre.Name = "TxtNombre";
-            TxtNombre.Size = new Size(403, 27);
+            TxtNombre.Size = new Size(517, 27);
             TxtNombre.TabIndex = 23;
             // 
             // TxtDni
             // 
             TxtDni.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            TxtDni.Location = new Point(54, 56);
+            TxtDni.Location = new Point(69, 78);
+            TxtDni.Margin = new Padding(4);
             TxtDni.Name = "TxtDni";
-            TxtDni.Size = new Size(403, 27);
+            TxtDni.Size = new Size(517, 27);
             TxtDni.TabIndex = 22;
+            TxtDni.KeyPress += TxtDni_KeyPress;
             // 
             // lblTelefono
             // 
             lblTelefono.AutoSize = true;
             lblTelefono.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            lblTelefono.Location = new Point(54, 279);
+            lblTelefono.Location = new Point(69, 391);
+            lblTelefono.Margin = new Padding(4, 0, 4, 0);
             lblTelefono.Name = "lblTelefono";
             lblTelefono.Size = new Size(67, 20);
             lblTelefono.TabIndex = 21;
@@ -160,7 +173,8 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(54, 410);
+            label5.Location = new Point(69, 574);
+            label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
             label5.Size = new Size(146, 20);
             label5.TabIndex = 20;
@@ -170,7 +184,8 @@
             // 
             lblDireccion.AutoSize = true;
             lblDireccion.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            lblDireccion.Location = new Point(54, 217);
+            lblDireccion.Location = new Point(69, 304);
+            lblDireccion.Margin = new Padding(4, 0, 4, 0);
             lblDireccion.Name = "lblDireccion";
             lblDireccion.Size = new Size(72, 20);
             lblDireccion.TabIndex = 19;
@@ -180,7 +195,8 @@
             // 
             lblApellido.AutoSize = true;
             lblApellido.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            lblApellido.Location = new Point(54, 153);
+            lblApellido.Location = new Point(69, 214);
+            lblApellido.Margin = new Padding(4, 0, 4, 0);
             lblApellido.Name = "lblApellido";
             lblApellido.Size = new Size(66, 20);
             lblApellido.TabIndex = 18;
@@ -190,7 +206,8 @@
             // 
             lblNombre.AutoSize = true;
             lblNombre.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            lblNombre.Location = new Point(54, 94);
+            lblNombre.Location = new Point(69, 132);
+            lblNombre.Margin = new Padding(4, 0, 4, 0);
             lblNombre.Name = "lblNombre";
             lblNombre.Size = new Size(64, 20);
             lblNombre.TabIndex = 17;
@@ -200,7 +217,8 @@
             // 
             lblDni.AutoSize = true;
             lblDni.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            lblDni.Location = new Point(54, 33);
+            lblDni.Location = new Point(69, 46);
+            lblDni.Margin = new Padding(4, 0, 4, 0);
             lblDni.Name = "lblDni";
             lblDni.Size = new Size(35, 20);
             lblDni.TabIndex = 16;
@@ -226,11 +244,9 @@
             // 
             // FrmEditarPersona
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(510, 621);
-            Controls.Add(cmbPlanes);
-            Controls.Add(label1);
+            ClientSize = new Size(656, 798);
             Controls.Add(BtnCancelar);
             Controls.Add(BtnGuardarEdicion);
             Controls.Add(TxtEmail);
@@ -247,6 +263,7 @@
             Controls.Add(lblApellido);
             Controls.Add(lblNombre);
             Controls.Add(lblDni);
+            Margin = new Padding(4);
             Name = "FrmEditarPersona";
             Text = "Editar Persona";
             ResumeLayout(false);

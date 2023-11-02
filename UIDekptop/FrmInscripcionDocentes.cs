@@ -47,13 +47,13 @@ namespace UIDesktop
         {
             if (string.IsNullOrEmpty(txtIdDocente.Text) || !int.TryParse(txtIdDocente.Text, out _))
             {
-                MessageBox.Show("El ID del Docente debe ser un numero.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("El Legajo del Docente debe ser un numero.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (!Business.Usuario.EsDocente(Convert.ToInt32(txtIdDocente.Text)))
             {
-                MessageBox.Show("No existe un docente con ese id.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No existe un docente con ese legajo.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -69,9 +69,13 @@ namespace UIDesktop
                 return;
             }
             int idCurso = (int)cmbCursos.SelectedValue;
-            int idDocente = Convert.ToInt32(txtIdDocente.Text);
+            int legajo = Convert.ToInt32(txtIdDocente.Text);
             int cargo = (int)cmbCargos.SelectedIndex + 1;
+            int idDocente = Business.Usuario.getUsuario(legajo).Id;
             Business.Docentes_Cursos.CreateInscripcion(idCurso, idDocente, cargo);
+            List<Entities.Docentes_Cursos> docentesCursos = Business.Docentes_Cursos.GetAll();
+            dgvDocentesCursos.DataSource = docentesCursos;
+
         }
     }
 }

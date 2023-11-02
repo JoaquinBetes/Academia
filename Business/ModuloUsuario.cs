@@ -28,9 +28,13 @@ namespace Business
                 {
                     DB.ModuloUsuario.CreateModuloUsuario(modulo.Id, IdUsuario, true, true, true, true);
                 }
-                else if (modulo.Descripcion == "Personas" || modulo.Descripcion == "Usuarios")
+                else if (modulo.Descripcion == "Personas")
                 {
                     DB.ModuloUsuario.CreateModuloUsuario(modulo.Id, IdUsuario, false, false, true, true);
+                }
+                else if (modulo.Descripcion == "Usuarios") 
+                {
+                    DB.ModuloUsuario.CreateModuloUsuario(modulo.Id, IdUsuario, false, false, false, true);
                 }
                 else if (modulo.Descripcion == "Alumnos_Inscripciones" && tipo == "Alumno")
                 {

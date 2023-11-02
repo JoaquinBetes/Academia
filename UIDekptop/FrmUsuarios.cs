@@ -122,5 +122,10 @@ namespace UIDekptop
             }
             CargarUsuarios();
         }
+
+        private void btnInforme_Click(object sender, EventArgs e)
+        {
+            Informe.Program.InformeUsuarios();
+        }
     }
 }

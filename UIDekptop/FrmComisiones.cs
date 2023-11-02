@@ -14,9 +14,19 @@ namespace UIDesktop
 {
     public partial class FrmComisiones : Form
     {
-        public FrmComisiones()
+        private Entities.ModuloUsuario? mod;
+        Entities.Usuario usuario;
+        public FrmComisiones(Entities.Usuario usuario)
         {
+            this.usuario = usuario;
+            this.mod = Business.Validaciones.permisos(usuario, "Comisiones");
             InitializeComponent();
+            if (mod != null)
+            {
+                if (!this.mod.Baja) { btnEliminarComision.Enabled = false; };
+                if (!this.mod.Modificacion) { btnEditarComision.Enabled = false; };
+                if (!this.mod.Alta) { btnAgregarComision.Enabled = false; };
+            }
         }
 
         private void CargarComisiones()

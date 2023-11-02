@@ -36,6 +36,8 @@ namespace Business
 
             return null;
         }
+        public static List<Entities.Usuario>? getDatos()
+        { return DB.Usuario.getDatos(); }
         public static List<Entities.Usuario> getUsuariosPersona(int personaId)
         { return DB.Usuario.getUsuariosPersona(personaId); }
         #endregion
@@ -78,8 +80,8 @@ namespace Business
 
         public static bool EsDocente (int idPersona)
         {
-            Entities.Usuario usuario = getUsuariosPersona(idPersona).FirstOrDefault( u => u.TipoUsuario == "Docente");
-            return usuario != null;
+            Entities.Usuario usuario = getUsuario(idPersona);
+            return usuario.TipoUsuario == "Docente";
         }
     }
 }

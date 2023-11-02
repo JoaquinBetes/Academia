@@ -14,9 +14,20 @@ namespace UIDesktop
 {
     public partial class FrmPlanes : Form
     {
-        public FrmPlanes()
+        private Entities.ModuloUsuario? mod;
+        Entities.Usuario usuario;
+        public FrmPlanes(Entities.Usuario usuario)
         {
+            this.usuario = usuario;
+            this.mod = Business.Validaciones.permisos(usuario, "Planes");
             InitializeComponent();
+            
+            if (mod != null)
+            {
+                if (!this.mod.Baja) { btnEliminarPlan.Enabled = false; };
+                if (!this.mod.Modificacion) { btnEditarPlan.Enabled = false; };
+                if (!this.mod.Alta) { btnAgregarPlan.Enabled = false; };
+            }
         }
 
         private void CargarPlanes()
