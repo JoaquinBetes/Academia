@@ -13,17 +13,18 @@ namespace UIDesktop
 {
     public partial class FrmInscripcionAlumnos : Form
     {
-        public int idAlumno = 7;  // ----------------------------------------------- cambiar por el id del alumno logueado
-        public FrmInscripcionAlumnos()
+        private Entities.Usuario usuario;
+        private int idEsp;
+        public FrmInscripcionAlumnos(Entities.Usuario usuario)
         {
+            this.usuario = usuario;
             InitializeComponent();
-            Entities.Usuario usuario = Business.Usuario.getUsuario(idAlumno);
-            int idPlan = usuario.IdPlan;
-            int idEsp = Business.Plan.getById(idPlan).IdEspecialidad;
+            this.idEsp = Business.Plan.getById(usuario.IdPlan).IdEspecialidad;
             txtEspecialidad.Text = Business.Especialidad.Get(idEsp).Descripcion;
-            txtPlan.Text = Business.Plan.getById(idPlan).Descripcion;
+            txtPlan.Text = Business.Plan.getById(usuario.IdPlan).Descripcion;
+            txtLegajoAlumno.Text = usuario.Legajo.ToString();
 
-            List<Entities.Materia> materias = Business.Materia.getByPlan(idPlan);
+            List<Entities.Materia> materias = Business.Materia.getByPlan(usuario.IdPlan);
             cmbMaterias.DataSource = materias;
             cmbMaterias.ValueMember = "IdMateria";
             cmbMaterias.DisplayMember = "Descripcion";
@@ -56,7 +57,7 @@ namespace UIDesktop
             string condicion = "Libre";
             int nota = 0;
 
-            Business.Alumnos_Inscripciones.CreateInscripcion(idAlumno, idCurso, condicion, nota);
+            Business.Alumnos_Inscripciones.CreateInscripcion(usuario.Id , idCurso, condicion, nota);
             this.Close();
         }
 

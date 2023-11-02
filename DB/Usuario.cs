@@ -187,6 +187,7 @@ namespace DB
                     if (reader.Read()) 
                     {
                         usuario.Id = Convert.ToInt32(reader["UsuarioId"]);
+                        usuario.IdPlan = Convert.ToInt32(reader["PlanId"]);
                         usuario.NombreUsuario = reader["NombreUsuario"].ToString();
                         usuario.Legajo = Convert.ToInt32(reader["Legajo"]);
                         usuario.Clave = reader["Clave"].ToString();

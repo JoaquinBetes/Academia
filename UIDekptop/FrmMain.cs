@@ -68,7 +68,7 @@ namespace UIDesktop
 
         private void alumnosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmInscripcionAlumnos frm = new FrmInscripcionAlumnos();
+            FrmInscripcionAlumnos frm = new FrmInscripcionAlumnos(usuario);
             frm.ShowDialog();
         }
 
