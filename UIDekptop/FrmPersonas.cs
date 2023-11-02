@@ -28,7 +28,12 @@ namespace UIDesktop
             this.usuario = usuario;
             this.mod = Business.Validaciones.permisos(usuario, "Personas");
             InitializeComponent();
-
+            if (mod != null)
+            {
+                if (!this.mod.Baja) { btnEliminarPersona.Enabled = false; };
+                if (!this.mod.Modificacion) { btnEditarPersona.Enabled = false; };
+                if (!this.mod.Alta) { btnAgregarPersona.Enabled = false; };
+            }
         }
 
         private void CargarPersonas()

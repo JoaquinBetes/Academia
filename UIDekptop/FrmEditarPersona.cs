@@ -105,5 +105,23 @@ namespace UIDekptop
         {
             this.Close();
         }
+
+        private void TxtTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verifica si la tecla presionada es un número o una tecla de control (por ejemplo, retroceso)
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Cancela la entrada del carácter no válido
+            }
+        }
+
+        private void TxtDni_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verifica si la tecla presionada es un número o una tecla de control (por ejemplo, retroceso)
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Cancela la entrada del carácter no válido
+            }
+        }
     }
 }
