@@ -36,6 +36,8 @@ namespace Business
 
             return null;
         }
+        public static List<Entities.Usuario>? getDatos()
+        { return DB.Usuario.getDatos(); }
         public static List<Entities.Usuario> getUsuariosPersona(int personaId)
         { return DB.Usuario.getUsuariosPersona(personaId); }
         #endregion
