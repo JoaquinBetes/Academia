@@ -32,13 +32,6 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DgvPersonas = new DataGridView();
-            DNI = new DataGridViewTextBoxColumn();
-            Nombre = new DataGridViewTextBoxColumn();
-            Apellido = new DataGridViewTextBoxColumn();
-            Telefono = new DataGridViewTextBoxColumn();
-            Direccion = new DataGridViewTextBoxColumn();
-            Email = new DataGridViewTextBoxColumn();
-            FechaNacimiento = new DataGridViewTextBoxColumn();
             btnBuscarPorDni = new Button();
             btnAgregarPersona = new Button();
             btnEditarPersona = new Button();
