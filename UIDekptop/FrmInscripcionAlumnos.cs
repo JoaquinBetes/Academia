@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Business;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,6 +21,8 @@ namespace UIDesktop
             cmbEspecialidades.DataSource = especialidades;
             cmbEspecialidades.ValueMember = "IdEspecialidad";
             cmbEspecialidades.DisplayMember = "descripcion";
+
+            //txtLegajoAlumno = Usuario.legajo
         }
 
         private void cmbEspecialidad_SelectedIndexChanged(object sender, EventArgs e)
@@ -97,7 +100,7 @@ namespace UIDesktop
 
             string condicion = "Libre";
             int nota = 0;
-            int idAlumno = 7;  // ----------------------------------------------- cambiar por el id del alumno logueado
+            int idAlumno = 7;  // reemplazar por usuario.personaId
 
             Business.Alumnos_Inscripciones.CreateInscripcion( idAlumno, idCurso, condicion, nota );
             this.Close();
