@@ -11,7 +11,5 @@
         public string Email { get; set; }
         public DateTime FechaNacimiento { get; set; }
         public int IdPlan { get; set; }
-
-        public ICollection<Usuario> Usuarios { get; set; }
     }
 }
