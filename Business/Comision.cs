@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DB;
+using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Business
 {
-    public class Comision
+    public class Comision : Conector
     {
         #region Getters
 
@@ -24,10 +26,12 @@ namespace Business
         { DB.Comision.CreateComision(descripcion, anioEspecialidad, idPlan); }
         #endregion
         #region Update
+        public static void UpdateComision(Entities.Comision comision)
+        { DB.Comision.UpdateComision(comision); }
         #endregion
-        #region Delete
+            #region Delete
 
-        public static void DeleteComision(int id)
+            public static void DeleteComision(int id)
         { DB.Comision.DeleteComision(id); }
 
         #endregion

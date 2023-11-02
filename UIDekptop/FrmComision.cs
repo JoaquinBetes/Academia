@@ -75,8 +75,33 @@ namespace UIDesktop
             int anioEsp = Convert.ToInt32(txtAnioEspecialidad.Text);
             int idPlan = Convert.ToInt32(cmbPlan.SelectedValue);
 
+            if (!edicion)
+            {
+                Business.Comision.CreateComision(descripcion, anioEsp, idPlan);
+                this.Close();
+            }
+            else
+            {
+                comision.IDPlan = idPlan;
+                comision.Descripcion = descripcion;
+                comision.AnioEspecialidad = anioEsp;
+                Business.Comision.UpdateComision(comision);
+                this.Close();
+            }
 
-            Business.Comision.CreateComision(descripcion, anioEsp, idPlan);
+        }
+
+        private void txtAnioEspecialidad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verifica si la tecla presionada es un número o una tecla de control (por ejemplo, retroceso)
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Cancela la entrada del carácter no válido
+            }
+        }
+
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
             this.Close();
         }
     }
