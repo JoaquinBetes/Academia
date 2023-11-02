@@ -9,6 +9,7 @@ namespace Entities
     public class Usuario
     {
         public int Id { get; set; }
+        public int IdPlan { get; set; }
         public string NombreUsuario { get; set; }
         public int Legajo { get; set; }
         public string Clave { get; set; }
@@ -23,8 +24,9 @@ namespace Entities
             Clave = string.Empty;
             TipoUsuario = string.Empty;
             Habilitado = false;
-        }
-        public Usuario(int id, string nombreUsuario, int legajo, string clave, string tipoUsuario, bool habilitado)
+            IdPlan = 0;
+    }
+        public Usuario(int id, string nombreUsuario, int legajo, string clave, string tipoUsuario, bool habilitado, int idPlan)
         {
             this.Id = id;
             this.NombreUsuario = nombreUsuario;
@@ -32,6 +34,7 @@ namespace Entities
             this.Clave = clave;
             this.TipoUsuario = tipoUsuario;
             this.Habilitado = habilitado;
+            this.IdPlan = idPlan;
         }
     }
 }

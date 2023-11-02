@@ -41,7 +41,7 @@ namespace Business
         #endregion
         #region Update
         public static void UpdatePersona(int dni, string nombre, string apellido, string telefono, string direccion, string email, DateTime fechaNacimiento, int idPlan, int id)
-        { DB.Persona.UpdatePersona(dni, nombre, apellido, telefono, direccion, email, fechaNacimiento, idPlan, id); }
+        { DB.Persona.UpdatePersona(dni, nombre, apellido, telefono, direccion, email, fechaNacimiento, id); }
         #endregion
         #region Delete
         public static void deletePersona(int id)

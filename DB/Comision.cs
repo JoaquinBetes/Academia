@@ -135,6 +135,46 @@ namespace DB
 
         #endregion
         #region Update
+        public static void UpdateComision(Entities.Comision comision)
+        {
+            try
+            {
+                // Crear la SqlConnection
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    // Comando SQL para el UPDATE
+                    string sqlQuery = "UPDATE Comisiones SET Descripcion = @descripcion, AnioEspecialidad = @anioEspecialidad, IDPlan = @idPlan WHERE IdComision = @id";
+
+                    // Crear el SqlCommand con el comando y la conexión
+                    SqlCommand command = new SqlCommand(sqlQuery, connection);
+
+                    // Agregar parámetros al comando
+                    command.Parameters.AddWithValue("@descripcion", comision.Descripcion);
+                    command.Parameters.AddWithValue("@anioEspecialidad", comision.AnioEspecialidad);
+                    command.Parameters.AddWithValue("@idPlan", comision.IDPlan);
+                    command.Parameters.AddWithValue("@id", comision.IdComision);
+
+                    connection.Open();
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error al actualizar la base de datos: " + ex.Message);
+                    }
+                    finally
+                    {
+                        connection.Close();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar errores si ocurre alguno al intentar conectarse a la base de datos.
+                Console.WriteLine("Error al conectar a la base de datos: " + ex.Message);
+            }
+        }
         #endregion
         #region Delete
 

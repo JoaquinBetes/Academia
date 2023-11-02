@@ -33,9 +33,8 @@ namespace DB
                         string? telefono = reader["Telefono"].ToString();
                         string? direccion = reader["Direccion"].ToString();
                         string? email = reader["Email"].ToString();
-                        int idPlan = Convert.ToInt32(reader["IDPlan"]);
                         DateTime fechaNacimiento = Convert.ToDateTime(reader["FechaNacimiento"]);
-                        Entities.Persona persona = new Entities.Persona(personaID, nombre, apellido, DNI, telefono, direccion, email, fechaNacimiento, idPlan);
+                        Entities.Persona persona = new Entities.Persona(personaID, nombre, apellido, DNI, telefono, direccion, email, fechaNacimiento);
                         personas.Add(persona);
                     }
                     reader.Close();
@@ -82,7 +81,6 @@ namespace DB
                         persona.Direccion = reader["Direccion"].ToString();
                         persona.Email = reader["Email"].ToString();
                         persona.FechaNacimiento = Convert.ToDateTime(reader["FechaNacimiento"]);
-                        persona.IdPlan = Convert.ToInt32(reader["IDPlan"]);
                     }
                     connection.Close();
                 }
@@ -127,7 +125,6 @@ namespace DB
                         persona.Direccion = reader["Direccion"].ToString();
                         persona.Email = reader["Email"].ToString();
                         persona.FechaNacimiento = Convert.ToDateTime(reader["FechaNacimiento"]);
-                        persona.IdPlan = Convert.ToInt32(reader["IDPlan"]);
                     }
                     connection.Close();
                 }
@@ -186,8 +183,8 @@ namespace DB
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     // Comando SQL para el INSERT
-                    string sqlInsert = "INSERT INTO Personas (DNI, Nombre, Apellido, Telefono, Direccion, Email, FechaNacimiento, IDPlan) " +
-                                       "VALUES (@DNI, @Nombre, @Apellido, @Telefono, @Direccion, @Email, @FechaNacimiento, idPlan)";
+                    string sqlInsert = "INSERT INTO Personas (DNI, Nombre, Apellido, Telefono, Direccion, Email, FechaNacimiento) " +
+                                       "VALUES (@DNI, @Nombre, @Apellido, @Telefono, @Direccion, @Email, @FechaNacimiento)";
 
                     // Crear el SqlCommand con el comando y la conexión
                     using (SqlCommand command = new SqlCommand(sqlInsert, connection))
@@ -200,7 +197,6 @@ namespace DB
                         command.Parameters.AddWithValue("@Direccion", direccion);
                         command.Parameters.AddWithValue("@Email", email);
                         command.Parameters.AddWithValue("@FechaNacimiento", fechaNacimiento);
-                        command.Parameters.AddWithValue("@IDPlan", idPlan);
 
                         connection.Open();
 
@@ -229,7 +225,7 @@ namespace DB
         }
         #endregion
         #region Update
-        public static void UpdatePersona(int dni, string nombre, string apellido, string telefono, string direccion, string email, DateTime fechaNacimiento, int idPlan, int id)
+        public static void UpdatePersona(int dni, string nombre, string apellido, string telefono, string direccion, string email, DateTime fechaNacimiento, int id)
         {
             try
             {
@@ -246,7 +242,6 @@ namespace DB
                             Direccion = @direccion,
                             Email = @email,
                             FechaNacimiento = @fechaNacimiento
-                            IDPlan = @idPlan
                         WHERE PersonasId = @id";
 
                     // Crear el SqlCommand con el comando y la conexión
@@ -260,7 +255,6 @@ namespace DB
                     command.Parameters.AddWithValue("@direccion", direccion);
                     command.Parameters.AddWithValue("@email", email);
                     command.Parameters.AddWithValue("@fechaNacimiento", fechaNacimiento);
-                    command.Parameters.AddWithValue("@IDPlan", idPlan);
                     command.Parameters.AddWithValue("@id", id);
 
                     connection.Open();

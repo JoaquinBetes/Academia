@@ -39,6 +39,10 @@ namespace UIDekptop
             this.idPlan = idPlan;
             InitializeComponent();
             txtDni.Text = dni.ToString();
+            List<Entities.Plan> planes = Business.Plan.getAll();
+            CmbPlan.DataSource = planes;
+            CmbPlan.ValueMember = "IdPlan";
+            CmbPlan.DisplayMember = "Descripcion";
         }
 
         //Constructor para ...
@@ -46,6 +50,10 @@ namespace UIDekptop
         {
             InitializeComponent();
             txtDni.ReadOnly = false;
+            List<Entities.Plan> planes = Business.Plan.getAll();
+            CmbPlan.DataSource = planes;
+            CmbPlan.ValueMember = "IdPlan";
+            CmbPlan.DisplayMember = "Descripcion";
         }
 
         //Constructor para ...
@@ -54,6 +62,10 @@ namespace UIDekptop
             this.personaId = personaID;
             this.existePersona = true;
             InitializeComponent();
+            List<Entities.Plan> planes = Business.Plan.getAll();
+            CmbPlan.DataSource = planes;
+            CmbPlan.ValueMember = "IdPlan";
+            CmbPlan.DisplayMember = "Descripcion";
         }
 
         //Constructor para editar usuario
@@ -67,6 +79,10 @@ namespace UIDekptop
             TxtLegajo.Text = usuario.Legajo.ToString();
             CmbTipoUsuario.Text = usuario.TipoUsuario;
             TxtClave.Text = usuario.Clave.ToString();
+            List<Entities.Plan> planes = Business.Plan.getAll();
+            CmbPlan.DataSource = planes;
+            CmbPlan.ValueMember = "IdPlan";
+            CmbPlan.DisplayMember = "Descripcion";
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -84,8 +100,8 @@ namespace UIDekptop
                     MessageBox.Show("No se encontro una persona con el DNI ingresado.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                else 
-                { 
+                else
+                {
                     existePersona = true;
                     this.dni = int.Parse(txtDni.Text);
                     this.personaId = Business.Persona.getPersona(this.dni).PersonaId;
@@ -104,6 +120,11 @@ namespace UIDekptop
                 MessageBox.Show("Debe seleccionar un tipo de usuario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            if (CmbPlan.SelectedItem == null)
+            {
+                MessageBox.Show("Debe seleccionar un plan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (string.IsNullOrEmpty(TxtLegajo.Text) || !int.TryParse(TxtLegajo.Text, out _) || TxtLegajo.Text.Length != 5)
             {
                 MessageBox.Show("El Legajo debe ser un número válido de 5 digitos.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -120,24 +141,25 @@ namespace UIDekptop
                 {
                     Business.Persona.CreatePersona(this.dni, this.nombre, this.apellido, this.telefono, this.direccion, this.email, this.fechaNacimiento, this.idPlan);
                     persona = Business.Persona.getPersona(this.dni);
-                    Business.Usuario.CreateUsuario(TxtNombreUsuario.Text, TxtClave.Text, CmbTipoUsuario.Text, true, this.dni, persona.PersonaId, int.Parse(TxtLegajo.Text));
+                    Business.Usuario.CreateUsuario(TxtNombreUsuario.Text, TxtClave.Text, CmbTipoUsuario.Text, true, this.dni, persona.PersonaId, int.Parse(TxtLegajo.Text), (int)CmbPlan.SelectedValue);
                     Business.ModuloUsuario.CreateModulosUsuario(CmbTipoUsuario.Text, Business.Usuario.getUsuarioId(int.Parse(TxtLegajo.Text)));
                 }
                 else // Se esta creando usuario para persona ya creada.
                 {
-                    Business.Usuario.CreateUsuario(TxtNombreUsuario.Text, TxtClave.Text, CmbTipoUsuario.Text, true, this.dni, this.personaId, int.Parse(TxtLegajo.Text));
+                    Business.Usuario.CreateUsuario(TxtNombreUsuario.Text, TxtClave.Text, CmbTipoUsuario.Text, true, this.dni, this.personaId, int.Parse(TxtLegajo.Text), (int)CmbPlan.SelectedValue);
                     Business.ModuloUsuario.CreateModulosUsuario(CmbTipoUsuario.Text, Business.Usuario.getUsuarioId(int.Parse(TxtLegajo.Text)));
                 }
             }
             else
             {
-                if (edicion) 
-                { 
-                    if (TxtLegajo.Text == usuario.Legajo.ToString()) 
+                if (edicion)
+                {
+                    if (TxtLegajo.Text == usuario.Legajo.ToString())
                     {
                         usuario.NombreUsuario = TxtNombreUsuario.Text;
                         usuario.Clave = TxtClave.Text;
                         usuario.TipoUsuario = CmbTipoUsuario.Text;
+                        usuario.IdPlan = (int)CmbPlan.SelectedValue;
                         Business.Usuario.UpdateUsuario(usuario);
                     }
                     else { MessageBox.Show("El legajo ya existe", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error); }
