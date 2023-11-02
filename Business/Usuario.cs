@@ -80,8 +80,8 @@ namespace Business
 
         public static bool EsDocente (int idPersona)
         {
-            Entities.Usuario usuario = getUsuariosPersona(idPersona).FirstOrDefault( u => u.TipoUsuario == "Docente");
-            return usuario != null;
+            Entities.Usuario usuario = getUsuario(idPersona);
+            return usuario.TipoUsuario == "Docente";
         }
     }
 }
