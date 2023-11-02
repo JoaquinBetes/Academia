@@ -30,13 +30,15 @@ namespace DB
 
                     while (reader.Read()) // TODO VALIDACIONES del tipo si devuelve null, Nan o algo por es estilo poner "-" o "0"
                     {
+                        object planIdValue = reader["PlanId"];
+                        int IdPlan = planIdValue == DBNull.Value ? 0 : Convert.ToInt32(planIdValue);
                         int Id = Convert.ToInt32(reader["UsuarioId"]);
                         int Legajo = Convert.ToInt32(reader["Legajo"]);
                         string? nombreUsuario = reader["NombreUsuario"].ToString();
                         string? clave = reader["Clave"].ToString();
                         string? tipoUsuario = reader["TipoUsuario"].ToString();
                         bool habilitado = (bool)reader["Habilitado"];
-                        Entities.Usuario usuario = new Entities.Usuario(Id, nombreUsuario, Legajo, clave, tipoUsuario, habilitado);
+                        Entities.Usuario usuario = new Entities.Usuario(Id, nombreUsuario, Legajo, clave, tipoUsuario, habilitado, IdPlan);
                         usuarios.Add(usuario);
                     }
                     reader.Close();
@@ -218,13 +220,15 @@ namespace DB
 
                     while (reader.Read()) // TODO VALIDACIONES del tipo si devuelve null, Nan o algo por es estilo poner "-" o "0"
                     {
+                        object planIdValue = reader["PlanId"];
+                        int IdPlan = planIdValue == DBNull.Value ? 0 : Convert.ToInt32(planIdValue);
                         int Id = Convert.ToInt32(reader["PersonaId"]);
                         string? nombre = reader["NombreUsuario"].ToString();
                         int legajo = Convert.ToInt32(reader["Legajo"]);
                         string? clave = reader["Clave"].ToString();
                         string? tipo = reader["TipoUsuario"].ToString();
                         bool habilitado = Convert.ToInt32(reader["Habilitado"]) != 0;
-                        Entities.Usuario usuario = new Entities.Usuario(Id, nombre, legajo, clave, tipo, habilitado);
+                        Entities.Usuario usuario = new Entities.Usuario(Id, nombre, legajo, clave, tipo, habilitado, IdPlan);
                         usuarios.Add(usuario);
                     }
                     reader.Close();
@@ -240,7 +244,7 @@ namespace DB
         }
         #endregion
         #region Create
-        public static void CreateUsuario(string nombreUsuario, string clave, string tipo, bool habilitado, int dni, int personaId, int legajo)
+        public static void CreateUsuario(string nombreUsuario, string clave, string tipo, bool habilitado, int dni, int personaId, int legajo, int planId)
         {
             try
             {
@@ -248,8 +252,8 @@ namespace DB
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     // Comando SQL para el INSERT
-                    string sqlInsert = "INSERT INTO Usuarios (NombreUsuario, Legajo, Clave, TipoUsuario, Habilitado, PersonaId) " +
-                                           "VALUES (@NombreUsuario, @Legajo, @Clave, @TipoUsuario, @Habilitado, @PersonaId)";
+                    string sqlInsert = "INSERT INTO Usuarios (NombreUsuario, Legajo, Clave, TipoUsuario, Habilitado, PersonaId, PlanId) " +
+                                           "VALUES (@NombreUsuario, @Legajo, @Clave, @TipoUsuario, @Habilitado, @PersonaId, @PlanId)";
 
                     // Crear el SqlCommand con el comando y la conexión
                     using (SqlCommand command = new SqlCommand(sqlInsert, connection))
@@ -261,6 +265,7 @@ namespace DB
                         command.Parameters.AddWithValue("@TipoUsuario", tipo);
                         command.Parameters.AddWithValue("@Habilitado", habilitado);
                         command.Parameters.AddWithValue("@PersonaId", personaId);
+                        command.Parameters.AddWithValue("@PlanId", planId);
 
                         connection.Open();
 
@@ -305,7 +310,8 @@ namespace DB
                             Legajo = @legajo,
                             Clave = @clave,
                             TipoUsuario = @tipo,
-                            Habilitado = @habilitado
+                            Habilitado = @habilitado,
+                            PlanId = @planId
                         WHERE UsuarioId = @id";
 
                     // Crear el SqlCommand con el comando y la conexión
@@ -316,7 +322,8 @@ namespace DB
                     command.Parameters.AddWithValue("@legajo", usuario.Legajo);
                     command.Parameters.AddWithValue("@clave", usuario.Clave);
                     command.Parameters.AddWithValue("@tipo", usuario.TipoUsuario);
-                    command.Parameters.AddWithValue("habilitado", usuario.Habilitado);
+                    command.Parameters.AddWithValue("@habilitado", usuario.Habilitado);
+                    command.Parameters.AddWithValue("@planId", usuario.IdPlan);
                     command.Parameters.AddWithValue("@id", id);
 
                     connection.Open();

@@ -42,8 +42,8 @@ namespace Business
         { return DB.Usuario.getUsuariosPersona(personaId); }
         #endregion
         #region Create
-        public static void CreateUsuario(string nombreUsuario, string clave, string tipo, bool habilitado, int dni, int personaId, int legajo)
-        { DB.Usuario.CreateUsuario(nombreUsuario, clave, tipo, habilitado, dni, personaId, legajo); }
+        public static void CreateUsuario(string nombreUsuario, string clave, string tipo, bool habilitado, int dni, int personaId, int legajo, int planId)
+        { DB.Usuario.CreateUsuario(nombreUsuario, clave, tipo, habilitado, dni, personaId, legajo, planId); }
         #endregion
         #region Update
         public static void UpdateUsuario(Entities.Usuario usuario)

@@ -17,8 +17,8 @@ namespace UIDesktop
         public FrmInscripcionAlumnos()
         {
             InitializeComponent();
-            Entities.Persona persona = Business.Persona.getPersonaById(idAlumno);
-            int idPlan = persona.IdPlan;
+            Entities.Usuario usuario = Business.Usuario.getUsuario(idAlumno);
+            int idPlan = usuario.IdPlan;
             int idEsp = Business.Plan.getById(idPlan).IdEspecialidad;
             txtEspecialidad.Text = Business.Especialidad.Get(idEsp).Descripcion;
             txtPlan.Text = Business.Plan.getById(idPlan).Descripcion;

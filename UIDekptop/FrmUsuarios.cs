@@ -42,7 +42,8 @@ namespace UIDekptop
                 DgvUsuarios.Rows.Clear();
                 foreach (Entities.Usuario usuario in usuarios)
                 {
-                    DgvUsuarios.Rows.Add(usuario.Legajo, usuario.NombreUsuario, usuario.Clave, usuario.TipoUsuario);
+                    string nombrePlan = Business.Plan.getById(usuario.IdPlan).Descripcion;
+                    DgvUsuarios.Rows.Add(usuario.Legajo, usuario.NombreUsuario, usuario.Clave, usuario.TipoUsuario, nombrePlan);
                 }
             }
         }
@@ -65,9 +66,9 @@ namespace UIDekptop
             {
                 // Limpia el DataGridView antes de mostrar la nueva persona
                 DgvUsuarios.Rows.Clear();
-
+                string nombrePlan = Business.Plan.getById(usuario.IdPlan).Descripcion;
+                DgvUsuarios.Rows.Add(usuario.Legajo, usuario.NombreUsuario, usuario.Clave, usuario.TipoUsuario, nombrePlan);
                 // Agrega una nueva fila con la información de la persona
-                DgvUsuarios.Rows.Add(usuario.Legajo, usuario.NombreUsuario, usuario.Clave, usuario.TipoUsuario);
             }
             else
             {
