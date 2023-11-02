@@ -135,6 +135,44 @@ namespace DB
 
         #endregion
         #region Update
+        //crear metodo para updatear dado un idInscripcion, idAlumno, idCurso, condicion y nota
+        public static void Update(int idInscripcion, int idAlumno, int idCurso, string condicion, int nota )
+        {
+            // Crear la SqlConnection
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                    // Comando SQL para el UPDATE
+                    string sqlUpdate = "UPDATE Alumnos_Inscripciones SET IdAlumno = @idAlumno, IdCurso = @idCurso, Condicion = @condicion, Nota = @nota WHERE IdInscripcion = @idInscripcion";
+
+                    // Crear el SqlCommand con el comando y la conexión
+                    using (SqlCommand command = new SqlCommand(sqlUpdate, connection))
+                {
+                        // Agregar parámetros al comando
+                        command.Parameters.AddWithValue("@idAlumno", idAlumno);
+                        command.Parameters.AddWithValue("@idCurso", idCurso);
+                        command.Parameters.AddWithValue("@condicion", condicion);
+                        command.Parameters.AddWithValue("@nota", nota);
+                        command.Parameters.AddWithValue("@idInscripcion", idInscripcion);
+
+                        connection.Open();
+
+                        // Ejecutar el UPDATE
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        // Verificar si se insertaron filas correctamente
+                        if (rowsAffected > 0)
+                    {
+                            Console.WriteLine("Update exitoso");
+                        }
+                        else
+                    {
+                            Console.WriteLine("No se pudo updatear el registro");
+                        }
+
+                        connection.Close();
+                    }
+                }   
+        }
         #endregion
         #region Delete
         #endregion
