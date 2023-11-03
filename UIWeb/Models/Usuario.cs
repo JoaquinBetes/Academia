@@ -21,25 +21,7 @@ namespace UIWeb.Models
         public string TipoUsuario { get; set; }
         public bool Habilitado { get; set; }
         public int PersonaId { get; set; }
+        public int IdPlan { get; set; }
 
-        public Usuario()
-        {
-            UsuarioId = 0;
-            NombreUsuario = string.Empty;
-            Legajo = 0;
-            Clave = string.Empty;
-            TipoUsuario = string.Empty;
-            Habilitado = false;
-        }
-        public Usuario(int id, string nombreUsuario, int legajo, string clave, string tipoUsuario, bool habilitado, int personaId)
-        {
-            this.UsuarioId = id;
-            this.NombreUsuario = nombreUsuario;
-            this.Legajo = legajo;
-            this.Clave = clave;
-            this.TipoUsuario = tipoUsuario;
-            this.Habilitado = habilitado;
-            this.PersonaId = personaId;
-        }
     }
 }
