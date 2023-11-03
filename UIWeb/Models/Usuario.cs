@@ -21,7 +21,7 @@ namespace UIWeb.Models
         public string TipoUsuario { get; set; }
         public bool Habilitado { get; set; }
         public int PersonaId { get; set; }
-        public int IdPlan { get; set; }
+        public int PlanId { get; set; }
 
     }
 }
