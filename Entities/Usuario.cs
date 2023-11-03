@@ -15,6 +15,7 @@ namespace Entities
         public string Clave { get; set; }
         public string TipoUsuario { get; set; }
         public bool Habilitado { get; set; }
+        public int PersonaId { get; set; }
 
         public Usuario()
         {
@@ -26,7 +27,7 @@ namespace Entities
             Habilitado = false;
             IdPlan = 0;
     }
-        public Usuario(int id, string nombreUsuario, int legajo, string clave, string tipoUsuario, bool habilitado, int idPlan)
+        public Usuario(int id, string nombreUsuario, int legajo, string clave, string tipoUsuario, bool habilitado, int idPlan, int personaId)
         {
             this.Id = id;
             this.NombreUsuario = nombreUsuario;
@@ -35,6 +36,7 @@ namespace Entities
             this.TipoUsuario = tipoUsuario;
             this.Habilitado = habilitado;
             this.IdPlan = idPlan;
+            this.PersonaId = personaId;
         }
     }
 }

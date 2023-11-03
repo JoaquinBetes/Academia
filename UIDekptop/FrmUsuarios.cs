@@ -43,7 +43,7 @@ namespace UIDekptop
                 foreach (Entities.Usuario usuario in usuarios)
                 {
                     string nombrePlan = Business.Plan.getById(usuario.IdPlan).Descripcion;
-                    DgvUsuarios.Rows.Add(usuario.Legajo, usuario.NombreUsuario, usuario.Clave, usuario.TipoUsuario, nombrePlan);
+                    DgvUsuarios.Rows.Add(usuario.Legajo, usuario.NombreUsuario, usuario.Clave, usuario.TipoUsuario, nombrePlan, usuario.PersonaId);
                 }
             }
         }

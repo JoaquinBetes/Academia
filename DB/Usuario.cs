@@ -38,7 +38,8 @@ namespace DB
                         string? clave = reader["Clave"].ToString();
                         string? tipoUsuario = reader["TipoUsuario"].ToString();
                         bool habilitado = (bool)reader["Habilitado"];
-                        Entities.Usuario usuario = new Entities.Usuario(Id, nombreUsuario, Legajo, clave, tipoUsuario, habilitado, IdPlan);
+                        int personaId = Convert.ToInt32(reader["PersonaId"]);
+                        Entities.Usuario usuario = new Entities.Usuario(Id, nombreUsuario, Legajo, clave, tipoUsuario, habilitado, IdPlan, personaId);
                         usuarios.Add(usuario);
                     }
                     reader.Close();
@@ -229,7 +230,7 @@ namespace DB
                         string? clave = reader["Clave"].ToString();
                         string? tipo = reader["TipoUsuario"].ToString();
                         bool habilitado = Convert.ToInt32(reader["Habilitado"]) != 0;
-                        Entities.Usuario usuario = new Entities.Usuario(Id, nombre, legajo, clave, tipo, habilitado, IdPlan);
+                        Entities.Usuario usuario = new Entities.Usuario(Id, nombre, legajo, clave, tipo, habilitado, IdPlan, personaId);
                         usuarios.Add(usuario);
                     }
                     reader.Close();

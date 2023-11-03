@@ -36,11 +36,12 @@
             Usuario = new DataGridViewTextBoxColumn();
             Clave = new DataGridViewTextBoxColumn();
             Tipo = new DataGridViewTextBoxColumn();
+            IdPlan = new DataGridViewTextBoxColumn();
             TxtBuscarLegajo = new TextBox();
             LblBuscarLegajo = new Label();
             btnBuscarPorLegajo = new Button();
             btnInforme = new Button();
-            IdPlan = new DataGridViewTextBoxColumn();
+            PersonaId = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)DgvUsuarios).BeginInit();
             SuspendLayout();
             // 
@@ -51,10 +52,9 @@
             btnEliminarUsuario.FlatStyle = FlatStyle.Flat;
             btnEliminarUsuario.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnEliminarUsuario.ForeColor = SystemColors.ButtonHighlight;
-            btnEliminarUsuario.Location = new Point(418, 675);
-            btnEliminarUsuario.Margin = new Padding(4);
+            btnEliminarUsuario.Location = new Point(325, 482);
             btnEliminarUsuario.Name = "btnEliminarUsuario";
-            btnEliminarUsuario.Size = new Size(96, 31);
+            btnEliminarUsuario.Size = new Size(75, 22);
             btnEliminarUsuario.TabIndex = 10;
             btnEliminarUsuario.Text = "Eliminar";
             btnEliminarUsuario.UseVisualStyleBackColor = false;
@@ -67,10 +67,9 @@
             btnEditarUsuario.FlatStyle = FlatStyle.Flat;
             btnEditarUsuario.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnEditarUsuario.ForeColor = SystemColors.ButtonHighlight;
-            btnEditarUsuario.Location = new Point(294, 675);
-            btnEditarUsuario.Margin = new Padding(4);
+            btnEditarUsuario.Location = new Point(229, 482);
             btnEditarUsuario.Name = "btnEditarUsuario";
-            btnEditarUsuario.Size = new Size(96, 31);
+            btnEditarUsuario.Size = new Size(75, 22);
             btnEditarUsuario.TabIndex = 9;
             btnEditarUsuario.Text = "Editar";
             btnEditarUsuario.UseVisualStyleBackColor = false;
@@ -83,10 +82,9 @@
             btnAgregarUsuario.FlatStyle = FlatStyle.Flat;
             btnAgregarUsuario.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnAgregarUsuario.ForeColor = SystemColors.ButtonHighlight;
-            btnAgregarUsuario.Location = new Point(878, 675);
-            btnAgregarUsuario.Margin = new Padding(4);
+            btnAgregarUsuario.Location = new Point(683, 482);
             btnAgregarUsuario.Name = "btnAgregarUsuario";
-            btnAgregarUsuario.Size = new Size(170, 31);
+            btnAgregarUsuario.Size = new Size(132, 22);
             btnAgregarUsuario.TabIndex = 8;
             btnAgregarUsuario.Text = "Agregar usuario";
             btnAgregarUsuario.UseVisualStyleBackColor = false;
@@ -97,16 +95,15 @@
             DgvUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DgvUsuarios.BackgroundColor = SystemColors.ButtonHighlight;
             DgvUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DgvUsuarios.Columns.AddRange(new DataGridViewColumn[] { Legajo, Usuario, Clave, Tipo, IdPlan });
+            DgvUsuarios.Columns.AddRange(new DataGridViewColumn[] { Legajo, Usuario, Clave, Tipo, IdPlan, PersonaId });
             DgvUsuarios.GridColor = SystemColors.Control;
-            DgvUsuarios.Location = new Point(93, 160);
-            DgvUsuarios.Margin = new Padding(4);
+            DgvUsuarios.Location = new Point(72, 114);
             DgvUsuarios.Name = "DgvUsuarios";
             DgvUsuarios.ReadOnly = true;
             DgvUsuarios.RowHeadersWidth = 51;
             DgvUsuarios.RowTemplate.Height = 25;
             DgvUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            DgvUsuarios.Size = new Size(1106, 507);
+            DgvUsuarios.Size = new Size(860, 362);
             DgvUsuarios.TabIndex = 7;
             // 
             // Legajo
@@ -137,21 +134,25 @@
             Tipo.Name = "Tipo";
             Tipo.ReadOnly = true;
             // 
+            // IdPlan
+            // 
+            IdPlan.HeaderText = "Plan Id";
+            IdPlan.Name = "IdPlan";
+            IdPlan.ReadOnly = true;
+            // 
             // TxtBuscarLegajo
             // 
-            TxtBuscarLegajo.Location = new Point(93, 90);
-            TxtBuscarLegajo.Margin = new Padding(4);
+            TxtBuscarLegajo.Location = new Point(72, 64);
             TxtBuscarLegajo.Name = "TxtBuscarLegajo";
-            TxtBuscarLegajo.Size = new Size(199, 29);
+            TxtBuscarLegajo.Size = new Size(156, 23);
             TxtBuscarLegajo.TabIndex = 11;
             // 
             // LblBuscarLegajo
             // 
             LblBuscarLegajo.AutoSize = true;
-            LblBuscarLegajo.Location = new Point(93, 64);
-            LblBuscarLegajo.Margin = new Padding(4, 0, 4, 0);
+            LblBuscarLegajo.Location = new Point(72, 46);
             LblBuscarLegajo.Name = "LblBuscarLegajo";
-            LblBuscarLegajo.Size = new Size(134, 21);
+            LblBuscarLegajo.Size = new Size(101, 15);
             LblBuscarLegajo.TabIndex = 12;
             LblBuscarLegajo.Text = "Buscar por Legajo";
             // 
@@ -162,10 +163,9 @@
             btnBuscarPorLegajo.FlatStyle = FlatStyle.Flat;
             btnBuscarPorLegajo.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnBuscarPorLegajo.ForeColor = SystemColors.ButtonHighlight;
-            btnBuscarPorLegajo.Location = new Point(330, 90);
-            btnBuscarPorLegajo.Margin = new Padding(4);
+            btnBuscarPorLegajo.Location = new Point(257, 64);
             btnBuscarPorLegajo.Name = "btnBuscarPorLegajo";
-            btnBuscarPorLegajo.Size = new Size(96, 31);
+            btnBuscarPorLegajo.Size = new Size(75, 22);
             btnBuscarPorLegajo.TabIndex = 13;
             btnBuscarPorLegajo.Text = "Buscar";
             btnBuscarPorLegajo.UseVisualStyleBackColor = false;
@@ -178,26 +178,25 @@
             btnInforme.FlatStyle = FlatStyle.Flat;
             btnInforme.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnInforme.ForeColor = SystemColors.ButtonHighlight;
-            btnInforme.Location = new Point(1001, 90);
-            btnInforme.Margin = new Padding(4);
+            btnInforme.Location = new Point(779, 64);
             btnInforme.Name = "btnInforme";
-            btnInforme.Size = new Size(214, 31);
+            btnInforme.Size = new Size(166, 22);
             btnInforme.TabIndex = 14;
             btnInforme.Text = "Informe Usuarios";
             btnInforme.UseVisualStyleBackColor = false;
             btnInforme.Click += btnInforme_Click;
             // 
-            // IdPlan
+            // PersonaId
             // 
-            IdPlan.HeaderText = "Plan Id";
-            IdPlan.Name = "IdPlan";
-            IdPlan.ReadOnly = true;
+            PersonaId.HeaderText = "Persona Id";
+            PersonaId.Name = "PersonaId";
+            PersonaId.ReadOnly = true;
             // 
             // FrmUsuarios
             // 
-            AutoScaleDimensions = new SizeF(9F, 21F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1292, 865);
+            ClientSize = new Size(1005, 618);
             Controls.Add(btnInforme);
             Controls.Add(btnBuscarPorLegajo);
             Controls.Add(LblBuscarLegajo);
@@ -207,7 +206,6 @@
             Controls.Add(btnAgregarUsuario);
             Controls.Add(DgvUsuarios);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(4);
             Name = "FrmUsuarios";
             Text = "FrmUsuarios";
             Load += FrmUsuarios_Load;
@@ -231,5 +229,6 @@
         private Button btnBuscarPorLegajo;
         private Button btnInforme;
         private DataGridViewTextBoxColumn IdPlan;
+        private DataGridViewTextBoxColumn PersonaId;
     }
 }
