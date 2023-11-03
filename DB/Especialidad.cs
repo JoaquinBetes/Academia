@@ -45,18 +45,22 @@ namespace DB
                 try
                 {
                     connection.Open();
-                    SqlDataReader reader = command.ExecuteReader(); // ya se ejecuto la consulta 
-                    reader.Read();
-                    esp.IdEspecialidad = Convert.ToInt32(reader["IdEspecialidad"]);
-                    esp.Descripcion = reader["Descripcion"].ToString();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        esp.IdEspecialidad = Convert.ToInt32(reader["IdEspecialidad"]);
+                        esp.Descripcion = reader["Descripcion"].ToString();
+                    }
+
                     reader.Close();
                     connection.Close();
                     return esp;
-
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("Error al cargar la lista de especialidades" + ex.Message);
+                    throw new Exception("Error al cargar la lista de especialidades: " + ex.Message);
                 }
             }
         }

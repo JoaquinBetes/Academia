@@ -53,6 +53,7 @@
             BtnCancelar.TabIndex = 37;
             BtnCancelar.Text = "Cancelar";
             BtnCancelar.UseVisualStyleBackColor = false;
+            BtnCancelar.Click += BtnCancelar_Click;
             // 
             // BtnGuardar
             // 
@@ -94,6 +95,7 @@
             txtAnioEspecialidad.Name = "txtAnioEspecialidad";
             txtAnioEspecialidad.Size = new Size(271, 27);
             txtAnioEspecialidad.TabIndex = 39;
+            txtAnioEspecialidad.KeyPress += txtAnioEspecialidad_KeyPress;
             // 
             // label1
             // 

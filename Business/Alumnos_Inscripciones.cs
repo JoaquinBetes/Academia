@@ -30,6 +30,8 @@ namespace Business
 
         #endregion
         #region Update
+        public static void UpdateInscripcion(int idInscripcion, int idAlumno, int idCurso, string condicion, int nota)
+        { DB.Alumnos_Inscripciones.Update(idInscripcion, idAlumno, idCurso, condicion, nota); }
         #endregion
         #region Delete
         #endregion
