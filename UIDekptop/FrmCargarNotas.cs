@@ -79,8 +79,9 @@ namespace UIDesktop
                 //por cada incripcionn traer il idAlumno, nombre, apellido, condicion y nota
                 foreach (Entities.Alumnos_Inscripciones inscripcion in inscripciones)
                 {
-                    Entities.Persona persona = Business.Persona.getPersonaById(inscripcion.IdAlumno);
-                    dgwInscrip.Rows.Add(inscripcion.IdInscripcion, persona.PersonaId, persona.Nombre, persona.Apellido, inscripcion.Condicion, inscripcion.Nota, inscripcion.IdCurso);
+                    Entities.Usuario usuari = Business.Usuario.getUsuarioById(inscripcion.IdAlumno);    
+                    Entities.Persona persona = Business.Persona.getPersonaById(usuari.PersonaId);
+                    dgwInscrip.Rows.Add(inscripcion.IdInscripcion, inscripcion.IdAlumno, persona.Nombre, persona.Apellido, inscripcion.Condicion, inscripcion.Nota, inscripcion.IdCurso);
                 }
             }
 

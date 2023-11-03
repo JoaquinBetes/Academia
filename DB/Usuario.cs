@@ -53,6 +53,7 @@ namespace DB
             }
             return usuarios;
         }
+       
         public static int getUsuarioId(int legajo)
         {
             int id = 0;
@@ -163,6 +164,41 @@ namespace DB
             {
                 // Manejar errores si ocurre alguno al intentar conectarse a la base de datos.
                 Console.WriteLine("Error al conectar a la base de datos: " + ex.Message);
+            }
+            return usuario;
+        }
+        //metodo que dado un id te te devuelve un usuario
+        public static Entities.Usuario getUsuarioById(int id)
+        {
+            Entities.Usuario usuario = new Entities.Usuario();
+            try
+            {
+                using(SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    string sqlQuery = "SELECT * FROM Usuarios WHERE UsuarioId = @id";
+                    SqlCommand command = new SqlCommand(sqlQuery, connection);
+                    command.Parameters.AddWithValue("@id", id);
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        usuario.Id = Convert.ToInt32(reader["UsuarioId"]);
+                        usuario.IdPlan = Convert.ToInt32(reader["PlanId"]);
+                        usuario.NombreUsuario = reader["NombreUsuario"].ToString();
+                        usuario.Legajo = Convert.ToInt32(reader["Legajo"]);
+                        usuario.Clave = reader["Clave"].ToString();
+                        usuario.TipoUsuario = reader["TipoUsuario"].ToString();
+                        usuario.Habilitado = (bool)reader["Habilitado"];
+                        usuario.PersonaId= Convert.ToInt32(reader["PersonaId"]);    
+                    }
+                    connection.Close(); 
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al conectar a la base de datos: " + ex.Message);
+
             }
             return usuario;
         }

@@ -20,6 +20,9 @@ namespace Business
         }
         public static Entities.Usuario? getUsuario(string nombreUsuario)
         { return DB.Usuario.getUsuario(nombreUsuario); }
+        
+        public static Entities.Usuario? getUsuarioById(int idUsuario)
+        { return DB.Usuario.getUsuarioById(idUsuario); }   
         public static List<Entities.Usuario>? getDatos(Entities.Usuario usuario)
         {
             List<Entities.Usuario> usuarios = new List<Entities.Usuario>();
