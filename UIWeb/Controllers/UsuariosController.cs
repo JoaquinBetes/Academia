@@ -57,7 +57,7 @@ namespace UIWeb.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("UsuarioId,NombreUsuario,Legajo,Clave,TipoUsuario,Habilitado,PersonaId")] Usuario usuario, string DNI)
+        public async Task<IActionResult> Create([Bind("UsuarioId,NombreUsuario,Legajo,Clave,TipoUsuario,Habilitado,PlanId,PersonaId")] Usuario usuario, string DNI)
         {
             // Verificar si el DNI es un número válido de 8 dígitos
             if (!Regex.IsMatch(DNI, @"^\d{8}$"))
@@ -79,7 +79,7 @@ namespace UIWeb.Controllers
                 if (ModelState.ErrorCount == 0)
                 {
                     // Si no hay errores de validación, puedes proceder a crear el usuario
-                    usuario.PersonaId = personaExistente.PersonaId;
+                    usuario.PersonaId = personaExistente.PersonasId;
 
                     _context.Add(usuario);
                     await _context.SaveChangesAsync();
